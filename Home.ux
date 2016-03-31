@@ -1,6 +1,5 @@
 <Page ux:InnerClass="Home" Title="Home" ux:Name="Home">	
 <Panel>
-	<HierarchicalNavigation ux:Name="homeNav" Active="mainHomePage" /> 
 	<MyPage ux:Name="mainHomePage">
 		<Panel ux:Name="self" TransformOrigin="Center" Width="300" Height="300" Alignment="BottomRight" Offset="100,100">
 				<Cross ux:Name="cross" />
@@ -69,7 +68,7 @@
 		<Panel Alignment="BottomLeft" Offset="5,-25" Width="400" Height="380">	
 		<Circle ux:Name="settingsBtn" Fill="#F23363" Width="17%" Height="17%" Alignment="BottomLeft" Offset="15,7">	
 			<Clicked>
-				<NavigateTo Target="Settings" NavigationContext="homeNav" />
+				<RaiseUserEvent Name="showSettings" />
 			</Clicked>
 		</Circle>
 		</Panel>					 
@@ -95,7 +94,6 @@
 			</Grid>
 		</Panel>
 	</MyPage>
-	<Settings ux:Name="Settings" ux:AutoBind="false"/>
 	<MyPage ux:Name="SampleText" ux:AutoBind="false">
 	<DockPanel>
 		<StatusBarBackground Dock="Top"/>

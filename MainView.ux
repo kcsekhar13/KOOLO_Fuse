@@ -1,30 +1,49 @@
 <App Theme="Basic">
 	<DockPanel>
-	<JavaScript File="MainView.js"/>
-	<ux:Include File="Resources.ux" />	
-	<ux:Include File="Home.ux" />
-	<!-- <ux:Include File="Settings\Settings.ux" />		 -->
+		<JavaScript File="MainView.js"/>
+		<ux:Include File="Resources.ux" />	
+		<ux:Include File="Home.ux" />
+		<!-- <ux:Include File="Settings\Settings.ux" />		 -->
+		
+		<UserEvent Name="showSettings" />
+		<UserEvent Name="hideSettings" />
+		
+		<OnUserEvent Name="showSettings" Filter="Global">
+			<Set settingsVisible.Value="true" />
+		</OnUserEvent>
+		<OnUserEvent Name="hideSettings" Filter="Global">
+			<Set settingsVisible.Value="false" />
+		</OnUserEvent>
+		
+		<WhileFalse ux:Name="settingsVisible">
+			<Move Target="Settings" Y="1" RelativeTo="ParentSize" Duration="0.4" Easing="CubicInOut" />
+		</WhileFalse>
 
-	<Image File="Assets\bg.jpg" StretchMode="UniformToFill" Layer="Background"  />
-	<BottomBarBackground Dock="Bottom" />
-	<iOS.StatusBarConfig Style="Light" />
-<Panel>	
-	<PageControl Active="{currentPage}" ux:Name="pageControl">
-		<MoodMap ux:Name="MoodMap" />
-		<Home />
-		<Calendar ux:Name="Calendar" />		
-	</PageControl>	
-</Panel>
-	<StackPanel Alignment="BottomCenter">
-		<Text Value="KOOLO" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold"/>	 	
-	</StackPanel>
-	 <PageIndicator Navigation="pageControl" Dock="Bottom" Alignment="Center">	 		
-        <Circle ux:Generate="Factory" ux:Binding="DotFactory" Fill="Teal" Margin="5" Width="10" Height="10">
-            <ActivatingAnimation>
-                <Scale Factor="1.3"/>
-            </ActivatingAnimation>
-        </Circle>        
-    </PageIndicator>
+		<Image File="Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background"  />
+		<BottomBarBackground Dock="Bottom" />
+		<iOS.StatusBarConfig Style="Light" />
+		<Panel>
+			<Settings ux:Name="Settings" />
+			<DockPanel>
+				<Panel>
+					<PageControl Active="{currentPage}" ux:Name="pageControl">
+						<MoodMap ux:Name="MoodMap" />
+						<Home />
+						<Calendar ux:Name="Calendar" />		
+					</PageControl>	
+				</Panel>
+				<StackPanel Alignment="BottomCenter">
+					<Text Value="KOOLO" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold"/>	 	
+				</StackPanel>
+				 <PageIndicator Navigation="pageControl" Dock="Bottom" Alignment="Center">	 		
+			        <Circle ux:Generate="Factory" ux:Binding="DotFactory" Fill="Teal" Margin="5" Width="10" Height="10">
+			            <ActivatingAnimation>
+			                <Scale Factor="1.3"/>
+			            </ActivatingAnimation>
+			        </Circle>        
+			    </PageIndicator>
+			</DockPanel>
+		</Panel>
 	</DockPanel>
 </App>
 
