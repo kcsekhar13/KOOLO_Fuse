@@ -1,0 +1,62 @@
+<Panel>
+	<Panel ux:Class="Cross" Width="50" Height="50" Alignment="Center" TransformOrigin="Center">
+		<Rectangle Width="2" Height="35%" Fill="#fff9" />
+		<Rectangle Height="2" Width="35%" Fill="#fff9" />
+	</Panel>
+<!-- Custom Page -->
+	<Page ux:Class="MyPage">
+        <EnteringAnimation>
+            <Move X="1" RelativeTo="ParentSize" />
+        </EnteringAnimation>
+        <ExitingAnimation>
+            <Move X="-1" RelativeTo="ParentSize" />
+        </ExitingAnimation>
+    </Page>
+ <!-- Custom Button -->
+    <StackPanel ux:Class="MyButton" Fill="#FFFFFF" TextColor="#000" CornerRadius="10" Margin="5,5,0,0" >
+  		<Panel>
+    	<string ux:Property="Text"/>
+    	<float4 ux:Property="CornerRadius" />
+	    <Brush ux:Property="Fill" />
+	    <float4 ux:Property="TextColor"/>
+	    <Text Alignment="Left" TextColor="{Property this.TextColor}" Value="{Property this.Text}" Font="Light" Margin="20,0,0,0"/>
+	    <Rectangle Layer="Background" CornerRadius="{Property this.CornerRadius}" Fill="{Property this.Fill}" /> 
+  		</Panel>
+  		<Rectangle Fill="#000000" Height="1" Margin="5,5,0,5">
+		 </Rectangle>
+	</StackPanel>
+
+	<!-- Custom Header -->
+	 <Panel Dock="Top" Height="35" ux:Class="MyHeader" Fill="#808080" TextColor="#000000"> 
+	 	<Rectangle Fill="{Property this.Fill}" Layer="Background">
+		<string ux:Property="Text"/>
+	    <float4 ux:Property="TextColor"/>     
+	    <Brush ux:Property="Fill" />     
+	    <Panel Alignment="Left" Margin="5,8,0,0">
+	        <Text TextAlignment="Left" Value="Cancel" Font="Light" />
+	        <Clicked>
+	             <GoBack />
+	        </Clicked>
+	      </Panel>
+	      <Text Alignment="Center" FontSize="20" TextColor="{Property this.TextColor}" Font="Bold" Value="{Property this.Text}"/>
+	      <Panel Alignment="Right" Margin="0,8,5,0">
+	        <Text TextAlignment="Right" Value="Done" Font="Light"  />
+	          <Clicked>
+	             <GoBack />
+	        </Clicked>
+	      </Panel>
+	  </Rectangle>
+     </Panel> 
+
+	<Font File="Assets\fonts\Klavika\Klavika-Bold.otf" ux:Global="Bold" />
+	<Font File="Assets\fonts\Klavika\Klavika-Bold.otf" ux:Global="Medium" />
+	<Font File="Assets\fonts\Klavika\Klavika-Bold.otf" ux:Global="Light" />
+	
+
+	<Image ux:Class="Icon" />
+	<Icon ux:Class="ClockIcon" File="Assets/icon_clock.png" />
+	<Icon ux:Class="TalkIcon" File="Assets/icon_talk.png" />
+	<Icon ux:Class="LocationIcon" File="Assets/icon_location.png" />
+	<Icon ux:Class="SettingsIcon" File="Assets/icon_settings.png" />
+
+</Panel>

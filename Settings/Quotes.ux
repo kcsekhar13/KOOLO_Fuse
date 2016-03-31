@@ -1,0 +1,8 @@
+<MyPage ux:Class="Quotes" ux:Name="Quotes">
+	<DockPanel>
+	<StatusBarBackground Dock="Top"/>
+    <iOS.StatusBarConfig Style="Light"/> 
+    <MyHeader Text="Quotes" />
+    <BottomBarBackground Dock="Bottom" />
+</DockPanel>
+</MyPage>

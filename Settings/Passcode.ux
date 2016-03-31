@@ -1,0 +1,8 @@
+<MyPage ux:Class="Passcode" ux:Name="Passcode">
+	<DockPanel>
+	<StatusBarBackground Dock="Top"/>
+    <iOS.StatusBarConfig Style="Light"/> 
+    <MyHeader Text="Passcode" />
+    <BottomBarBackground Dock="Bottom" />
+</DockPanel>
+</MyPage>

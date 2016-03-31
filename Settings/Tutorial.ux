@@ -1,0 +1,8 @@
+<MyPage ux:Class="Tutorial" ux:Name="Turorial">
+	<DockPanel>
+	<StatusBarBackground Dock="Top"/>
+    <iOS.StatusBarConfig Style="Light"/> 
+    <MyHeader Text="Tutorial" />
+    <BottomBarBackground Dock="Bottom" />
+</DockPanel>
+</MyPage>

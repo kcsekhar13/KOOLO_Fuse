@@ -1,0 +1,30 @@
+<App Theme="Basic">
+	<DockPanel>
+	<JavaScript File="MainView.js"/>
+	<ux:Include File="Resources.ux" />	
+	<ux:Include File="Home.ux" />
+	<!-- <ux:Include File="Settings\Settings.ux" />		 -->
+
+	<Image File="Assets\bg.jpg" StretchMode="UniformToFill" Layer="Background"  />
+	<BottomBarBackground Dock="Bottom" />
+	<iOS.StatusBarConfig Style="Light" />
+<Panel>	
+	<PageControl Active="{currentPage}" ux:Name="pageControl">
+		<MoodMap ux:Name="MoodMap" />
+		<Home />
+		<Calendar ux:Name="Calendar" />		
+	</PageControl>	
+</Panel>
+	<StackPanel Alignment="BottomCenter">
+		<Text Value="KOOLO" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold"/>	 	
+	</StackPanel>
+	 <PageIndicator Navigation="pageControl" Dock="Bottom" Alignment="Center">	 		
+        <Circle ux:Generate="Factory" ux:Binding="DotFactory" Fill="Teal" Margin="5" Width="10" Height="10">
+            <ActivatingAnimation>
+                <Scale Factor="1.3"/>
+            </ActivatingAnimation>
+        </Circle>        
+    </PageIndicator>
+	</DockPanel>
+</App>
+

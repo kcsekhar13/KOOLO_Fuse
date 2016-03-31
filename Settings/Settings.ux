@@ -1,0 +1,95 @@
+<MyPage ux:Class="Settings" Title="Settings" ux:Name="Settings" >
+<JavaScript File="Settings.js"/>
+  <StatusBarBackground Dock="Top"/>
+  <iOS.StatusBarConfig Style="Light"/>   
+  <!-- Header    -->
+  <Panel Dock="Top" Height="35" Alignment="Top">           
+    <Rectangle Fill="#808080" Layer="Background">    
+    <Panel Alignment="Left" Margin="5,8,0,0">
+        <Text TextAlignment="Left" Value="Cancel" Font="Light" />
+        <Clicked>
+           <DebugAction Message="Clicked left" />
+             <GoBack />
+        </Clicked>
+      </Panel>
+      <Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="{currentPageTitle}"/>
+      <Panel Alignment="Right" Margin="0,8,5,0">
+        <Text TextAlignment="Right" Value="Done" Font="Light"  />
+          <Clicked>
+             <GoBack />
+        </Clicked>
+      </Panel>
+  </Rectangle>
+  </Panel>
+    <!-- End of Header -->
+<Panel>  
+  <HierarchicalNavigation ux:Name="nav" Active="mainPage" /> 
+    <MyPage ux:Name="mainPage">  
+       <StackPanel Dock="Top" Background="#FFFFFF">  
+        <ScrollView AllowedScrollDirections="Vertical">         
+        <StackPanel Margin="0,5,0,0">   
+          <!-- Background Image -->    
+        <MyButton Text="BackGround Image">
+           <Clicked>
+             <NavigateTo Target="About" NavigationContext="nav" />
+          </Clicked>
+         </MyButton>
+          <!-- Passcode -->
+        <MyButton Text="Passcode">
+           <Clicked>
+             <NavigateTo Target="Passcode"  NavigationContext="nav" />
+          </Clicked>
+         </MyButton>
+          <!-- Quotes -->
+        <MyButton Text="Quotes">
+           <Clicked>
+             <NavigateTo Target="Quotes" />
+          </Clicked>
+         </MyButton>
+          <!-- Humor color -->
+        <MyButton Text="Humor Color">
+           <Clicked>
+             <NavigateTo Target="HumorColor" />
+          </Clicked>
+         </MyButton>
+          <!-- Tutorial -->
+        <MyButton Text="Tutorial">
+           <Clicked>
+             <NavigateTo Target="Tutorial" />
+          </Clicked>
+         </MyButton>
+          <!-- License -->
+        <MyButton Text="License">
+           <Clicked>
+             <NavigateTo Target="License" />
+          </Clicked>
+         </MyButton>
+          <!-- Contributors -->
+         <MyButton Text="Contributors">
+           <Clicked>
+             <NavigateTo Target="Contributors" />
+          </Clicked>
+         </MyButton>
+          <!-- About -->
+         <MyButton Text="About">
+          <Clicked>
+             <NavigateTo Target="About" />
+          </Clicked>
+         </MyButton>
+        </StackPanel>
+      </ScrollView> 
+      </StackPanel>
+    </MyPage>
+    <Passcode ux:Name="Passcode" ux:AutoBind="false" />
+    <Quotes ux:Name="Quotes" ux:AutoBind="false"/>
+    <HumorColor ux:Name="HumorColor" ux:AutoBind="false"/>
+    <Tutorial ux:Name="Tutorial" ux:AutoBind="false"/>
+    <License  ux:Name="License" ux:AutoBind="false"/>
+    <Contributors ux:Name="Contributors" ux:AutoBind="false"/>
+    <About ux:Name="About" ux:AutoBind="false"/>
+</Panel>
+</MyPage>
+
+
+
+

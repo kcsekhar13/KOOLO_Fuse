@@ -1,0 +1,5 @@
+<Page ux:Class="MoodMap">
+	<Panel>
+		<Text Value="MoodMap" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold" />
+	</Panel>
+</Page>

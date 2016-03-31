@@ -1,0 +1,6 @@
+.uno/
+*.uno
+*.dll
+*.pdb
+**/bundle/*
+build/*

@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'Klavika';
+  src: url('Klavika-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Klavika';
+  font-style:italic;
+  src: url('Klavika-RegularItalic.otf');
+}
+
+@font-face {
+  font-family: 'Klavika';
+  font-weight:bold;
+  src: url('Klavika-Bold.otf');
+}
+
+@font-face {
+  font-family: 'KlavikaLight';
+  src: url('Klavika-Light.otf');
+}
+
+@font-face {
+  font-family: 'Klavika';
+  font-weight:500;
+  src: url('Klavika-Medium.otf');
+}
+
+@font-face {
+  font-family: 'Klavika';
+  font-weight:500;
+  font-style: italic;
+  src: url('Klavika-MediumItalic.otf');
+}
