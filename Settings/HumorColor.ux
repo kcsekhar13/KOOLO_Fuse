@@ -1,8 +1,5 @@
 <MyPage ux:Class="HumorColor" ux:Name="HumorColor">
-		<DockPanel>
-	<StatusBarBackground Dock="Top"/>
-    <iOS.StatusBarConfig Style="Light"/> 
-    <MyHeader Text="Humor Color" />
-    <BottomBarBackground Dock="Bottom" />
+<DockPanel Background="White">
+	<MyHeader Text="Humor Color" />    
 </DockPanel>
 </MyPage>

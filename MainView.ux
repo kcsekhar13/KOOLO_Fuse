@@ -16,7 +16,7 @@
 		</OnUserEvent>
 		
 		<WhileFalse ux:Name="settingsVisible">
-			<Move Target="Settings" Y="1" RelativeTo="ParentSize" Duration="0.4" Easing="CubicInOut" />
+			<Move Target="Settings" Y="1" RelativeTo="ParentSize" Duration="0.2" Easing="CubicInOut" />
 		</WhileFalse>
 
 		<Image File="Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background"  />
@@ -36,7 +36,7 @@
 					<Text Value="KOOLO" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold"/>	 	
 				</StackPanel>
 				 <PageIndicator Navigation="pageControl" Dock="Bottom" Alignment="Center">	 		
-			        <Circle ux:Generate="Factory" ux:Binding="DotFactory" Fill="Teal" Margin="5" Width="10" Height="10">
+			        <Circle ux:Generate="Factory" ux:Binding="DotFactory" Fill="White" Margin="5" Width="10" Height="10">
 			            <ActivatingAnimation>
 			                <Scale Factor="1.3"/>
 			            </ActivatingAnimation>

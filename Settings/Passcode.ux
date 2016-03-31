@@ -1,5 +1,5 @@
 <MyPage ux:Class="Passcode" ux:Name="Passcode">
-	<DockPanel>
+	<DockPanel Background="White"> 
 	    <MyHeader Text="Passcode" />
 	</DockPanel>
 </MyPage>

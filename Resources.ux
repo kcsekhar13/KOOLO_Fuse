@@ -1,7 +1,7 @@
 <Panel>
 	<Panel ux:Class="Cross" Width="50" Height="50" Alignment="Center" TransformOrigin="Center">
-		<Rectangle Width="2" Height="35%" Fill="#fff9" />
-		<Rectangle Height="2" Width="35%" Fill="#fff9" />
+		<Rectangle Width="2" Height="35%" Fill="#000000" />
+		<Rectangle Height="2" Width="35%" Fill="#000000" />
 	</Panel>
 <!-- Custom Page -->
 	<Page ux:Class="MyPage">
@@ -58,5 +58,9 @@
 	<Icon ux:Class="TalkIcon" File="Assets/icon_talk.png" />
 	<Icon ux:Class="LocationIcon" File="Assets/icon_location.png" />
 	<Icon ux:Class="SettingsIcon" File="Assets/icon_settings.png" />
+
+	<Icon ux:Class="CamaraIcon" File="Assets/Camara.png" />
+	<Icon ux:Class="CalanderIcon" File="Assets/Calander.png" />
+	<Icon ux:Class="ChecklistIcon" File="Assets/CheckList.png" />
 
 </Panel>

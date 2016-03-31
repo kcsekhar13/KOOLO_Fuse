@@ -1,8 +1,5 @@
 <MyPage ux:Class="License" ux:Name="License">
-	<DockPanel>
-	<StatusBarBackground Dock="Top"/>
-    <iOS.StatusBarConfig Style="Light"/> 
-    <MyHeader Text="License" />
-    <BottomBarBackground Dock="Bottom" />
+<DockPanel Background="White">
+	<MyHeader Text="License" />    
 </DockPanel>
 </MyPage>

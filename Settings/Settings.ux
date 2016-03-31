@@ -12,8 +12,7 @@
                   <Rectangle Fill="#808080" Layer="Background">    
                   <Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
                       <Text TextAlignment="Left" Value="Cancel" Font="Light" />
-                      <Clicked>
-                         <DebugAction Message="Clicked left" />
+                      <Clicked>                         
                          <RaiseUserEvent Name="hideSettings" />
                       </Clicked>
                     </Panel>
@@ -21,7 +20,7 @@
                     <Panel Alignment="Right" Margin="0,8,5,0">
                       <Text TextAlignment="Right" Value="Done" Font="Light"  />
                         <Clicked>
-                           <GoBack />
+                           <RaiseUserEvent Name="hideSettings" />
                       </Clicked>
                     </Panel>
                 </Rectangle>

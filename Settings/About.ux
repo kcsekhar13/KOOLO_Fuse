@@ -1,8 +1,5 @@
 <MyPage ux:Class="About" ux:Name="About">
-<DockPanel>
-	<StatusBarBackground Dock="Top"/>
-    <iOS.StatusBarConfig Style="Light"/> 
-    <MyHeader Text="About" />
-    <BottomBarBackground Dock="Bottom" />
+<DockPanel Background="White">	
+    <MyHeader Text="About" />    
 </DockPanel>
  </MyPage>
