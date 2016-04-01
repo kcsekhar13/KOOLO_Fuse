@@ -1,2 +1,13 @@
-<Page ux:Name="MoodColour" >
-</Page>
+<MyPage ux:Class="MoodColour" ux:Name="MoodColour" Title="MoodColour">
+<DockPanel Background="White">		
+	<DateCircle>
+		<Clicked>
+			<GoBack />
+		</Clicked>
+	</DateCircle>
+<Text Value="MoodColour  Select" />
+<Circle Fill="Black" Width="200" Height="200" Clicked="{updateDateColor}">
+</Circle>
+</DockPanel>
+</MyPage>
+

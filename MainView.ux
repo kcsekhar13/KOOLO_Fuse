@@ -3,6 +3,7 @@
 		<JavaScript File="MainView.js"/>
 		<ux:Include File="Resources.ux" />	
 		<ux:Include File="Home.ux" />
+		<!-- <ux:Include File="MoodColour.ux" /> -->
 		<!-- <ux:Include File="Settings\Settings.ux" />		 -->
 		
 		<UserEvent Name="showSettings" />
@@ -20,29 +21,28 @@
 		</WhileFalse>
 
 		<Image File="Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background"  />
+		<StatusBarBackground Dock="Top" />
 		<BottomBarBackground Dock="Bottom" />
-		<iOS.StatusBarConfig Style="Light" />
-		<Panel>
-			<Settings ux:Name="Settings" />
-			<DockPanel>
-				<Panel>
-					<PageControl Active="{currentPage}" ux:Name="pageControl">
-						<MoodMap ux:Name="MoodMap" />
-						<Home />
-						<Calendar ux:Name="Calendar" />		
-					</PageControl>	
-				</Panel>
-				<StackPanel Alignment="BottomCenter">
-					<Text Value="KOOLO" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold"/>	 	
-				</StackPanel>
-				 <PageIndicator Navigation="pageControl" Dock="Bottom" Alignment="Center">	 		
-			        <Circle ux:Generate="Factory" ux:Binding="DotFactory" Fill="White" Margin="5" Width="10" Height="10">
-			            <ActivatingAnimation>
-			                <Scale Factor="1.3"/>
-			            </ActivatingAnimation>
-			        </Circle>        
-			    </PageIndicator>
-			</DockPanel>
+		<iOS.StatusBarConfig Style="Light" />				
+		<Panel>		
+		<Settings ux:Name="Settings" />
+		<DockPanel>										
+			<PageControl Active="{currentPage}" ux:Name="pageControl">
+				<MoodMap ux:Name="MoodMap" />
+				<Home />
+				<Calendar ux:Name="Calendar" />		
+			</PageControl>				
+			<StackPanel Alignment="BottomCenter">
+				<Text Value="KOOLO" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold"/>	 	
+			</StackPanel>
+			 <PageIndicator Navigation="pageControl" Dock="Bottom" Alignment="Center">	 		
+		        <Circle ux:Generate="Factory" ux:Binding="DotFactory" Fill="White" Margin="5" Width="10" Height="10">
+		            <ActivatingAnimation>
+		                <Scale Factor="1.3"/>
+		            </ActivatingAnimation>
+		        </Circle>        		        
+		    </PageIndicator>			    		    
+		</DockPanel>			
 		</Panel>
 	</DockPanel>
 </App>

@@ -3,6 +3,13 @@
 		<Rectangle Width="2" Height="35%" Fill="#000000" />
 		<Rectangle Height="2" Width="35%" Fill="#000000" />
 	</Panel>
+	<!-- Colour Selection Panel -->
+	<Panel ux:Class="DateCircle" ux:Name="dateCircle" Alignment="TopLeft" Offset="30,30" >
+		<Circle Fill="#e9edf0" Width="50" Height="50">
+		    <Stroke Width="5" Color="{dateColor.colour}" />
+		    <Text Value="{dateColor.date}" Font="Light" Alignment="Center" />
+		</Circle>
+	</Panel>
 <!-- Custom Page -->
 	<Page ux:Class="MyPage">
         <EnteringAnimation>

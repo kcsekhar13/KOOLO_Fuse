@@ -1,8 +1,7 @@
 <MyPage ux:Class="Settings" Title="Settings" ux:Name="Settings" >
     <StatusBarBackground Dock="Top"/>
     <iOS.StatusBarConfig Style="Light"/>
-    <JavaScript File="Settings.js"/> 
-    
+    <JavaScript File="Settings.js"/>     
     <Panel>  
       <HierarchicalNavigation ux:Name="nav" Active="mainPage" /> 
         <MyPage ux:Name="mainPage" Background="White">
