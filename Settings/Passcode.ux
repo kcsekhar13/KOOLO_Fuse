@@ -1,5 +1,44 @@
 <MyPage ux:Class="Passcode" ux:Name="Passcode">
-	<DockPanel Background="White"> 
+	<DockPanel Background="White">
 	    <MyHeader Text="Passcode" />
+			<StackPanel Margin="10,10,10,0">
+			<Panel>
+				<Text Value="Activate/Deactivate Passcode" Font="Light" TextAlignment="Left" Margin="10" />
+				<Switch ValueChanged="{passcodeSwitchChanged}" Value="{switchValue}" Alignment="CenterRight" />
+			</Panel>
+			<Rectangle Fill="#000000" Height="1" Margin="10,5,0,5" >
+			</Rectangle>
+			<MyButton Text="Set Passcode">
+				 <Clicked>
+				 				<DebugAction Message="Set Passcode button clicked" />
+				 </Clicked>
+			 </MyButton>
+			 <StackPanel Margin="10,10,10,0">
+			 		<Text Value="Set secret question" Font="Bold" FontSize="20" />
+					<Panel Width="300" Height="40">
+							<Rectangle CornerRadius="5">
+										<Stroke Brush="#BFD8DD" Width="2"/>
+										<DropDownIcon Width="30" Height="30" Alignment="Right"  />
+							</Rectangle>
+							<DropdownSelectedItem Text="{selected}" />
+							<Clicked>
+								<Toggle Target="expandDropdown" />
+							</Clicked>
+							<WhileTrue ux:Name="expandDropdown">
+								<StackPanel Offset="0,40">
+										<Each Items="{dropdownOptions}">
+											<DropdownOption Text="{option}" Clicked="{selectMe}" />
+										</Each>
+								</StackPanel>
+							</WhileTrue>
+					</Panel>
+					<Rectangle Fill="#000000" Width="225" Height="50" CornerRadius="5" Alignment="Left" Margin="13,10,0,0">
+						<Rectangle Fill="#FFFFFF" Width="223" Height="48" CornerRadius="5" >
+							<TextEdit Value="{title}" Alignment="CenterLeft" CaretColor="#ff0000"
+												TextColor="#000000" Font="Light" Width="200" Margin="10"/>
+						</Rectangle>
+					</Rectangle>
+			 </StackPanel>
+			</StackPanel>
 	</DockPanel>
-</MyPage>
+ </MyPage>

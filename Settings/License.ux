@@ -1,5 +1,33 @@
 <MyPage ux:Class="License" ux:Name="License">
 <DockPanel Background="White">
-	<MyHeader Text="License" />    
+	<MyHeader Text="License" />
+	<ScrollView>
+		<StackPanel Margin="5,5,5,5">
+		<Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,5,5,5">
+		The KOOLO app is licensed under a https://creativecommons.org/licenses/by-nc-sa/4.0/
+		</Text>
+		<Text Font="Bold" TextColor="#000000" TextWrapping="Wrap" TextAlignment="Left" LineSpacing="5" Margin="5,5,5,5">
+		For more information:
+		</Text>
+		<Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,0,0,0">
+		Maja van der Velden,
+		</Text>
+		<Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,0,0,0">
+		Department of Informatics,
+		</Text>
+		<Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,0,0,0">
+		University of Oslo,
+		</Text>
+		<Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,0,0,0">
+		P.O.Box 1080,
+		</Text>
+		<Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,0,0,0">
+		Oslo, Norway.
+		</Text>
+		<Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,0,0,0">
+		Email: team@kulu.no
+		</Text>
+		</StackPanel>
+	</ScrollView>
 </DockPanel>
 </MyPage>

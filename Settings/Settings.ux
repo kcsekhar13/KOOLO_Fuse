@@ -1,17 +1,17 @@
 <MyPage ux:Class="Settings" Title="Settings" ux:Name="Settings" >
     <StatusBarBackground Dock="Top"/>
     <iOS.StatusBarConfig Style="Light"/>
-    <JavaScript File="Settings.js"/>     
-    <Panel>  
-      <HierarchicalNavigation ux:Name="nav" Active="mainPage" /> 
+    <JavaScript File="Settings.js"/>
+    <Panel>
+      <HierarchicalNavigation ux:Name="nav" Active="mainPage" />
         <MyPage ux:Name="mainPage" Background="White">
             <DockPanel>
                 <!-- Header    -->
-                <Panel Dock="Top" Height="35" Alignment="Top">           
-                  <Rectangle Fill="#808080" Layer="Background">    
+                <Panel Dock="Top" Height="35" Alignment="Top">
+                  <Rectangle Fill="#808080" Layer="Background">
                   <Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
                       <Text TextAlignment="Left" Value="Cancel" Font="Light" />
-                      <Clicked>                         
+                      <Clicked>
                          <RaiseUserEvent Name="hideSettings" />
                       </Clicked>
                     </Panel>
@@ -25,9 +25,9 @@
                 </Rectangle>
                 </Panel>
                   <!-- End of Header -->
-                <ScrollView AllowedScrollDirections="Vertical">         
-                <StackPanel Margin="0,5,0,0">   
-                  <!-- Background Image -->    
+                <ScrollView AllowedScrollDirections="Vertical">
+                <StackPanel Margin="0,5,0,0">
+                  <!-- Background Image -->
                 <MyButton Text="BackGround Image">
                    <Clicked>
                      <NavigateTo Target="About" NavigationContext="nav" />
@@ -88,7 +88,3 @@
         <About ux:Name="About" ux:AutoBind="false"/>
     </Panel>
 </MyPage>
-
-
-
-

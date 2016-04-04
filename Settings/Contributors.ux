@@ -1,5 +1,30 @@
 <MyPage ux:Class="Contributors" ux:Name="Contributors">
-<DockPanel Background="White"> 	
-    <MyHeader Text="Contributors" />    
+<DockPanel Background="White">
+    <MyHeader Text="Contributors" />
+    <ScrollView>
+    <StackPanel Margin="5,5,5,5">
+    <Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,5,5,5">
+    The KOOLO app is the result of the experiences and professional, conceptual, technical, creative efforts of many people:
+    </Text>
+    <Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,5,5,5">
+    First of all, our enthusiastic co-designers, the Youth Council of the Akershus University Hospital in Lørenskog. For more info: https://www.facebook.com/ungdomsraadet.ahus/
+    </Text>
+    <Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,5,5,5">
+    In Australia, Evelyn Culnane and the Transition Support Service of The Royal Children's Hospital Melbourne, who generously shared their transition checklists. For more info: http://www.rch.org.au/transition/
+    </Text>
+    <Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,5,5,5">
+    In Canada, Geraldine Cullen-Dean  and the Good 2 Go Transition Program of The Sick Children’s Hospital in Toronto, who generously shared their MyHealth 3-Sentence Summary. For more info: http://www.sickkids.ca/good2go/
+    </Text>
+    <Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,5,5,5">
+    In Norway, Britt Nakstad and the Adolescent Medicine project of Akershus University Hospital in Lørenskog, who generously shared their Norwegian check lists. For more info: http://www.ungdomsmedisin.no/
+    </Text>
+    <Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,5,5,5">
+    And the Department of Informatics at the University of Oslo: Nora Svarverud Aasen, Alma Culén, Chandrasekhar Kamatigam, Sumit Panday, Margaret Machniak Sommervold, Swati Srivastava, and Maja van der Velden. For more info: http://www.kulu.no
+    </Text>
+    <Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,5,5,5">
+    For questions, please contact Maja van der Velden, KULU project leader, team@kulu.no
+    </Text>
+    </StackPanel>
+    </ScrollView>
 </DockPanel>
 </MyPage>

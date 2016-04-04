@@ -19,8 +19,8 @@ var dateColor = {
 
 bundle.read("appSettings.json").then(function(content) {
     			data.value = JSON.parse(content);
-    			backGround.value = JSON.parse(content).Settings.BackGroundImage;    			
-			}, function(error) {				
+    			backGround.value = JSON.parse(content).Settings.BackGroundImage;
+			}, function(error) {
 			    console.log(error);
 			});
 
@@ -30,11 +30,11 @@ function Init() {
 }
 
 function changeBackGround(argument) {
-	backGround = argument;
+	console.log("Change BackGroundImage");
 }
 
-function updateDateColor(color){
-	dateColor.color = argument;
+function updateDateColor(argument){
+	dateColor.color = "Black";
 	console.log(dateColor.date);
 }
 
@@ -53,7 +53,8 @@ console.log(dateColor.date);
 function Clicked(argument) {
 	console.log("Clicked");
 }
-module.exports =  {	
+
+module.exports =  {
 	backGround : backGround,
 	changeBackGround :changeBackGround,
 	currentPage: currentPage,
@@ -61,5 +62,6 @@ module.exports =  {
 	isSettingsPageVisible:isSettingsVisible,
 	navigateToPage : navigateToPage,
 	gotoPageSettingsPage: GotoPageSettings,
-	dateColor : dateColor
+	dateColor : dateColor,
+	updateDateColor:updateDateColor
 };

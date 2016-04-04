@@ -1,5 +1,40 @@
 <MyPage ux:Class="HumorColor" ux:Name="HumorColor">
+<JavaScript>
+var Observable = require("FuseJS/Observable");
+
+var homourColors = [
+                      { color: [ { code: "#23f38e" }, { title: "Lykkelig" } ] },
+                      { color: [ { code: "#ffde47" }, { title: "Glad" } ] },
+                      { color: [ { code: "#233fc7" }, { title: "Rolig" } ] },
+                      { color: [ { code: "#e62de7" }, { title: "Fremgang" } ] },
+                      { color: [ { code: "#f42121" }, { title: "Sing" } ] },
+                      { color: [ { code: "#000000" }, { title: "Legg til humer" } ] },
+                      { color: [ { code: "#9fb6cd" }, { title: "Legg til humer" } ] },
+                      { color: [ { code: "#ff4500" }, { title: "Rolig" } ] },
+                      { color: [ { code: "#a52a2a" }, { title: "Sing" } ] }
+                  ];
+ module.exports = {
+     homourColors: homourColors
+ };
+</JavaScript>
 <DockPanel Background="White">
-	<MyHeader Text="Humor Color" />    
+	<MyHeader Text="Humor Color" />
+  <ScrollViewer>
+    <StackPanel>
+        <Each Items="{homourColors}">
+            <StackPanel Orientation="Horizontal" >
+                <Each Items="{color}">
+                <Circle Width="50" Height="50" Fill="{code}" Margin="20" />
+                <Rectangle Fill="#000000" Width="225" Height="50" CornerRadius="5">
+                  <Rectangle Fill="#FFFFFF" Width="223" Height="48" CornerRadius="5" >
+                    <TextEdit Value="{title}" Alignment="CenterLeft" CaretColor="#ff0000"
+                              TextColor="#000000" Font="Light" Width="200" Margin="10"/>
+                  </Rectangle>
+                </Rectangle>
+                </Each>
+            </StackPanel>
+        </Each>
+    </StackPanel>
+</ScrollViewer>
 </DockPanel>
 </MyPage>

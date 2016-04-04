@@ -1,5 +1,19 @@
 <MyPage ux:Class="About" ux:Name="About">
-<DockPanel Background="White">	
-    <MyHeader Text="About" />    
+<DockPanel Background="White">
+    <MyHeader Text="About" />
+    <StackPanel Margin="5,5,5,5">
+    <Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,5,5,5">
+    The Koolo app is designed and developed as part of the KULU project, a research and design project based at the Department of Informatics at the University of Oslo.KULU stands for Cool technology for youth with long-term health challenges.
+    </Text>
+    <Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,5,5,5">
+    We developed the KOOLO app for research purposes and we hope to add some new functionality in the future.
+    </Text>
+    <Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,5,5,5">
+    You are free to use it, but please don’t expect any support or maintenance from us, except when you participate in our research project.
+    </Text>
+    <Text Font="Light" TextColor="#000000" TextWrapping="Wrap" FontSize="14" TextAlignment="Left" LineSpacing="5" Margin="5,5,5,5">
+    You are also free to build upon it (adapting it or adding functionality) as long the app remains a non-commercial product, you credit the contributors, and you license the new creation under identical license terms.
+    </Text>
+    </StackPanel>
 </DockPanel>
  </MyPage>

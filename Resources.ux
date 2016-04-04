@@ -3,6 +3,7 @@
 		<Rectangle Width="2" Height="35%" Fill="#000000" />
 		<Rectangle Height="2" Width="35%" Fill="#000000" />
 	</Panel>
+
 	<!-- Colour Selection Panel -->
 	<Panel ux:Class="DateCircle" ux:Name="dateCircle" Alignment="TopLeft" Offset="30,30" >
 		<Circle Fill="#e9edf0" Width="50" Height="50">
@@ -10,6 +11,7 @@
 		    <Text Value="{dateColor.date}" Font="Light" Alignment="Center" />
 		</Circle>
 	</Panel>
+
 <!-- Custom Page -->
 	<Page ux:Class="MyPage">
         <EnteringAnimation>
@@ -19,6 +21,7 @@
             <Move X="-1" RelativeTo="ParentSize" />
         </ExitingAnimation>
     </Page>
+
  <!-- Custom Button -->
     <StackPanel ux:Class="MyButton" Fill="#FFFFFF" TextColor="#000" CornerRadius="10" Margin="5,5,0,0" >
   		<Panel>
@@ -27,18 +30,17 @@
 	    <Brush ux:Property="Fill" />
 	    <float4 ux:Property="TextColor"/>
 	    <Text Alignment="Left" TextColor="{Property this.TextColor}" Value="{Property this.Text}" Font="Light" Margin="20,0,0,0"/>
-	    <Rectangle Layer="Background" CornerRadius="{Property this.CornerRadius}" Fill="{Property this.Fill}" /> 
+	    <Rectangle Layer="Background" CornerRadius="{Property this.CornerRadius}" Fill="{Property this.Fill}" />
   		</Panel>
   		<Rectangle Fill="#000000" Height="1" Margin="5,5,0,5">
 		 </Rectangle>
 	</StackPanel>
-
 	<!-- Custom Header -->
-	 <Panel Dock="Top" Height="35" ux:Class="MyHeader" Fill="#808080" TextColor="#000000"> 
+	 <Panel Dock="Top" Height="35" ux:Class="MyHeader" Fill="#808080" TextColor="#000000">
 	 	<Rectangle Fill="{Property this.Fill}" Layer="Background">
 		<string ux:Property="Text"/>
-	    <float4 ux:Property="TextColor"/>     
-	    <Brush ux:Property="Fill" />     
+	  <float4 ux:Property="TextColor"/>
+	  <Brush ux:Property="Fill" />
 	    <Panel Alignment="Left" Margin="5,8,0,0">
 	        <Text TextAlignment="Left" Value="Cancel" Font="Light" />
 	        <Clicked>
@@ -53,12 +55,47 @@
 	        </Clicked>
 	      </Panel>
 	  </Rectangle>
-     </Panel> 
+     </Panel>
+
+		 <!-- Humor Colour Panel -->
+		 <Panel Margin="5,5,0,0" ux:Class="HumorColorPanel">
+		 <string ux:Property="Text"/>
+		 <!-- <string ux:Property="HumourColor"/> -->
+ 	   <Brush ux:Property="Fill" />
+		 <Circle Width="50" Height="50" Fill="{Property this.Fill}" Margin="20" />
+		 <Rectangle Fill="#000000" Width="225" Height="50" CornerRadius="5" >
+			 <Rectangle Fill="#FFFFFF" Width="223" Height="48" CornerRadius="5" >
+				 <TextEdit Value="{Property this.Text}" Alignment="CenterLeft" CaretColor="#ff0000"
+									 TextColor="#000000" Font="Light" Width="200" Margin="10"/>
+			 </Rectangle>
+		 </Rectangle>
+		 </Panel>
+
+		 <!-- Custom drop down list -->
+		 <Panel ux:Class="DropdownOption" ux:Name="self" Height="30" >
+					 <string ux:Property="Text" />
+					 <Rectangle Layer="Background" CornerRadius="5">
+						 <SolidColor ux:Name="bgCol" Color="#EAF0F2" />
+						 <Stroke Brush="#BFD8DD" Width="2"/>
+					 </Rectangle>
+					 <Text Alignment="CenterLeft" Value="{Property self.Text}" FontSize="14"/>
+					 <WhileHovering>
+						 <Change bgCol.Color="#D9E1E4" />
+					 </WhileHovering>
+		 </Panel>
+		 <Panel ux:Class="DropdownSelectedItem" ux:Name="self" Height="40">
+					 <string ux:Property="Text" />
+					 <Text Alignment="CenterLeft" Value="{Property self.Text}" FontSize="16" Margin="10,0"/>
+					 <Panel Layer="Background">
+						 <Rectangle Fill="#FBFDFD" Height="50%" Alignment="Top" CornerRadius="5"/>
+						 <Rectangle Fill="#EDF3F5" Height="50%" Alignment="Bottom" CornerRadius="5"/>
+					 </Panel>
+		 </Panel>
 
 	<Font File="Assets/fonts/Klavika/Klavika-Bold.otf" ux:Global="Bold" />
 	<Font File="Assets/fonts/Klavika/Klavika-Bold.otf" ux:Global="Medium" />
 	<Font File="Assets/fonts/Klavika/Klavika-Bold.otf" ux:Global="Light" />
-	
+
 
 	<Image ux:Class="Icon" />
 	<Icon ux:Class="ClockIcon" File="Assets/icon_clock.png" />
@@ -69,5 +106,6 @@
 	<Icon ux:Class="CamaraIcon" File="Assets/Camara.png" />
 	<Icon ux:Class="CalanderIcon" File="Assets/Calander.png" />
 	<Icon ux:Class="ChecklistIcon" File="Assets/CheckList.png" />
+	<Icon ux:Class="DropDownIcon" File="Assets/Down-arrow.png" />
 
 </Panel>
