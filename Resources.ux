@@ -23,7 +23,7 @@
     </Page>
 
  <!-- Custom Button -->
-    <StackPanel ux:Class="MyButton" Fill="#FFFFFF" TextColor="#000" CornerRadius="10" Margin="5,5,0,0" >
+  <StackPanel ux:Class="MyButton" Fill="#FFFFFF" TextColor="#000" CornerRadius="10" Margin="5,5,0,0" >
   		<Panel>
     	<string ux:Property="Text"/>
     	<float4 ux:Property="CornerRadius" />

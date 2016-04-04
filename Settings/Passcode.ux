@@ -1,10 +1,10 @@
 <MyPage ux:Class="Passcode" ux:Name="Passcode">
 	<DockPanel Background="White">
 	    <MyHeader Text="Passcode" />
-			<StackPanel Margin="10,10,10,0">
-			<Panel>
+			<StackPanel Margin="10">
+			<Panel Margin="0,10,0,10">
 				<Text Value="Activate/Deactivate Passcode" Font="Light" TextAlignment="Left" Margin="10" />
-				<Switch ValueChanged="{passcodeSwitchChanged}" Value="{switchValue}" Alignment="CenterRight" />
+				<Switch Value="{switchValue}" ValueChanged="{passcodeSwitchChanged}"  Alignment="CenterRight" />
 			</Panel>
 			<Rectangle Fill="#000000" Height="1" Margin="10,5,0,5" >
 			</Rectangle>
