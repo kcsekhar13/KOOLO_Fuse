@@ -16,30 +16,31 @@
 													],
     };
 </JavaScript>
-<Panel Alignment="TopLeft">
-	<DateCircle>
+<DockPanel Alignment="TopLeft" Margin="5,20">
+	<DateCircle Margin="5">
 		<Clicked>
 			<GoBack />
 		</Clicked>
 	</DateCircle>
-	<StackPanel Orientation="Horizontal" Margin="80,28,0,0" Alignment="Top" >
+	<StackPanel Orientation="Horizontal" Alignment="TopRight" Margin="60,5,0,0">
 			<Each Items="{horizontalHumorColors}">
 					<Panel>
 							<Each Items="{color}">
 								<Circle Width="50" Height="50" Fill="{code}" Margin="5,0,0,0" >
 									<Clicked>
-										<DebugAction Message="{homourColors}" />
+										<Callback Handler="{updateDateColor}" />
+										<NavigateTo Target="mainHomePage" />
 									</Clicked>
 								</Circle>
 							</Each>
 					</Panel>
 			</Each>
 	</StackPanel>
-	<StackPanel Orientation="Vertical" Margin="20,75,0,0" >
+	<StackPanel Orientation="Vertical" Alignment="Left" Margin="5,60,0,0">
 			<Each Items="{verticalHumorColors}">
 					<StackPanel Orientation="Horizontal" >
 							<Each Items="{color}">
-								<Circle Width="50" Height="50" Fill="{code}" Margin="15,10,0,0" >
+								<Circle Width="50" Height="50" Fill="{code}" Margin="0,5,0,0">
 									<Clicked>
 										<Callback Handler="{updateDateColor}" />
 										<NavigateTo Target="mainHomePage" />
@@ -49,5 +50,5 @@
 					</StackPanel>
 			</Each>
 	</StackPanel>
-	</Panel>
+	</DockPanel>
 </Panel>
