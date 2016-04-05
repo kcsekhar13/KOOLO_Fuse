@@ -52,5 +52,6 @@ var Observable = require("FuseJS/Observable");
   		selected: selected,
   		selectMe: selectMe,
   		selectedOption: selectedOption,
-  		secretAnswer:secretAnswer
+  		secretAnswer:secretAnswer,
+        switchValue: Observable(true)
   };

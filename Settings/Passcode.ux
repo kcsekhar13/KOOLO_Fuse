@@ -2,10 +2,10 @@
 	<DockPanel Background="White">
     <MyHeader Text="Passcode"/>
 		<StackPanel Margin="10">
-		<Panel Margin="0,10,0,10">
+		<DockPanel Margin="0,10,0,10">
+			<Switch Value="{switchValue}" ValueChanged="{switchValueChanged}" Dock="Right" Alignment="VerticalCenter" />
 			<Text Value="Activate/Deactivate Passcode" Font="Light" TextAlignment="Left" Margin="10" TextColor="#bdc7ca" />
-			<Switch Value="{switchValue}" ValueChanged="{passcodeSwitchChanged}"  Alignment="CenterRight" />
-		</Panel>
+		</DockPanel>
 		<Rectangle Fill="#000000" Height="1" Margin="10,5,0,5" >
 		</Rectangle>
 		<MyButton Text="Set Passcode" Height="50">

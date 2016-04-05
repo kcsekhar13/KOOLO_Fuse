@@ -61,8 +61,9 @@ function changeBackGround(argument) {
 	console.log("Change BackGroundImage");
 }
 
-function updateDateColor(argument){
-	dateColor.color = "Black";
+function updateDateColor(context){
+    //console.log(JSON.stringify(argument, undefined, '    '));
+	dateColor.colour.value = context.data.code;
 	console.log(dateColor.date);
 }
 

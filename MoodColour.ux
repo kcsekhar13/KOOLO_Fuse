@@ -16,7 +16,7 @@
 													],
     };
 </JavaScript>
-	<Panel Alignment="TopLeft">
+<Panel Alignment="TopLeft">
 	<DateCircle>
 		<Clicked>
 			<GoBack />
@@ -41,7 +41,8 @@
 							<Each Items="{color}">
 								<Circle Width="50" Height="50" Fill="{code}" Margin="15,10,0,0" >
 									<Clicked>
-										<DebugAction Message="{homourColors}" />
+										<Callback Handler="{updateDateColor}" />
+										<NavigateTo Target="mainHomePage" />
 									</Clicked>
 								</Circle>
 							</Each>

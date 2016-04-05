@@ -2,7 +2,6 @@
 	<DockPanel>
 		<JavaScript File="MainView.js"/>
 		<ux:Include File="Resources.ux" />
-		<ux:Include File="MoodColour.ux" />
 		<ux:Include File="Home.ux" />
 		 <!-- <ux:Include File="Mood	Colour.ux" /> -->
 		<!-- <ux:Include File="Settings\Settings.ux" />		 -->
