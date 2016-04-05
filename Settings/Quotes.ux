@@ -1,31 +1,38 @@
 <MyPage ux:Class="Quotes" ux:Name="Quotes">
+<JavaScript File="quotes.js"/>
 	<DockPanel Background="White">
-	    <MyHeader Text="Quotes" />
-			<StackPanel Margin="10">
-				<Panel Margin="0,10,0,10" >
-					<Text Value="Enable quotes in home screen" Font="Light" Alignment="CenterLeft" />
-					<Switch Value="{quotesEnabled}" ValueChanged="{quotesSwitchChanged}" Alignment="CenterRight" />
-				</Panel>
-				<ScrollView AllowedScrollDirections="Vertical" Height="500">
-				<StackPanel>
-					<Each Items="{defaultQuotes}" >
-						<Rectangle Height="50">
-							<Text Value="{quote}" Font="Medium" TextWrapping="Wrap" />
-						</Rectangle>
-						<Rectangle Width="20%" />
-					</Each>
-					</StackPanel>
-				</ScrollView>
-				 <Panel Alignment="Bottom">
-					<Rectangle Fill="#000000" Width="70%" Height="50" CornerRadius="5" Alignment="Left" >
-						<Rectangle Fill="#FFFFFF" Width="98%" Height="48" CornerRadius="5" Margin="0,0,0,0">
-							<TextEdit Value="{newQuote}" Alignment="CenterLeft" CaretColor="#ff0000"
-												TextColor="#000000" Font="Light" Width="200" Margin="10" IsMultiline="true"/>
+    <MyHeader Text="Quotes" />
+		<StackPanel Margin="10">
+			<Panel Margin="0,10,0,10" >
+				<Text Value="Enable quotes in home screen" Font="Light" Alignment="CenterLeft" TextColor="#bdc7ca" />
+				<Switch Value="{quotesEnabled}" ValueChanged="{quotesSwitchChanged}" Alignment="CenterRight" />
+			</Panel>
+			<ScrollView AllowedScrollDirections="Vertical" Height="500">
+			<StackPanel>
+				<Each Items="{defaultQuotes}" >
+					<Rectangle Clicked="{changeDefaultQuote}">
+						<Text Value="{quote}" Font="Light" TextWrapping="Wrap" Alignment="CenterLeft" Width="90%" Margin="0,15,0,0" />
+						<Rectangle>
+							<Match Value="{IsSelected}">
+						    <Case Bool="true">
+						        <CheckmarkIcon Width="20" Height="30" Alignment="CenterRight"  />
+						    </Case>
+							</Match>
 						</Rectangle>
 					</Rectangle>
-						<Button Text="Add" ux:Name="button1" Clicked="{addNewQuote}" Alignment="Right" Width="50" >
-			    </Button>
-				</Panel>
-			</StackPanel>
+				</Each>
+				</StackPanel>
+			</ScrollView>
+			 <Panel Alignment="Bottom">
+				<Rectangle Fill="#000000" Width="70%" Height="50" CornerRadius="5" Alignment="Left" >
+					<Rectangle Fill="#FFFFFF" Width="98%" Height="48" CornerRadius="5" Margin="0,0,0,0">
+						<TextEdit Value="{newQuote}" Alignment="CenterLeft" CaretColor="#ff0000"
+											TextColor="#000000" Font="Light" Width="200" Margin="10" IsMultiline="true"/>
+					</Rectangle>
+				</Rectangle>
+					<Button Text="Add" ux:Name="button1" Clicked="{addNewQuote}" Alignment="Right" Width="50" >
+		    </Button>
+			</Panel>
+		</StackPanel>
 	</DockPanel>
 </MyPage>

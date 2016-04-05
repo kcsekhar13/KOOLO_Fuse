@@ -23,42 +23,43 @@
     </Page>
 
  <!-- Custom Button -->
-  <StackPanel ux:Class="MyButton" Fill="#FFFFFF" TextColor="#000" CornerRadius="10" Margin="5,5,0,0" >
+  <StackPanel ux:Class="MyButton" Fill="#FFFFFF" TextColor="#000" CornerRadius="10" Margin="0,5,0,0" Height="35" >
   		<Panel>
     	<string ux:Property="Text"/>
     	<float4 ux:Property="CornerRadius" />
 	    <Brush ux:Property="Fill" />
 	    <float4 ux:Property="TextColor"/>
-	    <Text Alignment="Left" TextColor="{Property this.TextColor}" Value="{Property this.Text}" Font="Light" Margin="20,0,0,0"/>
+	    <Text Alignment="Left" TextColor="{Property this.TextColor}" Value="{Property this.Text}" Font="Light" Margin="10,10,0,0"/>
 	    <Rectangle Layer="Background" CornerRadius="{Property this.CornerRadius}" Fill="{Property this.Fill}" />
   		</Panel>
-  		<Rectangle Fill="#000000" Height="1" Margin="5,5,0,5">
+  		<Rectangle Fill="#000000" Height="1" Margin="5,5,0,0">
 		 </Rectangle>
 	</StackPanel>
+
 	<!-- Custom Header -->
 	 <Panel Dock="Top" Height="35" ux:Class="MyHeader" Fill="#808080" TextColor="#000000">
-	 	<Rectangle Fill="{Property this.Fill}" Layer="Background">
-		<string ux:Property="Text"/>
-	  <float4 ux:Property="TextColor"/>
-	  <Brush ux:Property="Fill" />
-	    <Panel Alignment="Left" Margin="5,8,0,0">
-	        <Text TextAlignment="Left" Value="Cancel" Font="Light" />
-	        <Clicked>
-	             <GoBack />
-	        </Clicked>
-	      </Panel>
-	      <Text Alignment="Center" FontSize="20" TextColor="{Property this.TextColor}" Font="Bold" Value="{Property this.Text}"/>
-	      <Panel Alignment="Right" Margin="0,8,5,0">
-	        <Text TextAlignment="Right" Value="Done" Font="Light"  />
-	          <Clicked>
-	             <GoBack />
-	        </Clicked>
-	      </Panel>
-	  </Rectangle>
-     </Panel>
+		 	<Rectangle Fill="{Property this.Fill}" Layer="Background">
+			<string ux:Property="Text"/>
+		  <float4 ux:Property="TextColor"/>
+		  <Brush ux:Property="Fill" />
+		    <Panel Alignment="Left" Margin="5,8,0,0">
+		        <Text TextAlignment="Left" Value="Cancel" Font="Light" />
+		        <Clicked>
+		             <GoBack />
+		        </Clicked>
+		      </Panel>
+		      <Text Alignment="Center" FontSize="20" TextColor="{Property this.TextColor}" Font="Bold" Value="{Property this.Text}"/>
+		      <Panel Alignment="Right" Margin="0,8,5,0">
+		        <Text TextAlignment="Right" Value="Done" Font="Light"  />
+		          <Clicked>
+		             <GoBack />
+		        </Clicked>
+		      </Panel>
+		  </Rectangle>
+    </Panel>
 
-		 <!-- Humor Colour Panel -->
-		 <Panel Margin="5,5,0,0" ux:Class="HumorColorPanel">
+	 <!-- Humor Colour Panel -->
+	 <Panel Margin="5,5,0,0" ux:Class="HumorColorPanel">
 		 <string ux:Property="Text"/>
 		 <!-- <string ux:Property="HumourColor"/> -->
  	   <Brush ux:Property="Fill" />
@@ -69,32 +70,33 @@
 									 TextColor="#000000" Font="Light" Width="200" Margin="10"/>
 			 </Rectangle>
 		 </Rectangle>
-		 </Panel>
+	 </Panel>
 
-		 <!-- Custom drop down list -->
-		 <Panel ux:Class="DropdownOption" ux:Name="self" Height="30" >
-					 <string ux:Property="Text" />
-					 <Rectangle Layer="Background" CornerRadius="5">
-						 <SolidColor ux:Name="bgCol" Color="#EAF0F2" />
-						 <Stroke Brush="#BFD8DD" Width="2"/>
-					 </Rectangle>
-					 <Text Alignment="CenterLeft" Value="{Property self.Text}" FontSize="14"/>
-					 <WhileHovering>
-						 <Change bgCol.Color="#D9E1E4" />
-					 </WhileHovering>
-		 </Panel>
-		 <Panel ux:Class="DropdownSelectedItem" ux:Name="self" Height="40">
-					 <string ux:Property="Text" />
-					 <Text Alignment="CenterLeft" Value="{Property self.Text}" FontSize="16" Margin="10,0"/>
-					 <Panel Layer="Background">
-						 <Rectangle Fill="#FBFDFD" Height="50%" Alignment="Top" CornerRadius="5"/>
-						 <Rectangle Fill="#EDF3F5" Height="50%" Alignment="Bottom" CornerRadius="5"/>
-					 </Panel>
-		 </Panel>
+	 <!-- Custom drop down list -->
+	 <Panel ux:Class="DropdownOption" ux:Name="self" Height="30" >
+			 <string ux:Property="Text" />
+			 <Rectangle Layer="Background" CornerRadius="5">
+				 <SolidColor ux:Name="bgCol" Color="#EAF0F2" />
+				 <Stroke Brush="#000000" Width="2"/>
+			 </Rectangle>
+			 <Text Alignment="CenterLeft" Value="{Property self.Text}" FontSize="14"  Margin="10,0" Font="Regular" />
+			 <WhileHovering>
+				 <Change bgCol.Color="#D9E1E4" />
+			 </WhileHovering>
+	 </Panel>
+	 <Panel ux:Class="DropdownSelectedItem" ux:Name="self" Height="40">
+				 <string ux:Property="Text" />
+				 <Text Alignment="CenterLeft" Value="{Property self.Text}" FontSize="16" Margin="10,0" Font="Regular"/>
+				 <Panel Layer="Background">
+					 <Rectangle Fill="#FBFDFD" Height="50%" Alignment="Top" CornerRadius="5"/>
+					 <Rectangle Fill="#EDF3F5" Height="50%" Alignment="Bottom" CornerRadius="5"/>
+				 </Panel>
+	 </Panel>
 
 	<Font File="Assets/fonts/Klavika/Klavika-Bold.otf" ux:Global="Bold" />
-	<Font File="Assets/fonts/Klavika/Klavika-Bold.otf" ux:Global="Medium" />
-	<Font File="Assets/fonts/Klavika/Klavika-Bold.otf" ux:Global="Light" />
+	<Font File="Assets/fonts/Klavika/Klavika-Medium.otf" ux:Global="Medium" />
+	<Font File="Assets/fonts/Klavika/Klavika-Light.otf" ux:Global="Light" />
+	<Font File="Assets/fonts/Klavika/Klavika-Regular.otf" ux:Global="Regular" />
 
 
 	<Image ux:Class="Icon" />
@@ -103,9 +105,10 @@
 	<Icon ux:Class="LocationIcon" File="Assets/icon_location.png" />
 	<Icon ux:Class="SettingsIcon" File="Assets/icon_settings.png" />
 
-	<Icon ux:Class="CamaraIcon" File="Assets/Camara.png" />
+	<Icon ux:Class="CamaraIcon" File="Assets/KooloCamara.png" />
 	<Icon ux:Class="CalanderIcon" File="Assets/Calander.png" />
-	<Icon ux:Class="ChecklistIcon" File="Assets/CheckList.png" />
-	<Icon ux:Class="DropDownIcon" File="Assets/Down-arrow.png" />
+	<Icon ux:Class="ChecklistIcon" File="Assets/CheckList.jpg" />
+	<Icon ux:Class="DropdownIcon" File="Assets/Down-arrow.png" />
+	<Icon ux:Class="CheckmarkIcon" File="Assets/Checkmark.png" />
 
 </Panel>

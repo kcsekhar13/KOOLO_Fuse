@@ -1,0 +1,5 @@
+<Page ux:Class="CheckList">
+	<Panel>
+		<Text Value="CheckList" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold" />
+	</Panel>
+</Page>

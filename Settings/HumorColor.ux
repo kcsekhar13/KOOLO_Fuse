@@ -19,7 +19,7 @@ var homourColors = [
 </JavaScript>
 <DockPanel Background="White">
 	<MyHeader Text="Humor Color" />
-  <ScrollViewer>
+  <ScrollView>
     <StackPanel>
         <Each Items="{homourColors}">
             <StackPanel Orientation="Horizontal" >
@@ -35,6 +35,6 @@ var homourColors = [
             </StackPanel>
         </Each>
     </StackPanel>
-</ScrollViewer>
+</ScrollView>
 </DockPanel>
 </MyPage>

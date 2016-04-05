@@ -2,10 +2,10 @@
 	<DockPanel>
 		<JavaScript File="MainView.js"/>
 		<ux:Include File="Resources.ux" />
+		<ux:Include File="MoodColour.ux" />
 		<ux:Include File="Home.ux" />
 		 <!-- <ux:Include File="Mood	Colour.ux" /> -->
 		<!-- <ux:Include File="Settings\Settings.ux" />		 -->
-
 		<UserEvent Name="showSettings" />
 		<UserEvent Name="hideSettings" />
 
@@ -17,7 +17,7 @@
 		</OnUserEvent>
 
 		<WhileFalse ux:Name="settingsVisible">
-			<Move Target="Settings" Y="1" RelativeTo="ParentSize" Duration="0.2" Easing="CubicInOut" />
+			<Move Target="Settings" Y="1" RelativeTo="ParentSize" Duration="0.1" Easing="QuadraticInOut" />
 		</WhileFalse>
 
 		<Image File="Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background"  />
@@ -25,12 +25,6 @@
 		<BottomBarBackground Dock="Bottom" />
 		<iOS.StatusBarConfig Style="Light" />
 		<Panel>
-		<DateCircle>
-			<Clicked>
-				<DebugAction Message="Date Circle got clicked" />
-				<!-- <NavigateTo Target="MoodColour" /> -->
-			</Clicked>
-		</DateCircle>
 		<Settings ux:Name="Settings" />
 		<!-- <MoodColour /> -->
 		<DockPanel>

@@ -1,15 +1,52 @@
-<MyPage ux:Class="MoodColour" ux:Name="MoodColour" Title="MoodColour">
-<DockPanel Background="White">
+<Panel ux:Name="MoodColour" Background="White">
+<JavaScript>
+				module.exports = {
+				verticalHumorColors : [
+															{ color: [ { code: "#000000" }, { title: "Legg til humer" } ] },
+															{ color: [ { code: "#9fb6cd" }, { title: "Legg til humer" } ] },
+															{ color: [ { code: "#ff4500" }, { title: "Rolig" } ] },
+															{ color: [ { code: "#a52a2a" }, { title: "Sing" } ] }
+													],
+				horizontalHumorColors : [
+															{ color: [ { code: "#23f38e" }, { title: "Lykkelig" } ] },
+															{ color: [ { code: "#ffde47" }, { title: "Glad" } ] },
+															{ color: [ { code: "#233fc7" }, { title: "Rolig" } ] },
+															{ color: [ { code: "#e62de7" }, { title: "Fremgang" } ] },
+															{ color: [ { code: "#f42121" }, { title: "Sing" } ] },
+													],
+    };
+</JavaScript>
+	<Panel Alignment="TopLeft">
 	<DateCircle>
 		<Clicked>
 			<GoBack />
 		</Clicked>
 	</DateCircle>
-<Text Value="MoodColour  Select" />
-<Panel Clicked="{updateDateColor}">
-	<Circle Fill="Black" Width="200" Height="200">
-			<Text Value="{dateColor.date}" TextColor="White" Alignment="Center" Font="Light" />
-	</Circle>
+	<StackPanel Orientation="Horizontal" Margin="80,28,0,0" Alignment="Top" >
+			<Each Items="{horizontalHumorColors}">
+					<Panel>
+							<Each Items="{color}">
+								<Circle Width="50" Height="50" Fill="{code}" Margin="5,0,0,0" >
+									<Clicked>
+										<DebugAction Message="{homourColors}" />
+									</Clicked>
+								</Circle>
+							</Each>
+					</Panel>
+			</Each>
+	</StackPanel>
+	<StackPanel Orientation="Vertical" Margin="20,75,0,0" >
+			<Each Items="{verticalHumorColors}">
+					<StackPanel Orientation="Horizontal" >
+							<Each Items="{color}">
+								<Circle Width="50" Height="50" Fill="{code}" Margin="15,10,0,0" >
+									<Clicked>
+										<DebugAction Message="{homourColors}" />
+									</Clicked>
+								</Circle>
+							</Each>
+					</StackPanel>
+			</Each>
+	</StackPanel>
+	</Panel>
 </Panel>
-</DockPanel>
-</MyPage>
