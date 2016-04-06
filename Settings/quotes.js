@@ -72,6 +72,7 @@ function addNewQuote(arg) {
 function save(){
     console.log("Saving");
     console.log(JSON.stringify(defaultQuotes));
+    // console.log(JSON.stringify(argument, undefined, '    '));
      Storage.write(quotesFile, JSON.stringify(getValues(defaultQuotes))).then(function(success) {
          console.log("Save " + (success ? "success" : "failure"));
      });

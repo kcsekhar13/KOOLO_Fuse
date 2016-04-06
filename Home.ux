@@ -2,7 +2,7 @@
 <Panel>
 	<PageControl ux:Name="homePageNav" Interaction="None" Active="mainHomePage">
 		<ux:Include File="MoodColour.ux" />
-		
+
 		<MyPage ux:Name="mainHomePage">
 			<Panel ux:Name="self" TransformOrigin="Center" Width="250" Height="250" Alignment="BottomRight" Offset="80,80">
 					<Cross ux:Name="cross" />
@@ -77,14 +77,14 @@
 					</Clicked>
 				</Circle>
 			</Panel>
-			<DockPanel Alignment="TopLeft" Margin="5">
+			<DockPanel Alignment="TopLeft" Margin="10,10">
 				<DateCircle ux:Name="DateCntrl" Colour="{dateColor.colour}" Dock="Left" Margin="5">
 					<Clicked>
 						<DebugAction Message="Date Circle got clicked" />
 						<NavigateTo Target="MoodColour" />
 					</Clicked>
 				</DateCircle>
-				<Text ux:Name="quote" Value="{displayedQuoteText}" Font="Light" FontSize="14" Dock="Fill" TextWrapping="Wrap"/>
+				<Text ux:Name="quote" Value="{displayedQuoteText}" Font="Light" FontSize="14" Dock="Fill" TextWrapping="Wrap" Alignment="Center"/>
 			</DockPanel>
 			<Grid Rows="1.3*,2*,6*">
 				<Grid Columns="1*,1*" Dock="Top" Padding="20">
