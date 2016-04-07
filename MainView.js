@@ -1,10 +1,8 @@
 var Observable = require("FuseJS/Observable");
-
+var Storage = require('FuseJS/Storage');
 var bundle = require('FuseJS/Bundle');
 
-var backGround = Observable();
-
-var data = Observable();
+var defaultQuoteFile = "myquote.txt";
 
 var currentPage = Observable("Home");
 
@@ -12,7 +10,7 @@ var navigateToPage = Observable();
 
 var isSettingsVisible = Observable("Hidden");
 
-var displayedQuoteText = Observable("When something bad happens you have three choices. You can let it define you, let it destroy you, or you can let it strengthen you.");
+var myQuote = Observable();
 
 var homourColors = [
                       { color: [ { code: "#23f38e" }, { title: "Lykkelig" } ] },
@@ -45,20 +43,13 @@ var dateColor = {
 			colour : Observable()
 		};
 
-bundle.read("appSettings.json").then(function(content) {
-    			data.value = JSON.parse(content);
-    			backGround.value = JSON.parse(content).Settings.BackGroundImage;
-			}, function(error) {
-			    console.log(error);
-			});
-
-
-function Init() {
-	backGround = data.Settings.BackGroundImage;
-}
-
-function changeBackGround(argument) {
-	console.log("Change BackGroundImage");
+function setMyQuote(){
+  Storage.read(defaultQuoteFile).then(function(content) {
+      myQuote.value = content;
+      console.log("Success in reading my quote value");
+    }, function(error) {
+      console.log("failed to read quotes enabled file");
+  });
 }
 
 function updateDateColor(context){
@@ -77,22 +68,30 @@ function HideSettings(argument) {
 	isSettingsVisible = "Collapsed";
 }
 
-console.log(dateColor.date);
-
-function Clicked(argument) {
-	console.log("Clicked");
+function initializeHomePage() {
+  console.log("Initializing home page.");
+  setMyQuote();
+  bundle.read("appSettings.json").then(function(content) {
+  			},      function(error) {
+  			    console.log(error);
+  	});
 }
 
+function changeBackGround(argument) {
+	console.log("Change BackGroundImage");
+}
+
+initializeHomePage();
+
 module.exports =  {
-	backGround : backGround,
+  initializeHomePage:initializeHomePage,
 	changeBackGround :changeBackGround,
 	currentPage: currentPage,
-	clicked : Clicked,
 	isSettingsPageVisible:isSettingsVisible,
 	navigateToPage : navigateToPage,
 	gotoPageSettingsPage: GotoPageSettings,
 	dateColor : dateColor,
 	updateDateColor:updateDateColor,
-	displayedQuoteText:displayedQuoteText,
+	myQuote:myQuote,
   homourColors:homourColors,
 };

@@ -1,30 +1,42 @@
 var Observable = require("FuseJS/Observable");
 var Storage = require('FuseJS/Storage');
 
-var quotesEnabled = Observable(false);
 var quotesFile = "quotes.json";
-
-var selectedQuote = Observable ("");
-
+var quotesEnabledFile = "quotes.txt";
+var defaultQuoteFile = "myquote.txt";
+var quotesEnabled  = Observable();
+var selectedQuote = Observable();
 var newQuote = Observable("1");
-
-function quotesSwitchChanged(arg) {
-  console.log("Quotes Switch Changed");
-}
-
-function getValues(observables) {
-      var result = {};
-      for (var property in observables) {
-          result[property] = observables[property].value;
-      }
-      return result;
-  }
 
 function setValues(values, observables) {
     for (var property in values) {
         observables[property].value = values[property];
     }
 }
+
+function readQuotesEnabledFlag() {
+  Storage.read(quotesEnabledFile).then(function(content) {
+      console.log("Reading quotes enabled flag " + content);
+      quotesEnabled.value = content == "true"? true: false;
+    }, function(error) {
+      console.log("failed to read quotes enabled file");
+      quotesEnabled.value = false;
+    });
+}
+
+function setQuotesEnabledFlag(arg) {
+  console.log("Writing quotes enabled switch : " + arg.toString());
+  Storage.write(quotesEnabledFile, arg.toString()).then(function(success) {
+      console.log("Save QuotesEnabledFlag " + (success ? "success" : "failure"));
+  });
+}
+
+quotesEnabled.addSubscriber(function(x){
+      if(x.value != undefined){
+      console.log("quotes switched changed to : " + x.value);
+      setQuotesEnabledFlag(x.value);
+    }
+});
 
 var defaultQuotes = Observable(
   {quote:"In the midst of winter, i found there was within me , an invincible summer", code:"0" ,IsSelected:Observable(false)},
@@ -40,33 +52,13 @@ var defaultQuotes = Observable(
   {quote:"I'm sick and tired of being sick and tired",code:"10",IsSelected:Observable(false)}
 );
 
-function init(){
-  Storage.read("quotes.json").then(function(content) {
-        console.log("Loading success");
-        console.log(content);
-        defaultQuotes = JSON.parse(content);
-    }, function(error) {
-      console.log("Loading failed");
-      defaultQuotes.forEach(function(myQuote, index) {
-          if(myQuote.code.toString() == selectedQuote.value){
-            myQuote.IsSelected.value = true;
-          }
-          else{
-          myQuote.IsSelected.value = false;
-          }
-      });
-    });
-    console.log(defaultQuotes);
-  newQuote.value = "";
-};
-
 function addNewQuote(arg) {
   console.log(newQuote.value);
-  console.log("Length before adding " + defaultQuotes.length);
+  // console.log("Length before adding " + defaultQuotes.length);
   defaultQuotes.add({quote:newQuote.value , code:defaultQuotes.length+1,IsSelected:Observable(false)});
-  console.log("Length after adding " + defaultQuotes["_values"]);
+  // console.log("Length after adding " + defaultQuotes["_values"]);
   // save();
-  init();
+  Init();
 }
 
 function save(){
@@ -76,21 +68,44 @@ function save(){
      Storage.write(quotesFile, JSON.stringify(getValues(defaultQuotes))).then(function(success) {
          console.log("Save " + (success ? "success" : "failure"));
      });
+}
 
+function writeDefaultQuote(myQuote) {
+  Storage.write(defaultQuoteFile, myQuote).then(function(success) {
+      console.log("Save " + (success ? "success in writing my Quote" : "failure"));
+  });
 }
 
 function changeDefaultQuote(arg){
   selectedQuote.value = arg.data.code;
-  console.log("Selected Quote :" + selectedQuote.value);
-  // displayedQuoteText.value = selectedQuote.value;
-  init();
+  console.log("Selected Quote :" + arg.data.quote);
+  writeDefaultQuote(arg.data.quote);
+  Init();
 }
 
-init();
+function Init(){
+  readQuotesEnabledFlag();
+  Storage.read("quotes.json").then(function(content) {
+        console.log("Loading success");
+        defaultQuotes = JSON.parse(content);
+    }, function(error) {
+      console.log("Loading failed - reading default quotes");
+      defaultQuotes.forEach(function(myQuote, index) {
+          if(myQuote.code.toString() == selectedQuote.value){
+            myQuote.IsSelected.value = true;
+          }
+          else{
+              myQuote.IsSelected.value = false;
+          }
+      });
+    });
+  newQuote.value = "";
+};
+Init();
 
 module.exports =  {
+    Init :Init,
     quotesEnabled:quotesEnabled,
-    quotesSwitchChanged:quotesSwitchChanged,
     defaultQuotes:defaultQuotes,
     newQuote:newQuote,
     addNewQuote : addNewQuote,

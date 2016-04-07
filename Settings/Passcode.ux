@@ -1,49 +1,95 @@
 <MyPage ux:Class="Passcode" ux:Name="Passcode" Title="PassCode">
-	<DockPanel Background="White">
-    <MyHeader Text="Passcode"/>
-		<StackPanel Margin="10">
-		<DockPanel Margin="0,10,0,10">
-			<Switch Value="{switchValue}" ValueChanged="{switchValueChanged}" Dock="Right" Alignment="VerticalCenter" />
-			<Text Value="Activate/Deactivate Passcode" Font="Light" TextAlignment="Left" Margin="10" TextColor="#bdc7ca" />
+	<Panel>
+		<HierarchicalNavigation ux:Name="passCodeNav" Active="passCodeMain" />
+		<MyPage ux:Name="passCodeMain">
+		<DockPanel Background="White">
+	    <MyHeader Text="Passcode"/>
+			<StackPanel Margin="10">
+			<DockPanel Margin="0,10,0,10">
+				<Switch Value="{switchValue}" ValueChanged="{switchValueChanged}" Dock="Right" Alignment="VerticalCenter" />
+				<Text Value="Activate/Deactivate Passcode" Font="Bold" TextAlignment="Left" Margin="10" TextColor="#bdc7ca" />
+			</DockPanel>
+			<Rectangle Fill="#000000" Height="1" Margin="10,5,0,5" >
+			</Rectangle>
+			<MyButton Text="Set Passcode" Height="50">
+				 <Clicked>
+						<NavigateTo Target="SetPassCodePage" NavigationContext="passCodeNav" />
+				 </Clicked>
+			 </MyButton>
+			 <StackPanel Margin="5,10,10,0">
+			 		<Text Value="Set secret question" Font="Bold" FontSize="20" />
+					<Panel Width="300" Height="40">
+						<Rectangle CornerRadius="5" Margin="0,5,0,0">
+									<Stroke Brush="#BFD8DD" />
+									<DropdownIcon Width="30" Height="30" Alignment="Right"  />
+						</Rectangle>
+						<DropdownSelectedItem Text="{selected}" />
+						<Clicked>
+							<Toggle Target="expandDropdown" />
+						</Clicked>
+						<WhileTrue ux:Name="expandDropdown">
+							<StackPanel Offset="0,40">
+									<Each Items="{dropdownOptions}">
+										<DropdownOption Text="{option}" Clicked="{selectMe}" />
+									</Each>
+							</StackPanel>
+						</WhileTrue>
+					</Panel>
+					<Rectangle Fill="#000000" Width="225" Height="50" CornerRadius="5" Alignment="Left" Margin="20,10,0,0">
+						<Rectangle Fill="#FFFFFF" Width="223" Height="48" CornerRadius="5" >
+							<TextEdit Value="{title}" Alignment="CenterLeft" CaretColor="#ff0000"
+												TextColor="#000000" Font="Light" Width="200" Margin="10"/>
+						</Rectangle>
+					</Rectangle>
+			 </StackPanel>
+			</StackPanel>
+			</DockPanel>
+		</MyPage>
+		<MyPage ux:Name="SetPassCodePage" ux:AutoBind="false">
+		<WhileActive>
+			<GiveFocus Target="txt1" />
+		</WhileActive>
+		<DockPanel Background="White">
+			<Image File="../Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background" />
+			<MyHeader Text="Set PassCode" />
+			<StackPanel Orientation="Horizontal" >
+			<Rectangle Alignment="HorizontalCenter" Height="50">
+				<StackPanel Orientation="Horizontal" Alignment="HorizontalCenter" Margin="50">
+				<WhileKeyboardVisible>
+						<Move Y="0" RelativeTo="Keyboard" Duration="0.5" />
+				</WhileKeyboardVisible>
+					<Circle Width="50" Height="50" Fill="White" Margin="10,0,0,0">
+						<TextEdit IsPassword="true" InputHint="Phone" Alignment="Center" ux:Name="txt1">
+						<OnKeyPress>
+							<GiveFocus Target="txt2" />
+						</OnKeyPress>
+						</TextEdit>
+					</Circle>
+					<Circle Width="50" Height="50" Fill="White" Margin="20,0,0,0">
+						<TextEdit IsPassword="true" InputHint="Phone" Alignment="Center" ux:Name="txt2">
+						<OnKeyPress>
+							<GiveFocus Target="txt3"/>
+						</OnKeyPress>
+						</TextEdit>
+					</Circle>
+					<Circle Width="50" Height="50" Fill="White" Margin="20,0,0,0">
+						<TextEdit IsPassword="true" InputHint="Phone" Alignment="Center"  ux:Name="txt3" >
+						<OnKeyPress>
+							<GiveFocus Target="txt4" />
+						</OnKeyPress>
+						</TextEdit>
+					</Circle>
+					<Circle Width="50" Height="50" Fill="White" Margin="20,0,0,0">
+						<TextEdit IsPassword="true" InputHint="Phone" Alignment="Center" ux:Name="txt4" >
+						<OnKeyPress>
+							<GoBack />
+						</OnKeyPress>
+						</TextEdit>
+					</Circle>
+					</StackPanel>
+			</Rectangle>
+			</StackPanel>
 		</DockPanel>
-		<Rectangle Fill="#000000" Height="1" Margin="10,5,0,5" >
-		</Rectangle>
-		<MyButton Text="Set Passcode" Height="50">
-			 <Clicked>
-					<!-- <NavigateTo Target="SetPassCodePage" NavigationContext="passCodeNav" /> -->
-			 </Clicked>
-		 </MyButton>
-		 <StackPanel Margin="5,10,10,0">
-		 		<Text Value="Set secret question" Font="Bold" FontSize="20" />
-				<Panel Width="300" Height="40">
-					<Rectangle CornerRadius="5" Margin="0,5,0,0">
-								<Stroke Brush="#BFD8DD" />
-								<DropdownIcon Width="30" Height="30" Alignment="Right"  />
-					</Rectangle>
-					<DropdownSelectedItem Text="{selected}" />
-					<Clicked>
-						<Toggle Target="expandDropdown" />
-					</Clicked>
-					<WhileTrue ux:Name="expandDropdown">
-						<StackPanel Offset="0,40">
-								<Each Items="{dropdownOptions}">
-									<DropdownOption Text="{option}" Clicked="{selectMe}" />
-								</Each>
-						</StackPanel>
-					</WhileTrue>
-				</Panel>
-				<Rectangle Fill="#000000" Width="225" Height="50" CornerRadius="5" Alignment="Left" Margin="20,10,0,0">
-					<Rectangle Fill="#FFFFFF" Width="223" Height="48" CornerRadius="5" >
-						<TextEdit Value="{title}" Alignment="CenterLeft" CaretColor="#ff0000"
-											TextColor="#000000" Font="Light" Width="200" Margin="10"/>
-					</Rectangle>
-				</Rectangle>
-		 </StackPanel>
-		</StackPanel>
-		<!-- <MyPage ux:Name="SetPassCodePage" ux:AutoBind="false">
-		  <MyHeader Text="Set PassCode" />
-			 <DockPanel Background="White">
-			 </DockPanel>
-		</MyPage> -->
-	</DockPanel>
+		</MyPage>
+	</Panel>
  </MyPage>

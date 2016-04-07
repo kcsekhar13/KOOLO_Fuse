@@ -14,11 +14,10 @@
 		<OnUserEvent Name="hideSettings" Filter="Global">
 			<Set settingsVisible.Value="false" />
 		</OnUserEvent>
-
 		<WhileFalse ux:Name="settingsVisible">
 			<Move Target="Settings" Y="1" RelativeTo="ParentSize" Duration="0.1" Easing="QuadraticInOut" />
+			<Callback Handler="{initializeHomePage}" />
 		</WhileFalse>
-
 		<Image File="Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background"  />
 		<StatusBarBackground Dock="Top" />
 		<BottomBarBackground Dock="Bottom" />
