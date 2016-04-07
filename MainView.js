@@ -27,12 +27,12 @@ var homourColors = [
                   ];
 
 function getValues(observables) {
-      var result = {};
-      for (var property in observables) {
-          result[property] = observables[property].value;
-      }
-      return result;
-  }
+    var result = {};
+    for (var property in observables) {
+        result[property] = observables[property].value;
+    }
+    return result;
+}
 
 function setValues(values, observables) {
     for (var property in values) {
@@ -41,29 +41,29 @@ function setValues(values, observables) {
 }
 
 var dateColor = {
-			date : Observable(new Date().getDate()),
-			colour : Observable()
-		};
+    date: Observable(new Date().getDate()),
+    colour: Observable()
+};
 
-function setMyQuote(){
-  Storage.read(defaultQuoteFile).then(function(content) {
-      myQuote.value = content;
-      console.log("Success in reading my quote value");
+function setMyQuote() {
+    Storage.read(defaultQuoteFile).then(function(content) {
+        myQuote.value = content;
+        console.log("Success in reading my quote value");
     }, function(error) {
-      console.log("failed to read quotes enabled file");
-  });
+        console.log("failed to read quotes enabled file");
+    });
 }
 
-function updateDateColor(context){
+function updateDateColor(context) {
     //console.log(JSON.stringify(argument, undefined, '    '));
-	dateColor.colour.value = context.data.code;
-	console.log(dateColor.date);
+    dateColor.colour.value = context.data.code;
+    console.log(dateColor.date);
 }
 
 function GotoPageSettings(argument) {
-	console.log("Go To Settings Page");
-	isSettingsVisible = "Visible";
-	navigateToPage = "Settings";
+    console.log("Go To Settings Page");
+    isSettingsVisible = "Visible";
+    navigateToPage = "Settings";
 }
 
 // function HideSettings(argument) {
@@ -71,29 +71,28 @@ function GotoPageSettings(argument) {
 // }
 
 function initializeHomePage() {
-  console.log("Initializing home page.");
-  setMyQuote();
-  bundle.read("appSettings.json").then(function(content) {
-  			},      function(error) {
-  			    console.log(error);
-  	});
+    console.log("Initializing home page.");
+    setMyQuote();
+    bundle.read("appSettings.json").then(function(content) {}, function(error) {
+        console.log(error);
+    });
 }
 
 function changeBackGround(argument) {
-	console.log("Change BackGroundImage");
+    console.log("Change BackGroundImage");
 }
 
 initializeHomePage();
 
-module.exports =  {
-  initializeHomePage:initializeHomePage,
-	changeBackGround :changeBackGround,
-	currentPage: currentPage,
-	isSettingsPageVisible:isSettingsVisible,
-	navigateToPage : navigateToPage,
-	gotoPageSettingsPage: GotoPageSettings,
-	dateColor : dateColor,
-	updateDateColor:updateDateColor,
-	myQuote:myQuote,
-  homourColors:homourColors,
+module.exports = {
+    initializeHomePage: initializeHomePage,
+    changeBackGround: changeBackGround,
+    currentPage: currentPage,
+    isSettingsPageVisible: isSettingsVisible,
+    navigateToPage: navigateToPage,
+    gotoPageSettingsPage: GotoPageSettings,
+    dateColor: dateColor,
+    updateDateColor: updateDateColor,
+    myQuote: myQuote,
+    homourColors: homourColors,
 };

@@ -16,32 +16,29 @@
 							</Clicked>
 						</Icon>
 					</Style>
-					<CamaraIcon ux:Name="icon1" Margin="0,0,0,0" Width="40" Height="40" Alignment="Top" Opacity="0" IsEnabled="false">
+					<CalanderIcon ux:Name="icon1" Margin="0,10,0,80" Width="40" Height="40" Alignment="Center" Opacity="0" IsEnabled="false">
 						<Translation ux:Name="trans1" Y="-1" RelativeTo="Size" />
-						<Clicked>
-							<DebugAction Message="Clicked ClockIcon" />
-							<NavigateTo NavigationContext="pageControl" Target="MoodMap" />
-						</Clicked>
-					</CamaraIcon>
-					<CalanderIcon ux:Name="icon2" Margin="0,10,0,80" Width="40" Height="40" Alignment="Center" Opacity="0" IsEnabled="false">
-						<Translation ux:Name="trans2" Y="0" RelativeTo="Size" />
 						<Clicked>
 							<DebugAction Message="Clicked Calander Icon" />
 								<NavigateTo NavigationContext="pageControl" Target="calendar" />
 						</Clicked>
 					</CalanderIcon>
-					<ChecklistIcon ux:Name="icon3" Margin="0,10,0,20" Width="40" Height="40" Alignment="Center" Opacity="0" IsEnabled="false">
+					<CamaraIcon ux:Name="icon2" Margin="0,0,0,0" Width="40" Height="40" Alignment="Top" Opacity="0" IsEnabled="false">
+						<Translation ux:Name="trans2" Y="0" RelativeTo="Size" />
+						<Clicked>
+							<DebugAction Message="Clicked ClockIcon" />
+							<NavigateTo NavigationContext="pageControl" Target="MoodMap" />
+						</Clicked>
+					</CamaraIcon>
+					<ChecklistIcon ux:Name="icon3" Margin="0,5,0,20" Width="40" Height="40" Alignment="Center" Opacity="0" IsEnabled="false">
 						<Translation ux:Name="trans3" Y="0" RelativeTo="Size" />
 						<Clicked>
 							<!-- <DebugAction Message="Clicked CheckList" /> -->
 								<!-- <NavigateTo Target="CheckList" /> -->
 						</Clicked>
 					</ChecklistIcon>
-
 					<Circle ux:Name="overlayCircle" Fill="#FFFFFF" Width="20%" Height="20%" Alignment="Center" />
-
 					<Rectangle ux:Name="rectAngle" Width="58" Height="10" Alignment="Bottom" Margin="150" CornerRadius="30"  />
-
 					<WhileTrue ux:Name="enableOptions">
 						<Change icon1.IsEnabled="true" />
 						<Change icon2.IsEnabled="true" />
@@ -56,11 +53,11 @@
 						<Change overlayCircle.Opacity="1" Delay="0.1" Duration="0.1" />
 						<Rotate Target="cross" Degrees="-45" Duration="0.2" Easing="CubicInOut" />
 
-						<Change trans1.Y="-1" Delay="0.5" Duration="0.4" Easing="ExponentialOut" EasingBack="QuadraticInOut" DurationBack="0.2"    DelayBack="0"/>
+						<Change trans1.Y="-3" Delay="0.1" Duration="0.4" Easing="ExponentialOut" EasingBack="QuadraticInOut" DurationBack="0.2"    DelayBack="0"/>
 
-						<Change trans2.Y="-1.5" Delay="0.05" Duration="0.4" Easing="ExponentialOut" EasingBack="QuadraticInOut" DurationBack="0.2" DelayBack="0"/>
+						<Change trans2.Y="0" Delay="0.1" Duration="0.4" Easing="ExponentialOut" EasingBack="QuadraticInOut" DurationBack="0.2" DelayBack="0"/>
 
-						<Change trans3.Y="-1" Delay="0.1" Duration="0.4" Easing="ExponentialOut" EasingBack="QuadraticInOut" DurationBack="0.2"  DelayBack="0"/>
+						<Change trans3.Y="-1.2" Delay="0.1" Duration="0.4" Easing="ExponentialOut" EasingBack="QuadraticInOut" DurationBack="0.2"  DelayBack="0"/>
 
 						<Change icon1.Opacity="1" Delay="0.1" Duration="0.1" Easing="ExponentialInOut" DelayBack="0"/>
 						<Change icon2.Opacity="1" Delay="0.1" Duration="0.1" Easing="ExponentialInOut" DelayBack="0"/>

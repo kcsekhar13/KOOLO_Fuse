@@ -108,7 +108,7 @@
 
 	<Icon ux:Class="CamaraIcon" File="Assets/KooloCamara.png" />
 	<Icon ux:Class="CalanderIcon" File="Assets/Calander.png" />
-	<Icon ux:Class="ChecklistIcon" File="Assets/CheckList.jpg" />
+	<Icon ux:Class="ChecklistIcon" File="Assets/Checklist.png" />
 	<Icon ux:Class="DropdownIcon" File="Assets/Down-arrow.png" />
 	<Icon ux:Class="CheckmarkIcon" File="Assets/Checkmark.png" />
 

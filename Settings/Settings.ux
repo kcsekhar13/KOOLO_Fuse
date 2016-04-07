@@ -1,13 +1,16 @@
 <MyPage ux:Class="Settings" Title="Settings" ux:Name="Settings" >
-    <UserEvent Name="DoneSettingPassCode" />
+  <UserEvent Name="DoneSettingPassCode" />
+  <WhileActive>
+    <Callback Handler="{InitializePage}" />
+  </WhileActive>
+<StatusBarBackground Dock="Top"/>
+  <iOS.StatusBarConfig Style="Light"/>
+  <JavaScript File="Settings.js"/>
+<Panel>
+  <HierarchicalNavigation ux:Name="nav" Active="mainPage" />
+  <MyPage ux:Name="mainPage" Background="White">
 
-    <StatusBarBackground Dock="Top"/>
-    <iOS.StatusBarConfig Style="Light"/>
-    <JavaScript File="Settings.js"/>
-    <Panel>
-      <HierarchicalNavigation ux:Name="nav" Active="mainPage" />
-        <MyPage ux:Name="mainPage" Background="White">
-            <DockPanel>
+      <DockPanel>
                 <!-- Header    -->
                 <Panel Dock="Top" Height="35" Alignment="Top">
                   <Rectangle Fill="#808080" Layer="Background">
@@ -32,7 +35,7 @@
                   <!-- Background Image -->
                 <MyButton Text="BackGround Image">
                    <Clicked>
-                     <NavigateTo Target="About" NavigationContext="nav" />
+                     <Callback Handler="{setBackGroundImage}" />
                   </Clicked>
                  </MyButton>
                   <!-- Passcode -->

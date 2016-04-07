@@ -24,11 +24,18 @@
         "FuseCore",
         "Fuse.Launcher",
         "Uno.Collections",
-        "Uno.Geometry"
+        "Uno.Geometry",
+        "Experimental.iOS",
+        "Uno.Threading",
+        "Fuse.Camera"
   ],
   "Includes": [
     "*",
     "*.json",
-    "appSettings.json:Bundle"
+    "appSettings.json:Bundle",
+    "*.uno",
+    "*.ux",
+    "TakePictureTask.h:ObjCHeader:iOS",
+    "TakePictureTask.mm:ObjCSource:iOS"
   ]
 }
