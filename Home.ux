@@ -1,5 +1,13 @@
 <MyPage Title="Home" ux:Name="Home">
 <Panel>
+	<EnteringAnimation>
+		<Move Target="settingsBtn" Y="150" Duration="1" />
+		<Move Target="self" Y="150" Duration="1" />
+	</EnteringAnimation>
+	<ExitingAnimation>
+		<Move Target="settingsBtn" Y="-150" Duration="1" />
+		<Move Target="self" Y="-150" Duration="1" />
+	</ExitingAnimation>
 	<PageControl ux:Name="homePageNav" Interaction="None" Active="mainHomePage">
 		<ux:Include File="MoodColour.ux" />
 		<MyPage ux:Name="mainHomePage">
