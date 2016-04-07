@@ -1,6 +1,16 @@
 {
-  "RootNamespace":"",
-  "Packages": [
+        "RootNamespace": "$(QIdentifier)",
+        "ReferenceUnoCore": true,
+        "Title": "KOOLO",
+        "Copyright": "Copyright (C) 2016",
+        "Publisher": "Chandrasekhar",
+        "Mobile": {
+        "KeepAlive": false,
+        "ShowStatusbar": true,
+        "RunsInBackground": false,
+        "Orientations": "Auto"
+        },
+        "Packages": [
         "Fuse.Animations",
         "Fuse.BasicTheme",
         "Fuse.Themes",
@@ -28,14 +38,15 @@
         "Experimental.iOS",
         "Uno.Threading",
         "Fuse.Camera"
-  ],
-  "Includes": [
-    "*",
-    "*.json",
-    "appSettings.json:Bundle",
-    "*.uno",
-    "*.ux",
-    "TakePictureTask.h:ObjCHeader:iOS",
-    "TakePictureTask.mm:ObjCSource:iOS"
+        ],
+      "Icon": "Icon.png",
+      "Includes": [
+        "*",
+        "*.json",
+        "appSettings.json:Bundle",
+        "*.uno",
+        "*.ux",
+        "TakePictureTask.h:ObjCHeader:iOS",
+        "TakePictureTask.mm:ObjCSource:iOS"
   ]
 }

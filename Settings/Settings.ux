@@ -80,6 +80,11 @@
                      <NavigateTo Target="About" />
                   </Clicked>
                  </MyButton>
+                 <Image File="{backGroundImage}">
+          				<Android>
+          					<Rotate Degrees="90" />
+          				</Android>
+          			</Image>
                 </StackPanel>
               </ScrollView>
           </DockPanel>

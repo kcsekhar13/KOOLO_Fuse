@@ -14,6 +14,8 @@ var isSettingsVisible = Observable("Hidden");
 
 var myQuote = Observable();
 
+var myBackGroundImage = Observable();
+
 var homourColors = [
                       { color: [ { code: "#23f38e" }, { title: "Lykkelig" } ] },
                       { color: [ { code: "#ffde47" }, { title: "Glad" } ] },
@@ -66,27 +68,29 @@ function GotoPageSettings(argument) {
     navigateToPage = "Settings";
 }
 
-// function HideSettings(argument) {
-// 	isSettingsVisible = "Collapsed";
-// }
+function readBackGroundImage() {
+  Storage.read("KOOLO_Background.txt").then(function(content) {
+      myBackGroundImage.value = "/data/data/com.KOOLO_Fuse/files/KOOLO_Background.jpg"
+    }, function(error) {
+      console.log("failed to read BackGroundImage");
+      myBackGroundImage.value = "Assets/Background.png";
+    });
+}
 
 function initializeHomePage() {
     console.log("Initializing home page.");
     setMyQuote();
+    readBackGroundImage();
     bundle.read("appSettings.json").then(function(content) {}, function(error) {
         console.log(error);
     });
-}
-
-function changeBackGround(argument) {
-    console.log("Change BackGroundImage");
 }
 
 initializeHomePage();
 
 module.exports = {
     initializeHomePage: initializeHomePage,
-    changeBackGround: changeBackGround,
+    myBackGroundImage:myBackGroundImage,
     currentPage: currentPage,
     isSettingsPageVisible: isSettingsVisible,
     navigateToPage: navigateToPage,
