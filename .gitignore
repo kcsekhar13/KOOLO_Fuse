@@ -1,5 +1,4 @@
 .uno/
-*.uno
 *.dll
 *.pdb
 **/bundle/*
