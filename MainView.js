@@ -2,6 +2,8 @@ var Observable = require("FuseJS/Observable");
 var Storage = require('FuseJS/Storage');
 var bundle = require('FuseJS/Bundle');
 
+var State = require("State");
+
 var defaultQuoteFile = "myquote.txt";
 
 var currentPage = Observable("Home");

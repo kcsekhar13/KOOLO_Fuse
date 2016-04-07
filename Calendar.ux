@@ -1,4 +1,4 @@
-<Page ux:Class="Calendar">
+<Page ux:Name="calendar">
 
 	<Panel>
 		<Text Value="Calendar" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold" />

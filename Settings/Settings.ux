@@ -1,4 +1,6 @@
 <MyPage ux:Class="Settings" Title="Settings" ux:Name="Settings" >
+    <UserEvent Name="DoneSettingPassCode" />
+
     <StatusBarBackground Dock="Top"/>
     <iOS.StatusBarConfig Style="Light"/>
     <JavaScript File="Settings.js"/>

@@ -48,41 +48,6 @@
 			</StackPanel>
 			</DockPanel>
 		</MyPage>
-		<MyPage ux:Name="SetPassCodePage" ux:AutoBind="false">
-		<WhileActive>
-			<GiveFocus Target="passCodeTxt" />
-		</WhileActive>
-		<TextEdit ux:Name="passCodeTxt" InputHint="Phone" Value="{passCodeTxt}" Visibility="Visible" />
-		<DockPanel Background="White">
-			<Image File="../Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background" />
-			<MyHeader Text="Set PassCode" />
-			<Rectangle Alignment="HorizontalCenter" Height="50">
-			<WhileKeyboardVisible>
-					<Move Y="0" RelativeTo="Keyboard" Duration="0.5" />
-			</WhileKeyboardVisible>
-			<StackPanel Orientation="Horizontal" >
-				<Circle Width="50" Height="50" Fill="White" Margin="10,0,0,0" >
-					<Circle Width="40" Height="40" Fill="Green" ux:Name="txt1" Alignment="Center" Visibility="{txt1Visibility}" >
-					</Circle>
-				</Circle>
-				<Circle Width="50" Height="50" Fill="White" Margin="10,0,0,0">
-					<Circle Width="40" Height="40" Fill="Green" ux:Name="txt2" Alignment="Center" Visibility="{txt2Visibility}">
-					</Circle>
-				</Circle>
-				<Circle Width="50" Height="50" Fill="White" Margin="10,0,0,0">
-					<Circle Width="40" Height="40" Fill="Green" ux:Name="txt3" Alignment="Center" Visibility="{txt3Visibility}">
-					</Circle>
-				</Circle>
-				<Circle Width="50" Height="50" Fill="White" Margin="10,0,0,0">
-					<Circle Width="40" Height="40" Fill="Green" ux:Name="txt4" Alignment="Center" Visibility="{txt4Visibility}">
-					</Circle>
-				</Circle>
-				<Clicked>
-					<GiveFocus Target="passCodeTxt" />
-				</Clicked>
-			</StackPanel>
-			</Rectangle>
-		</DockPanel>
-		</MyPage>
+		<ux:Include File="SetPassCodePage.ux" />
 	</Panel>
  </MyPage>

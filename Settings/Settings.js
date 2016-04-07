@@ -1,4 +1,5 @@
 var Observable = require("FuseJS/Observable");
+var UserEvents = require("FuseJS/UserEvents");
 
 		// var settings = ["Background Image","Passcode","Quotes","Humour Color","License","Tutorial","Contributors","About"];
  		var settings = [
@@ -50,7 +51,10 @@ var Observable = require("FuseJS/Observable");
           if(i==1) { txt1Visibility.value="Visible"; txt2Visibility.value= txt3Visibility.value = txt4Visibility.value = "Hidden"}
           if(i==2) { txt1Visibility.value =txt2Visibility.value= "Visible"; txt3Visibility.value = txt4Visibility.value = "Hidden";}
           if(i==3) {txt1Visibility.value =txt2Visibility.value= txt3Visibility.value = "Visible"; txt4Visibility.value = "Hidden";}
-          if(i==4) {txt1Visibility.value =txt2Visibility.value= txt3Visibility.value = txt4Visibility.value = "Visible";}
+          if(i==4) {
+              txt1Visibility.value =txt2Visibility.value= txt3Visibility.value = txt4Visibility.value = "Visible";
+              UserEvents.raise("DoneSettingPassCode");
+          }
           }
           if(i==0){
             txt1Visibility.value =txt2Visibility.value= txt3Visibility.value = txt4Visibility.value = "Hidden";
