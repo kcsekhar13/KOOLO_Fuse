@@ -20,6 +20,15 @@ var Observable = require("FuseJS/Observable");
 
 		var selectedOption = Observable("1");
 
+    var passCodeSwitch = Observable(true);
+
+    var passCodeTxt = Observable("");
+
+    var txt1Visibility = Observable("Hidden");
+    var txt2Visibility = Observable("Hidden");
+    var txt3Visibility = Observable("Hidden");
+    var txt4Visibility = Observable("Hidden");
+
 		var dropdownOptions = Observable(
 			{ option: "What is your favourite color?",code: "1"},
 			{ option: "What is your pet name?", 		  code: "2"},
@@ -29,9 +38,30 @@ var Observable = require("FuseJS/Observable");
 			{ option: "What is your favourite food?", code: "6"}
 		);
 
-  function passcodeSwitchChanged(arg){
-			console.log("passcodeSwitchChanged");
-	}
+  passCodeSwitch.addSubscriber(function(x) {
+      console.log("passcodeSwitchChanged");
+  });
+
+  passCodeTxt.addSubscriber(function(x){
+        if(x.value != undefined){
+        console.log("Entered Passcode : " + x.value + " length : " + x.value.length);
+        var i = x.value.length;
+          if(i > 0){
+          if(i==1) { txt1Visibility.value="Visible"; txt2Visibility.value= txt3Visibility.value = txt4Visibility.value = "Hidden"}
+          if(i==2) { txt1Visibility.value =txt2Visibility.value= "Visible"; txt3Visibility.value = txt4Visibility.value = "Hidden";}
+          if(i==3) {txt1Visibility.value =txt2Visibility.value= txt3Visibility.value = "Visible"; txt4Visibility.value = "Hidden";}
+          if(i==4) {txt1Visibility.value =txt2Visibility.value= txt3Visibility.value = txt4Visibility.value = "Visible";}
+          }
+          if(i==0){
+            txt1Visibility.value =txt2Visibility.value= txt3Visibility.value = txt4Visibility.value = "Hidden";
+          }
+      }
+  });
+
+  function clearPassCodeText() {
+    passCodeTxt.value="";
+    txt1Visibility.value =txt2Visibility.value= txt3Visibility.value = txt4Visibility.value = "Hidden";
+  }
 
 	function selectMe(arg){
 		selected.value = arg.data.option;
@@ -47,11 +77,16 @@ var Observable = require("FuseJS/Observable");
   module.exports =  {
   		settings: settings,
       currentPageTitle :"Settings",
-  		passcodeSwitchChanged : passcodeSwitchChanged,
   		dropdownOptions: dropdownOptions,
   		selected: selected,
   		selectMe: selectMe,
   		selectedOption: selectedOption,
   		secretAnswer:secretAnswer,
-        switchValue: Observable(true)
+      passCodeSwitch: passCodeSwitch,
+      passCodeTxt:passCodeTxt,
+      clearPassCodeText,clearPassCodeText,
+      txt1Visibility:txt1Visibility,
+      txt2Visibility:txt2Visibility,
+      txt3Visibility:txt3Visibility,
+      txt4Visibility:txt4Visibility
   };

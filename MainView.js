@@ -64,9 +64,9 @@ function GotoPageSettings(argument) {
 	navigateToPage = "Settings";
 }
 
-function HideSettings(argument) {
-	isSettingsVisible = "Collapsed";
-}
+// function HideSettings(argument) {
+// 	isSettingsVisible = "Collapsed";
+// }
 
 function initializeHomePage() {
   console.log("Initializing home page.");

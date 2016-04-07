@@ -1,19 +1,22 @@
 <MyPage ux:Class="Passcode" ux:Name="Passcode" Title="PassCode">
 	<Panel>
-		<HierarchicalNavigation ux:Name="passCodeNav" Active="passCodeMain" />
+		<!-- <HierarchicalNavigation ux:Name="passCodeNav" Active="passCodeMain" /> -->
 		<MyPage ux:Name="passCodeMain">
 		<DockPanel Background="White">
 	    <MyHeader Text="Passcode"/>
+			<WhileActive>
+				<Callback Handler="{clearPassCodeText}" />
+			</WhileActive>
 			<StackPanel Margin="10">
 			<DockPanel Margin="0,10,0,10">
-				<Switch Value="{switchValue}" ValueChanged="{switchValueChanged}" Dock="Right" Alignment="VerticalCenter" />
+				<Switch Value="{passCodeSwitch}" Dock="Right" Alignment="VerticalCenter" />
 				<Text Value="Activate/Deactivate Passcode" Font="Bold" TextAlignment="Left" Margin="10" TextColor="#bdc7ca" />
 			</DockPanel>
 			<Rectangle Fill="#000000" Height="1" Margin="10,5,0,5" >
 			</Rectangle>
 			<MyButton Text="Set Passcode" Height="50">
 				 <Clicked>
-						<NavigateTo Target="SetPassCodePage" NavigationContext="passCodeNav" />
+						<NavigateTo Target="SetPassCodePage"/>
 				 </Clicked>
 			 </MyButton>
 			 <StackPanel Margin="5,10,10,0">
@@ -47,48 +50,38 @@
 		</MyPage>
 		<MyPage ux:Name="SetPassCodePage" ux:AutoBind="false">
 		<WhileActive>
-			<GiveFocus Target="txt1" />
+			<GiveFocus Target="passCodeTxt" />
 		</WhileActive>
+		<TextEdit ux:Name="passCodeTxt" InputHint="Phone" Value="{passCodeTxt}" Visibility="Visible" />
 		<DockPanel Background="White">
 			<Image File="../Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background" />
 			<MyHeader Text="Set PassCode" />
-			<StackPanel Orientation="Horizontal" >
 			<Rectangle Alignment="HorizontalCenter" Height="50">
-				<StackPanel Orientation="Horizontal" Alignment="HorizontalCenter" Margin="50">
-				<WhileKeyboardVisible>
-						<Move Y="0" RelativeTo="Keyboard" Duration="0.5" />
-				</WhileKeyboardVisible>
-					<Circle Width="50" Height="50" Fill="White" Margin="10,0,0,0">
-						<TextEdit IsPassword="true" InputHint="Phone" Alignment="Center" ux:Name="txt1">
-						<OnKeyPress>
-							<GiveFocus Target="txt2" />
-						</OnKeyPress>
-						</TextEdit>
+			<WhileKeyboardVisible>
+					<Move Y="0" RelativeTo="Keyboard" Duration="0.5" />
+			</WhileKeyboardVisible>
+			<StackPanel Orientation="Horizontal" >
+				<Circle Width="50" Height="50" Fill="White" Margin="10,0,0,0" >
+					<Circle Width="40" Height="40" Fill="Green" ux:Name="txt1" Alignment="Center" Visibility="{txt1Visibility}" >
 					</Circle>
-					<Circle Width="50" Height="50" Fill="White" Margin="20,0,0,0">
-						<TextEdit IsPassword="true" InputHint="Phone" Alignment="Center" ux:Name="txt2">
-						<OnKeyPress>
-							<GiveFocus Target="txt3"/>
-						</OnKeyPress>
-						</TextEdit>
+				</Circle>
+				<Circle Width="50" Height="50" Fill="White" Margin="10,0,0,0">
+					<Circle Width="40" Height="40" Fill="Green" ux:Name="txt2" Alignment="Center" Visibility="{txt2Visibility}">
 					</Circle>
-					<Circle Width="50" Height="50" Fill="White" Margin="20,0,0,0">
-						<TextEdit IsPassword="true" InputHint="Phone" Alignment="Center"  ux:Name="txt3" >
-						<OnKeyPress>
-							<GiveFocus Target="txt4" />
-						</OnKeyPress>
-						</TextEdit>
+				</Circle>
+				<Circle Width="50" Height="50" Fill="White" Margin="10,0,0,0">
+					<Circle Width="40" Height="40" Fill="Green" ux:Name="txt3" Alignment="Center" Visibility="{txt3Visibility}">
 					</Circle>
-					<Circle Width="50" Height="50" Fill="White" Margin="20,0,0,0">
-						<TextEdit IsPassword="true" InputHint="Phone" Alignment="Center" ux:Name="txt4" >
-						<OnKeyPress>
-							<GoBack />
-						</OnKeyPress>
-						</TextEdit>
+				</Circle>
+				<Circle Width="50" Height="50" Fill="White" Margin="10,0,0,0">
+					<Circle Width="40" Height="40" Fill="Green" ux:Name="txt4" Alignment="Center" Visibility="{txt4Visibility}">
 					</Circle>
-					</StackPanel>
-			</Rectangle>
+				</Circle>
+				<Clicked>
+					<GiveFocus Target="passCodeTxt" />
+				</Clicked>
 			</StackPanel>
+			</Rectangle>
 		</DockPanel>
 		</MyPage>
 	</Panel>
