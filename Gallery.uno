@@ -10,12 +10,19 @@ public class Gallery : NativeModule {
 	public Gallery () {
 		// Add Load function to load image as a texture
 		AddMember(new NativePromise<Fuse.Camera.PictureResult, Fuse.Scripting.Object>("getPicture", GetPicture, Converter));
+		AddMember(new NativePromise<Fuse.Camera.PictureResult, Fuse.Scripting.Object>("takePicture", TakePicture, Converter));
 	}
 
 	static Future<Fuse.Camera.PictureResult> GetPicture(object[] args)
 	{
 		var path = Uno.IO.Path.Combine(Uno.IO.Directory.GetUserDirectory(Uno.IO.UserDirectory.Data), "KOOLO_Background.jpg");
-		debug_log("BackGroundImage Path : " + path);		
+		debug_log("BackGroundImage Path : " + path);
+		return GalleryImpl.GetPicture(path);
+	}
+
+	static Future<Fuse.Camera.PictureResult> TakePicture(object[] args){
+		var path = Uno.IO.Path.Combine(Uno.IO.Directory.GetUserDirectory(Uno.IO.UserDirectory.Data), args[0].ToString());
+		debug_log("BackGroundImage Path : " + path);
 		return GalleryImpl.GetPicture(path);
 	}
 
@@ -27,8 +34,6 @@ public class Gallery : NativeModule {
 		file["name"] = Uno.IO.Path.GetFileName(result.Path);
     	return file;
     }
-
-
 }
 
 [ForeignInclude(Language.Java,

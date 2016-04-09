@@ -1,7 +1,7 @@
 var Observable = require("FuseJS/Observable");
 var Storage = require('FuseJS/Storage');
 var bundle = require('FuseJS/Bundle');
-
+var gallery = require('Gallery');
 var State = require("State");
 
 var defaultQuoteFile = "myquote.txt";
@@ -73,12 +73,27 @@ function readBackGroundImage() {
       myBackGroundImage.value = "/data/data/com.KOOLO_Fuse/files/KOOLO_Background.jpg"
     }, function(error) {
       console.log("failed to read BackGroundImage");
-      myBackGroundImage.value = "Assets/Background.png";
+      myBackGroundImage.value = "Assets/bg.jpg";
     });
+}
+
+function gotoLibrary() {
+    gallery.getPicture().then(function(pic) {
+				console.log("Received image for Background :"+ JSON.stingify(pic));
+    });
+}
+
+function takePicture(){
+  console.log("Taking PictureResult");
+  var dateTicks = new Date().getTime();
+  gallery.takePicture(dateTicks).then(function(pic) {
+      console.log("Received image for Background :"+ JSON.stingify(pic));
+  });
 }
 
 function initializeHomePage() {
     console.log("Initializing home page.");
+    console.log(new Date().getTime());
     setMyQuote();
     readBackGroundImage();
     bundle.read("appSettings.json").then(function(content) {}, function(error) {
@@ -99,4 +114,7 @@ module.exports = {
     updateDateColor: updateDateColor,
     myQuote: myQuote,
     homourColors: homourColors,
+    homourColors: homourColors,
+    gotoLibrary:gotoLibrary,
+    takePicture:takePicture,
 };

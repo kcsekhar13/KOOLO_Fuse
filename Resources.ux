@@ -106,10 +106,12 @@
 	<Icon ux:Class="LocationIcon" File="Assets/icon_location.png" />
 	<Icon ux:Class="SettingsIcon" File="Assets/icon_settings.png" />
 
-	<Icon ux:Class="CamaraIcon" File="Assets/KooloCamara.png" />
+	<Icon ux:Class="KooloCamaraIcon" File="Assets/KooloCamara.png" />
+	<Icon ux:Class="CamaraIcon" File="Assets/Camara.png" />
 	<Icon ux:Class="CalanderIcon" File="Assets/Calander.png" />
 	<Icon ux:Class="ChecklistIcon" File="Assets/Checklist.png" />
 	<Icon ux:Class="DropdownIcon" File="Assets/Down-arrow.png" />
 	<Icon ux:Class="CheckmarkIcon" File="Assets/Checkmark.png" />
+	<Icon ux:Class="GalleryIcon" File="Assets/gallery1.png" />
 
 </Panel>

@@ -1,7 +1,32 @@
 <Page ux:Name="calendar">
-
-	<Panel>
-		<Text Value="Calendar" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold" />
+<DockPanel>
+	<!-- Header    -->
+	<Panel Dock="Top" Height="35" Alignment="Top">
+		<Rectangle Fill="#808080" Layer="Background">
+		<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
+				<Text TextAlignment="Left" Value="Done" Font="Light" />
+				<Clicked>
+					 <GoBack />
+				</Clicked>
+			</Panel>
+			<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Calender"/>
+			<Panel Alignment="Right" Margin="0,8,5,0">
+				<Text TextAlignment="Right" Value="Map" Font="Light"  />
+				<Clicked>
+						 <GoBack />
+				</Clicked>
+			</Panel>
+		</Rectangle>
 	</Panel>
-
+	<Panel ux:Name="addEventPanel" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomRight" Margin="0,0,20,0">
+			<Cross ux:Name="addEvent" Alignment="Center" />
+			<Style>
+				<Icon>
+					<Clicked>
+					</Clicked>
+				</Icon>
+			</Style>
+			<Circle ux:Name="overlayEventCircle" Fill="#FFFFFF" Width="100%" Height="100%" Alignment="Center" />
+	</Panel>
+</DockPanel>
 </Page>

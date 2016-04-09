@@ -1,5 +1,41 @@
 <Page ux:Class="MoodMap">
-	<Panel>
-		<Text Value="MoodMap" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold" />
-	</Panel>
+		<!-- Header    -->
+		<Panel Dock="Top" Height="35" Alignment="Top">
+			<Rectangle Fill="#808080" Layer="Background">
+			<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
+					<Text TextAlignment="Left" Value="Done" Font="Light" />
+					<Clicked>
+						 <GoBack />
+					</Clicked>
+				</Panel>
+				<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Mood Line"/>
+				<Panel Alignment="Right" Margin="0,8,5,0">
+					<Text TextAlignment="Right" Value="Map" Font="Light"  />
+						<Clicked>
+							 <DebugAction Message="Clicked on MoodMap Button" />
+					</Clicked>
+				</Panel>
+			</Rectangle>
+		</Panel>
+			<!-- End of Header -->
+			<Panel ux:Name="cameraIcon" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomRight">
+			<CamaraIcon ux:Name="icon2" Margin="0,0,0,0" Width="40" Height="40" Alignment="Top" >
+				<Clicked>
+					<Callback Handler="{takePicture}" />
+				</Clicked>
+			</CamaraIcon>
+			</Panel>
+			<Panel ux:Name="galleryIcon" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomLeft">
+			<Circle ux:Name="gIcon" Margin="0,0,0,0" Width="40" Height="40" Alignment="Top" Fill="White" >
+				<GalleryIcon Alignment="Center" Width="30" Height="30" />
+				<Clicked>
+					<Callback Handler="{gotoLibrary}" />
+				</Clicked>
+			</Circle>
+			</Panel>
+		<!-- <MyPage ux:Name="captureMood">
+			<DockPanel>
+				<MyHeader Text="Mood Map" />
+			</DockPanel>
+		</MyPage> -->
 </Page>

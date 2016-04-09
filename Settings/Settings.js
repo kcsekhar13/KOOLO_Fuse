@@ -4,7 +4,7 @@ var Storage = require("FuseJS/Storage")
 
 var gallery = require('Gallery');
 		// var settings = ["Background Image","Passcode","Quotes","Humour Color","License","Tutorial","Contributors","About"];
-	var settings = [
+var settings = [
                 { setting: "Background Image" },
                 { setting : "Passcode" },
                 {setting : "Quotes" },
@@ -28,7 +28,7 @@ var passCodeSwitch = Observable(true);
 var passCodeTxt = Observable("");
 var Observable = require("FuseJS/Observable");
 var UserEvents = require("FuseJS/UserEvents");
-var gallery = require('Gallery');
+
 
 // var settings = ["Background Image","Passcode","Quotes","Humour Color","License","Tutorial","Contributors","About"];
 var settings = [{
@@ -131,10 +131,10 @@ function selectMe(arg) {
 function setBackGroundImage() {
     gallery.getPicture().then(function(pic) {
 				console.log("Received image for Background :"+ JSON.stingify(pic));
-				Storage.write("KOOLO_Background.txt", "true").then(function(success) {
-						console.log(" Background image Save  " + (success ? "success" : "failure"));
-				});
     });
+		Storage.write("KOOLO_Background.txt", "true").then(function(success) {
+				console.log(" Background image Save  " + (success ? "success" : "failure"));
+		});
 }
 
 function InitializePage() {
