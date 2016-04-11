@@ -2,6 +2,7 @@ var Observable = require("FuseJS/Observable");
 var Storage = require('FuseJS/Storage');
 var bundle = require('FuseJS/Bundle');
 var gallery = require('Gallery');
+var camera = require('FuseJS/Camera');
 var State = require("State");
 
 var defaultQuoteFile = "myquote.txt";
@@ -83,11 +84,18 @@ function gotoLibrary() {
     });
 }
 
+function getMoodLineImages() {
+
+}
+
 function takePicture(){
   console.log("Taking PictureResult");
   var dateTicks = new Date().getTime();
-  gallery.takePicture(dateTicks).then(function(pic) {
-      console.log("Received image for Background :"+ JSON.stingify(pic));
+  camera.takePicture({ targetWidth: 640, targetHeight: 360,correctOrientation: true}).then(function(file)
+  {
+      console.log("Picture Details " + JSON.stingify(file));
+  }).catch(function(e) {
+      console.log(e);
   });
 }
 

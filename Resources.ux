@@ -112,6 +112,6 @@
 	<Icon ux:Class="ChecklistIcon" File="Assets/Checklist.png" />
 	<Icon ux:Class="DropdownIcon" File="Assets/Down-arrow.png" />
 	<Icon ux:Class="CheckmarkIcon" File="Assets/Checkmark.png" />
-	<Icon ux:Class="GalleryIcon" File="Assets/gallery1.png" />
+	<Icon ux:Class="GalleryIcon" File="Assets/gallery.png" />
 
 </Panel>

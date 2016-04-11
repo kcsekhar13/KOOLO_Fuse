@@ -43,6 +43,8 @@
       "Includes": [
         "*",
         "*.json",
+        "Assets/*.png:Bundle",
+        "Assets/*.jpg:Bundle",
         "appSettings.json:Bundle",
         "*.uno",
         "*.ux",
