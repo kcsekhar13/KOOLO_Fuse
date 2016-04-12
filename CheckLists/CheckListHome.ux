@@ -1,23 +1,24 @@
 <MyPage ux:Class="CheckList" Title="CheckList" ux:Name="CheckList">
+	<Image File="../Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background" />
 	<Panel>
 	<MyPage ux:Name="CheckListHome">
-		<DockPanel Background="White">
-			<MyHeader />
+		<DockPanel>
+			<MyHeader Text="CheckList" />
 			<Circle ux:Name="myHealthCircle" Height="150" Width="150" Alignment="TopCenter" Fill="#232d33">
 				<Text ux:Name="myHealthTxt" Font="Regular" Alignment="Center" Value="My Health 0/0"  TextColor="#FFFFFF" />
 				<Clicked>
 				<DebugAction Message="My Health Circle Clicked" />
 				</Clicked>
 			</Circle>
-			<Text ux:Name="threeSentenseTxt" Font="Regular" Alignment="Center" Value="Three Sentence" TextColor="#FFFFFF" />
 			<Circle ux:Name="threeSentenceCircle" Height="150" Width="150" Alignment="Center" Fill="#efefef">
+				<Text ux:Name="threeSentenseTxt" Font="Regular" Alignment="Center" Value="Three Sentence" TextColor="#FFFFFF" />
 				<Clicked>
 					<DebugAction Message="Three Sentenses Circle Clicked" />
 					<NavigateTo Target="ThreeSentenses" />
 				</Clicked>
 			</Circle>
 			<Circle ux:Name="transitionCircle" Height="150" Width="150" Alignment="BottomCenter" Fill="#232d33">
-				<Text ux:Name="transitionTxt" Font="Regular" Alignment="Center" Value="Ready for transition 0/0"  TextColor="#FFFFFF" />
+				<Text ux:Name="transitionTxt" Font="Regular" Alignment="Center" Value="Ready for transition 0/0" TextWrapping="Wrap" TextColor="#FFFFFF" />
 				<Clicked>
 				<DebugAction Message="Transition Circle Clicked" />
 				</Clicked>

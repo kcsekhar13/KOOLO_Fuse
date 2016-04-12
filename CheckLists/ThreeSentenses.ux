@@ -2,9 +2,7 @@
 <WhileActive>
   <Callback Handler="{readThreeSentenses}"/>
 </WhileActive>
-<DockPanel Background="White">
-    <Image File="../Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background" />
-        <!-- Custom Header -->
+<DockPanel>
     <Panel Dock="Top" Height="35">
       <Rectangle Fill="#808080" Layer="Background">
 		    <Panel Alignment="Left" Margin="5,8,0,0">
@@ -23,8 +21,30 @@
       	</Panel>
   	</Rectangle>
    </Panel>
-   <TextEdit Value="{first}" Height="150" Width="400" />
-   <TextEdit Value="{second}" Height="150" Width="400" />
-   <TextEdit Value="{third}" Height="150" Width="400" />
+   <Grid Rows="auto" Margin="10">
+   <Grid Columns="1*" Dock="Top">
+    </Grid>
+    <StackPanel>
+      <Text Value="1. My age, diagnosis and brief medical history" Font="Light" Alignment="TopLeft" TextWrapping="Wrap"/>
+      <Rectangle CornerRadius="1" >
+        <Stroke Width="1" Color="#000000"/>
+        <TextEdit Value="{first}" Height="100" Width="400" IsMultiline="true" Font="Light"/>
+      </Rectangle>
+    </StackPanel>
+   <StackPanel>
+      <Text Value="2. My treatment plan" Font="Light" Alignment="TopLeft"  TextWrapping="Wrap"/>
+      <Rectangle CornerRadius="1" >
+        <Stroke Width="1" Color="#000000"/>
+        <TextEdit Value="{second}" Height="100" Width="400" IsMultiline="true" Font="Light" />
+      </Rectangle>
+   </StackPanel>
+   <StackPanel>
+      <Text Value="3. My question/concern to talk about during the visit" Font="Light" Alignment="TopLeft" TextWrapping="Wrap"/>
+      <Rectangle CornerRadius="1" >
+        <Stroke Width="1" Color="#000000"/>
+        <TextEdit Value="{third}" Height="100" Width="400" IsMultiline="true" Font="Light"/>
+      </Rectangle>
+   </StackPanel>
+   </Grid>
 </DockPanel>
 </MyPage>
