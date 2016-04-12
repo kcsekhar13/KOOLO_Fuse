@@ -6,7 +6,6 @@
 		<Move Target="mainContent" Y="-150" Duration="1" />
 	</DeactivatingAnimation>
 	<PageControl ux:Name="homePageNav" Interaction="None" Active="mainHomePage">
-		<ux:Include File="MoodColour.ux" />
 		<MyPage ux:Name="mainHomePage">
 			<Panel ux:Name="self" TransformOrigin="Center" Width="250" Height="250" Alignment="BottomRight" Offset="80,80">
 					<Cross ux:Name="cross" />
@@ -44,7 +43,6 @@
 						<Change icon2.IsEnabled="true" />
 						<Change icon3.IsEnabled="true" />
 					</WhileTrue>
-
 					<WhileTrue ux:Name="expanded">
 						<Change rectAngle.Height="210" Easing="ExponentialOut" Duration="0.2"  DelayBack="0"/>
 						<Change rectAngle.Margin="130" Easing="ExponentialOut" Duration="0.2"  DelayBack="0"/>
@@ -52,13 +50,9 @@
 						<Change enableOptions.Value="true" Delay="0.1" />
 						<Change overlayCircle.Opacity="1" Delay="0.1" Duration="0.1" />
 						<Rotate Target="cross" Degrees="-45" Duration="0.2" Easing="CubicInOut" />
-
 						<Change trans1.Y="-3" Delay="0.1" Duration="0.4" Easing="ExponentialOut" EasingBack="QuadraticInOut" DurationBack="0.2"    DelayBack="0"/>
-
 						<Change trans2.Y="0" Delay="0.1" Duration="0.4" Easing="ExponentialOut" EasingBack="QuadraticInOut" DurationBack="0.2" DelayBack="0"/>
-
 						<Change trans3.Y="-1.2" Delay="0.1" Duration="0.4" Easing="ExponentialOut" EasingBack="QuadraticInOut" DurationBack="0.2"  DelayBack="0"/>
-
 						<Change icon1.Opacity="1" Delay="0.1" Duration="0.1" Easing="ExponentialInOut" DelayBack="0"/>
 						<Change icon2.Opacity="1" Delay="0.1" Duration="0.1" Easing="ExponentialInOut" DelayBack="0"/>
 						<Change icon3.Opacity="1" Delay="0.1" Duration="0.1" Easing="ExponentialInOut" DelayBack="0"/>
@@ -98,7 +92,7 @@
 							</RemovingAnimation>
 							<StackPanel>
 								<Each Items="{items}">
-										<!-- <CalendarItem MinHeight="70" /> -->
+								<!-- <CalendarItem MinHeight="70" /> -->
 								</Each>
 								</StackPanel>
 							</ScrollView>
@@ -109,6 +103,7 @@
 			</Panel>
 		</MyPage>
 		<ux:Include File="CheckLists/CheckListHome.ux" />
+		<ux:Include File="MoodColour.ux" ux:AutoBind="false" />
 	</PageControl>
 </Panel>
 </MyPage>

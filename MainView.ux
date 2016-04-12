@@ -4,11 +4,8 @@
 		<JavaScript ux:Global="State" File="State.js" />
 		<JavaScript File="MainView.js"/>
 		<ux:Include File="Resources.ux" />
-		 <!-- <ux:Include File="Mood	Colour.ux" /> -->
-		<!-- <ux:Include File="Settings\Settings.ux" />		 -->
 		<UserEvent Name="showSettings" />
 		<UserEvent Name="hideSettings" />
-
 		<OnUserEvent Name="showSettings" Filter="Global">
 			<Set settingsVisible.Value="true" />
 		</OnUserEvent>
@@ -25,11 +22,9 @@
 		<iOS.StatusBarConfig Style="Light" />
 		<Panel>
 		<Settings ux:Name="Settings" />
-		<!-- <MoodColour /> -->
 		<DockPanel>
 			<PageControl Active="{currentPage}" ux:Name="pageControl">
 				<MoodMap ux:Name="MoodMap" />
-
 				<ux:Include File="Home.ux" />
 				<ux:Include File="Calendar.ux" />
 			</PageControl>

@@ -4,16 +4,16 @@
 	<Panel Dock="Top" Height="35" Alignment="Top">
 		<Rectangle Fill="#808080" Layer="Background">
 		<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
-				<Text TextAlignment="Left" Value="Done" Font="Light" />
+				<Text TextAlignment="Left" Value="Close" Font="Light" />
 				<Clicked>
-					 <GoBack />
+					 <NavigateTo Target="Home" />
 				</Clicked>
 			</Panel>
 			<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Calender"/>
 			<Panel Alignment="Right" Margin="0,8,5,0">
-				<Text TextAlignment="Right" Value="Map" Font="Light"  />
+				<Text TextAlignment="Right" Value="Done" Font="Light"  />
 				<Clicked>
-						 <GoBack />
+						  <NavigateTo Target="Home" />
 				</Clicked>
 			</Panel>
 		</Rectangle>

@@ -1,5 +1,6 @@
 var Observable = require("FuseJS/Observable");
 var Storage = require('FuseJS/Storage');
+var State = require("State");
 
 var quotesFile = "quotes.json";
 var quotesEnabledFile = "quotes.txt";

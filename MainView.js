@@ -101,7 +101,8 @@ function takePicture(){
 
 function initializeHomePage() {
     console.log("Initializing home page.");
-    console.log(new Date().getTime());
+    console.log("Is PassCode set :" + State.isPassCodeSet);
+    console.log("Is Quotes set :" + State.isQuoteSet);
     setMyQuote();
     readBackGroundImage();
     bundle.read("appSettings.json").then(function(content) {}, function(error) {

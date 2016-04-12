@@ -6,7 +6,7 @@
 			<HierarchicalNavigation ux:Name="checkListNav" Active="CheckListHome" />
 			<MyPage ux:Name="CheckListHome">
 				<DockPanel>
-					
+
 					<Panel Dock="Top" Height="35">
 						<Navigation ux:Property="NavigationCtx" />
 						<Rectangle Fill="#808080" Layer="Background">
@@ -20,12 +20,12 @@
 							<Panel Alignment="Right" Margin="0,8,5,0">
 								<Text TextAlignment="Right" Value="Done" Font="Light"  />
 								<Clicked>
-									<GoBack />
+									<GoBack TargetNode="homePageNav" />
 								</Clicked>
 							</Panel>
 						</Rectangle>
 					</Panel>
-					
+
 					<Circle ux:Name="myHealthCircle" Height="150" Width="150" Alignment="TopCenter" Fill="#232d33">
 						<Text ux:Name="myHealthTxt" Font="Regular" Alignment="Center" Value="My Health 0/0"  TextColor="#FFFFFF" />
 						<Clicked>
