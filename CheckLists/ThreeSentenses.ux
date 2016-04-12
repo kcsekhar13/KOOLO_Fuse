@@ -1,6 +1,6 @@
 <MyPage ux:Name="ThreeSentenses" ux:AutoBind="false">
 <WhileActive>
-  <Callback Handler="{readThreeSentenses}"
+  <Callback Handler="{readThreeSentenses}"/>
 </WhileActive>
 <DockPanel Background="White">
     <Image File="../Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background" />
