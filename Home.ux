@@ -6,7 +6,6 @@
 		<Move Target="mainContent" Y="-150" Duration="1" />
 	</DeactivatingAnimation>
 	<PageControl ux:Name="homePageNav" Interaction="None" Active="mainHomePage">
-		<JavaScript File="CheckLists/checkList.js" />
 		<ux:Include File="MoodColour.ux" />
 		<MyPage ux:Name="mainHomePage">
 			<Panel ux:Name="self" TransformOrigin="Center" Width="250" Height="250" Alignment="BottomRight" Offset="80,80">
@@ -109,7 +108,7 @@
 			</DockPanel>
 			</Panel>
 		</MyPage>
-		<CheckList ux:Name="CheckList" ux:AutoBind="false" />
+		<ux:Include File="CheckLists/CheckListHome.ux" />
 	</PageControl>
 </Panel>
 </MyPage>

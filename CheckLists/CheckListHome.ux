@@ -1,39 +1,58 @@
-<MyPage ux:Class="CheckList" Title="CheckList" ux:Name="CheckList">
-<DockPanel>
-<MyHeader Text="CheckList" />
-	<Image File="../Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background" />
-	<JavaScript File="checkList.js" />
-	<Panel>
-	<!-- <HierarchicalNavigation ux:Name="checkListNav" Active="CheckListHome" /> -->
-	<MyPage ux:Name="CheckListHome">
-		<DockPanel>
-			<Circle ux:Name="myHealthCircle" Height="150" Width="150" Alignment="TopCenter" Fill="#232d33">
-				<Text ux:Name="myHealthTxt" Font="Regular" Alignment="Center" Value="My Health 0/0"  TextColor="#FFFFFF" />
-				<Clicked>
-					<DebugAction Message="My Health Circle Clicked" />
-					<Callback Handler="{InitMyHealthPage}" />
-					<NavigateTo Target="CheckListSub" />
-				</Clicked>
-			</Circle>
-			<Circle ux:Name="threeSentenceCircle" Height="150" Width="150" Alignment="Center" Fill="#efefef">
-				<Text ux:Name="threeSentenseTxt" Font="Regular" Alignment="Center" Value="Three Sentence" TextColor="#FFFFFF" />
-				<Clicked>
-					<DebugAction Message="Three Sentenses Circle Clicked" />
-					<NavigateTo Target="ThreeSentenses" />
-				</Clicked>
-			</Circle>
-			<Circle ux:Name="transitionCircle" Height="150" Width="150" Alignment="BottomCenter" Fill="#232d33">
-				<Text ux:Name="transitionTxt" Font="Regular" Alignment="Center" Value="Ready for transition 0/0" TextWrapping="Wrap" TextColor="#FFFFFF" />
-				<Clicked>
-					<DebugAction Message="Transition Circle Clicked" />
-					<Callback Handler="{InitTransitionPage}" />
-					<NavigateTo Target="CheckListSub" />
-				</Clicked>
-			</Circle>
-		</DockPanel>
-	</MyPage>
-	<ThreeSentenses ux:Name="ThreeSentenses" ux:AutoBind="false" />
-	<CheckListSub ux:Name="CheckListSub" ux:AutoBind="false" />
-	</Panel>
+<MyPage Title="CheckList" ux:Name="CheckList" ux:AutoBind="false">
+	<DockPanel>
+		<Image File="../Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background" />
+		<JavaScript File="checkList.js" />
+		<Panel>
+			<HierarchicalNavigation ux:Name="checkListNav" Active="CheckListHome" />
+			<MyPage ux:Name="CheckListHome">
+				<DockPanel>
+					
+					<Panel Dock="Top" Height="35">
+						<Navigation ux:Property="NavigationCtx" />
+						<Rectangle Fill="#808080" Layer="Background">
+							<Panel Alignment="Left" Margin="5,8,0,0">
+								<Text TextAlignment="Left" Value="Cancel" Font="Light" />
+								<Clicked>
+									<GoBack TargetNode="homePageNav" />
+								</Clicked>
+							</Panel>
+							<Text Alignment="Center" FontSize="20" TextColor="Black" Font="Bold" Value="Checklist"/>
+							<Panel Alignment="Right" Margin="0,8,5,0">
+								<Text TextAlignment="Right" Value="Done" Font="Light"  />
+								<Clicked>
+									<GoBack />
+								</Clicked>
+							</Panel>
+						</Rectangle>
+					</Panel>
+					
+					<Circle ux:Name="myHealthCircle" Height="150" Width="150" Alignment="TopCenter" Fill="#232d33">
+						<Text ux:Name="myHealthTxt" Font="Regular" Alignment="Center" Value="My Health 0/0"  TextColor="#FFFFFF" />
+						<Clicked>
+							<DebugAction Message="My Health Circle Clicked" />
+							<Callback Handler="{InitMyHealthPage}" />
+							<NavigateTo Target="CheckListSub" />
+						</Clicked>
+					</Circle>
+					<Circle ux:Name="threeSentenceCircle" Height="150" Width="150" Alignment="Center" Fill="#efefef">
+						<Text ux:Name="threeSentenseTxt" Font="Regular" Alignment="Center" Value="Three Sentence" TextColor="#FFFFFF" />
+						<Clicked>
+							<DebugAction Message="Three Sentenses Circle Clicked" />
+							<NavigateTo Target="ThreeSentenses" />
+						</Clicked>
+					</Circle>
+					<Circle ux:Name="transitionCircle" Height="150" Width="150" Alignment="BottomCenter" Fill="#232d33">
+						<Text ux:Name="transitionTxt" Font="Regular" Alignment="Center" Value="Ready for transition 0/0" TextWrapping="Wrap" TextColor="#FFFFFF" />
+						<Clicked>
+							<DebugAction Message="Transition Circle Clicked" />
+							<Callback Handler="{InitTransitionPage}" />
+							<NavigateTo Target="CheckListSub" />
+						</Clicked>
+					</Circle>
+				</DockPanel>
+			</MyPage>
+			<ThreeSentenses ux:Name="ThreeSentenses" ux:AutoBind="false" />
+			<CheckListSub ux:Name="CheckListSub" ux:AutoBind="false" />
+		</Panel>
 	</DockPanel>
 </MyPage>

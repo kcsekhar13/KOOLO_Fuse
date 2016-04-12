@@ -32,6 +32,7 @@ function selectTransition() {
 }
 
 function InitMyHealthPage() {
+    debug_log("my health from JS");
   selectMyHealth();
 }
 

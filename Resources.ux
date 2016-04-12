@@ -39,6 +39,7 @@
 
 	<!-- Custom Header -->
 	 <Panel Dock="Top" Height="35" ux:Class="MyHeader" Fill="#808080" TextColor="#000000">
+	 	<Navigation ux:Property="NavigationCtx" />
 		 	<Rectangle Fill="{Property this.Fill}" Layer="Background">
 			<string ux:Property="Text"/>
 		  <float4 ux:Property="TextColor"/>
