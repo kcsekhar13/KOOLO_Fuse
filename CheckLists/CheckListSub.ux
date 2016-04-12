@@ -1,0 +1,23 @@
+<MyPage ux:Name="CheckListSub" ux:AutoBind="false" Title="{selected}" ux:Class="CheckListSub">
+  <DockPanel>
+  <Panel Dock="Top" Height="35">
+     <Rectangle Fill="#808080" Layer="Background">
+     <Brush ux:Property="Fill" />
+       <Panel Alignment="Left" Margin="5,8,0,0">
+           <Text TextAlignment="Left" Value="Cancel" Font="Light" />
+           <Clicked>
+              <Callback Handler="{print}" />
+              <GoBack />
+           </Clicked>
+         </Panel>
+         <Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="{selected}"/>
+         <Panel Alignment="Right" Margin="0,8,5,0">
+           <Text TextAlignment="Right" Value="{newCheckListText}" Font="Light"  />
+             <Clicked>
+                <GoBack />
+           </Clicked>
+         </Panel>
+     </Rectangle>
+   </Panel>
+  </DockPanel>
+</MyPage>

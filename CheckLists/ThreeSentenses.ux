@@ -1,4 +1,4 @@
-<MyPage ux:Name="ThreeSentenses" ux:AutoBind="false">
+<MyPage ux:Name="ThreeSentenses" ux:AutoBind="false" ux:Class="ThreeSentenses">
 <WhileActive>
   <Callback Handler="{readThreeSentenses}"/>
 </WhileActive>
