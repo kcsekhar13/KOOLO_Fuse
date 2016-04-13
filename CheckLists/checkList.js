@@ -1,7 +1,14 @@
 var Observable = require('FuseJS/Observable');
+var bundle = require('FuseJS/Bundle');
 
 var selected = Observable();
 var newCheckListText = Observable();
+var selectedList = Observable();
+
+var CheckList = {
+    Goals : Observable(),
+    Transitions : Observable()
+};
 
 var threeSentenses = {
   first :Observable(""),
@@ -17,23 +24,37 @@ function readThreeSentenses() {
 
 }
 
-function InitPage() {
-
-}
-
 function selectMyHealth() {
   selected.value = "My Health";
   newCheckListText.value ="New Goal";
+    selectedList.clear();
+    for (var i = 0; i < CheckList.Goals.length; i++){
+      var currentGoal = CheckList.Goals[i];
+      var item = {item:Observable()};
+      for (var j = 0; j < currentGoal.item.length; j++){
+        item.item.add(currentGoal.item[j]);
+      }
+      selectedList.add(item);
+    }
 }
 
 function selectTransition() {
   selected.value = "Ready for transition";
   newCheckListText.value ="Transition";
+  selectedList.clear();
+  for (var i = 0; i < CheckList.Transitions.length; i++){
+    var current = CheckList.Transitions[i];
+    var item = {item:Observable()};
+    for (var j = 0; j < current.item.length; j++){
+      item.item.add(current.item[j]);
+    }
+    selectedList.add(item);
+  }  
 }
 
 function InitMyHealthPage() {
     debug_log("my health from JS");
-  selectMyHealth();
+    selectMyHealth();
 }
 
 function InitTransitionPage() {
@@ -44,10 +65,21 @@ function print(arg) {
   console.log( " Print" +JSON.stingify(arg));
 }
 
-module.exports={
+function Load() {
+  bundle.read("CheckLists/CheckList.json").then(function(content) {
+      CheckList = JSON.parse(content);
+  }, function(error) {
+      console.log(" Error reading CheckList file "+ error);
+  });
+}
+
+Load();
+
+module.exports = {
   save:saveThreeSentenses,
   readThreeSentenses:readThreeSentenses,
   selected:selected,
+  selectedList:selectedList,
   newCheckListText:newCheckListText,
   InitMyHealthPage:InitMyHealthPage,
   InitTransitionPage:InitTransitionPage,

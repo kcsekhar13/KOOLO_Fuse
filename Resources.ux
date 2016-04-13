@@ -94,6 +94,50 @@
 					 <Rectangle Fill="#EDF3F5" Height="50%" Alignment="Bottom" CornerRadius="5"/>
 				 </Panel>
 	 </Panel>
+<!-- Custom CheckList Control -->
+	<Panel ux:Class="CheckListCntrl" ux:Name="CheckListCntrl">
+		<SwipeGesture ux:Name="swipe" Direction="Left" Type="Active"/>
+		<SwipingAnimation Source="swipe">
+			<Move Target="statusPanel" X="-0.3" RelativeTo="Size" Duration="0.5" />
+			<!-- <Change operationPanel.X="0" Duration="0.5"/> -->
+			<Move Target="operationPanel" X="0" RelativeTo="Size" Duration="0.5" />
+			<Change operationPanel.Opacity="1" Duration="0.5" EasingBack="QuadraticInOut" />
+			<Change	operationPanel.Width="35%" Duration="0.5" />
+		</SwipingAnimation>
+		<WhileInactive Threshold="0.2">
+			<SetSwipeActive Target="swipe" Value="false" />
+		</WhileInactive>
+		<string ux:Property="Text" />
+		<Panel ux:Name="statusPanel" Width="80%" Margin="10" >
+				<Panel Width="50" Margin="10,0,0,0" Alignment="Left">
+					<Circle Height="20" Width="20">
+						<Image File="Assets/red.png" />
+						<Clicked>
+							<DebugAction Message="Update CheckList status" />
+						</Clicked>
+					</Circle>
+				</Panel>
+				<Panel ux:Name="titlePanel" Color="#ece8d5" Margin="20,0,50,0" Width="80%" Alignment="Right">
+					<Text Value="{Property CheckListCntrl.Text}" Font="Light" TextColor="Black" TextWrapping="Wrap" Margin="10,15,0,10" />
+				</Panel>
+		</Panel>
+		<Panel ux:Name="operationPanel" Opacity="0" Alignment="Right" Width="35%">
+			<StackPanel Orientation="Horizontal">
+				<Rectangle>
+					<Text Value="Update" Font="Light" TextColor="Black" Alignment="Center"  />
+					<Clicked>
+						<DebugAction Message="Clicked Update CheckList" />
+					</Clicked>
+				</Rectangle>
+				<Rectangle Margin="10,0,10,0" >
+					<Text Value="Delete" Font="Light" TextColor="Black" Alignment="Center" />
+					<Clicked>
+						<DebugAction Message="Clicked Delete CheckList" />
+					</Clicked>
+				</Rectangle>
+			</StackPanel>
+		</Panel>
+	</Panel>
 
 	<Font File="Assets/fonts/Klavika/Klavika-Bold.otf" ux:Global="Bold" />
 	<Font File="Assets/fonts/Klavika/Klavika-Medium.otf" ux:Global="Medium" />
@@ -114,5 +158,6 @@
 	<Icon ux:Class="DropdownIcon" File="Assets/Down-arrow.png" />
 	<Icon ux:Class="CheckmarkIcon" File="Assets/Checkmark.png" />
 	<Icon ux:Class="GalleryIcon" File="Assets/gallery.png" />
+	<Icon ux:Class="NewGoalIcon" Files="Assets/red.png" />
 
 </Panel>

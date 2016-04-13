@@ -1,4 +1,4 @@
-<MyPage ux:Name="CheckListSub" ux:AutoBind="false" Title="{selected}" ux:Class="CheckListSub">
+<MyPage ux:Name="CheckListSub" ux:AutoBind="false" Title="{selected}" ux:Class="CheckListSub" >
   <DockPanel>
   <Panel Dock="Top" Height="35">
      <Rectangle Fill="#808080" Layer="Background">
@@ -19,5 +19,35 @@
          </Panel>
      </Rectangle>
    </Panel>
+    <Grid Rows="auto,1*">
+      <Grid Columns="1">
+        <Panel Alignment="TopLeft" Margin="20" >
+          <Circle Color="#5dd7b4" Height="25" Width="25">
+            <Text Value="i" Font="Light" Alignment="Center" />
+            <Clicked>
+                <DebugAction Message="Show Checklist information screen" />
+            </Clicked>
+          </Circle>
+        </Panel>
+      </Grid>
+    <ScrollView>
+    <StackPanel Width="500">
+     <Each Items="{selectedList}">
+      <StackPanel>
+        <Each Items="{item}">
+           <!-- <Text Value="{Id}" Font="Light" TextColor="Black" Margin="10" TextWrapping="Wrap" />
+          </Rectangle>
+          <Rectangle Width="400">
+           <Text Value="{Title}" Font="Light" TextColor="Black" Margin="10"  TextWrapping="Wrap"/>
+          </Rectangle>
+          <Rectangle Width="400">
+          <Text Value="{Status}" Font="Light" TextColor="Black" Margin="10"  TextWrapping="Wrap"/> -->
+          <CheckListCntrl Text="{Title}" Margin="0,5,5,5" />
+        </Each>
+      </StackPanel>
+     </Each>
+    </StackPanel>
+    </ScrollView>
+   </Grid>
   </DockPanel>
 </MyPage>

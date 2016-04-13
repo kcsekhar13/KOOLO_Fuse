@@ -1,4 +1,7 @@
 <MyPage Title="CheckList" ux:Name="CheckList" ux:AutoBind="false">
+<WhileActive>
+	<Change homePageNav.Interaction = "None" />
+</WhileActive>
 	<DockPanel>
 		<Image File="../Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background" />
 		<JavaScript File="checkList.js" />
@@ -6,7 +9,6 @@
 			<HierarchicalNavigation ux:Name="checkListNav" Active="CheckListHome" />
 			<MyPage ux:Name="CheckListHome">
 				<DockPanel>
-
 					<Panel Dock="Top" Height="35">
 						<Navigation ux:Property="NavigationCtx" />
 						<Rectangle Fill="#808080" Layer="Background">
@@ -25,7 +27,6 @@
 							</Panel>
 						</Rectangle>
 					</Panel>
-
 					<Circle ux:Name="myHealthCircle" Height="150" Width="150" Alignment="TopCenter" Fill="#232d33">
 						<Text ux:Name="myHealthTxt" Font="Regular" Alignment="Center" Value="My Health 0/0"  TextColor="#FFFFFF" />
 						<Clicked>

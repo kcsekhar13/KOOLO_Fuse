@@ -4,6 +4,7 @@
 		<Move Target="settingsBtn" Y="150" Duration="1" />
 		<Move Target="self" Y="150" Duration="1" />
 		<Move Target="mainContent" Y="-150" Duration="1" />
+		<Change expanded.Value="false" />
 	</DeactivatingAnimation>
 	<PageControl ux:Name="homePageNav" Interaction="None" Active="mainHomePage">
 		<MyPage ux:Name="mainHomePage">

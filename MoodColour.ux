@@ -16,10 +16,10 @@
 													],
     };
 </JavaScript>
-<DockPanel Alignment="TopLeft" Margin="5,20">
-	<DateCircle Margin="5">
+<DockPanel Alignment="TopLeft" Margin="15">
+	<DateCircle >
 		<Clicked>
-			<GoBack />
+			<NavigateTo Target="mainHomePage" />
 		</Clicked>
 	</DateCircle>
 	<StackPanel Orientation="Horizontal" Alignment="TopRight" Margin="60,5,0,0">

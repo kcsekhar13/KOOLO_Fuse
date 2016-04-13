@@ -105,7 +105,9 @@ function initializeHomePage() {
     console.log("Is Quotes set :" + State.isQuoteSet);
     setMyQuote();
     readBackGroundImage();
-    bundle.read("appSettings.json").then(function(content) {}, function(error) {
+    bundle.read("appSettings.json").then(function(content) {
+        console.log(content);
+    }, function(error) {
         console.log(error);
     });
 }

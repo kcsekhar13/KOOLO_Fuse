@@ -28,7 +28,7 @@ function createFile(fileName, contents) {
   });
 };
 
-function delete(arg) {
+function deleteFile(arg) {
   //read arguments and delete appropriate file
   // storage.deleteSync("filename.txt");
 };

@@ -46,6 +46,7 @@
         "Assets/*.png:Bundle",
         "Assets/*.jpg:Bundle",
         "appSettings.json:Bundle",
+        "CheckLists/CheckList.json:Bundle",
         "*.uno",
         "*.ux",
         "TakePictureTask.h:ObjCHeader:iOS",
