@@ -1,50 +1,56 @@
 <MyPage ux:Name="ThreeSentenses" ux:AutoBind="false" ux:Class="ThreeSentenses">
-<WhileActive>
-  <Callback Handler="{readThreeSentenses}"/>
-</WhileActive>
-<DockPanel>
-    <Panel Dock="Top" Height="35">
-      <Rectangle Fill="#808080" Layer="Background">
-		    <Panel Alignment="Left" Margin="5,8,0,0">
-	        <Text TextAlignment="Left" Value="Cancel" Font="Light" />
-	        <Clicked>
-             <GoBack />
-	        </Clicked>
-	      </Panel>
-      	<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Three Sentenses"/>
-      	<Panel Alignment="Right" Margin="0,8,5,0">
-      	<Text TextAlignment="Right" Value="Done" Font="Light"  />
-      	  <Clicked>
-           <Callback Handler="{save}" />
-      	   <GoBack />
-      		</Clicked>
-      	</Panel>
-  	</Rectangle>
-   </Panel>
-   <Grid Rows="auto" Margin="10">
-   <Grid Columns="1*" Dock="Top">
-    </Grid>
-    <StackPanel>
-      <Text Value="1. My age, diagnosis and brief medical history" Font="Light" Alignment="TopLeft" TextWrapping="Wrap"/>
-      <Rectangle CornerRadius="1" >
-        <Stroke Width="1" Color="#000000"/>
-        <TextEdit Value="{first}" Height="100" Width="400" IsMultiline="true" Font="Light"/>
-      </Rectangle>
-    </StackPanel>
-   <StackPanel>
-      <Text Value="2. My treatment plan" Font="Light" Alignment="TopLeft"  TextWrapping="Wrap"/>
-      <Rectangle CornerRadius="1" >
-        <Stroke Width="1" Color="#000000"/>
-        <TextEdit Value="{second}" Height="100" Width="400" IsMultiline="true" Font="Light" />
-      </Rectangle>
-   </StackPanel>
-   <StackPanel>
-      <Text Value="3. My question/concern to talk about during the visit" Font="Light" Alignment="TopLeft" TextWrapping="Wrap"/>
-      <Rectangle CornerRadius="1" >
-        <Stroke Width="1" Color="#000000"/>
-        <TextEdit Value="{third}" Height="100" Width="400" IsMultiline="true" Font="Light"/>
-      </Rectangle>
-   </StackPanel>
-   </Grid>
-</DockPanel>
+    <WhileActive>
+        <Callback Handler="{readThreeSentenses}"/>
+    </WhileActive>
+    <DockPanel>
+        <Panel Dock="Top" Height="35">
+            <Rectangle Fill="#808080" Layer="Background">
+                <Panel Alignment="Left" Margin="5,8,0,0">
+                    <Text TextAlignment="Left" Value="Cancel" Font="Light" />
+                    <Clicked>
+                        <GoBack />
+                    </Clicked>
+                </Panel>
+                <Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Three Sentenses"/>
+                <Panel Alignment="Right" Margin="0,8,5,0">
+                    <Text TextAlignment="Right" Value="Done" Font="Light"  />
+                    <Clicked>
+                        <Callback Handler="{save}" />
+                        <GoBack />
+                    </Clicked>
+                </Panel>
+            </Rectangle>
+        </Panel>
+        <Grid Rows="auto" Margin="10">
+            <Grid Columns="1*" Dock="Top">
+            </Grid>
+            <StackPanel>
+                <Text Value="1. My age, diagnosis and brief medical history" Font="Light" Alignment="TopLeft" TextWrapping="Wrap"/>
+                <Panel Padding="20">
+                    <Rectangle CornerRadius="1" Layer="Background">
+                        <Stroke Width="1" Color="#000000"/>
+                    </Rectangle>
+                    <TextEdit Value="{second}" Height="100" Width="100%" IsMultiline="true" Font="Light" />
+                </Panel>
+            </StackPanel>
+            <StackPanel>
+                <Text Value="2. My treatment plan" Font="Light" Alignment="TopLeft"  TextWrapping="Wrap"/>
+                <Panel Padding="20">
+                    <Rectangle CornerRadius="1" Layer="Background">
+                        <Stroke Width="1" Color="#000000"/>
+                    </Rectangle>
+                    <TextEdit Value="{second}" Height="100" Width="100%" IsMultiline="true" Font="Light" />
+                </Panel>
+            </StackPanel>
+            <StackPanel>
+                <Text Value="3. My question/concern to talk about during the visit" Font="Light" Alignment="TopLeft" TextWrapping="Wrap"/>
+                <Panel Padding="20">
+                    <Rectangle CornerRadius="1" Layer="Background">
+                        <Stroke Width="1" Color="#000000"/>
+                    </Rectangle>
+                    <TextEdit Value="{second}" Height="100" Width="100%" IsMultiline="true" Font="Light" />
+                </Panel>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
 </MyPage>
