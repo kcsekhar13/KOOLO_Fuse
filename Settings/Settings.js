@@ -84,7 +84,7 @@ passCodeSwitch.addSubscriber(function(x) {
 });
 
 quotesEnabledSwitch.addSubscriber(function(x){
-    UserSettings.setString('isQuoteSet', (x.value == true ? "true" :"false"));        
+    UserSettings.setString('isQuoteSet', (x.value == true ? "true" :"false"));
 });
 
 passCodeTxt.addSubscriber(function(x) {
@@ -136,7 +136,7 @@ function setBackGroundImage() {
 
 function InitializePage() {
     passCodeSwitch.value = UserSettings.getString('isPassCodeSet', '');
-    quotesEnabled.value = UserSettings.getString('isQuoteSet', '');
+    quotesEnabledSwitch.value = UserSettings.getString('isQuoteSet', '');
     console.log("Initializing Settings");
 };
 
