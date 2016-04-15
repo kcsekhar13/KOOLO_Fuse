@@ -1,43 +1,13 @@
 var Observable = require("FuseJS/Observable");
 var Storage = require('FuseJS/Storage');
 var State = require("State");
+var UserSettings = require('UserSettings');
 
 var quotesFile = "quotes.json";
-var quotesEnabledFile = "quotes.txt";
+// var quotesEnabledFile = "quotes.txt";
 var defaultQuoteFile = "myquote.txt";
-var quotesEnabled  = Observable();
 var selectedQuote = Observable();
 var newQuote = Observable("1");
-
-function setValues(values, observables) {
-    for (var property in values) {
-        observables[property].value = values[property];
-    }
-}
-
-function readQuotesEnabledFlag() {
-  Storage.read(quotesEnabledFile).then(function(content) {
-      console.log("Reading quotes enabled flag " + content);
-      quotesEnabled.value = content == "true"? true: false;
-    }, function(error) {
-      console.log("failed to read quotes enabled file");
-      quotesEnabled.value = false;
-    });
-}
-
-function setQuotesEnabledFlag(arg) {
-  console.log("Writing quotes enabled switch : " + arg.toString());
-  Storage.write(quotesEnabledFile, arg.toString()).then(function(success) {
-      console.log("Save QuotesEnabledFlag " + (success ? "success" : "failure"));
-  });
-}
-
-quotesEnabled.addSubscriber(function(x){
-      if(x.value != undefined){
-      console.log("quotes switched changed to : " + x.value);
-      setQuotesEnabledFlag(x.value);
-    }
-});
 
 var defaultQuotes = Observable(
   {quote:"In the midst of winter, i found there was within me , an invincible summer", code:"0" ,IsSelected:Observable(false)},
@@ -72,20 +42,20 @@ function save(){
 }
 
 function writeDefaultQuote(myQuote) {
-  Storage.write(defaultQuoteFile, myQuote).then(function(success) {
-      console.log("Save " + (success ? "success in writing my Quote" : "failure"));
-  });
+  // Storage.write(defaultQuoteFile, myQuote).then(function(success) {
+  //     console.log("Save " + (success ? "success in writing my Quote" : "failure"));
+  // });
+    UserSettings.setString('defaultQuote', myQuote);
 }
 
 function changeDefaultQuote(arg){
   selectedQuote.value = arg.data.code;
   console.log("Selected Quote :" + arg.data.quote);
   writeDefaultQuote(arg.data.quote);
-  Init();
+  InitializePage();
 }
 
-function Init(){
-  readQuotesEnabledFlag();
+function InitializePage(){
   Storage.read("quotes.json").then(function(content) {
         console.log("Loading success");
         defaultQuotes = JSON.parse(content);
@@ -102,11 +72,9 @@ function Init(){
     });
   newQuote.value = "";
 };
-Init();
 
 module.exports =  {
-    Init :Init,
-    quotesEnabled:quotesEnabled,
+    InitializePage :InitializePage,
     defaultQuotes:defaultQuotes,
     newQuote:newQuote,
     addNewQuote : addNewQuote,

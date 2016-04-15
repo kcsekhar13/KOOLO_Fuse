@@ -1,5 +1,7 @@
 <App Theme="Basic">
 	<Gallery ux:Global="Gallery"/>
+  <UserSettings ux:Global="UserSettings" />
+
 	<DockPanel>
 		<JavaScript ux:Global="State" File="State.js" />
 		<JavaScript File="MainView.js"/>

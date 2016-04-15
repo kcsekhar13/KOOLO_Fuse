@@ -1,25 +1,22 @@
 var Observable = require("FuseJS/Observable");
 var Storage = require("FuseJS/Storage");
 
-var isPassCodeSet = Observable();
-var isQuoteSet = Observable();
-
 function InitPage() {
-  Storage.read("quotes.txt").then(function(content) {
-      console.log("Reading quotes enabled flag success " + content);
-      isQuoteSet.value = true;
-    }, function(error) {
-      console.log("failed to read quotes enabled file");
-      isQuoteSet.value = true;
-    });
-
-    Storage.read("passcode.txt").then(function(content) {
-        console.log("Reading passcode enabled flag success " + content);
-        isPassCodeSet.value = true;
-    }, function(error) {
-        console.log("failed to read passcode enabled file");
-        isPassCodeSet.value = false;
-    });
+  // Storage.read("quotes.txt").then(function(content) {
+  //     console.log("Reading quotes enabled flag success " + content);
+  //     isQuoteSet.value = true;
+  //   }, function(error) {
+  //     console.log("failed to read quotes enabled file");
+  //     isQuoteSet.value = true;
+  //   });
+  //
+  //   Storage.read("passcode.txt").then(function(content) {
+  //       console.log("Reading passcode enabled flag success " + content);
+  //       isPassCodeSet.value = true;
+  //   }, function(error) {
+  //       console.log("failed to read passcode enabled file");
+  //       isPassCodeSet.value = false;
+  //   });
 }
 
 function createFile(fileName, contents) {
@@ -36,8 +33,6 @@ function deleteFile(arg) {
 InitPage();
 
 module.exports = {
-  isPassCodeSet:isPassCodeSet,
-  isQuoteSet:isQuoteSet,
   createFile:createFile,
   deleteFile:deleteFile,
 };

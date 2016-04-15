@@ -1,5 +1,6 @@
 var Observable = require('FuseJS/Observable');
 var bundle = require('FuseJS/Bundle');
+var UserSettings = require('UserSettings');
 
 var selected = Observable();
 var newCheckListText = Observable();
@@ -17,11 +18,15 @@ var threeSentenses = {
 };
 
 function saveThreeSentenses() {
-
+  UserSettings.setString('fistSentense', threeSentenses.first.value );
+  UserSettings.setString('secondSentense', threeSentenses.second.value);
+  UserSettings.setString('thirdSentense', threeSentenses.third.value);
 }
 
 function readThreeSentenses() {
-
+    threeSentenses.first.value = UserSettings.getString('fistSentense', '');
+    threeSentenses.second.value =  UserSettings.getString('secondSentense','');
+    threeSentenses.third.value =  UserSettings.getString('thirdSentense', '');
 }
 
 function selectMyHealth() {
@@ -49,7 +54,7 @@ function selectTransition() {
       item.item.add(current.item[j]);
     }
     selectedList.add(item);
-  }  
+  }
 }
 
 function InitMyHealthPage() {

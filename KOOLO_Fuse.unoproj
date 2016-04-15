@@ -37,7 +37,8 @@
         "Uno.Geometry",
         "Experimental.iOS",
         "Uno.Threading",
-        "Fuse.Camera"
+        "Fuse.Camera",
+        "Android"
         ],
       "Icon": "Icon.png",
       "Includes": [

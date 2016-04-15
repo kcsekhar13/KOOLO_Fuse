@@ -1,6 +1,7 @@
 var Observable = require("FuseJS/Observable");
 var UserEvents = require("FuseJS/UserEvents");
 var Storage = require("FuseJS/Storage")
+var UserSettings = require('UserSettings');
 
 var gallery = require('Gallery');
 		// var settings = ["Background Image","Passcode","Quotes","Humour Color","License","Tutorial","Contributors","About"];
@@ -22,9 +23,6 @@ var secretAnswer = Observable("AaHooo!");
 var selected = Observable();
 
 var selectedOption = Observable("1");
-
-var passCodeSwitch = Observable(true);
-
 var passCodeTxt = Observable("");
 var Observable = require("FuseJS/Observable");
 var UserEvents = require("FuseJS/UserEvents");
@@ -50,17 +48,12 @@ var settings = [{
 }];
 
 var currentPageTitle = Observable();
-
 var secretAnswer = Observable("AaHooo!");
-
 var selected = Observable();
-
 var selectedOption = Observable("1");
-
-var passCodeSwitch = Observable(true);
-
+var passCodeSwitch = Observable();
+var quotesEnabledSwitch  = Observable();
 var passCodeTxt = Observable("");
-
 var txt1Visibility = Observable("Hidden");
 var txt2Visibility = Observable("Hidden");
 var txt3Visibility = Observable("Hidden");
@@ -87,7 +80,11 @@ var dropdownOptions = Observable({
 });
 
 passCodeSwitch.addSubscriber(function(x) {
-    console.log("passcodeSwitchChanged");
+    UserSettings.setString('isPassCodeSet', (x.value == true ? "true" :"false"));
+});
+
+quotesEnabledSwitch.addSubscriber(function(x){
+    UserSettings.setString('isQuoteSet', (x.value == true ? "true" :"false"));        
 });
 
 passCodeTxt.addSubscriber(function(x) {
@@ -138,6 +135,8 @@ function setBackGroundImage() {
 }
 
 function InitializePage() {
+    passCodeSwitch.value = UserSettings.getString('isPassCodeSet', '');
+    quotesEnabled.value = UserSettings.getString('isQuoteSet', '');
     console.log("Initializing Settings");
 };
 
@@ -152,6 +151,7 @@ module.exports = {
     selectedOption: selectedOption,
     secretAnswer: secretAnswer,
     passCodeSwitch: passCodeSwitch,
+    quotesEnabledSwitch:quotesEnabledSwitch,
     passCodeTxt: passCodeTxt,
     clearPassCodeText,
     clearPassCodeText,

@@ -79,7 +79,7 @@
 						<NavigateTo Target="MoodColour" />
 					</Clicked>
 				</DateCircle>
-				<Text ux:Name="quote" Value="{myQuote}" Font="Light" FontSize="14" Dock="Fill" TextWrapping="Wrap" Alignment="TopCenter" Margin="0,10,0,0"/>
+				<Text ux:Name="quote" Value="{myQuote}" Font="Light" FontSize="14" Dock="Fill" TextWrapping="Wrap" Alignment="TopCenter" Margin="10,10,0,0"/>
 			<Grid Rows="1.3*,2*,6*">
 				<Grid Columns="1*,1*" Dock="Top" Padding="20">
 					<Panel Width="60" Height="60" Alignment="Right">

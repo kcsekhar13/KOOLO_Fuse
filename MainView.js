@@ -4,18 +4,16 @@ var bundle = require('FuseJS/Bundle');
 var gallery = require('Gallery');
 var camera = require('FuseJS/Camera');
 var State = require("State");
+var UserSettings = require('UserSettings');
 
 var defaultQuoteFile = "myquote.txt";
-
 var currentPage = Observable("Home");
-
 var navigateToPage = Observable();
-
 var isSettingsVisible = Observable("Hidden");
-
 var myQuote = Observable();
-
 var myBackGroundImage = Observable();
+var isPassCodeSet = Observable();
+var isQuoteSet = Observable();
 
 var homourColors = [
                       { color: [ { code: "#23f38e" }, { title: "Lykkelig" } ] },
@@ -49,12 +47,13 @@ var dateColor = {
 };
 
 function setMyQuote() {
-    Storage.read(defaultQuoteFile).then(function(content) {
-        myQuote.value = content;
-        console.log("Success in reading my quote value");
-    }, function(error) {
-        console.log("failed to read quotes enabled file");
-    });
+    // Storage.read(defaultQuoteFile).then(function(content) {
+    //     myQuote.value = (isQuoteSet.value == "true" ? content : '');
+    //     console.log("Success in reading my quote value");
+    // }, function(error) {
+    //     console.log("failed to read quotes enabled file");
+    // });
+    myQuote.value  = isQuoteSet.value == "true" ? UserSettings.getString('defaultQuote','H.O.P.E - Hold On Pains Ends') : '';
 }
 
 function updateDateColor(context) {
@@ -101,15 +100,17 @@ function takePicture(){
 
 function initializeHomePage() {
     console.log("Initializing home page.");
-    console.log("Is PassCode set :" + State.isPassCodeSet);
-    console.log("Is Quotes set :" + State.isQuoteSet);
+    isPassCodeSet.value = UserSettings.getString('isPassCodeSet','');
+    isQuoteSet.value = UserSettings.getString('isQuoteSet','');
+    console.log("isPassCodeSet : " + isPassCodeSet.value);
+    console.log("isQuoteSet : " + isQuoteSet.value );
     setMyQuote();
     readBackGroundImage();
-    bundle.read("appSettings.json").then(function(content) {
-        console.log(content);
-    }, function(error) {
-        console.log(error);
-    });
+    // bundle.read("appSettings.json").then(function(content) {
+    //     console.log(content);
+    // }, function(error) {
+    //     console.log(error);
+    // });
 }
 
 initializeHomePage();

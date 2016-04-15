@@ -1,4 +1,5 @@
 <MyPage ux:Class="Settings" Title="Settings" ux:Name="Settings" >
+  <UserSettings ux:Global="UserSettings" />
   <UserEvent Name="DoneSettingPassCode" />
   <WhileActive>
     <Callback Handler="{InitializePage}" />

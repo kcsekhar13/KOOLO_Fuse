@@ -3,12 +3,12 @@
 	<DockPanel Background="White">
     <MyHeader Text="Quotes" />
 		<WhileActive >
-			<Callback Handler="{Init}" />
+			<Callback Handler="{InitializePage}" />
 		</WhileActive>
 		<Grid Rows="auto,1*,auto" Margin="10,0,0,10">
 			<Panel DataContext="{UpdateQuotes}" >
+				<Switch Value="{quotesEnabledSwitch}" Alignment="CenterRight" Dock="Right" />
 				<Text Value="Enable quotes in home screen" Font="Bold" Alignment="CenterLeft" TextColor="#bdc7ca" />
-				<Switch Value="{quotesEnabled}" Alignment="CenterRight" />
 			</Panel>
 			<ScrollView>
 			<StackPanel>
