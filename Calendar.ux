@@ -20,12 +20,24 @@
 		</Rectangle>
 	</Panel>
 	<Panel ux:Name="calenderPaNel">
+		<SwipeGesture ux:Name="swipeRight" Direction="Right" />
+		<SwipingAnimation Source="swipeRight">
+			<Move Target="calenderGrid" X="-0.3" RelativeTo="Size" Duration="0.5" />
+			<Callback Handler="{showPreviousMonth}" />
+			<Move Target="calenderGrid" X="0.3" RelativeTo="Size" Duration="0" />
+		</SwipingAnimation>
+		<SwipeGesture ux:Name="swipeLeft" Direction="Left"/>
+		<SwipingAnimation Source="swipeLeft">
+			<Move Target="calenderGrid" X="-0.3" RelativeTo="Size" Duration="0.5" />
+			<Callback Handler="{showNextMonth}" />
+			<Move Target="calenderGrid" X="0.3" RelativeTo="Size" Duration="0" />
+		</SwipingAnimation>
 		<Panel Height="50" Alignment="Top">
 			<Image File="Assets/sunrise.jpg" Alignment="Top" StretchMode="UniformToFill" Layer="Background"  />
 			<Text Value="{currentDate}" Font="Bold" Alignment="BottomLeft" FontSize="20" Margin="20,0,0,0" />
 		</Panel>
 		<Panel Margin="10,55,0,0" Alignment="Top">
-		<Text ux:Class="CalendarText" FontSize="12" Alignment="Center" />
+		<Text ux:Class="CalendarText" FontSize="12" Font="Medium" Alignment="Center" TextColor="#bafbaf" />
 		<Grid Rows="1"  ColumnCount="7">
 		<Each Items="{days}">
 				<Rectangle Margin="5" Height="50" Width="50">
@@ -33,9 +45,9 @@
 				</Rectangle>
 		</Each>
 		</Grid>
-			<Grid RowCount="6" ColumnCount="7" Margin="0,10,0,0" >
+			<Grid RowCount="6" ColumnCount="7" Margin="0,10,0,0" ux:Name="calenderGrid" >
 				<Each Items="{validDays}">
-						<Circle Margin="5" Height="30" Width="30" ux:Name="dateCircle" >
+						<Circle Margin="10" Height="35" Width="35" ux:Name="dateCircle" Fill="#021c26" >
 							<Stroke Width="2" />
 							<CalendarText Value="{date}" Font="Light" />
 							<Clicked>
@@ -45,7 +57,7 @@
 							<WhileTrue Value="{isCurrentDay}" >
 								<Change dateCircle.Fill="#850b18" />
 							</WhileTrue>
-							<!-- <WhileTrue Value="{isSelected}" >									
+							<!-- <WhileTrue Value="{isSelected}" >
 									<Change dateCircle.Fill="#abfabf" />
 							</WhileTrue> -->
 							<WhilePressed>
