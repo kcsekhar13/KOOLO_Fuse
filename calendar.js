@@ -48,7 +48,7 @@ function initCalendar(date) {
   var d = new Date(date);
   todayDate.value = d.getDate();
   currentDate.value = d.toDateString();
-  currentMonth.value = d.getMonth()+1;
+  currentMonth.value = d.getMonth();
   currentYear.value = d.getFullYear();
   currentDayInWeek.value= d.getDay();
   totalDaysInMonth.value = daysInMonth(currentMonth.value,currentYear.value);
@@ -86,6 +86,10 @@ function showNextMonth() {
 
 function showPreviousMonth() {
   console.log("Displaying Previous month ");
+
+  console.log("Current Year  " +   currentYear.value + " Curent Month :" + currentMonth.value);
+  currentMonth.value--;
+  console.log("Month changes to :" + currentMonth.value);
   if(currentMonth.value == 11){
     currentYear.value--;
     currentMonth.value = 11
@@ -104,5 +108,6 @@ module.exports = {
   validDays:validDays,
   onDateSelected:onDateSelected,
   selectedDate:selectedDate,
-  showNextMonth:showNextMonth
+  showNextMonth:showNextMonth,
+  showPreviousMonth:showPreviousMonth
 };
