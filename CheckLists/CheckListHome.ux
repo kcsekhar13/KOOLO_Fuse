@@ -32,7 +32,8 @@
 						</Rectangle>
 					</Panel>
 					<Circle ux:Name="myHealthCircle" Height="150" Width="150" Alignment="TopCenter" Fill="#232d33">
-						<Text ux:Name="myHealthTxt" Font="Regular" Alignment="Center" Value="My Health 0/0"  TextColor="#FFFFFF" />
+						<Text ux:Name="myHealthTxt" Font="Regular" Alignment="Center" Value="My Health"  TextColor="#FFFFFF" />
+						<Text ux:Name="myHealthTxtCount" Font="Regular" Alignment="Center" Value=" 0/0"  TextColor="#FFFFFF" Margin="0,50,0,0"/>
 						<Clicked>
 							<DebugAction Message="My Health Circle Clicked" />
 							<Callback Handler="{InitMyHealthPage}" />
@@ -40,14 +41,15 @@
 						</Clicked>
 					</Circle>
 					<Circle ux:Name="threeSentenceCircle" Height="150" Width="150" Alignment="Center" Fill="#efefef">
-						<Text ux:Name="threeSentenseTxt" Font="Regular" Alignment="Center" Value="Three Sentence" TextColor="#FFFFFF" />
+						<Text ux:Name="threeSentenseTxt" Font="Regular" Alignment="Center" Value="Three Sentence" TextColor="#000000" />
 						<Clicked>
 							<DebugAction Message="Three Sentenses Circle Clicked" />
 							<NavigateTo Target="ThreeSentenses" />
 						</Clicked>
 					</Circle>
 					<Circle ux:Name="transitionCircle" Height="150" Width="150" Alignment="BottomCenter" Fill="#232d33">
-						<Text ux:Name="transitionTxt" Font="Regular" Alignment="Center" Value="Ready for transition 0/0" TextWrapping="Wrap" TextColor="#FFFFFF" />
+						<Text ux:Name="transitionTxt" Font="Regular" Alignment="Center" Value="Ready for transition" TextWrapping="Wrap" TextColor="#FFFFFF" />
+						<Text ux:Name="transitionTxtCount" Font="Regular" Alignment="Center" Value=" 0/0" TextWrapping="Wrap" TextColor="#FFFFFF" Margin="0,50,0,0" />
 						<Clicked>
 							<DebugAction Message="Transition Circle Clicked" />
 							<Callback Handler="{InitTransitionPage}" />

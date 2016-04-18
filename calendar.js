@@ -46,7 +46,7 @@ function initPage() {
 
 function initCalendar(date) {
   validDays.clear();
-  console.log("validDays count " +validDays.length );  
+  console.log("validDays count " +validDays.length );
   // console.log( "Updating calender to new date" +JSON.stringify(date, undefined, '    '));
   var d = new Date(date);
   todayDate.value = d.getDate();
@@ -77,6 +77,7 @@ function daysInMonth(month,year) {
 }
 
 function showNextMonth() {
+    selectedDate.value = 0;
     console.log("Displaying next month " + currentMonth.value);
     if(currentMonth.value == 11){
       currentYear.value = currentYear.value+1;
@@ -89,6 +90,7 @@ function showNextMonth() {
 }
 
 function showPreviousMonth() {
+  selectedDate.value = 0;
   console.log("Displaying Previous month ");
   console.log("Current Year  " +   currentYear.value + " Curent Month :" + currentMonth.value);
   if(currentMonth.value == 11){

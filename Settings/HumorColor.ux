@@ -1,24 +1,63 @@
 <MyPage ux:Class="HumorColor" ux:Name="HumorColor">
 <JavaScript>
 var Observable = require("FuseJS/Observable");
+var Storage = require("FuseJS/Storage");
 
 var homourColors = [
-                      { code: "#23f38e", title: "Lykkelig" },
-                      { code: "#ffde47", title: "Glad" },
-                      { code: "#233fc7", title: "Rolig" },
-                      { code: "#e62de7", title: "Fremgang" },
-                      { code: "#f42121", title: "Sing" },
-                      { code: "#000000", title: "Legg til humer" },
-                      { code: "#9fb6cd", title: "Legg til humer" },
-                      { code: "#ff4500", title: "Rolig" },
-                      { code: "#a52a2a", title: "Sing" }
+                      { code: "#23f38e", title: Observable("Lykkelig") },
+                      { code: "#ffde47", title: Observable("Glad") },
+                      { code: "#233fc7", title: Observable("Rolig") },
+                      { code: "#e62de7", title: Observable("Fremgang") },
+                      { code: "#f42121", title: Observable("Sing") },
+                      { code: "#000000", title: Observable("Legg til humer") },
+                      { code: "#9fb6cd", title: Observable("Legg til humer") },
+                      { code: "#ff4500", title: Observable("Rolig") },
+                      { code: "#a52a2a", title: Observable("Sing") }
                   ];
+
+function initPage(){
+    Storage.read("humorColor.txt").then(function(content) {
+        console.log("Success in reading humorColor file" + content);
+        homourColors = JSON.parse(content);
+    }, function(error) {
+        console.log("failed to humorColor");
+    });
+};
+
+initPage();
+
  module.exports = {
-     homourColors: homourColors
+     homourColors: homourColors,
+     saveHumorColors:function(arg) {
+       console.log("save Humour colors " + JSON.stringify(arg.data, undefined, '    '));
+       Storage.write("humorColor.txt", JSON.stringify(arg.data, undefined, '    ')).then(function(success) {
+            console.log("Save HumorColor " + fileName +  (success ? " success" : "failure"));
+       },function (error) {
+          console.log("Error in writing moods to file");
+          console.log(error);
+       });
+     }
  };
 </JavaScript>
 <DockPanel Background="White">
-	<MyHeader Text="Humor Color" />
+  <Panel Dock="Top" Height="35" >
+  <Rectangle Fill="#808080" Layer="Background">
+      <Panel Alignment="Left" Margin="5,8,0,0">
+         <Text TextAlignment="Left" Value="Cancel" Font="Light" />
+         <Clicked>
+              <GoBack />
+         </Clicked>
+       </Panel>
+       <Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Humor Colors"/>
+       <Panel Alignment="Right" Margin="0,8,5,0">
+         <Text TextAlignment="Right" Value="Done" Font="Light"  />
+           <Clicked>
+              <Callback Handler="{saveHumorColors}" />
+              <GoBack />
+         </Clicked>
+       </Panel>
+  </Rectangle>
+ </Panel>
   <ScrollView>
     <StackPanel>
         <Each Items="{homourColors}">

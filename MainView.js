@@ -29,6 +29,7 @@ var homourColors = [
                       { color: [ { code: "#a52a2a" }, { title: "Sing" } ] }
                   ];
 var myMoods = [];
+var observableMoods = Observable();
 
 function mood(id,imagePath,color,date) {
   var self = this;
@@ -95,18 +96,29 @@ function gotoLibrary() {
         var moodImagePath = "/data/data/com.KOOLO_Fuse/files/"+ ticks;
         var length = myMoods.length+1;
         myMoods.push(new mood(length,moodImagePath,"Red",new Date().toDateString()));
-        console.log(JSON.stringify(myMoods, undefined, '    '));
+        updateMyMoods();
     },function (eror) {
       console.log("failed to read Mood Map Image form Library");
     });
-    console.log("Writing myMoods to File");
-    State.createFile(moodMapFile,JSON.stringify(myMoods, undefined, '    '));
+}
+
+function updateMyMoods() {
+  observableMoods.value = myMoods;
+  Storage.write(moodMapFile, JSON.stringify(myMoods, undefined, '    ')).then(function(success) {
+       console.log("Save " + fileName +  (success ? " success" : "failure"));
+       getMoodLineImages();
+  },function (error) {
+     console.log("Error in writing moods to file");
+     console.log(error);
+  });
 }
 
 function getMoodLineImages() {
     Storage.read(moodMapFile).then(function(content) {
         console.log("Success in reading moodMapFile" + content);
         myMoods = JSON.parse(content);
+        observableMoods.value = myMoods;
+        console.log(JSON.stringify(observableMoods));
     }, function(error) {
         console.log("failed to read moodMapFile");
     });
@@ -119,7 +131,7 @@ function takePicture(){
     console.log("Received image from Camera :" + JSON.stringify(file, undefined, '    '));
       var length = myMoods.length+1;
     myMoods.push(new mood(length,file,"Red", new Date().toDateString()))
-    console.log(JSON.stringify(myMoods, undefined, '    '));
+    updateMyMoods();
   }).catch(function(e) {
       console.log(e);
   });
@@ -133,8 +145,9 @@ function initializeHomePage() {
     console.log("isQuoteSet : " + isQuoteSet.value );
     setMyQuote();
     readBackGroundImage();
-    //myMoods.push(new mood("1","/data/data/com.KOOLO_Fuse/files/1460972164047.jpg","Red",new Date().toDateString()));
-    //State.createFile(moodMapFile,JSON.stringify(myMoods, undefined, '    '));
+    // myMoods.push(new mood("1","Assets/bg.jpg","Red",new Date().toDateString()));
+    // myMoods.push(new mood("2","Assets/bg.jpg","White",new Date().toDateString()));
+    // State.createFile(moodMapFile,JSON.stringify(myMoods, undefined, '    '));
     getMoodLineImages();
     // bundle.read("appSettings.json").then(function(content) {
     //     console.log(content);
@@ -142,9 +155,7 @@ function initializeHomePage() {
     //     console.log(error);
     // });
 }
-
- initializeHomePage();
-
+initializeHomePage();
 module.exports = {
     initializeHomePage: initializeHomePage,
     myBackGroundImage:myBackGroundImage,
@@ -159,5 +170,6 @@ module.exports = {
     homourColors: homourColors,
     gotoLibrary:gotoLibrary,
     takePicture:takePicture,
-    myMoods:myMoods
+    myMoods:myMoods,
+    observableMoods:observableMoods
   };

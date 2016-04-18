@@ -8,7 +8,7 @@
         "KeepAlive": false,
         "ShowStatusbar": true,
         "RunsInBackground": false,
-        "Orientations": "Auto"
+        "Orientations": "Portrait"
         },
         "Packages": [
         "Fuse.Animations",

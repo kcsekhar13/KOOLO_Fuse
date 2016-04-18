@@ -1,4 +1,7 @@
 <Page ux:Class="MoodMap">
+<WhileActive>
+	<DebugAction Message="Mood Map screen is Active" />
+</WhileActive>
 		<!-- Header    -->
 		<Panel Dock="Top" Height="35" Alignment="Top">
 			<Rectangle Fill="#808080" Layer="Background">
@@ -18,24 +21,37 @@
 			</Rectangle>
 		</Panel>
 			<!-- End of Header -->
-			<Panel ux:Name="cameraIcon" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomRight">
-			<CamaraIcon ux:Name="icon2" Margin="0,0,0,0" Width="40" Height="40" Alignment="Top" >
+			<Panel ux:Name="cameraIcon" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomRight" Margin="10">
+			<CamaraIcon ux:Name="icon2" Width="50" Height="50" Alignment="Top" >
 				<Clicked>
 					<Callback Handler="{takePicture}" />
 				</Clicked>
 			</CamaraIcon>
 			</Panel>
-			<Panel ux:Name="galleryIcon" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomLeft">
-			<Circle ux:Name="gIcon" Margin="0,0,0,0" Width="40" Height="40" Alignment="Top" Fill="White" >
-				<GalleryIcon Alignment="Center" Width="30" Height="30" />
+			<Panel ux:Name="galleryIcon" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomLeft" Margin="10">
+			<Circle ux:Name="gIcon" Margin="0,0,0,0" Width="50" Height="50" Alignment="Top" Fill="White" >
+				<GalleryIcon Alignment="Center" Width="50" Height="50" />
 				<Clicked>
 					<Callback Handler="{gotoLibrary}" />
 				</Clicked>
 			</Circle>
 			</Panel>
-		<!-- <MyPage ux:Name="captureMood">
-			<DockPanel>
-				<MyHeader Text="Mood Map" />
-			</DockPanel>
-		</MyPage> -->
+			<Grid Rows="auto,1*" Margin="20,15,0,0">
+	      <Grid Columns="1">
+	        <Panel Alignment="TopLeft" Margin="15" />
+	      </Grid>
+	    <ScrollView>
+	    <StackPanel Width="500">
+			<Each Items="{observableMoods}">
+			<StackPanel>
+	     <Each Items="{}">
+	      <StackPanel>
+	      		<MoodMapCntrl Text="{moodDate}" MoodColor="#14f7ef" MoodImage="{moodImage}" />
+	      </StackPanel>
+	     </Each>
+			 </StackPanel>
+			 </Each>
+	    </StackPanel>
+	    </ScrollView>
+	   </Grid>
 </Page>

@@ -1,6 +1,6 @@
 var Observable = require("FuseJS/Observable");
 var UserEvents = require("FuseJS/UserEvents");
-var Storage = require("FuseJS/Storage")
+var Storage = require("FuseJS/Storage");
 var UserSettings = require('UserSettings');
 
 var gallery = require('Gallery');
@@ -132,6 +132,10 @@ function setBackGroundImage() {
 		Storage.write("KOOLO_Background.txt", "true").then(function(success) {
 				console.log(" Background image Save  " + (success ? "success" : "failure"));
 		});
+}
+
+function saveHumorColors(arg) {
+  console.log("save Humour colors " + JSON.stingify(arg));
 }
 
 function InitializePage() {
