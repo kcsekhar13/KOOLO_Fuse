@@ -2,8 +2,7 @@
 <JavaScript>
 var Observable = require("FuseJS/Observable");
 var Storage = require("FuseJS/Storage");
-
-var homourColors = [
+var homourColors =[
                       { code: "#23f38e", title: Observable("Lykkelig") },
                       { code: "#ffde47", title: Observable("Glad") },
                       { code: "#233fc7", title: Observable("Rolig") },
@@ -17,8 +16,8 @@ var homourColors = [
 
 function initPage(){
     Storage.read("humorColor.txt").then(function(content) {
-        console.log("Success in reading humorColor file" + content);
-        homourColors = JSON.parse(content);
+        console.log("Success in reading humorColor file" + JSON.parse(content).homourColors);
+        homourColors = JSON.parse(content).homourColors;
     }, function(error) {
         console.log("failed to humorColor");
     });
