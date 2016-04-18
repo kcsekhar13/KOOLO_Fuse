@@ -20,17 +20,17 @@
 		</Rectangle>
 	</Panel>
 	<Panel ux:Name="calenderPaNel">
-		<SwipeGesture ux:Name="swipeRight" Direction="Right" Length="100" />
+		<SwipeGesture ux:Name="swipeRight" Direction="Right" />
 		<SwipingAnimation Source="swipeRight">
 			<Move Target="calenderGrid" X="-0.3" RelativeTo="Size" Duration="0.5" />
 			<Callback Handler="{showPreviousMonth}" />
-			<Move Target="calenderGrid" X="0.3" RelativeTo="Size" Duration="0" />
+			<Move Target="calenderGrid" X="0.3" RelativeTo="Size" Duration="0.5" />
 		</SwipingAnimation>
-		<SwipeGesture ux:Name="swipeLeft" Direction="Left" Length="100"/>
+		<SwipeGesture ux:Name="swipeLeft" Direction="Left" />
 		<SwipingAnimation Source="swipeLeft">
 			<Move Target="calenderGrid" X="-0.3" RelativeTo="Size" Duration="0.5" />
 			<Callback Handler="{showNextMonth}" />
-			<Move Target="calenderGrid" X="0.3" RelativeTo="Size" Duration="0" />
+			<Move Target="calenderGrid" X="0.3" RelativeTo="Size" Duration="0.5" />
 		</SwipingAnimation>
 		<Panel Height="50" Alignment="Top">
 			<Image File="Assets/sunrise.jpg" Alignment="Top" StretchMode="UniformToFill" Layer="Background"  />

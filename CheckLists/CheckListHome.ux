@@ -1,6 +1,10 @@
 <MyPage Title="CheckList" ux:Name="CheckList" ux:AutoBind="false">
+<SwipeGesture ux:Name="swipeCheckListLeft" Direction="Right" Length="100" Type="Active" />
+<SwipeGesture ux:Name="swipeCheckListRight" Direction="Right" Length="100" Type="Active" />
 <WhileActive>
 	<Change homePageNav.Interaction = "None" />
+	<SetSwipeActive Target="swipeCheckListLeft" Value="false" />
+	<SetSwipeActive Target="swipeCheckListRight" Value="false" />
 </WhileActive>
 	<DockPanel>
 		<Image File="../Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background" />

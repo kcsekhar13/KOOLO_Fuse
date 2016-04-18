@@ -21,7 +21,7 @@ function InitPage() {
 
 function createFile(fileName, contents) {
   Storage.write(fileName, contents).then(function(success) {
-      console.log("Save " + fileName +  (success ? "success" : "failure"));
+      console.log("Save " + fileName +  (success ? " success" : "failure"));
   });
 };
 

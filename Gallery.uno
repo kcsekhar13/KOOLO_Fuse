@@ -10,7 +10,7 @@ public class Gallery : NativeModule {
 	public Gallery () {
 		// Add Load function to load image as a texture
 		AddMember(new NativePromise<Fuse.Camera.PictureResult, Fuse.Scripting.Object>("getPicture", GetPicture, Converter));
-		AddMember(new NativePromise<Fuse.Camera.PictureResult, Fuse.Scripting.Object>("takePicture", TakePicture, Converter));
+		AddMember(new NativePromise<Fuse.Camera.PictureResult, Fuse.Scripting.Object>("getMoodMapPicture", GetMoodMapPicture, Converter));
 	}
 
 	static Future<Fuse.Camera.PictureResult> GetPicture(object[] args)
@@ -20,20 +20,20 @@ public class Gallery : NativeModule {
 		return GalleryImpl.GetPicture(path);
 	}
 
-	static Future<Fuse.Camera.PictureResult> TakePicture(object[] args){
+	static Future<Fuse.Camera.PictureResult> GetMoodMapPicture(object[] args)
+	{
 		var path = Uno.IO.Path.Combine(Uno.IO.Directory.GetUserDirectory(Uno.IO.UserDirectory.Data), args[0].ToString());
-		debug_log("BackGroundImage Path : " + path);
+		debug_log("MoodMap Image Path : " + path);
 		return GalleryImpl.GetPicture(path);
 	}
-
-    static Fuse.Scripting.Object Converter(Context context, Fuse.Camera.PictureResult result)
-    {
+  static Fuse.Scripting.Object Converter(Context context, Fuse.Camera.PictureResult result)
+  {
 		var func = (Fuse.Scripting.Function)context.GlobalObject["File"];
 		var file = (Fuse.Scripting.Object)func.Construct();
 		file["path"] = result.Path;
 		file["name"] = Uno.IO.Path.GetFileName(result.Path);
     	return file;
-    }
+  }
 }
 
 [ForeignInclude(Language.Java,

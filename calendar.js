@@ -24,40 +24,43 @@ function myDay(date, isContainsEvents){
 var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
 function initPage() {
-  validDays = [];
-  todayDate.value = new Date().getDate();
-  currentDate.value = new Date().toDateString();
-  currentMonth.value = new Date().getMonth()+1;
-  currentYear.value = new Date().getFullYear();
-  currentDayInWeek.value= new Date().getDay();
-  totalDaysInMonth.value = daysInMonth(currentMonth.value,currentYear.value);
-
-  for (var i = 0; i < currentDayInWeek.value; i++) {
-    validDays.push(new myDay('',false) );
-  }
-  for (var i = 1; i <= totalDaysInMonth.value; i++) {
-    validDays.push(new myDay(i,false));
-  }
-  console.log("Year  " +   currentYear.value + " Month :" + currentMonth.value);
-  console.log("Total days in current month " + totalDaysInMonth.value);
-  console.log("validDays count " +validDays.length );
+  validDays = Observable();
+  initCalendar(new Date());
+  // todayDate.value = new Date().getDate();
+  // currentDate.value = new Date().toDateString();
+  // currentMonth.value = new Date().getMonth()+1;
+  // currentYear.value = new Date().getFullYear();
+  // currentDayInWeek.value= new Date().getDay();
+  // totalDaysInMonth.value = daysInMonth(currentMonth.value,currentYear.value);
+  //
+  // for (var i = 0; i < currentDayInWeek.value; i++) {
+  //   validDays.push(new myDay('',false) );
+  // }
+  // for (var i = 1; i <= totalDaysInMonth.value; i++) {
+  //   validDays.push(new myDay(i,false));
+  // }
+  // console.log("Year  " +   currentYear.value + " Month :" + currentMonth.value);
+  // console.log("Total days in current month " + totalDaysInMonth.value);
+  // console.log("validDays count " +validDays.length );
 }
 
 function initCalendar(date) {
-  validDays = [];
+  validDays.clear();
+  console.log("validDays count " +validDays.length );  
+  // console.log( "Updating calender to new date" +JSON.stringify(date, undefined, '    '));
   var d = new Date(date);
   todayDate.value = d.getDate();
   currentDate.value = d.toDateString();
-  currentMonth.value = d.getMonth();
+  currentMonth.value = d.getMonth()+1;
   currentYear.value = d.getFullYear();
-  currentDayInWeek.value= d.getDay();
+  currentDayInWeek.value= new Date(currentYear.value,d.getMonth(),1).getDay();
   totalDaysInMonth.value = daysInMonth(currentMonth.value,currentYear.value);
 
   for (var i = 0; i < currentDayInWeek.value; i++) {
-    validDays.push(new myDay('',false) );
+    validDays.add(new myDay('',false) );
   }
   for (var i = 1; i <= totalDaysInMonth.value; i++) {
-    validDays.push(new myDay(i,false));
+    validDays.add(new myDay(i,false));
   }
   console.log("Year  " +   currentYear.value + " Month :" + currentMonth.value);
   console.log("Total days in current month " + totalDaysInMonth.value);
@@ -76,9 +79,10 @@ function daysInMonth(month,year) {
 function showNextMonth() {
     console.log("Displaying next month " + currentMonth.value);
     if(currentMonth.value == 11){
-      currentYear.value++;
+      currentYear.value = currentYear.value+1;
       currentMonth.value = 1;
     }
+    currentMonth.value = currentMonth.value;
     var newDate = new Date(currentYear.value,currentMonth.value,1)
     console.log("new date : " + newDate);
     initCalendar(newDate);
@@ -86,15 +90,13 @@ function showNextMonth() {
 
 function showPreviousMonth() {
   console.log("Displaying Previous month ");
-
   console.log("Current Year  " +   currentYear.value + " Curent Month :" + currentMonth.value);
-  currentMonth.value--;
-  console.log("Month changes to :" + currentMonth.value);
   if(currentMonth.value == 11){
-    currentYear.value--;
+    currentYear.value = currentYear.value-1;
     currentMonth.value = 11
   }
-  var newDate = new Date(currentYear.value,currentMonth.value,1)
+  var newMonth = currentMonth.value -2;
+  var newDate = new Date(currentYear.value,newMonth,1)
   console.log("new date : " + newDate);
   initCalendar(newDate);
 }

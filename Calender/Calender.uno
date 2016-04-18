@@ -20,12 +20,12 @@ public class Calendar : NativeModule {
     }
   }
   // iOS
-  extern(iOS) public object iOSGetDateString(Context c, object[] args) {
+  extern(iOS) public string iOSGetDateString(Context c, object[] args) {
     return "2016/04/01";
   }
   // Android
-  extern(Android) public object AndroidGetDateString(Context c, object[] args) {
-     var date = CalendarImpl.GetDate();
+  extern(Android) public string AndroidGetDateString(Context c, object[] args) {
+     var date = CalendarImpl.GetDate(c);
      return date;
   }
   // Local
@@ -38,6 +38,7 @@ public class Calendar : NativeModule {
                 "android.app.Activity",
                 "android.content.Intent",
                 "android.app.DatePickerDialog",
+                "java.lang.Object",
                 "java.util.Calendar",
                 "java.util.Date",
                 "java.util.Locale",
@@ -46,38 +47,47 @@ public class Calendar : NativeModule {
                 "android.widget.DatePicker")]
 public class CalendarImpl
 {
-  static string Date;
+  static string DateString {
+		get; set;
+	}
 
-  public static string GetDate () {
-    Date = GetDateImpl();
-    return Date;
+  static Context context;
+
+  public static string GetDate (Context c) {
+    context = c;
+    GetDateImpl();
+    return DateString;
   }
 
   [Foreign(Language.Java)]
-	static extern(Android) string GetDateImpl ()
+	static extern(Android) void GetDateImpl ()
 	@{
-    SimpleDateFormat mStorageDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'00:00:00.000Z", Locale.US);
+    String currentValue = "";
+    final SimpleDateFormat   mStorageDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'00:00:00.000Z", Locale.US);
     DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
            @Override
            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                Calendar calendar = Calendar.getInstance();
                calendar.set(year, monthOfYear, dayOfMonth);
-               return mStorageDateFormat.format(calendar.getTime()));
+               //currentValue = mStorageDateFormat.format(calendar.getTime());
+               debug_log(calendar.getTime());
            }
        };
-
+       //DateString = currentValue;
        Calendar calendar = Calendar.getInstance();
        try {
-           calendar.setTime(mStorageDateFormat.format(date););
+           calendar.setTime(mStorageDateFormat.parse(currentValue));
        }
        catch (Exception e) {
            e.printStackTrace();
        }
 
-       DatePickerDialog pickerDialog = new DatePickerDialog(getContext(), dateSetListener,  calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-       pickerDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", pickerDialog);
-       pickerDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", pickerDialog);
-       pickerDialog.show();
+      //  DatePickerDialog pickerDialog = new DatePickerDialog(context,
+      //         dateSetListener,  calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+      //         calendar.get(Calendar.DAY_OF_MONTH));
+      //  pickerDialog.setButton(DatePickerDialog.BUTTON_POSITIVE, "OK", pickerDialog);
+      //  pickerDialog.setButton(DatePickerDialog.BUTTON_NEGATIVE, "Cancel", pickerDialog);
+      //  pickerDialog.show();
 	@}
 
   static extern(!Mobile) string GetDateImpl () {
