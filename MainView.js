@@ -22,20 +22,19 @@ var MoodMapPage = {
 	moodMap: "moodMapPage",
 	selectHumour: "selectHumourPage"
 }
-
+var currentMoodMapImage = Observable();
 var moodMapPage = Observable(MoodMapPage.moodLine);
-
-var homourColors = [
-                      { color: [ { code: "#23f38e" }, { title: "Lykkelig" } ] },
-                      { color: [ { code: "#ffde47" }, { title: "Glad" } ] },
-                      { color: [ { code: "#233fc7" }, { title: "Rolig" } ] },
-                      { color: [ { code: "#e62de7" }, { title: "Fremgang" } ] },
-                      { color: [ { code: "#f42121" }, { title: "Sing" } ] },
-                      { color: [ { code: "#000000" }, { title: "Legg til humer" } ] },
-                      { color: [ { code: "#9fb6cd" }, { title: "Legg til humer" } ] },
-                      { color: [ { code: "#ff4500" }, { title: "Rolig" } ] },
-                      { color: [ { code: "#a52a2a" }, { title: "Sing" } ] }
-                  ];
+var homourColors =[
+	                      { code: "#23f38e", title: Observable("Lykkelig") },
+	                      { code: "#ffde47", title: Observable("Glad") },
+	                      { code: "#233fc7", title: Observable("Rolig") },
+	                      { code: "#e62de7", title: Observable("Fremgang") },
+	                      { code: "#f42121", title: Observable("Sing") },
+	                      { code: "#000000", title: Observable("Legg til humer") },
+	                      { code: "#9fb6cd", title: Observable("Legg til humer") },
+	                      { code: "#ff4500", title: Observable("Rolig") },
+	                      { code: "#a52a2a", title: Observable("Sing") }
+	                  ];
 var myMoods = [];
 var observableMoods = Observable();
 
@@ -102,13 +101,20 @@ function gotoLibrary() {
     var ticks = new Date().getTime() + ".jpg";
     gallery.getMoodMapPicture(ticks).then(function(pic) {
         var moodImagePath = "/data/data/com.KOOLO_Fuse/files/"+ ticks;
-        var length = myMoods.length+1;
-        myMoods.push(new mood(length,moodImagePath,"Red",new Date().toDateString()));
-        updateMyMoods();
-		moodMapPage.value = MoodMapPage.selectHumour;
+				currentMoodMapImage.value = moodImagePath;
+        //var length = myMoods.length+1;
+        //myMoods.push(new mood(length,moodImagePath,"Red",new Date().toDateString()));
+        //updateMyMoods();
+				moodMapPage.value = MoodMapPage.selectHumour;
     },function (eror) {
       console.log("failed to read Mood Map Image form Library");
     });
+}
+
+function saveMoodMapImage() {
+	var length = myMoods.length+1;
+	myMoods.push(new mood(length,currentMoodMapImage.value,"Red",new Date().toDateString()));
+	updateMyMoods();
 }
 
 function updateMyMoods() {
@@ -138,9 +144,14 @@ function takePicture(){
   camera.takePicture({ targetWidth: 640, targetHeight: 360,correctOrientation: true}).then(function(file)
   {
     console.log("Received image from Camera :" + JSON.stringify(file, undefined, '    '));
-      var length = myMoods.length+1;
-    myMoods.push(new mood(length,file,"Red", new Date().toDateString()))
-    updateMyMoods();
+    var length = myMoods.length+1;
+		currentMoodMapImage.value = file;
+		//var length = myMoods.length+1;
+		//myMoods.push(new mood(length,moodImagePath,"Red",new Date().toDateString()));
+		//updateMyMoods();
+		moodMapPage.value = MoodMapPage.selectHumour;
+    //myMoods.push(new mood(length,file,"Red", new Date().toDateString()))
+    //updateMyMoods();
   }).catch(function(e) {
       console.log(e);
   });
@@ -164,7 +175,9 @@ function initializeHomePage() {
     //     console.log(error);
     // });
 }
+
 initializeHomePage();
+
 module.exports = {
     initializeHomePage: initializeHomePage,
     myBackGroundImage:myBackGroundImage,
@@ -176,10 +189,11 @@ module.exports = {
     updateDateColor: updateDateColor,
     myQuote: myQuote,
     homourColors: homourColors,
-    homourColors: homourColors,
     gotoLibrary:gotoLibrary,
     takePicture:takePicture,
     myMoods:myMoods,
     observableMoods:observableMoods,
-	moodMapPage: moodMapPage
+		moodMapPage: moodMapPage,
+		currentMoodMapImage:currentMoodMapImage,
+		saveMoodMapImage:saveMoodMapImage
   };
