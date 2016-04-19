@@ -26,7 +26,7 @@
 		<Settings ux:Name="Settings" />
 		<DockPanel>
 			<PageControl Active="{currentPage}" ux:Name="pageControl">
-				<MoodMap ux:Name="MoodMap" />
+				<ux:Include File="MoodMap.ux" />
 				<ux:Include File="Home.ux" />
 				<ux:Include File="Calendar.ux" />
 			</PageControl>

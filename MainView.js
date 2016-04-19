@@ -17,6 +17,14 @@ var myBackGroundImage = Observable();
 var isPassCodeSet = Observable();
 var isQuoteSet = Observable();
 
+var MoodMapPage = {
+	moodLine: "moodLinePage",
+	moodMap: "moodMapPage",
+	selectHumour: "selectHumourPage"
+}
+
+var moodMapPage = Observable(MoodMapPage.moodLine);
+
 var homourColors = [
                       { color: [ { code: "#23f38e" }, { title: "Lykkelig" } ] },
                       { color: [ { code: "#ffde47" }, { title: "Glad" } ] },
@@ -97,6 +105,7 @@ function gotoLibrary() {
         var length = myMoods.length+1;
         myMoods.push(new mood(length,moodImagePath,"Red",new Date().toDateString()));
         updateMyMoods();
+		moodMapPage.value = MoodMapPage.selectHumour;
     },function (eror) {
       console.log("failed to read Mood Map Image form Library");
     });
@@ -171,5 +180,6 @@ module.exports = {
     gotoLibrary:gotoLibrary,
     takePicture:takePicture,
     myMoods:myMoods,
-    observableMoods:observableMoods
+    observableMoods:observableMoods,
+	moodMapPage: moodMapPage
   };

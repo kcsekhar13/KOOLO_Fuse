@@ -1,57 +1,70 @@
-<Page ux:Class="MoodMap">
-<WhileActive>
-	<DebugAction Message="Mood Map screen is Active" />
-</WhileActive>
-		<!-- Header    -->
-		<Panel Dock="Top" Height="35" Alignment="Top">
-			<Rectangle Fill="#808080" Layer="Background">
-			<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
-					<Text TextAlignment="Left" Value="Done" Font="Light" />
-					<Clicked>
-						 <GoBack />
-					</Clicked>
-				</Panel>
-				<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Mood Line"/>
-				<Panel Alignment="Right" Margin="0,8,5,0">
-					<Text TextAlignment="Right" Value="Map" Font="Light"  />
+<Page ux:Name="MoodMap">
+	<WhileActive>
+		<DebugAction Message="Mood Map screen is Active" />
+	</WhileActive>
+	<PageControl ux:Name="moodMapNav" Interaction="None" Active="{moodMapPage}">
+		<Page ux:Name="moodLinePage">
+			
+			<!-- Header    -->
+			<Panel Dock="Top" Height="35" Alignment="Top">
+				<Rectangle Fill="#808080" Layer="Background">
+					<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
+						<Text TextAlignment="Left" Value="Done" Font="Light" />
 						<Clicked>
-							 <DebugAction Message="Clicked on MoodMap Button" />
-					</Clicked>
-				</Panel>
-			</Rectangle>
-		</Panel>
+							<GoBack TargetNode="pageControl" />
+						</Clicked>
+					</Panel>
+					<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Mood Line"/>
+					<Panel Alignment="Right" Margin="0,8,5,0">
+						<Text TextAlignment="Right" Value="Map" Font="Light"  />
+						<Clicked>
+							<DebugAction Message="Clicked on MoodMap Button" />
+							<NavigateTo Target="selectHumourPage" TargetNode="moodMapNav" />
+						</Clicked>
+					</Panel>
+				</Rectangle>
+			</Panel>
 			<!-- End of Header -->
 			<Panel ux:Name="cameraIcon" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomRight" Margin="10">
-			<CamaraIcon ux:Name="icon2" Width="50" Height="50" Alignment="Top" >
-				<Clicked>
-					<Callback Handler="{takePicture}" />
-				</Clicked>
-			</CamaraIcon>
+				<CamaraIcon ux:Name="moodMapCameraIcon" Width="50" Height="50" Alignment="Top" >
+					<Clicked>
+						<Callback Handler="{takePicture}" />
+					</Clicked>
+				</CamaraIcon>
 			</Panel>
 			<Panel ux:Name="galleryIcon" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomLeft" Margin="10">
-			<Circle ux:Name="gIcon" Margin="0,0,0,0" Width="50" Height="50" Alignment="Top" Fill="White" >
-				<GalleryIcon Alignment="Center" Width="50" Height="50" />
-				<Clicked>
-					<Callback Handler="{gotoLibrary}" />
-				</Clicked>
-			</Circle>
+				<Circle ux:Name="gIcon" Margin="0,0,0,0" Width="50" Height="50" Alignment="Top" Fill="White" >
+					<GalleryIcon Alignment="Center" Width="50" Height="50" />
+					<Clicked>
+						<Callback Handler="{gotoLibrary}" />
+					</Clicked>
+				</Circle>
 			</Panel>
 			<Grid Rows="auto,1*" Margin="20,15,0,0">
-	      <Grid Columns="1">
-	        <Panel Alignment="TopLeft" Margin="15" />
-	      </Grid>
-	    <ScrollView>
-	    <StackPanel Width="500">
-			<Each Items="{observableMoods}">
-			<StackPanel>
-	     <Each Items="{}">
-	      <StackPanel>
-	      		<MoodMapCntrl Text="{moodDate}" MoodColor="#14f7ef" MoodImage="{moodImage}" />
-	      </StackPanel>
-	     </Each>
-			 </StackPanel>
-			 </Each>
-	    </StackPanel>
-	    </ScrollView>
-	   </Grid>
+				<Grid Columns="1">
+					<Panel Alignment="TopLeft" Margin="15" />
+				</Grid>
+				<ScrollView>
+					<StackPanel Width="500">
+						<Each Items="{observableMoods}">
+							<StackPanel>
+								<Each Items="{}">
+									<StackPanel>
+										<MoodMapCntrl Text="{moodDate}" MoodColor="#14f7ef" MoodImage="{moodImage}" />
+										
+									</StackPanel>
+								</Each>
+							</StackPanel>
+						</Each>
+					</StackPanel>
+				</ScrollView>
+			</Grid>
+		</Page>
+		
+		<Page ux:Name="selectHumourPage" Background="Red">
+			<WhileActive>
+				<DebugAction Message="In humour color page!!!!!!" />
+			</WhileActive>
+		</Page>
+	</PageControl>
 </Page>
