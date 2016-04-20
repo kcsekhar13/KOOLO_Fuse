@@ -25,30 +25,30 @@
             <Grid Columns="1*" Dock="Top">
             </Grid>
             <StackPanel>
-                <Text Value="1. My age, diagnosis and brief medical history" Font="Light" Alignment="TopLeft" TextWrapping="Wrap"/>
+                <Text Value="1. My age, diagnosis and brief medical history" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap" />
                 <Panel Padding="10">
                     <Rectangle CornerRadius="1" Layer="Background">
                         <Stroke Width="1" Color="#000000"/>
                     </Rectangle>
-                    <TextEdit Value="{first}" Height="100" Width="100%" IsMultiline="true" Font="Light" />
+                    <TextEdit Value="{first}" Height="100" Width="100%" IsMultiline="true" Font="Regular" />
                 </Panel>
             </StackPanel>
             <StackPanel>
-                <Text Value="2. My treatment plan" Font="Light" Alignment="TopLeft"  TextWrapping="Wrap"/>
+                <Text Value="2. My treatment plan" Font="Regular" Alignment="TopLeft"  TextWrapping="Wrap"/>
                 <Panel Padding="10">
                     <Rectangle CornerRadius="1" Layer="Background">
                         <Stroke Width="1" Color="#000000"/>
                     </Rectangle>
-                    <TextEdit Value="{second}" Height="100" Width="100%" IsMultiline="true" Font="Light" />
+                    <TextEdit Value="{second}" Height="100" Width="100%" IsMultiline="true" Font="Regular" />
                 </Panel>
             </StackPanel>
             <StackPanel>
-                <Text Value="3. My question/concern to talk about during the visit" Font="Light" Alignment="TopLeft" TextWrapping="Wrap"/>
+                <Text Value="3. My question/concern to talk about during the visit" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap"/>
                 <Panel Padding="10">
                     <Rectangle CornerRadius="1" Layer="Background">
                         <Stroke Width="1" Color="#000000"/>
                     </Rectangle>
-                    <TextEdit Value="{third}" Height="100" Width="100%" IsMultiline="true" Font="Light" />
+                    <TextEdit Value="{third}" Height="100" Width="100%" IsMultiline="true" Font="Regular" />
                 </Panel>
             </StackPanel>
         </Grid>

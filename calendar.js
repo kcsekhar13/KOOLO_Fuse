@@ -8,6 +8,8 @@ var todayDate = Observable();
 var currentDayInWeek = Observable();
 var totalDaysInMonth = Observable();
 var validDays = Observable();
+var hours= [];
+var minutes= [];
 
 function myDay(date, isContainsEvents){
    var self = this;
@@ -26,7 +28,13 @@ var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 function initPage() {
   validDays = Observable();
   initCalendar(new Date());
-  // todayDate.value = new Date().getDate();
+  for (var i = 0; i < 24; i++) {
+    hours.push(i);
+  }
+  for (var i = 0; i < 60; i++) {
+    minutes.push(i);
+  }
+    // todayDate.value = new Date().getDate();
   // currentDate.value = new Date().toDateString();
   // currentMonth.value = new Date().getMonth()+1;
   // currentYear.value = new Date().getFullYear();
@@ -106,6 +114,9 @@ initPage();
 
 module.exports = {
   days:days,
+  hours:hours,
+  minutes:minutes,
+  clock: ["AM","PM"],
   currentDate:currentDate,
   currentDayInWeek:currentDayInWeek,
   totalDaysInMonth:totalDaysInMonth,

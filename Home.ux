@@ -10,13 +10,11 @@
 		<MyPage ux:Name="mainHomePage">
 			<Panel ux:Name="self" TransformOrigin="Center" Width="250" Height="250" Alignment="BottomRight" Offset="80,80">
 					<Cross ux:Name="cross" />
-					<Style>
 						<Icon>
 							<Clicked>
 								<Toggle Target="expanded" />
 							</Clicked>
 						</Icon>
-					</Style>
 					<CalanderIcon ux:Name="icon1" Margin="0,10,0,80" Width="40" Height="40" Alignment="Center" Opacity="0" IsEnabled="false">
 						<Translation ux:Name="trans1" Y="-1" RelativeTo="Size" />
 						<Clicked>

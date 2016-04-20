@@ -21,7 +21,6 @@
 		<Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
 		<StatusBarBackground Dock="Top" />
 		<BottomBarBackground Dock="Bottom" />
-		<iOS.StatusBarConfig Style="Light" />
 		<Panel>
 		<Settings ux:Name="Settings" />
 		<DockPanel>

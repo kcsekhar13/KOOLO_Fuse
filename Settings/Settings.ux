@@ -5,7 +5,7 @@
     <Callback Handler="{InitializePage}" />
   </WhileActive>
 <StatusBarBackground Dock="Top"/>
-  <iOS.StatusBarConfig Style="Light"/>
+  <iOS.StatusBarConfig />
   <JavaScript File="Settings.js"/>
 <Panel>
   <HierarchicalNavigation ux:Name="nav" Active="mainPage" />
