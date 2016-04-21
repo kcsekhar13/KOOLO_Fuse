@@ -6,14 +6,14 @@
 			<Panel Dock="Top" Height="35" Alignment="Top">
 				<Rectangle Fill="#808080" Layer="Background">
 					<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
-						<Text TextAlignment="Left" Value="Close" Font="Light" />
+						<CancelText />
 						<Clicked>
 							<NavigateTo Target="Home" NavigationContext="pageControl" />
 						</Clicked>
 					</Panel>
 					<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Calender"/>
 					<Panel Alignment="Right" Margin="0,8,5,0">
-						<Text TextAlignment="Right" Value="Done" Font="Light"  />
+						<DoneText />
 						<Clicked>
 							<NavigateTo Target="Home" NavigationContext="pageControl" />
 						</Clicked>
@@ -59,7 +59,7 @@
 										<DebugAction Message="Clicked on Date" />
 									</Clicked>
 									<WhileTrue Value="{isCurrentDay}" >
-										<Change dateCircle.Fill="#850b18" />									
+										<Change dateCircle.Fill="#850b18" />
 									</WhileTrue>
 									<WhileTrue Value="{isSelected}" >
 										<Change dateCircle.Fill="#FFFFFF" />
@@ -90,14 +90,14 @@
 			<Panel Dock="Top" Height="35" Alignment="Top">
 				<Rectangle Fill="#808080" Layer="Background">
 					<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
-						<Text TextAlignment="Left" Value="Cancel" Font="Light" />
+						<CancelText />
 						<Clicked>
 							<Set calendarNav.Active="calendarPage" />
 						</Clicked>
 					</Panel>
 					<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Add New Event"/>
 					<Panel Alignment="Right" Margin="0,8,5,0">
-						<Text TextAlignment="Right" Value="Add" Font="Light"  />
+						<AddText />
 						<Clicked>
 							<Callback Handler="{addNewEvent}" />
 							<Set calendarNav.Active="calendarPage" />
@@ -140,55 +140,13 @@
 						<TextEdit Value="{first}" Height="100" Width="100%" IsMultiline="true" Font="Regular" />
 					</Panel>
 					<Text Value="Time" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap" Margin="0,10,0,0"/>
-					<Grid RowCount="1" ColumnCount="3" Height="100">
-					<Panel Height="100" Background="White">
-					<ScrollView >
-						<StackPanel>
-						<Each Items="{hours}">
-							<Panel>
-								<Text Value="{}" Font="Light" TextColor="#000000" Alignment="Center" ux:Name="hoursTxt" />
-								<Clicked>
-									<Set hoursTxt.Font="Bold" />
-								</Clicked>
-							</Panel>
-						</Each>
-						</StackPanel>
-						<LinearGradient ux:Binding="Background">
-								<GradientStop Color="#FFFFFF" Offset="0" />
-								<GradientStop Color="#00fff0" Offset="0.4" />
-								<GradientStop Color="#00fffF" Offset="1" />
-						</LinearGradient>
-						</ScrollView>
-					</Panel>
-					<Panel Height="100" Background="White">
-					<ScrollView >
-						<StackPanel >
-						<Each Items="{minutes}">
-							<Panel>
-								<Text Value="{}" Font="Light" TextColor="#000000" Alignment="Center" ux:Name="minutesTxt"/>
-								<Clicked>
-									<Set minutesTxt.Font="Bold" />
-								</Clicked>
-							</Panel>
-						</Each>
-						</StackPanel>
-						</ScrollView>
-					</Panel>
-					<Panel Height="100" Background="White">
-					<ScrollView >
-						<StackPanel Alignment="Center" >
-						<Each Items="{clock}">
-							<Panel>
-								<Text Value="{}" Font="Light" TextColor="#000000" Alignment="Center" ux:Name="clockTxt"/>
-								<Clicked>
-									<Set clockTxt.Font="Bold" />
-								</Clicked>
-							</Panel>
-						</Each>
-						</StackPanel>
-						</ScrollView>
-					</Panel>
-					</Grid>
+					<StackPanel>
+							<Text TextAlignment="Center" Value="Hour" Font="Bold" FontSize="25" />
+							<Slider Value="{timeHourSliderValue}" Minimum="0" Maximum="23" />
+							<Text TextAlignment="Center" Value="Minute" Font="Bold" FontSize="25" />
+							<Slider Value="{timeMinuteSliderValue}" Minimum="0" Maximum="59"  />
+						<Text TextAlignment="Center" Value="{eventTimeSliderValue}" Font="Bold" FontSize="25" />
+					</StackPanel>
 					<Text Value="Repeat" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap" Margin="0,10,0,0"/>
 					<Panel Padding="10">
 						<Grid Rows="1"  ColumnCount="7" Alignment="Bottom" >

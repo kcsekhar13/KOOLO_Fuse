@@ -177,4 +177,8 @@
 	<Icon ux:Class="GalleryIcon" File="Assets/gallery.png" />
 	<Icon ux:Class="NewGoalIcon" Files="Assets/red.png" />
 
+	<Text TextAlignment="Left" Value="Cancel" Font="Regular" ux:Class="CancelText" />
+  <Text TextAlignment="Right" Value="Done" Font="Regular" ux:Class="DoneText" />
+  <Text TextAlignment="Right" Value="Add" Font="Regular" ux:Class="AddText" />
+
 </Panel>

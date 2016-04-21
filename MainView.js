@@ -166,10 +166,20 @@ function onMoodImageClickHandler(arg) {
 	console.log(JSON.stringify(selectedMood));
 }
 
+function onMoodColorCircleClicked(arg) {
+  var filteredMoods = myMoods.filter(function(e){
+			    return e.moodColor === arg.data.code;
+			});
+	//myMoods.clear();
+	observableMoods.value = filteredMoods;
+}
+
+function clearMoodColorFilter() {
+		getMoodLineImages();
+}
+
 function onHumorColorSelected(arg) {
-	console.log(JSON.stringify(arg.data));
 	selectedHumourColor.value=arg.data.code;
-	console.log("selectedHumourColor : " +selectedHumourColor.value);
 }
 
 function initializeHomePage() {
@@ -181,7 +191,9 @@ function initializeHomePage() {
     setMyQuote();
     readBackGroundImage();
     //myMoods.push(new mood("1","Assets/bg.jpg","#a52a2a",new Date().toDateString()));
-    //myMoods.push(new mood("2","Assets/bg.jpg","#a52a2a",new Date().toDateString()));
+    //myMoods.push(new mood("2","Assets/bg.jpg","#ffde47",new Date().toDateString()));
+		//myMoods.push(new mood("3","Assets/bg.jpg","#233fc7",new Date().toDateString()));
+    //myMoods.push(new mood("4","Assets/bg.jpg","#9fb6cd",new Date().toDateString()));
     //State.createFile(moodMapFile,JSON.stringify(myMoods, undefined, '    '));
     getMoodLineImages();
     // bundle.read("appSettings.json").then(function(content) {
@@ -214,5 +226,7 @@ module.exports = {
 		onMoodImageClickHandler:onMoodImageClickHandler,
 		selectedMood:selectedMood,
 		selectedHumourColor:selectedHumourColor,
-		onHumorColorSelected:onHumorColorSelected
+		onHumorColorSelected:onHumorColorSelected,
+		onMoodColorCircleClicked:onMoodColorCircleClicked,
+		clearMoodColorFilter:clearMoodColorFilter
   };

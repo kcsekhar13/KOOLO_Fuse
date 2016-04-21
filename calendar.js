@@ -59,9 +59,10 @@ function initCalendar(date) {
   // console.log( "Updating calender to new date" +JSON.stringify(date, undefined, '    '));
   var d = new Date(date);
   todayDate.value = d.getDate();
-  currentDate.value = d.toDateString();
-  currentMonth.value = d.getMonth()+1;
   currentYear.value = d.getFullYear();
+  currentDate.value = d.toDateString().substring(4,7) + "-" + d.getFullYear();
+  currentMonth.value = d.getMonth()+1;
+
   currentDayInWeek.value= new Date(currentYear.value,d.getMonth(),1).getDay();
   totalDaysInMonth.value = daysInMonth(currentMonth.value,currentYear.value);
 
@@ -116,6 +117,50 @@ function addNewEvent() {
   console.log("adding new event to calender");
 }
 
+var timeHourSliderValue = Observable(0);
+var timeMinuteSliderValue = Observable(0);
+var eventTimeSliderValue  = Observable("00:00");
+
+timeHourSliderValue.addSubscriber(function(val) {
+          console.log("Hour :" + val.value);
+          eventTimeSliderValue.value = getHourvalue(val.value.toString()) + ":"+getMinutevalue(timeMinuteSliderValue.value.toString());
+          // return "Event Time: " + val;
+  });
+
+function getHourvalue(arg) {
+  if(arg == "0")
+  return "00";
+  if(arg == "23")
+  return "23";
+  var hour = arg;
+  if(hour.split('.').length == 0){
+      return hour.length > 1 ? hour : "0"+hour;
+  }
+  if(hour.split('.').length > 1){
+    return hour.split('.')[0].length > 1 ? hour.split('.')[0] : "0"+hour.split('.')[0];
+  }
+}
+
+function getMinutevalue(arg) {
+  if(arg == "0")
+  return "00";
+  if(arg == "59")
+  return "59";
+  var minute = arg;
+  if(minute.split('.').length == 0){
+      return minute.length > 1 ? minute : "0"+minute;
+  }
+  if(minute.split('.').length > 1){
+    return minute.split('.')[0].length > 1 ? minute.split('.')[0] : "0"+minute.split('.')[0];
+  }
+}
+
+timeMinuteSliderValue.addSubscriber(function(val) {
+        console.log("Minute :" + val.value);
+        eventTimeSliderValue.value = getHourvalue(timeHourSliderValue.value.toString()) + ":"+ getMinutevalue(val.value.toString());
+          // eventTimeSliderValue = "Event Time: " + val;
+});
+
 initPage();
 
 module.exports = {
@@ -131,5 +176,8 @@ module.exports = {
   selectedDate:selectedDate,
   showNextMonth:showNextMonth,
   showPreviousMonth:showPreviousMonth,
-  addNewEvent:addNewEvent
+  addNewEvent:addNewEvent,
+  timeHourSliderValue :timeHourSliderValue,
+  timeMinuteSliderValue:timeMinuteSliderValue,
+  eventTimeSliderValue:eventTimeSliderValue,
 };
