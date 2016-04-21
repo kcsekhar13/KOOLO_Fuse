@@ -1,4 +1,5 @@
 var Observable = require("FuseJS/Observable");
+var Storage = require('FuseJS/Storage');
 
 var selectedDate = Observable();
 var currentYear = Observable();
@@ -11,6 +12,13 @@ var validDays = Observable();
 var hours= [];
 var minutes= [];
 var myEvents = [];
+var observableEvents = Observable();
+var eventsFile = "events.json";
+
+var dateColor = {
+    date: Observable(new Date().getDate()),
+    colour: Observable()
+};
 
 function myDay(date, isContainsEvents){
    var self = this;
@@ -24,6 +32,19 @@ function myDay(date, isContainsEvents){
    this.isContainsEvents = Observable();
  }
 
+function myEvent(date,month,time,colour,title,description,isRemainderSet,repeatOn)
+{
+  var self = this;
+  this.date = date;
+  this.month = month;
+  this.time=time;
+  this.eventColor = colour;
+  this.eventTitle = title;
+  this.eventDescription = description;
+  this.isRemind = isRemainderSet;
+  this.repeatOn = repeatOn;
+}
+
 var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
 function initPage() {
@@ -35,6 +56,7 @@ function initPage() {
   for (var i = 0; i < 60; i++) {
     minutes.push(i);
   }
+  readKooloEvents ();
     // todayDate.value = new Date().getDate();
   // currentDate.value = new Date().toDateString();
   // currentMonth.value = new Date().getMonth()+1;
@@ -113,8 +135,35 @@ function showPreviousMonth() {
   initCalendar(newDate);
 }
 
+var eventTitle;
+var eventDescription;
+
 function addNewEvent() {
   console.log("adding new event to calender");
+  myEvents.unshift(new myEvent(todayDate.value,currentMonth.value,eventTimeSliderValue.value,dateColor.colour,eventTitle,eventDescription,true,"Mon"));
+  updateEvents();
+}
+
+function updateEvents() {
+  observableEvents.value = myEvents;
+  Storage.write(eventsFile, JSON.stringify(myEvents, undefined, '    ')).then(function(success) {
+       console.log("Save " + eventsFile +  (success ? " success" : "failure"));
+       readKooloEvents();
+  },function (error) {
+     console.log("Error in writing events to file");
+     console.log(error);
+  });
+}
+
+function readKooloEvents() {
+  Storage.read(eventsFile).then(function(content) {
+      console.log("Success in reading koolo events file" + content);
+      myEvents = JSON.parse(content);
+      observableEvents.value = myEvents;
+      console.log(JSON.stringify(observableEvents));
+  }, function(error) {
+      console.log("failed to read koolo events file");
+  });
 }
 
 var timeHourSliderValue = Observable(0);
@@ -125,7 +174,7 @@ timeHourSliderValue.addSubscriber(function(val) {
           console.log("Hour :" + val.value);
           eventTimeSliderValue.value = getHourvalue(val.value.toString()) + ":"+getMinutevalue(timeMinuteSliderValue.value.toString());
           // return "Event Time: " + val;
-  });
+});
 
 function getHourvalue(arg) {
   if(arg == "0")
@@ -161,22 +210,28 @@ timeMinuteSliderValue.addSubscriber(function(val) {
           // eventTimeSliderValue = "Event Time: " + val;
 });
 
+function updateDateColor(context) {
+    //console.log(JSON.stringify(argument, undefined, '    '));
+    dateColor.colour.value = context.data.code;
+    console.log(" Event color set :" + dateColor.date);
+}
+
 initPage();
 
 module.exports = {
   days:days,
-  hours:hours,
-  minutes:minutes,
-  clock: ["AM","PM"],
   currentDate:currentDate,
   currentDayInWeek:currentDayInWeek,
   totalDaysInMonth:totalDaysInMonth,
   validDays:validDays,
   onDateSelected:onDateSelected,
+  updateDateColor: updateDateColor,
   selectedDate:selectedDate,
   showNextMonth:showNextMonth,
   showPreviousMonth:showPreviousMonth,
   addNewEvent:addNewEvent,
+  eventTitle:eventTitle,
+  eventDescription:eventDescription,
   timeHourSliderValue :timeHourSliderValue,
   timeMinuteSliderValue:timeMinuteSliderValue,
   eventTimeSliderValue:eventTimeSliderValue,
