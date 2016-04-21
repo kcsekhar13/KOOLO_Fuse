@@ -10,6 +10,7 @@ var totalDaysInMonth = Observable();
 var validDays = Observable();
 var hours= [];
 var minutes= [];
+var myEvents = [];
 
 function myDay(date, isContainsEvents){
    var self = this;
@@ -110,6 +111,11 @@ function showPreviousMonth() {
   console.log("new date : " + newDate);
   initCalendar(newDate);
 }
+
+function addNewEvent() {
+  console.log("adding new event to calender");
+}
+
 initPage();
 
 module.exports = {
@@ -124,5 +130,6 @@ module.exports = {
   onDateSelected:onDateSelected,
   selectedDate:selectedDate,
   showNextMonth:showNextMonth,
-  showPreviousMonth:showPreviousMonth
+  showPreviousMonth:showPreviousMonth,
+  addNewEvent:addNewEvent
 };
