@@ -20,7 +20,8 @@ var isQuoteSet = Observable();
 var MoodMapPage = {
 	moodLine: "moodLinePage",
 	moodMap: "moodMapPage",
-	selectHumour: "selectHumourPage"
+	selectHumour: "selectHumourPage",
+	moodMapImage: "moodImagePage"
 }
 var currentMoodMapImage = Observable();
 var moodMapPage = Observable(MoodMapPage.moodLine);
@@ -38,6 +39,7 @@ var homourColors =[
 var myMoods = [];
 var observableMoods = Observable();
 var selectedMood = Observable();
+var selectedHumourColor = Observable();
 
 function mood(id,imagePath,color,date) {
   var self = this;
@@ -102,6 +104,7 @@ function gotoLibrary() {
     var ticks = new Date().getTime() + ".jpg";
     gallery.getMoodMapPicture(ticks).then(function(pic) {
         var moodImagePath = "/data/data/com.KOOLO_Fuse/files/"+ ticks;
+				console.log("Received mood map image from gallery");
 				currentMoodMapImage.value = moodImagePath;
         //var length = myMoods.length+1;
         //myMoods.push(new mood(length,moodImagePath,"Red",new Date().toDateString()));
@@ -114,7 +117,7 @@ function gotoLibrary() {
 
 function saveMoodMapImage() {
 	var length = myMoods.length+1;
-	myMoods.unshift(new mood(length,currentMoodMapImage.value,"Red",new Date().toDateString()));
+	myMoods.unshift(new mood(length,currentMoodMapImage.value,selectedHumourColor.value,new Date().toDateString()));
 	updateMyMoods();
 }
 
@@ -163,6 +166,12 @@ function onMoodImageClickHandler(arg) {
 	console.log(JSON.stringify(selectedMood));
 }
 
+function onHumorColorSelected(arg) {
+	console.log(JSON.stringify(arg.data));
+	selectedHumourColor.value=arg.data.code;
+	console.log("selectedHumourColor : " +selectedHumourColor.value);
+}
+
 function initializeHomePage() {
     console.log("Initializing home page.");
     isPassCodeSet.value = UserSettings.getString('isPassCodeSet','');
@@ -171,9 +180,9 @@ function initializeHomePage() {
     console.log("isQuoteSet : " + isQuoteSet.value );
     setMyQuote();
     readBackGroundImage();
-    myMoods.push(new mood("1","Assets/bg.jpg","#a52a2a",new Date().toDateString()));
-    myMoods.push(new mood("2","Assets/bg.jpg","#a52a2a",new Date().toDateString()));
-    State.createFile(moodMapFile,JSON.stringify(myMoods, undefined, '    '));
+    //myMoods.push(new mood("1","Assets/bg.jpg","#a52a2a",new Date().toDateString()));
+    //myMoods.push(new mood("2","Assets/bg.jpg","#a52a2a",new Date().toDateString()));
+    //State.createFile(moodMapFile,JSON.stringify(myMoods, undefined, '    '));
     getMoodLineImages();
     // bundle.read("appSettings.json").then(function(content) {
     //     console.log(content);
@@ -203,5 +212,7 @@ module.exports = {
 		currentMoodMapImage:currentMoodMapImage,
 		saveMoodMapImage:saveMoodMapImage,
 		onMoodImageClickHandler:onMoodImageClickHandler,
-		selectedMood:selectedMood
+		selectedMood:selectedMood,
+		selectedHumourColor:selectedHumourColor,
+		onHumorColorSelected:onHumorColorSelected
   };

@@ -2,13 +2,13 @@
     {
         "Id": "1",
         "moodImage": "Assets/bg.jpg",
-        "moodColor": "Red",
+        "moodColor": "#a52a2a",
         "moodDate": "Mon Apr 18 2016"
     },
     {
         "Id": "2",
         "moodImage": "Assets/bg.jpg",
-        "moodColor": "White",
+        "moodColor": "#a52a2a",
         "moodDate": "Mon Apr 18 2016"
     }
 ]
