@@ -49,7 +49,7 @@
 							<StackPanel>
 								<Each Items="{}">
 									<StackPanel>
-										<MoodMapCntrl Text="{moodDate}" MoodColor="#14f7ef" MoodImage="{moodImage}" />
+										<MoodMapCntrl Text="{moodDate}" MoodColor="{moodColor}" MoodImage="{moodImage}" />
 										<Clicked>
 											<Callback Handler="{onMoodImageClickHandler}" />
 											<NavigateTo Target="moodImagePage" />
@@ -106,9 +106,6 @@
 			</StackPanel>
 		</Page>
 		<Page ux:Name="moodMapPage" ux:AutoBind="false">
-			<WhileActive>
-				<DebugAction Message="In MoodMap page!!!!!!" />
-			</WhileActive>
 				<DockPanel>
 				<!-- Header    -->
 				<Panel Dock="Top" Height="35" Alignment="Top">
@@ -132,23 +129,22 @@
 				<!-- End of Header -->
 				<ScrollView>
 					<Grid ColumnCount="2">
-							<Grid>
-								<Panel>
-									<Circle Width="100" Height="150" >
-									<Stroke Width="2" Brush="#FFF" />
-									<Text Value="All" Font="Light" Alignment="Center" TextColor="#FFFFFF" />
-									</Circle>
-								</Panel>
-							</Grid>
-							<Each Items="{homourColors}">
-								<Panel>
-									<Circle Width="100" Height="100" Fill="{code}" Margin="20">
-										<Clicked>
-											<DebugAction Message="Clicked on Circle" />
-										</Clicked>
-									</Circle>
-								</Panel>
-							</Each>
+						<Panel>
+							<Circle Width="100" Height="150" >
+							<Stroke Width="2" Brush="#FFF" />
+							<Text Value="All" Font="Light" Alignment="Center" TextColor="#FFFFFF" />
+							</Circle>
+						</Panel>
+						
+						<Each Items="{homourColors}">
+							<Panel>
+								<Circle Width="100" Height="100" Fill="{code}" Margin="20">
+									<Clicked>
+										<DebugAction Message="Clicked on Circle" />
+									</Clicked>
+								</Circle>
+							</Panel>
+						</Each>
 					</Grid>
 				</ScrollView>
 			</DockPanel>

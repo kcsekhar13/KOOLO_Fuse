@@ -139,18 +139,18 @@
 		</Panel>
 	</Panel>
 
-	<Panel ux:Class="MoodMapCntrl" ux:Name="MoodMapCntrl" MoodColor="#cffbd0" >
+	<Panel ux:Class="MoodMapCntrl" ux:Name="moodMapCntrl" >
 	<string ux:Property="Text" />
-  <float4 ux:Property="MoodColor"/>
+	<float4 ux:Property="MoodColor"/>
 	<FileSource ux:Property="MoodImage" />
 	<Panel ux:Name="statusPanel" Width="80%" Margin="10" >
 			<Panel Width="50" Margin="15,0,0,0" Alignment="Left">
-				<Circle Height="20" Width="20" Fill="#14f7ef" />
+				<Circle Height="20" Width="20" Color="{Property moodMapCntrl.MoodColor}" />
 			</Panel>
-			<Rectangle ux:Name="titlePanel" Color="#ece8d5" Margin="10,0,30,0" Width="80%" Alignment="Right" Height="150" Fill="#6ca77c">
-				<Text Value="{Property MoodMapCntrl.Text}" Font="Light" TextColor="Black" TextWrapping="Wrap" Margin="10,0,0,10" Alignment="TopLeft" />
+			<Rectangle ux:Name="titlePanel" Color="{Property moodMapCntrl.MoodColor}" Margin="10,0,30,0" Width="80%" Alignment="Right" Height="150">
+				<Text Value="{Property moodMapCntrl.Text}" Font="Light" TextColor="Black" TextWrapping="Wrap" Margin="10,0,0,10" Alignment="TopLeft" />
 				<Panel Width="98%" Height="95%" Margin="15">
-					<Image File="{Property MoodMapCntrl.MoodImage}" StretchMode="UniformToFill" />
+					<Image File="{Property moodMapCntrl.MoodImage}" StretchMode="UniformToFill" />
 				</Panel>
 			</Rectangle>
 	</Panel>

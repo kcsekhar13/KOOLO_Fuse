@@ -25,18 +25,20 @@
 					<Image File="Assets/sunrise.jpg" Alignment="Top" StretchMode="UniformToFill" Layer="Background"  />
 					<Text Value="{currentDate}" Font="Bold" Alignment="BottomLeft" FontSize="20" Margin="20,0,0,0" />
 				</Panel>
-				<Panel Margin="10,55,0,0" Alignment="Top">
-					<SwipeGesture ux:Name="swipeUp" Direction="Up" />
+				<Panel Margin="10,55,0,0" Alignment="Top" HitTestMode="LocalBoundsAndChildren">
+					<SwipeGesture ux:Name="swipeUp" Direction="Up" LengthNode="calenderGrid" />
 					<SwipingAnimation Source="swipeUp">
-						<Move Target="calenderGrid" Y="-0.3" RelativeTo="Size" Duration="0.5" />
-						<Callback Handler="{showPreviousMonth}" />
-						<Move Target="calenderGrid" Y="0.3" RelativeTo="Size" Duration="0.5" />
+						<Move Target="calenderGrid" Y="-1" RelativeTo="Size" Duration="0.5" />
+						<Move Target="calenderGrid" Y="2" RelativeTo="Size" Delay="0.5" />
+						<Move Target="calenderGrid" Y="-1" RelativeTo="Size" Delay="0.5001" Duration="0.5" />
+						<Callback Handler="{showNextMonth}" AtProgress="1" />
 					</SwipingAnimation>
-					<SwipeGesture ux:Name="swipeDown" Direction="Down" />
-					<SwipingAnimation Source="swipeDown">
-						<Move Target="calenderGrid" Y="-0.3" RelativeTo="Size" Duration="0.5" />
-						<Callback Handler="{showNextMonth}" />
-						<Move Target="calenderGrid" Y="0.3" RelativeTo="Size" Duration="0.5" />
+					<SwipeGesture ux:Name="swipeDown" Direction="Down" LengthNode="calenderGrid" />
+					<SwipingAnimation Source="swipeDown" >
+						<Move Target="calenderGrid" Y="1" RelativeTo="Size" Duration="0.5" />
+						<Move Target="calenderGrid" Y="-2" RelativeTo="Size" Delay="0.5" />
+						<Move Target="calenderGrid" Y="1" RelativeTo="Size" Delay="0.5001" Duration="0.5" />
+						<Callback Handler="{showPreviousMonth}" AtProgress="1" />
 					</SwipingAnimation>
 					<Text ux:Class="CalendarText" FontSize="12" Font="Medium" Alignment="Center" TextColor="#FFFFFF" />
 					<Grid Rows="1"  ColumnCount="7">
@@ -46,28 +48,30 @@
 							</Rectangle>
 						</Each>
 					</Grid>
-					<Grid RowCount="6" ColumnCount="7" Margin="0,10,0,0" ux:Name="calenderGrid" >
-						<Each Items="{validDays}">
-							<Circle Height="35" Width="35" ux:Name="dateCircle" Fill="#000000" Margin="10" >
-								<Stroke Width="2" ux:Name="dateCircleStroke" />
-								<CalendarText Value="{date}" Font="Bold" ux:Name="dateText" />
-								<Clicked>
-									<Callback Handler="{onDateSelected}" />
-									<DebugAction Message="Clicked on Date" />
-								</Clicked>
-								<WhileTrue Value="{isCurrentDay}" >
-									<Change dateCircle.Fill="#850b18" />									
-								</WhileTrue>
-								<WhileTrue Value="{isSelected}" >
-									<Change dateCircle.Fill="#FFFFFF" />
-									<Change dateText.TextColor="#000000" />
-								</WhileTrue>
-								<WhilePressed>
-									<Scale Factor="2" Duration="1"/>
-								</WhilePressed>
-							</Circle>
-						</Each>
-					</Grid>
+					<Panel ClipToBounds="true">
+						<Grid ColumnCount="7" Margin="0,10,0,0" ux:Name="calenderGrid" >
+							<Each Items="{validDays}">
+								<Circle Height="35" Width="35" ux:Name="dateCircle" Fill="#000000" Margin="10" >
+									<Stroke Width="2" ux:Name="dateCircleStroke" />
+									<CalendarText Value="{date}" Font="Bold" ux:Name="dateText" />
+									<Clicked>
+										<Callback Handler="{onDateSelected}" />
+										<DebugAction Message="Clicked on Date" />
+									</Clicked>
+									<WhileTrue Value="{isCurrentDay}" >
+										<Change dateCircle.Fill="#850b18" />									
+									</WhileTrue>
+									<WhileTrue Value="{isSelected}" >
+										<Change dateCircle.Fill="#FFFFFF" />
+										<Change dateText.TextColor="#000000" />
+									</WhileTrue>
+									<WhilePressed>
+										<Scale Factor="2" Duration="1"/>
+									</WhilePressed>
+								</Circle>
+							</Each>
+						</Grid>
+					</Panel>
 				</Panel>
 			</Panel>
 			<Panel ux:Name="addEventPanel" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomRight" Margin="0,0,20,20">
@@ -209,7 +213,7 @@
 								<Toggle Target="setRemainder" />
 							</Clicked>
 							<WhileTrue ux:Name="setRemainder">
-								<Set remainderCheck.Opacity="1" />
+								<Change remainderCheck.Opacity="1" />
 							</WhileTrue>
 						</Rectangle>
 					</Panel>
