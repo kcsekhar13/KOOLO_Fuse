@@ -1,53 +1,98 @@
 <MyPage ux:Name="CheckListSub" ux:AutoBind="false" Title="{selected}" ux:Class="CheckListSub" >
-  <DockPanel>
-  <Panel Dock="Top" Height="35">
-     <Rectangle Fill="#808080" Layer="Background">
-     <Brush ux:Property="Fill" />
-       <Panel Alignment="Left" Margin="5,8,0,0">
-           <Text TextAlignment="Left" Value="Cancel" Font="Light" />
-           <Clicked>
-              <Callback Handler="{print}" />
-              <GoBack />
-           </Clicked>
-         </Panel>
-         <Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="{selected}"/>
-         <Panel Alignment="Right" Margin="0,8,5,0">
-           <Text TextAlignment="Right" Value="{newCheckListText}" Font="Light"  />
-             <Clicked>
-                <GoBack />
-           </Clicked>
-         </Panel>
-     </Rectangle>
-   </Panel>
-    <Grid Rows="auto,1*">
-      <Grid Columns="1">
-        <Panel Alignment="TopLeft" Margin="20" >
-          <Circle Color="#5dd7b4" Height="25" Width="25">
-            <Text Value="i" Font="Light" Alignment="Center" />
+    <DockPanel ux:Name="checkListMainPage">
+      <Panel Dock="Top" Height="35">
+        <Rectangle Fill="#808080" Layer="Background">
+         <Brush ux:Property="Fill" />
+           <Panel Alignment="Left" Margin="5,8,0,0">
+               <Text TextAlignment="Left" Value="Cancel" Font="Light" />
+               <Clicked>
+	                 <!-- <NavigateTo Target="CheckListHome" NavigationContext="checkListNav" /> -->
+                  <GoBack />
+               </Clicked>
+             </Panel>
+             <Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="{selected}"/>
+             <Panel Alignment="Right" Margin="0,8,5,0">
+               <Text TextAlignment="Right" Value="{newCheckListText}" Font="Light"  />
+                 <Clicked>
+                    <GoBack />
+               </Clicked>
+             </Panel>
+         </Rectangle>
+      </Panel>
+      <Grid Rows="auto,1*">
+        <Grid Columns="1">
+            <Circle Color="#5dd7b4" Height="25" Width="25" Alignment="TopLeft" Margin="20">
+              <Text Value="i" Font="Light" Alignment="Center" />
+              <Clicked>
+                  <DebugAction Message="Show Checklist information screen" />
+	                <NavigateTo Target="checkListInfoPage" />
+              </Clicked>
+            </Circle>
+        </Grid>
+      <ScrollView>
+        <StackPanel Width="500">
+         <Each Items="{selectedList}">
+          <StackPanel>
+            <Each Items="{item}">
+               <!-- <Text Value="{Id}" Font="Light" TextColor="Black" Margin="10" TextWrapping="Wrap" />
+              </Rectangle>
+              <Rectangle Width="400">
+               <Text Value="{Title}" Font="Light" TextColor="Black" Margin="10"  TextWrapping="Wrap"/>
+              </Rectangle>
+              <Rectangle Width="400">
+              <Text Value="{Status}" Font="Light" TextColor="Black" Margin="10"  TextWrapping="Wrap"/> -->
+              <CheckListCntrl Text="{Title}" Margin="0,5,5,5" StatusIcon="../Assets/red.png" />
+            </Each>
+          </StackPanel>
+         </Each>
+        </StackPanel>
+      </ScrollView>
+     </Grid>
+    </DockPanel>
+    <DockPanel ux:Name="checkListInfoPage" ux:AutoBind="false">
+      <!-- Header    -->
+      <Panel Dock="Top" Height="35" Alignment="Top">
+        <Rectangle Fill="#808080" Layer="Background">
+          <Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
+            <CancelText />
             <Clicked>
-                <DebugAction Message="Show Checklist information screen" />
+              <!-- <Set checkListSubNav.Active="checkListMainPage" /> -->
+              <GoBack />
             </Clicked>
-          </Circle>
-        </Panel>
+          </Panel>
+          <Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="CheckList Info" Layer="Background"/>
+          <Panel Alignment="Right" Margin="0,8,5,0">
+            <AddText />
+            <Clicked>
+              <!-- <Set checkListSubNav.Active="checkListMainPage" /> -->
+              <GoBack />
+            </Clicked>
+          </Panel>
+        </Rectangle>
+      </Panel>
+      <!-- End of Header -->
+      <Grid RowCount="3" ColumnCount="2" Margin="20" Height="200" Alignment="Top">
+        <Rectangle Row="0" Column="0" Height="100" Width="50">
+          <Image File="../Assets/red.png" Alignment="Center" />
+        </Rectangle>
+        <Rectangle Row="0"  Column="1" Height="100">
+          <FinishedTxt Column="1" Alignment="Center"  />
+        </Rectangle>
+        <Rectangle Row="1" Column="0"  Height="100" Width="50">
+          <Image File="../Assets/green.png" Alignment="Center" />
+        </Rectangle>
+        <Rectangle Row="1" Column="1"  Height="100">
+          <NotDoneTxt Alignment="Center"  />
+        </Rectangle>
+        <Rectangle Row="2" Column="0"  Height="100" Width="50">
+          <Image File="../Assets/yellow.png" Alignment="Center" />
+        </Rectangle>
+        <Rectangle Row="2" Column="1"  Height="100">
+          <OngoingTxt Alignment="Center"  />
+        </Rectangle>
       </Grid>
-    <ScrollView>
-    <StackPanel Width="500">
-     <Each Items="{selectedList}">
-      <StackPanel>
-        <Each Items="{item}">
-           <!-- <Text Value="{Id}" Font="Light" TextColor="Black" Margin="10" TextWrapping="Wrap" />
-          </Rectangle>
-          <Rectangle Width="400">
-           <Text Value="{Title}" Font="Light" TextColor="Black" Margin="10"  TextWrapping="Wrap"/>
-          </Rectangle>
-          <Rectangle Width="400">
-          <Text Value="{Status}" Font="Light" TextColor="Black" Margin="10"  TextWrapping="Wrap"/> -->
-          <CheckListCntrl Text="{Title}" Margin="0,5,5,5" />
-        </Each>
+      <StackPanel Alignment="Center">
+        <CheckListInfoTxt />
       </StackPanel>
-     </Each>
-    </StackPanel>
-    </ScrollView>
-   </Grid>
-  </DockPanel>
+    </DockPanel>
 </MyPage>

@@ -11,6 +11,18 @@ var CheckList = {
     Transitions : Observable()
 };
 
+function CheckListItem(item,status) {
+  var self = this;
+  var item = item;
+  var status = status;
+}
+
+var statusIcon = {
+	New: "../Assets/red.png",
+	InProgress: "../Assets/yellow.png",
+	Done: "../Assets/green.png",	
+}
+
 var threeSentenses = {
   first :Observable(""),
   second:Observable(""),
@@ -71,8 +83,11 @@ function print(arg) {
 }
 
 function Load() {
+  console.log("Reading CheckLists file");
   bundle.read("CheckLists/CheckList.json").then(function(content) {
+      console.log("Success in reading checkList file");
       CheckList = JSON.parse(content);
+      console.log(content);
   }, function(error) {
       console.log(" Error reading CheckList file "+ error);
   });

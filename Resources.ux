@@ -108,29 +108,30 @@
 			<SetSwipeActive Target="swipe" Value="false" />
 		</WhileInactive>
 		<string ux:Property="Text" />
+		<FileSource ux:Property="StatusIcon" />
 		<Panel ux:Name="statusPanel" Width="80%" Margin="10" >
 				<Panel Width="50" Margin="10,0,0,0" Alignment="Left">
 					<Circle Height="20" Width="20">
-						<Image File="Assets/red.png" />
+						<Image File="{Property CheckListCntrl.StatusIcon}" />
 						<Clicked>
 							<DebugAction Message="Update CheckList status" />
 						</Clicked>
 					</Circle>
 				</Panel>
 				<Panel ux:Name="titlePanel" Color="#ece8d5" Margin="20,0,50,0" Width="80%" Alignment="Right">
-					<Text Value="{Property CheckListCntrl.Text}" Font="Light" TextColor="Black" TextWrapping="Wrap" Margin="10,15,0,10" />
+					<Text Value="{Property CheckListCntrl.Text}" Font="Italic" TextColor="Black" TextWrapping="Wrap" Margin="10,15,0,10" />
 				</Panel>
 		</Panel>
 		<Panel ux:Name="operationPanel" Opacity="0" Alignment="Right" Width="35%">
 			<StackPanel Orientation="Horizontal">
 				<Rectangle>
-					<Text Value="Update" Font="Light" TextColor="Black" Alignment="Center"  />
+					<Text Value="Update" Font="Regular" TextColor="Black" Alignment="Center"  />
 					<Clicked>
 						<DebugAction Message="Clicked Update CheckList" />
 					</Clicked>
 				</Rectangle>
 				<Rectangle Margin="10,0,10,0" >
-					<Text Value="Delete" Font="Light" TextColor="Black" Alignment="Center" />
+					<Text Value="Delete" Font="Regular" TextColor="Black" Alignment="Center" />
 					<Clicked>
 						<DebugAction Message="Clicked Delete CheckList" />
 					</Clicked>
@@ -163,7 +164,7 @@
 		<float4 ux:Property="MoodColor" />
 		<Rectangle>
 			<Stroke Brush="#000000" Width="1" />
-				<Grid ColumnCount="3">
+				<!-- <Grid ColumnCount="3">
 					<Rectangle Width="5" Color="{Property eventPanlCntrl.MoodColor}" Alignment="Left">
 					</Rectangle>
 					<StackPanel Width="200">
@@ -173,7 +174,18 @@
 					<Panel Width="50">
 						<Text Value="{Property eventPanlCntrl.Time}" Font="Bold" Alignment="Center" />
 					</Panel>
-				</Grid>
+				</Grid> -->
+			<DockPanel>
+				<Rectangle Width="5" Color="{Property eventPanlCntrl.MoodColor}" Alignment="Left">
+				</Rectangle>
+				<StackPanel Width="200">
+						<Text Value="{Property eventPanlCntrl.Title}" Font="Bold" />
+						<Text Value="{Property eventPanlCntrl.Description}" Font="Italic" Alignment="Left" />
+				</StackPanel>
+				<Panel Width="50" Alignment="Right">
+					<Text Value="{Property eventPanlCntrl.Time}" Font="Bold" Alignment="Center" />
+				</Panel>
+			</DockPanel>
 		</Rectangle>
 	</Panel>
 	<Font File="Assets/fonts/Klavika/Klavika-Bold.otf" ux:Global="Bold" />
@@ -201,5 +213,15 @@
 	<Text TextAlignment="Left" Value="Cancel" Font="Regular" ux:Class="CancelText" />
   <Text TextAlignment="Right" Value="Done" Font="Regular" ux:Class="DoneText" />
   <Text TextAlignment="Right" Value="Add" Font="Regular" ux:Class="AddText" />
+
+	<Panel ux:Class="CheckListInfoTxt">
+		<StackPanel >
+			<Text Value="Swiping to the right will mark the goal as not relevant." Font="Italic"  TextColor="#FFFFFF" />
+			<Text Value="The order of colours should be green,yellow and red." Font="Italic"  TextColor="#FFFFFF" />
+		</StackPanel>
+	</Panel>
+	<Text TextAlignment="Left" Value="Finished" Font="Italic" ux:Class="FinishedTxt" TextColor="#FFFFFF" />
+	<Text TextAlignment="Left" Value="Not done" Font="Italic" ux:Class="NotDoneTxt"  TextColor="#FFFFFF" />
+	<Text TextAlignment="Left" Value="Ongoing" Font="Italic" ux:Class="OngoingTxt"  TextColor="#FFFFFF" />
 
 </Panel>
