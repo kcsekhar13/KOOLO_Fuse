@@ -20,6 +20,7 @@
 					</Panel>
 				</Rectangle>
 			</Panel>
+			<StackPanel>
 			<Panel ux:Name="calenderPaNel">
 				<Panel Height="50" Alignment="Top">
 					<Image File="Assets/sunrise.jpg" Alignment="Top" StretchMode="UniformToFill" Layer="Background"  />
@@ -74,7 +75,19 @@
 					</Panel>
 				</Panel>
 			</Panel>
-			<Panel ux:Name="addEventPanel" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomRight" Margin="0,0,20,20">
+			<Panel ux:Name="EventsPanle">
+				<Each Items="{todayEvents}">
+					<ScrollView>
+						<StackPanel>
+							<Each Items="{}">
+								<EventPanlCntrl Title="{Title}" Description="{Description}" Time="{time}" MoodColor="{eventColor}" Margin="5"/>
+							</Each>
+						</StackPanel>
+					</ScrollView>
+				</Each>
+			</Panel>
+			</StackPanel>
+			<Panel ux:Name="addEventPanel" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomRight" Margin="0,0,20,20" Layer="Overlay">
 				<Cross ux:Name="addEvent" Alignment="Center" />
 				<Circle ux:Name="overlayEventCircle" Fill="#FFFFFF" Width="100%" Height="100%" Alignment="Center" />
 				<Clicked>
@@ -83,6 +96,10 @@
 			</Panel>
 		</DockPanel>
 		<DockPanel ux:Name="newEventPage" ux:AutoBind="false">
+			<WhileActive>
+				<DebugAction Message="Init New Event Page" />
+				<Callback Handler="{InitNewEventDate}" />
+			</WhileActive>
 			<!-- Header    -->
 			<Panel Dock="Top" Height="35" Alignment="Top">
 				<Rectangle Fill="#808080" Layer="Background">
@@ -92,7 +109,7 @@
 							<Set calendarNav.Active="calendarPage" />
 						</Clicked>
 					</Panel>
-					<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Add New Event"/>
+					<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Add New Event" Layer="Background"/>
 					<Panel Alignment="Right" Margin="0,8,5,0">
 						<AddText />
 						<Clicked>
@@ -107,23 +124,23 @@
 				<Panel>
 					<Grid RowCount="1" >
 						<Panel>
-							<DateCircle ux:Name="Calanderdatecntrl" Colour="{dateColor.colour}" Width="20%" Margin="0,20,0,0">
+							<DateCircle ux:Name="Calanderdatecntrl" Colour="{dateColor.color}" Width="20%" Margin="0,20,0,0">
 								<Clicked>
 									<DebugAction Message="Date Circle got clicked" />
 									<Set  calendarNav.Active="selectEventColor" />
 								</Clicked>
 							</DateCircle>
-							<StackPanel Margin="70,0,0,0" Alignment="Left" Width="100%">
-								<Text Value="Event Title" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap" ux:Name="eventTitle"/>
+							<Panel Width="100" Height="50" Margin="15,80,0,0" Alignment="TopLeft">
+								<Text Value="{dateColor.dateString}" Font="Light"  FontSize="12" />
+							</Panel>
+							<StackPanel Margin="100,0,0,0" Alignment="Left" Width="100%">
+								<Text Value="Event Title" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap"/>
 								<Panel Padding="10">
 									<Rectangle CornerRadius="1" Layer="Background">
 										<Stroke Width="1" Color="#000000"/>
 									</Rectangle>
-									<TextEdit Value="{eventTitle}" Height="50" Font="Regular" Width="100%" />
+									<TextInput Value="{eventTitle}" Height="50" Font="Regular" Width="100"/>
 								</Panel>
-								<WhileEnabled>
-									<Change eventTitle.Opacity="1" Duration="0.4" />
-								</WhileEnabled>
 							</StackPanel>
 						</Panel>
 					</Grid>
@@ -134,15 +151,18 @@
 						<Rectangle CornerRadius="1" Layer="Background">
 							<Stroke Width="1" Color="#000000"/>
 						</Rectangle>
-						<TextEdit Value="{eventDescription}" Height="100" Width="100%" IsMultiline="true" Font="Regular" />
+						<TextInput Value="{eventDescription}" Height="50" IsMultiline="true" Font="Regular" Width="100" />
 					</Panel>
 					<Text Value="Time" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap" Margin="0,10,0,0"/>
 					<StackPanel>
-							<Text TextAlignment="Center" Value="Hour" Font="Bold" FontSize="25" />
-							<Slider Value="{timeHourSliderValue}" Minimum="0" Maximum="23" />
-							<Text TextAlignment="Center" Value="Minute" Font="Bold" FontSize="25" />
-							<Slider Value="{timeMinuteSliderValue}" Minimum="0" Maximum="59"  />
-						<Text TextAlignment="Center" Value="{eventTimeSliderValue}" Font="Bold" FontSize="25" />
+						<Panel>
+							<Image File="Assets/clock.png" Height="100" Width="100" />
+							<Text TextAlignment="Center" Value="{eventTimeSliderValue}" Font="Bold" FontSize="25" Alignment="Center" />
+						</Panel>
+						<Text TextAlignment="Center" Value="Hour" Font="Bold" FontSize="15" />
+						<Slider Value="{timeHourSliderValue}" Minimum="0" Maximum="23" />
+						<Text TextAlignment="Center" Value="Minute" Font="Bold" FontSize="15" />
+						<Slider Value="{timeMinuteSliderValue}" Minimum="0" Maximum="59"  />
 					</StackPanel>
 					<Text Value="Repeat" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap" Margin="0,10,0,0"/>
 					<Panel Padding="10">
@@ -163,20 +183,20 @@
 						</Grid>
 					</Panel>
 					<StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-					<Text Value="Remainder" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap" Margin="0,20,0,0"/>
-					<Panel Margin="15" Width="30" Height="30">
-						<Rectangle CornerRadius="1" Layer="Background">
-							<Stroke Width="1" Color="#000000"/>
-							<Image File="Assets/Checkmark.png" StretchMode="UniformToFill" Opacity="0" ux:Name="remainderCheck" />
-							<Clicked>
-								<Toggle Target="setRemainder" />
-							</Clicked>
-							<WhileTrue ux:Name="setRemainder">
-								<Change remainderCheck.Opacity="1" />
-							</WhileTrue>
-						</Rectangle>
-					</Panel>
-				</StackPanel>
+						<Text Value="Remainder" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap" Margin="0,20,0,0"/>
+						<Panel Margin="15" Width="30" Height="30">
+							<Rectangle CornerRadius="1" Layer="Background">
+								<Stroke Width="1" Color="#000000"/>
+								<Image File="Assets/Checkmark.png" StretchMode="UniformToFill" Opacity="0" ux:Name="remainderCheck" />
+								<Clicked>
+									<Toggle Target="setRemainder" />
+								</Clicked>
+								<WhileTrue ux:Name="setRemainder">
+									<Change remainderCheck.Opacity="1" />
+								</WhileTrue>
+							</Rectangle>
+						</Panel>
+					</StackPanel>
 				</StackPanel>
 			</Panel>
 		</DockPanel>

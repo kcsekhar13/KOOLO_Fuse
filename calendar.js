@@ -2,6 +2,7 @@ var Observable = require("FuseJS/Observable");
 var Storage = require('FuseJS/Storage');
 
 var selectedDate = Observable();
+var selectedMonth = Observable();
 var currentYear = Observable();
 var currentMonth = Observable();
 var currentDate = Observable();
@@ -9,11 +10,11 @@ var todayDate = Observable();
 var currentDayInWeek = Observable();
 var totalDaysInMonth = Observable();
 var validDays = Observable();
-var hours= [];
-var minutes= [];
 var myEvents = [];
 var observableEvents = Observable();
 var eventsFile = "events.json";
+var todayEvents = Observable();
+var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
 function myDay(date, isContainsEvents){
    var self = this;
@@ -27,36 +28,31 @@ function myDay(date, isContainsEvents){
    this.isContainsEvents = Observable();
  }
 
-function myEvent(date,month,time,colour,title,description,isRemainderSet,repeatOn)
-{
+function myEvent(date,month,time,color,title,description,isRemainderSet){
   var self = this;
   this.date = date;
   this.month = month;
   this.time=time;
-  this.eventColor = colour;
-  this.eventTitle = title;
-  this.eventDescription = description;
+  this.eventColor = color;
+  this.Title = title;
+  this.Description = description;
   this.isRemind = isRemainderSet;
-  this.repeatOn = repeatOn;
 }
-
-var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
 function initPage() {
   validDays = Observable();
   initCalendar(new Date());
-  for (var i = 0; i < 24; i++) {
-    hours.push(i);
-  }
-  for (var i = 0; i < 60; i++) {
-    minutes.push(i);
-  }
+  // console.log("Adding some Test Events");
+  // myEvents.push(new myEvent(todayDate.value,currentMonth.value,eventTimeSliderValue.value,
+  //     "#13fef8","Test","Test",true));
+  // myEvents.push(new myEvent(todayDate.value,currentMonth.value,eventTimeSliderValue.value,
+  //     "#6d7cff","Test","Test",true));
+  // updateEvents();
   readKooloEvents ();
 }
 
 function initCalendar(date) {
   validDays.clear();
-  console.log("validDays count " +validDays.length );
   // console.log( "Updating calender to new date" +JSON.stringify(date, undefined, '    '));
   var d = new Date(date);
   todayDate.value = d.getDate();
@@ -73,13 +69,12 @@ function initCalendar(date) {
   for (var i = 1; i <= totalDaysInMonth.value; i++) {
     validDays.add(new myDay(i,false));
   }
-  console.log("Year  " +   currentYear.value + " Month :" + currentMonth.value);
-  console.log("Total days in current month " + totalDaysInMonth.value);
-  console.log("validDays count " +validDays.length );
+  // console.log("Year  " +   currentYear.value + " Month :" + currentMonth.value);
+  // console.log("Total days in current month " + totalDaysInMonth.value);
+  // console.log("validDays count " +validDays.length );
 }
 
 function onDateSelected(date) {
-  console.log(JSON.stringify(date));
   selectedDate.value = date.data.date;
 }
 
@@ -96,26 +91,23 @@ function showNextMonth() {
     }
     currentMonth.value = currentMonth.value;
     var newDate = new Date(currentYear.value,currentMonth.value,1)
-    console.log("new date : " + newDate);
     initCalendar(newDate);
 }
 
 function showPreviousMonth() {
   selectedDate.value = 0;
   console.log("Displaying Previous month ");
-  console.log("Current Year  " +   currentYear.value + " Curent Month :" + currentMonth.value);
   if(currentMonth.value == 11){
     currentYear.value = currentYear.value-1;
     currentMonth.value = 11
   }
   var newMonth = currentMonth.value -2;
   var newDate = new Date(currentYear.value,newMonth,1)
-  console.log("new date : " + newDate);
   initCalendar(newDate);
 }
 
-var eventTitle;
-var eventDescription;
+var eventTitle = Observable();
+var eventDescription = Observable();
 var repeatOnDays= [];
 
 function onRepeatEventDaySelected(arg) {
@@ -133,8 +125,39 @@ function onRepeatEventDaySelected(arg) {
 
 function addNewEvent() {
   console.log("adding new event to calender");
-  myEvents.unshift(new myEvent(todayDate.value,currentMonth.value,eventTimeSliderValue.value,dateColor.colour,eventTitle,eventDescription,true,"Mon"));
+  if(repeatOnDays.length == 0){
+      myEvents.push(new myEvent(todayDate.value,currentMonth.value,eventTimeSliderValue.value,
+          dateColor.color.value,eventTitle.value,eventDescription.value,true));
+  }
+  else{
+        for (var i = 0; i < repeatOnDays.length; i++) {
+         var tempDay = getRepeatEventDate();
+          console.log("******* Adding Repeated Event ************** from "  + tempDay);
+          var newDate = getSixthMonthDate(tempDay);
+          for (var d = tempDay ; d <= newDate; d.setDate(d.getDate() + 1)){
+              if(d.getDay() == repeatOnDays[i]){
+                console.log("Adding Event on Day " + d);
+                // myEvents.unshift(new myEvent(todayDate.value,currentMonth.value,eventTimeSliderValue.value,dateColor.colour,eventTitle,eventDescription,true,"Mon"));
+              }
+          }
+        }
+  }
+  repeatOnDays = [];
   updateEvents();
+}
+
+function getRepeatEventDate() {
+  var day = new Date(currentYear.value,(currentMonth.value-1),todayDate.value);
+  if(selectedDate.value != undefined){
+    day = new Date(currentYear.value,(currentMonth.value-1), selectedDate.value);
+  }
+  return day;
+}
+
+function getSixthMonthDate(date) {
+  var result = new Date(date);
+  result.setDate(result.getDate() + 180);
+  return result
 }
 
 function updateEvents() {
@@ -144,16 +167,18 @@ function updateEvents() {
        readKooloEvents();
   },function (error) {
      console.log("Error in writing events to file");
-     console.log(error);
   });
 }
 
 function readKooloEvents() {
   Storage.read(eventsFile).then(function(content) {
       console.log("Success in reading koolo events file" + content);
-      myEvents = JSON.parse(content);
-      observableEvents.value = myEvents;
-      console.log(JSON.stringify(observableEvents));
+        myEvents = JSON.parse(content);
+        observableEvents.value = myEvents;
+        todayEvents.value = myEvents.filter(function(e){
+          return e.date === new Date().getDate();
+        });
+        console.log("Printing today Events " + JSON.stringify(todayEvents.value));
   }, function(error) {
       console.log("failed to read koolo events file");
   });
@@ -164,9 +189,7 @@ var timeMinuteSliderValue = Observable(0);
 var eventTimeSliderValue  = Observable("00:00");
 
 timeHourSliderValue.addSubscriber(function(val) {
-          console.log("Hour :" + val.value);
-          eventTimeSliderValue.value = getHourvalue(val.value.toString()) + ":"+getMinutevalue(timeMinuteSliderValue.value.toString());
-          // return "Event Time: " + val;
+  eventTimeSliderValue.value = getHourvalue(val.value.toString()) + ":"+getMinutevalue(timeMinuteSliderValue.value.toString());
 });
 
 function getHourvalue(arg) {
@@ -198,20 +221,25 @@ function getMinutevalue(arg) {
 }
 
 timeMinuteSliderValue.addSubscriber(function(val) {
-        console.log("Minute :" + val.value);
-        eventTimeSliderValue.value = getHourvalue(timeHourSliderValue.value.toString()) + ":"+ getMinutevalue(val.value.toString());
-          // eventTimeSliderValue = "Event Time: " + val;
+  eventTimeSliderValue.value = getHourvalue(timeHourSliderValue.value.toString()) + ":"+ getMinutevalue(val.value.toString());
 });
 
 var dateColor = {
     date: Observable(new Date().getDate()),
-    colour: Observable()
+    dateString: currentMonth.map(function () {
+      return ((currentMonth.value).length > 1 ?(currentMonth.value) : "0"+(currentMonth.value))  + ", " + currentYear.value;
+    }),
+    color: Observable()
 };
 
 function updateEventDateColor(context) {
-    console.log(JSON.stringify(context, undefined, '    '));
-    dateColor.colour.value = context.data.code;
-    console.log(" Event color set :" + dateColor.date);
+    dateColor.color.value = context.data.code;
+}
+
+function InitNewEventDate() {
+    if(selectedDate.value != undefined){
+      dateColor.date.value = selectedDate.value;
+    }
 }
 
 initPage();
@@ -235,4 +263,6 @@ module.exports = {
   timeMinuteSliderValue:timeMinuteSliderValue,
   eventTimeSliderValue:eventTimeSliderValue,
   onRepeatEventDaySelected:onRepeatEventDaySelected,
+  InitNewEventDate:InitNewEventDate,
+  todayEvents:todayEvents
 };

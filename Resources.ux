@@ -140,22 +140,42 @@
 	</Panel>
 
 	<Panel ux:Class="MoodMapCntrl" ux:Name="moodMapCntrl" >
-	<string ux:Property="Text" />
-	<float4 ux:Property="MoodColor"/>
-	<FileSource ux:Property="MoodImage" />
-	<Panel ux:Name="statusPanel" Width="80%" Margin="10" >
-			<Panel Width="50" Margin="15,0,0,0" Alignment="Left">
-				<Circle Height="20" Width="20" Color="{Property moodMapCntrl.MoodColor}" />
-			</Panel>
-			<Rectangle ux:Name="titlePanel" Color="{Property moodMapCntrl.MoodColor}" Margin="10,0,30,0" Width="80%" Alignment="Right" Height="150">
-				<Text Value="{Property moodMapCntrl.Text}" Font="Light" TextColor="Black" TextWrapping="Wrap" Margin="10,0,0,10" Alignment="TopLeft" />
-				<Panel Width="98%" Height="95%" Margin="15">
-					<Image File="{Property moodMapCntrl.MoodImage}" StretchMode="UniformToFill" />
+		<string ux:Property="Text" />
+		<float4 ux:Property="MoodColor"/>
+		<FileSource ux:Property="MoodImage" />
+		<Panel ux:Name="statusPanel" Width="80%" Margin="10" >
+				<Panel Width="50" Margin="15,0,0,0" Alignment="Left">
+					<Circle Height="20" Width="20" Color="{Property moodMapCntrl.MoodColor}" />
 				</Panel>
-			</Rectangle>
-	</Panel>
+				<Rectangle ux:Name="titlePanel" Color="{Property moodMapCntrl.MoodColor}" Margin="10,0,30,0" Width="80%" Alignment="Right" Height="150">
+					<Text Value="{Property moodMapCntrl.Text}" Font="Light" TextColor="Black" TextWrapping="Wrap" Margin="10,0,0,10" Alignment="TopLeft" />
+					<Panel Width="98%" Height="95%" Margin="15">
+						<Image File="{Property moodMapCntrl.MoodImage}" StretchMode="UniformToFill" />
+					</Panel>
+				</Rectangle>
+		</Panel>
 	</Panel>
 
+	<Panel ux:Class="EventPanlCntrl" ux:Name="eventPanlCntrl">
+		<string ux:Property="Title" />
+		<string ux:Property="Description" />
+		<string ux:Property="Time" />
+		<float4 ux:Property="MoodColor" />
+		<Rectangle>
+			<Stroke Brush="#000000" Width="1" />
+				<Grid ColumnCount="3">
+					<Rectangle Width="5" Color="{Property eventPanlCntrl.MoodColor}" Alignment="Left">
+					</Rectangle>
+					<StackPanel Width="200">
+							<Text Value="{Property eventPanlCntrl.Title}" Font="Bold" />
+							<Text Value="{Property eventPanlCntrl.Description}" Font="Regular" Alignment="Left" />
+					</StackPanel>
+					<Panel Width="50">
+						<Text Value="{Property eventPanlCntrl.Time}" Font="Bold" Alignment="Center" />
+					</Panel>
+				</Grid>
+		</Rectangle>
+	</Panel>
 	<Font File="Assets/fonts/Klavika/Klavika-Bold.otf" ux:Global="Bold" />
 	<Font File="Assets/fonts/Klavika/Klavika-Medium.otf" ux:Global="Medium" />
 	<Font File="Assets/fonts/Klavika/Klavika-Light.otf" ux:Global="Light" />
