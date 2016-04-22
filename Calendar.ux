@@ -151,9 +151,13 @@
 								<Circle Margin="5" Height="30" Width="30" Fill="#000000" ux:Name="repeatDays">
 									<CalendarText Value="{}" Font="Medium" TextColor="#FFFFFF" ux:Name="repearDaysText" />
 									<Clicked>
-										<Set repeatDays.Fill="#FFFFFF" />
-										<Set repearDaysText.TextColor="#000000" />
+										<Callback Handler="{onRepeatEventDaySelected}" />
+										<Toggle Target="setRepeat" />
 									</Clicked>
+									<WhileTrue ux:Name="setRepeat">
+										<Change repeatDays.Fill="#FFFFFF" />
+										<Change repearDaysText.TextColor="#000000" />
+									</WhileTrue>
 								</Circle>
 							</Each>
 						</Grid>
@@ -206,7 +210,7 @@
 										<Each Items="{color}">
 											<Circle Width="50" Height="50" Fill="{code}" Margin="5,0,0,0" >
 												<Clicked>
-													<Callback Handler="{updateDateColor}" />
+													<Callback Handler="{updateEventDateColor}" />
 													<Set calendarNav.Active="newEventPage" />
 												</Clicked>
 											</Circle>
@@ -220,7 +224,7 @@
 										<Each Items="{color}">
 											<Circle Width="50" Height="50" Fill="{code}" Margin="0,5,0,0">
 												<Clicked>
-													<Callback Handler="{updateDateColor}" />
+													<Callback Handler="{updateEventDateColor}" />
 														<Set calendarNav.Active="newEventPage" />
 												</Clicked>
 											</Circle>

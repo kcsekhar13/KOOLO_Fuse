@@ -15,11 +15,6 @@ var myEvents = [];
 var observableEvents = Observable();
 var eventsFile = "events.json";
 
-var dateColor = {
-    date: Observable(new Date().getDate()),
-    colour: Observable()
-};
-
 function myDay(date, isContainsEvents){
    var self = this;
    this.date = date;
@@ -57,22 +52,6 @@ function initPage() {
     minutes.push(i);
   }
   readKooloEvents ();
-    // todayDate.value = new Date().getDate();
-  // currentDate.value = new Date().toDateString();
-  // currentMonth.value = new Date().getMonth()+1;
-  // currentYear.value = new Date().getFullYear();
-  // currentDayInWeek.value= new Date().getDay();
-  // totalDaysInMonth.value = daysInMonth(currentMonth.value,currentYear.value);
-  //
-  // for (var i = 0; i < currentDayInWeek.value; i++) {
-  //   validDays.push(new myDay('',false) );
-  // }
-  // for (var i = 1; i <= totalDaysInMonth.value; i++) {
-  //   validDays.push(new myDay(i,false));
-  // }
-  // console.log("Year  " +   currentYear.value + " Month :" + currentMonth.value);
-  // console.log("Total days in current month " + totalDaysInMonth.value);
-  // console.log("validDays count " +validDays.length );
 }
 
 function initCalendar(date) {
@@ -137,6 +116,20 @@ function showPreviousMonth() {
 
 var eventTitle;
 var eventDescription;
+var repeatOnDays= [];
+
+function onRepeatEventDaySelected(arg) {
+  console.log(JSON.stringify(arg.data));
+  if(repeatOnDays.indexOf(days.indexOf(arg.data))==-1) {
+      repeatOnDays.push(days.indexOf(arg.data));
+  }
+  else {
+    var index = repeatOnDays.indexOf(days.indexOf(arg.data))
+    console.log(index);
+    repeatOnDays.splice(index,1);
+  }
+    console.log(JSON.stringify(repeatOnDays));
+}
 
 function addNewEvent() {
   console.log("adding new event to calender");
@@ -210,8 +203,13 @@ timeMinuteSliderValue.addSubscriber(function(val) {
           // eventTimeSliderValue = "Event Time: " + val;
 });
 
-function updateDateColor(context) {
-    //console.log(JSON.stringify(argument, undefined, '    '));
+var dateColor = {
+    date: Observable(new Date().getDate()),
+    colour: Observable()
+};
+
+function updateEventDateColor(context) {
+    console.log(JSON.stringify(context, undefined, '    '));
     dateColor.colour.value = context.data.code;
     console.log(" Event color set :" + dateColor.date);
 }
@@ -225,7 +223,8 @@ module.exports = {
   totalDaysInMonth:totalDaysInMonth,
   validDays:validDays,
   onDateSelected:onDateSelected,
-  updateDateColor: updateDateColor,
+  dateColor:dateColor,
+  updateEventDateColor: updateEventDateColor,
   selectedDate:selectedDate,
   showNextMonth:showNextMonth,
   showPreviousMonth:showPreviousMonth,
@@ -235,4 +234,5 @@ module.exports = {
   timeHourSliderValue :timeHourSliderValue,
   timeMinuteSliderValue:timeMinuteSliderValue,
   eventTimeSliderValue:eventTimeSliderValue,
+  onRepeatEventDaySelected:onRepeatEventDaySelected,
 };
