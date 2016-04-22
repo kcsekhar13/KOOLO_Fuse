@@ -28,8 +28,9 @@ function myDay(date, isContainsEvents){
    this.isContainsEvents = Observable();
  }
 
-function myEvent(date,month,time,color,title,description,isRemainderSet){
+function myEvent(dateString,date,month,time,color,title,description,isRemainderSet){
   var self = this;
+  this.dateString = dateString;
   this.date = date;
   this.month = month;
   this.time=time;
@@ -42,12 +43,6 @@ function myEvent(date,month,time,color,title,description,isRemainderSet){
 function initPage() {
   validDays = Observable();
   initCalendar(new Date());
-  // console.log("Adding some Test Events");
-  // myEvents.push(new myEvent(todayDate.value,currentMonth.value,eventTimeSliderValue.value,
-  //     "#13fef8","Test","Test",true));
-  // myEvents.push(new myEvent(todayDate.value,currentMonth.value,eventTimeSliderValue.value,
-  //     "#6d7cff","Test","Test",true));
-  // updateEvents();
   readKooloEvents ();
 }
 
@@ -76,6 +71,13 @@ function initCalendar(date) {
 
 function onDateSelected(date) {
   selectedDate.value = date.data.date;
+  reloadEvents();
+}
+
+function reloadEvents() {
+  todayEvents.value = myEvents.filter(function(e){
+    return e.dateString === getRepeatEventDate().toDateString();;
+  });
 }
 
 function daysInMonth(month,year) {
@@ -92,6 +94,7 @@ function showNextMonth() {
     currentMonth.value = currentMonth.value;
     var newDate = new Date(currentYear.value,currentMonth.value,1)
     initCalendar(newDate);
+    reloadEvents();
 }
 
 function showPreviousMonth() {
@@ -104,6 +107,7 @@ function showPreviousMonth() {
   var newMonth = currentMonth.value -2;
   var newDate = new Date(currentYear.value,newMonth,1)
   initCalendar(newDate);
+  reloadEvents();
 }
 
 var eventTitle = Observable();
@@ -126,7 +130,8 @@ function onRepeatEventDaySelected(arg) {
 function addNewEvent() {
   console.log("adding new event to calender");
   if(repeatOnDays.length == 0){
-      myEvents.push(new myEvent(todayDate.value,currentMonth.value,eventTimeSliderValue.value,
+      var date = getRepeatEventDate();
+      myEvents.unshift(new myEvent(date.toDateString(),todayDate.value,currentMonth.value,eventTimeSliderValue.value,
           dateColor.color.value,eventTitle.value,eventDescription.value,true));
   }
   else{
@@ -136,14 +141,15 @@ function addNewEvent() {
           var newDate = getSixthMonthDate(tempDay);
           for (var d = tempDay ; d <= newDate; d.setDate(d.getDate() + 1)){
               if(d.getDay() == repeatOnDays[i]){
-                console.log("Adding Event on Day " + d);
-                // myEvents.unshift(new myEvent(todayDate.value,currentMonth.value,eventTimeSliderValue.value,dateColor.colour,eventTitle,eventDescription,true,"Mon"));
+                myEvents.unshift(new myEvent(d.toDateString(),todayDate.value,currentMonth.value,
+                                            eventTimeSliderValue.value, dateColor.color.value,eventTitle.value,eventDescription.value,true));
               }
           }
         }
   }
   repeatOnDays = [];
   updateEvents();
+  reloadEvents();
 }
 
 function getRepeatEventDate() {
@@ -176,7 +182,7 @@ function readKooloEvents() {
         myEvents = JSON.parse(content);
         observableEvents.value = myEvents;
         todayEvents.value = myEvents.filter(function(e){
-          return e.date === new Date().getDate();
+          return e.dateString === new Date().toDateString();;
         });
         console.log("Printing today Events " + JSON.stringify(todayEvents.value));
   }, function(error) {

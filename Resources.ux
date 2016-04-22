@@ -168,7 +168,7 @@
 					</Rectangle>
 					<StackPanel Width="200">
 							<Text Value="{Property eventPanlCntrl.Title}" Font="Bold" />
-							<Text Value="{Property eventPanlCntrl.Description}" Font="Regular" Alignment="Left" />
+							<Text Value="{Property eventPanlCntrl.Description}" Font="Italic" Alignment="Left" />
 					</StackPanel>
 					<Panel Width="50">
 						<Text Value="{Property eventPanlCntrl.Time}" Font="Bold" Alignment="Center" />
@@ -180,6 +180,7 @@
 	<Font File="Assets/fonts/Klavika/Klavika-Medium.otf" ux:Global="Medium" />
 	<Font File="Assets/fonts/Klavika/Klavika-Light.otf" ux:Global="Light" />
 	<Font File="Assets/fonts/Klavika/Klavika-Regular.otf" ux:Global="Regular" />
+	<Font File="Assets/fonts/Klavika/Klavika-RegularItalic.otf" ux:Global="Italic" />
 
 
 	<Image ux:Class="Icon" />
