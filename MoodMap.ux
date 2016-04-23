@@ -1,6 +1,7 @@
 <Page ux:Name="MoodMap">
 	<WhileActive>
 		<DebugAction Message="Mood Map screen is Active" />
+		<Callback Handler="{getMoodLineImages}" />
 	</WhileActive>
 	<PageControl ux:Name="moodMapNav" Interaction="None" Active="{moodMapPage}">
 		<Page ux:Name="moodLinePage">

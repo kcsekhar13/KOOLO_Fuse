@@ -92,7 +92,9 @@ function GotoPageSettings(argument) {
 
 function readBackGroundImage() {
   Storage.read("KOOLO_Background.txt").then(function(content) {
-      myBackGroundImage.value = "/data/data/com.KOOLO_Fuse/files/KOOLO_Background.jpg"
+			console.log(content);
+      myBackGroundImage.value = content;
+//"/data/data/com.KOOLO_Fuse/files/KOOLO_Background.jpg"
     }, function(error) {
       console.log("failed to read BackGroundImage");
       myBackGroundImage.value = "Assets/bg.jpg";
@@ -103,9 +105,9 @@ function gotoLibrary() {
     console.log("Load mood image from Gallery ");
     var ticks = new Date().getTime() + ".jpg";
     gallery.getMoodMapPicture(ticks).then(function(pic) {
-        var moodImagePath = "/data/data/com.KOOLO_Fuse/files/"+ ticks;
-				console.log("Received mood map image from gallery");
-				currentMoodMapImage.value = moodImagePath;
+        //var moodImagePath = "/data/data/com.KOOLO_Fuse/files/"+ ticks;
+				console.log("Received mood map image from gallery" + pic.path);
+				currentMoodMapImage.value = pic;
         //var length = myMoods.length+1;
         //myMoods.push(new mood(length,moodImagePath,"Red",new Date().toDateString()));
         //updateMyMoods();
@@ -195,7 +197,7 @@ function initializeHomePage() {
 		//myMoods.push(new mood("3","Assets/bg.jpg","#233fc7",new Date().toDateString()));
     //myMoods.push(new mood("4","Assets/bg.jpg","#9fb6cd",new Date().toDateString()));
     //State.createFile(moodMapFile,JSON.stringify(myMoods, undefined, '    '));
-    getMoodLineImages();
+    //getMoodLineImages();
     // bundle.read("appSettings.json").then(function(content) {
     //     console.log(content);
     // }, function(error) {
@@ -228,5 +230,6 @@ module.exports = {
 		selectedHumourColor:selectedHumourColor,
 		onHumorColorSelected:onHumorColorSelected,
 		onMoodColorCircleClicked:onMoodColorCircleClicked,
-		clearMoodColorFilter:clearMoodColorFilter
+		clearMoodColorFilter:clearMoodColorFilter,
+  	getMoodLineImages:  getMoodLineImages
   };

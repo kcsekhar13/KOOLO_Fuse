@@ -162,30 +162,19 @@
 		<string ux:Property="Description" />
 		<string ux:Property="Time" />
 		<float4 ux:Property="MoodColor" />
-		<Rectangle>
+		<Rectangle CornerRadius="10">
 			<Stroke Brush="#000000" Width="1" />
-				<!-- <Grid ColumnCount="3">
-					<Rectangle Width="5" Color="{Property eventPanlCntrl.MoodColor}" Alignment="Left">
-					</Rectangle>
-					<StackPanel Width="200">
-							<Text Value="{Property eventPanlCntrl.Title}" Font="Bold" />
-							<Text Value="{Property eventPanlCntrl.Description}" Font="Italic" Alignment="Left" />
-					</StackPanel>
-					<Panel Width="50">
-						<Text Value="{Property eventPanlCntrl.Time}" Font="Bold" Alignment="Center" />
-					</Panel>
-				</Grid> -->
-			<DockPanel>
-				<Rectangle Width="5" Color="{Property eventPanlCntrl.MoodColor}" Alignment="Left">
+			<Panel>
+				<Rectangle Width="10" Color="{Property eventPanlCntrl.MoodColor}" Alignment="Left" Margin="2,0,0,0" Height="95%" CornerRadius="10">
 				</Rectangle>
-				<StackPanel Width="200">
-						<Text Value="{Property eventPanlCntrl.Title}" Font="Bold" />
-						<Text Value="{Property eventPanlCntrl.Description}" Font="Italic" Alignment="Left" />
+				<StackPanel Width="200" Alignment="Left" Margin="20">
+						<Text Value="{Property eventPanlCntrl.Title}" Font="Bold" Alignment="Left" />
+						<Text Value="{Property eventPanlCntrl.Description}" Font="Italic" Alignment="Left" TextWrapping="Wrap" />
 				</StackPanel>
-				<Panel Width="50" Alignment="Right">
+				<Panel Width="50" Alignment="CenterRight">
 					<Text Value="{Property eventPanlCntrl.Time}" Font="Bold" Alignment="Center" />
 				</Panel>
-			</DockPanel>
+			</Panel>
 		</Rectangle>
 	</Panel>
 	<Font File="Assets/fonts/Klavika/Klavika-Bold.otf" ux:Global="Bold" />
@@ -210,9 +199,10 @@
 	<Icon ux:Class="GalleryIcon" File="Assets/gallery.png" />
 	<Icon ux:Class="NewGoalIcon" Files="Assets/red.png" />
 
-	<Text TextAlignment="Left" Value="Cancel" Font="Regular" ux:Class="CancelText" />
-  <Text TextAlignment="Right" Value="Done" Font="Regular" ux:Class="DoneText" />
-  <Text TextAlignment="Right" Value="Add" Font="Regular" ux:Class="AddText" />
+	<Text TextAlignment="Left" Value="Cancel" Font="Regular" ux:Class="CancelText" FontSize="20" />
+  <Text TextAlignment="Right" Value="Done" Font="Regular" ux:Class="DoneText" FontSize="20" />
+  <Text TextAlignment="Right" Value="Add" Font="Regular" ux:Class="AddText" FontSize="20" />
+	<Text TextAlignment="Right" Value="Map" Font="Regular" ux:Class="MapText" FontSize="20"  />
 
 	<Panel ux:Class="CheckListInfoTxt">
 		<StackPanel >
@@ -220,6 +210,7 @@
 			<Text Value="The order of colours should be green,yellow and red." Font="Italic"  TextColor="#FFFFFF" />
 		</StackPanel>
 	</Panel>
+
 	<Text TextAlignment="Left" Value="Finished" Font="Italic" ux:Class="FinishedTxt" TextColor="#FFFFFF" />
 	<Text TextAlignment="Left" Value="Not done" Font="Italic" ux:Class="NotDoneTxt"  TextColor="#FFFFFF" />
 	<Text TextAlignment="Left" Value="Ongoing" Font="Italic" ux:Class="OngoingTxt"  TextColor="#FFFFFF" />

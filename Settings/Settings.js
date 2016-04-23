@@ -9,7 +9,7 @@ var settings = [
                 { setting: "Background Image" },
                 { setting : "Passcode" },
                 {setting : "Quotes" },
-                {setting : "Humour Color" },
+                {setting : "Mood Color" },
                 {setting : "License" },
                 {setting : "Tutorial" },
                 {setting : "Contributors" },
@@ -126,12 +126,14 @@ function selectMe(arg) {
 }
 
 function setBackGroundImage() {
+    var backGroungImagePath ;
     gallery.getPicture().then(function(pic) {
-				console.log("Received image for Background :"+ JSON.stingify(pic));
+        backGroungImagePath = pic.path;
+				console.log("Received image for Background : "+ JSON.stringify(pic));
+        Storage.write("KOOLO_Background.txt",backGroungImagePath ).then(function(success) {
+            console.log(" Background image Save  " + (success ? "success" : "failure"));
+        });
     });
-		Storage.write("KOOLO_Background.txt", "true").then(function(success) {
-				console.log(" Background image Save  " + (success ? "success" : "failure"));
-		});
 }
 
 function saveHumorColors(arg) {
