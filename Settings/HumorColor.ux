@@ -42,14 +42,14 @@ initPage();
   <Panel Dock="Top" Height="35" >
   <Rectangle Fill="#808080" Layer="Background">
       <Panel Alignment="Left" Margin="5,8,0,0">
-         <Text TextAlignment="Left" Value="Cancel" Font="Light" />
+         <CancelText />
          <Clicked>
               <GoBack />
          </Clicked>
        </Panel>
-       <Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Humor Colors"/>
+       <Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Mood Colors"/>
        <Panel Alignment="Right" Margin="0,8,5,0">
-         <Text TextAlignment="Right" Value="Done" Font="Light"  />
+         <DoneText />
            <Clicked>
               <Callback Handler="{saveHumorColors}" />
               <GoBack />

@@ -6,7 +6,7 @@
         <Panel Dock="Top" Height="35">
             <Rectangle Fill="#808080" Layer="Background">
                 <Panel Alignment="Left" Margin="5,8,0,0">
-                    <Text TextAlignment="Left" Value="Cancel" Font="Light" />
+                    <CancelText />
                     <Clicked>
                         <GoBack />
                     </Clicked>

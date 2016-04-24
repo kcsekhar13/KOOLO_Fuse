@@ -17,14 +17,14 @@
 						<Navigation ux:Property="NavigationCtx" />
 						<Rectangle Fill="#808080" Layer="Background">
 							<Panel Alignment="Left" Margin="5,8,0,0">
-								<Text TextAlignment="Left" Value="Cancel" Font="Light" />
+								<CancelText />
 								<Clicked>
 									<GoBack TargetNode="homePageNav" />
 								</Clicked>
 							</Panel>
 							<Text Alignment="Center" FontSize="20" TextColor="Black" Font="Bold" Value="Checklist"/>
 							<Panel Alignment="Right" Margin="0,8,5,0">
-								<Text TextAlignment="Right" Value="Done" Font="Light"  />
+								<DoneText />
 								<Clicked>
 									<GoBack TargetNode="homePageNav" />
 								</Clicked>

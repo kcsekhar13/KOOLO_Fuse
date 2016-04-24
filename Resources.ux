@@ -45,14 +45,14 @@
 		  <float4 ux:Property="TextColor"/>
 		  <Brush ux:Property="Fill" />
 		    <Panel Alignment="Left" Margin="5,8,0,0">
-		        <Text TextAlignment="Left" Value="Cancel" Font="Light" />
+		        <CancelText />
 		        <Clicked>
 		             <GoBack />
 		        </Clicked>
 		      </Panel>
 		      <Text Alignment="Center" FontSize="20" TextColor="{Property this.TextColor}" Font="Bold" Value="{Property this.Text}"/>
 		      <Panel Alignment="Right" Margin="0,8,5,0">
-		        <Text TextAlignment="Right" Value="Done" Font="Light"  />
+		        <DoneText />
 		          <Clicked>
 		             <GoBack />
 		        </Clicked>
