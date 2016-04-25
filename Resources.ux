@@ -96,29 +96,35 @@
 	 </Panel>
 <!-- Custom CheckList Control -->
 	<Panel ux:Class="CheckListCntrl" ux:Name="CheckListCntrl">
-		<SwipeGesture ux:Name="swipe" Direction="Left" Type="Active"/>
-		<SwipingAnimation Source="swipe">
-			<Move Target="statusPanel" X="-0.3" RelativeTo="Size" Duration="0.5" />
-			<!-- <Change operationPanel.X="0" Duration="0.5"/> -->
+		<SwipeGesture ux:Name="swipeLeft" Direction="Left" Type="Active" Length="100"/>
+		<SwipeGesture ux:Name="swipeRight" Direction="Right" Type="Active" Length="100"/>
+		<SwipingAnimation Source="swipeLeft">
+			<Move Target="statusPanel" X="-0.4" RelativeTo="Size" Duration="0.5" />
 			<Move Target="operationPanel" X="0" RelativeTo="Size" Duration="0.5" />
 			<Change operationPanel.Opacity="1" Duration="0.5" EasingBack="QuadraticInOut" />
 			<Change	operationPanel.Width="35%" Duration="0.5" />
 		</SwipingAnimation>
+		<SwipingAnimation Source="swipeRight">
+			<Move Target="statusPanel" X="0.4" RelativeTo="Size" Duration="0.8" />
+			<Set	statusCircle.Opacity="0"  />
+			<Move Target="statusPanel" X="-0.4" RelativeTo="Size" Duration="0.8" Delay="0.8" />
+		</SwipingAnimation>
 		<WhileInactive Threshold="0.2">
-			<SetSwipeActive Target="swipe" Value="false" />
+			<SetSwipeActive Target="swipeLeft" Value="false" />			
 		</WhileInactive>
 		<string ux:Property="Text" />
 		<FileSource ux:Property="StatusIcon" />
-		<Panel ux:Name="statusPanel" Width="80%" Margin="10" >
-				<Panel Width="50" Margin="10,0,0,0" Alignment="Left">
+		<Panel ux:Name="statusPanel" >
+				<Panel Width="20" Margin="10,0,0,0" Alignment="Left" ux:Name="statusCircle">
 					<Circle Height="20" Width="20">
 						<Image File="{Property CheckListCntrl.StatusIcon}" />
 						<Clicked>
 							<DebugAction Message="Update CheckList status" />
+							<Callback Handler="{updateCheckListItemStatus}" />
 						</Clicked>
 					</Circle>
 				</Panel>
-				<Panel ux:Name="titlePanel" Color="#ece8d5" Margin="20,0,50,0" Width="80%" Alignment="Right">
+				<Panel ux:Name="titlePanel" Color="#ece8d5" Margin="20,0,10,0" Width="90%" Alignment="Right">
 					<Text Value="{Property CheckListCntrl.Text}" Font="Italic" TextColor="Black" TextWrapping="Wrap" Margin="10,15,0,10" />
 				</Panel>
 		</Panel>

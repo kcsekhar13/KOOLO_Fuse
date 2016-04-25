@@ -1,8 +1,12 @@
 <MyPage ux:Name="ThreeSentenses" ux:AutoBind="false" ux:Class="ThreeSentenses">
     <WhileActive>
         <Callback Handler="{readThreeSentenses}"/>
+        <ToggleSwipeActive Target="swipeRight" />
+        <ToggleSwipeActive Target="swipeLeft" />
     </WhileActive>
     <DockPanel>
+        <SwipeGesture ux:Name="swipeRight" Direction="Right" Type="Active" Length="100"/>
+        <SwipeGesture ux:Name="swipeLeft" Direction="Left" Type="Active" Length="100"/>
         <Panel Dock="Top" Height="35">
             <Rectangle Fill="#808080" Layer="Background">
                 <Panel Alignment="Left" Margin="5,8,0,0">
@@ -13,7 +17,7 @@
                 </Panel>
                 <Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Three Sentenses"/>
                 <Panel Alignment="Right" Margin="0,8,5,0">
-                    <Text TextAlignment="Right" Value="Done" Font="Light"  />
+                    <DoneText />
                     <Clicked>
                         <Callback Handler="{save}" />
                         <GoBack />
@@ -25,7 +29,7 @@
             <Grid Columns="1*" Dock="Top">
             </Grid>
             <StackPanel>
-                <Text Value="1. My age, diagnosis and brief medical history" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap" />
+                <Text Value="1. My age, diagnosis and brief medical history" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap" TextColor="#FFFFFF" />
                 <Panel Padding="10">
                     <Rectangle CornerRadius="1" Layer="Background">
                         <Stroke Width="1" Color="#000000"/>
@@ -34,7 +38,7 @@
                 </Panel>
             </StackPanel>
             <StackPanel>
-                <Text Value="2. My treatment plan" Font="Regular" Alignment="TopLeft"  TextWrapping="Wrap"/>
+                <Text Value="2. My treatment plan" Font="Regular" Alignment="TopLeft"  TextWrapping="Wrap" TextColor="#FFFFFF"/>
                 <Panel Padding="10">
                     <Rectangle CornerRadius="1" Layer="Background">
                         <Stroke Width="1" Color="#000000"/>
@@ -43,7 +47,7 @@
                 </Panel>
             </StackPanel>
             <StackPanel>
-                <Text Value="3. My question/concern to talk about during the visit" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap"/>
+                <Text Value="3. My question/concern to talk about during the visit" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap" TextColor="#FFFFFF"/>
                 <Panel Padding="10">
                     <Rectangle CornerRadius="1" Layer="Background">
                         <Stroke Width="1" Color="#000000"/>

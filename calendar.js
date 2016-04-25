@@ -177,8 +177,7 @@ function updateEvents() {
 }
 
 function readKooloEvents() {
-  Storage.read(eventsFile).then(function(content) {
-      console.log("Success in reading koolo events file" + content);
+  Storage.read(eventsFile).then(function(content) {      
         myEvents = JSON.parse(content);
         observableEvents.value = myEvents;
         todayEvents.value = myEvents.filter(function(e){

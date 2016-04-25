@@ -33,7 +33,11 @@
 					</Panel>
 					<Circle ux:Name="myHealthCircle" Height="150" Width="150" Alignment="TopCenter" Fill="#232d33">
 						<Text ux:Name="myHealthTxt" Font="Regular" Alignment="Center" Value="My Health"  TextColor="#FFFFFF" />
-						<Text ux:Name="myHealthTxtCount" Font="Regular" Alignment="Center" Value=" 0/0"  TextColor="#FFFFFF" Margin="0,50,0,0"/>
+						<StackPanel Orientation="Horizontal" Alignment="Center" >
+							<Text ux:Name="finishedGoalsCount" Font="Regular" Alignment="Bottom" Value="{finishedGoalsCount}" TextColor="#FFFFFF" />
+							<Text ux:Name="goalslineBreak" Font="Regular" Alignment="Center" Value="/" TextWrapping="Wrap" TextColor="#FFFFFF" Margin="0,50,0,0" />
+							<Text ux:Name="goalsTxtCount" Font="Regular" Alignment="Center" Value="{totalGoalsCount}" TextColor="#FFFFFF" Margin="0,50,0,0" />
+						</StackPanel>
 						<Clicked>
 							<DebugAction Message="My Health Circle Clicked" />
 							<Callback Handler="{InitMyHealthPage}" />
@@ -49,7 +53,11 @@
 					</Circle>
 					<Circle ux:Name="transitionCircle" Height="150" Width="150" Alignment="BottomCenter" Fill="#232d33">
 						<Text ux:Name="transitionTxt" Font="Regular" Alignment="Center" Value="Ready for transition" TextWrapping="Wrap" TextColor="#FFFFFF" />
-						<Text ux:Name="transitionTxtCount" Font="Regular" Alignment="Center" Value=" 0/0" TextWrapping="Wrap" TextColor="#FFFFFF" Margin="0,50,0,0" />
+						<StackPanel Orientation="Horizontal" Alignment="Center" >
+							<Text ux:Name="finishedTransitionCount" Font="Regular" Alignment="Bottom" Value="{finishedTransitionCount}" TextColor="#FFFFFF" />
+							<Text ux:Name="lineBreak" Font="Regular" Alignment="Center" Value="/" TextWrapping="Wrap" TextColor="#FFFFFF" Margin="0,50,0,0" />
+							<Text ux:Name="transitionTxtCount" Font="Regular" Alignment="Center" Value="{totalTransitionsCount}" TextColor="#FFFFFF" Margin="0,50,0,0" />
+						</StackPanel>
 						<Clicked>
 							<DebugAction Message="Transition Circle Clicked" />
 							<Callback Handler="{InitTransitionPage}" />
