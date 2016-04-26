@@ -136,12 +136,13 @@ function checkIfCheckListFileExists() {
             console.log("Success in reading KOOLO transition");
             CheckList.Transitions = JSON.parse(content);
             totalTransitionsCount.value = CheckList.Transitions.length;
-            var temp = 0;
+            var goalTemp = 0;
             for (var t in CheckList.Transitions) {
                 if(CheckList.Transitions[t].item.status ==3)
-                temp++;
+                goalTemp++;
             };
-            finishedTransitionCount.value = temp;
+            finishedTransitionCount.value = goalTemp;
+            console.log("Finished Transition Count " + finishedTransitionCount.value);
             },function (error) {
               console.log(error);
               readDefaultCheckLists();
@@ -150,12 +151,14 @@ function checkIfCheckListFileExists() {
             console.log("Success in reading KOOLO checklist");
             CheckList.Goals = JSON.parse(content);
             totalGoalsCount.value = CheckList.Goals.length;
-            var temp = 0;
+            var transTemp = 0;
             for (var t in CheckList.Goals) {
+                console.log(" goals " + CheckList.Goals[t]);
                 if(CheckList.Goals[t].item.status ==3)
-                temp++;
+                transTemp++;
             };
-            finishedGoalsCount.value = temp;
+            finishedGoalsCount.value = transTemp;
+            console.log("Finished goals Count " + finishedGoalsCount.value);
           },function (error) {
             readDefaultCheckLists();
   });
@@ -183,9 +186,9 @@ function saveCheckListItems() {
   if(selected.value="My Health"){
   console.log("Save Checklist goals");
   }
-else {
-  console.log("Save Checklist Transitions");
-}
+  else {
+    console.log("Save Checklist Transitions");
+  }
 }
 
 function updateCheckListItemStatus(arg) {
@@ -212,6 +215,7 @@ function updateCheckListCount() {
 function Load() {
   console.log("Reading CheckLists file");
   checkIfCheckListFileExists();
+  //readDefaultCheckLists();
 };
 
 Load();

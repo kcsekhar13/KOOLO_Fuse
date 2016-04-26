@@ -27,9 +27,9 @@ function addNewQuote(arg) {
   console.log(newQuote.value);
   // console.log("Length before adding " + defaultQuotes.length);
   defaultQuotes.add({quote:newQuote.value , code:defaultQuotes.length+1,IsSelected:Observable(false)});
-  // console.log("Length after adding " + defaultQuotes["_values"]);
-  // save();
-  Init();
+  console.log("Length after adding " + defaultQuotes["_values"]);
+  //save();
+  //InitializePage();
 }
 
 function save(){

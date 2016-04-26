@@ -1,14 +1,19 @@
 <MyPage Title="Home" ux:Name="Home">
+<WhileActive>
+	<DebugAction Message="Home view is active" />
+	<Callback Handler="{readkooloEvents}" />
+	<Set showItems.Value="true" />
+</WhileActive>
 <Panel>
 	<DeactivatingAnimation>
 		<Move Target="settingsBtn" Y="150" Duration="1" />
-		<Move Target="self" Y="150" Duration="1" />
-		<Move Target="mainContent" Y="-150" Duration="1" />
+		<Move Target="optionsBtn" Y="150" Duration="1" />
+		<Move Target="mainContent" Y="-350" Duration="1" />
 		<Change expanded.Value="false" />
 	</DeactivatingAnimation>
 	<PageControl ux:Name="homePageNav" Interaction="None" Active="mainHomePage">
 		<MyPage ux:Name="mainHomePage">
-			<Panel ux:Name="self" TransformOrigin="Center" Width="250" Height="250" Alignment="BottomRight" Offset="80,80">
+			<Panel ux:Name="optionsBtn" TransformOrigin="Center" Width="250" Height="250" Alignment="BottomRight" Offset="80,80">
 					<Cross ux:Name="cross" />
 						<Icon>
 							<Clicked>
@@ -70,34 +75,31 @@
 					</Clicked>
 				</Circle>
 			</Panel>
-			<DockPanel Alignment="TopLeft" Margin="10,10" ux:Name="mainContent">
+			<DockPanel Alignment="TopLeft" Margin="10" ux:Name="mainContent" Height="60%" Width="100%" >			
 				<DateCircle ux:Name="DateCntrl" Colour="{dateColor.colour}" Dock="Left" Margin="5">
 					<Clicked>
 						<DebugAction Message="Date Circle got clicked" />
 						<NavigateTo Target="MoodColour" />
 					</Clicked>
 				</DateCircle>
-				<Text ux:Name="quote" Value="{myQuote}" Font="Light" FontSize="14" Dock="Fill" TextWrapping="Wrap" Alignment="TopCenter" Margin="10,10,0,0"/>
-			<Grid Rows="1.3*,2*,6*">
-				<Grid Columns="1*,1*" Dock="Top" Padding="20">
-					<Panel Width="60" Height="60" Alignment="Right">
-					</Panel>
-				</Grid>
-				<Panel Margin="20,0,0,0">
-					<WhileTrue ux:Name="showItems">
-						<ScrollView ux:Name="itemsScrollView">
-							<RemovingAnimation>
-								<Change itemsScrollView.Opacity="0" Duration="0.6" Easing="ExponentialOut" />
-							</RemovingAnimation>
-							<StackPanel>
-								<Each Items="{items}">
-								<!-- <CalendarItem MinHeight="70" /> -->
-								</Each>
-								</StackPanel>
-							</ScrollView>
-						</WhileTrue>
-					</Panel>
-				</Grid>
+				<Text ux:Name="quote" Value="{myQuote}" Font="Italic" Dock="Fill" FontSize="14" TextWrapping="Wrap" Alignment="TopCenter" Margin="10,10,0,0"/>
+				<Grid Margin="50,80,0,0" Width="100%">
+					<Panel>
+						<WhileTrue ux:Name="showItems">
+								<ScrollView>
+									<StackPanel>
+									<Each Items="{kooloTodayEvents}">
+											<StackPanel>
+												<Each Items="{}">
+													<HomeCalendarItem />
+												</Each>
+											</StackPanel>
+									</Each>
+									</StackPanel>
+									</ScrollView>
+							</WhileTrue>
+						</Panel>
+					</Grid>
 			</DockPanel>
 			</Panel>
 		</MyPage>

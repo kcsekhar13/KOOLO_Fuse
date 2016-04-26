@@ -17,6 +17,9 @@ var myBackGroundImage = Observable();
 var isPassCodeSet = Observable();
 var isQuoteSet = Observable();
 
+var kooloTodayEvents = Observable();
+var eventsFile = "events.json";
+
 var MoodMapPage = {
 	moodLine: "moodLinePage",
 	moodMap: "moodMapPage",
@@ -48,6 +51,17 @@ function mood(id,imagePath,color,date) {
   this.moodColor = color;
   this.moodDate = date;
 };
+
+function readkooloEvents() {
+  Storage.read(eventsFile).then(function(content) {
+        var events = JSON.parse(content);
+        	kooloTodayEvents.value = events.filter(function(e){
+          return e.dateString === new Date().toDateString();;
+        });
+  }, function(error) {
+      console.log("failed to read koolo events file");
+  });
+}
 
 function getValues(observables) {
     var result = {};
@@ -192,6 +206,7 @@ function initializeHomePage() {
     console.log("isQuoteSet : " + isQuoteSet.value );
     setMyQuote();
     readBackGroundImage();
+		readkooloEvents();
     //myMoods.push(new mood("1","Assets/bg.jpg","#a52a2a",new Date().toDateString()));
     //myMoods.push(new mood("2","Assets/bg.jpg","#ffde47",new Date().toDateString()));
 		//myMoods.push(new mood("3","Assets/bg.jpg","#233fc7",new Date().toDateString()));
@@ -231,5 +246,7 @@ module.exports = {
 		onHumorColorSelected:onHumorColorSelected,
 		onMoodColorCircleClicked:onMoodColorCircleClicked,
 		clearMoodColorFilter:clearMoodColorFilter,
-  	getMoodLineImages:  getMoodLineImages
+  	getMoodLineImages:  getMoodLineImages,
+		kooloTodayEvents:kooloTodayEvents,
+		readkooloEvents:readkooloEvents
   };

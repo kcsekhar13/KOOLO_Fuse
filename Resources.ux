@@ -94,6 +94,7 @@
 					 <Rectangle Fill="#EDF3F5" Height="50%" Alignment="Bottom" CornerRadius="5"/>
 				 </Panel>
 	 </Panel>
+
 <!-- Custom CheckList Control -->
 	<Panel ux:Class="CheckListCntrl" ux:Name="CheckListCntrl">
 		<SwipeGesture ux:Name="swipeLeft" Direction="Left" Type="Active" Length="100"/>
@@ -105,12 +106,12 @@
 			<Change	operationPanel.Width="35%" Duration="0.5" />
 		</SwipingAnimation>
 		<SwipingAnimation Source="swipeRight">
-			<Move Target="statusPanel" X="0.4" RelativeTo="Size" Duration="0.8" />
+			<Move Target="statusPanel" X="0.5" RelativeTo="Size" Duration="1" />
 			<Set	statusCircle.Opacity="0"  />
-			<Move Target="statusPanel" X="-0.4" RelativeTo="Size" Duration="0.8" Delay="0.8" />
+			<Move Target="statusPanel" X="-0.5" RelativeTo="Size" Duration="1" />
 		</SwipingAnimation>
 		<WhileInactive Threshold="0.2">
-			<SetSwipeActive Target="swipeLeft" Value="false" />			
+			<SetSwipeActive Target="swipeLeft" Value="false" />
 		</WhileInactive>
 		<string ux:Property="Text" />
 		<FileSource ux:Property="StatusIcon" />
@@ -130,13 +131,13 @@
 		</Panel>
 		<Panel ux:Name="operationPanel" Opacity="0" Alignment="Right" Width="35%">
 			<StackPanel Orientation="Horizontal">
-				<Rectangle>
+				<Rectangle Color="#eb9c27">
 					<Text Value="Update" Font="Regular" TextColor="Black" Alignment="Center"  />
 					<Clicked>
 						<DebugAction Message="Clicked Update CheckList" />
 					</Clicked>
 				</Rectangle>
-				<Rectangle Margin="10,0,10,0" >
+				<Rectangle Color="#ff0000" >
 					<Text Value="Delete" Font="Regular" TextColor="Black" Alignment="Center" />
 					<Clicked>
 						<DebugAction Message="Clicked Delete CheckList" />
@@ -162,6 +163,26 @@
 				</Rectangle>
 		</Panel>
 	</Panel>
+
+	<Text ux:Class="DefaultText" TextColor="#fffd" />
+	<Text ux:Class="MutedText" TextColor="#fff8" Font="Italic" TextWrapping="Wrap" />
+
+	<Grid ux:Class="HomeCalendarItem" Columns="1*,4*" Margin="10" >
+		<StackPanel>
+			<Circle Alignment="TopLeft" Width="20" Height="20" Color="{eventColor}" Margin="5">
+			</Circle>
+			<DefaultText FontSize="15" Value="{time}" TextAlignment="Left" Alignment="Bottom" Margin="0,10,0,0" />
+		</StackPanel>
+		<Panel Alignment="Left">
+			<Panel>
+				<StackPanel Alignment="VerticalCenter">
+						<DefaultText Value="{Title}" />
+						<MutedText Value="{Description}" FontSize="14" Margin="0,10,0,0" />
+				</StackPanel>
+			</Panel>
+		</Panel>
+		<Rectangle ux:Name="underline" Height="1" Fill="#fff3" Alignment="BottomLeft" Column="1" Width="80%" />
+	</Grid>
 
 	<Panel ux:Class="EventPanlCntrl" ux:Name="eventPanlCntrl">
 		<string ux:Property="Title" />

@@ -14,14 +14,16 @@
 			<StackPanel>
 				<Each Items="{defaultQuotes}" >
 					<Rectangle Clicked="{changeDefaultQuote}">
-						<Text Value="{quote}" Font="Light" TextWrapping="Wrap" Alignment="CenterLeft" Width="90%" Margin="0,15,0,0" />
+						<Grid Columns="2*,1*">
+						<Text Value="{quote}" Font="Light" TextWrapping="Wrap" Alignment="CenterLeft" Width="300" Margin="0,15,0,0" />
 						<Rectangle>
 							<Match Value="{IsSelected}">
 						    <Case Bool="true">
-						        <CheckmarkIcon Width="20" Height="30" Alignment="CenterRight"  />
+						        <CheckmarkIcon Width="20" Height="30" Alignment="CenterRight" Margin="0,0,20,0"  />
 						    </Case>
 							</Match>
 						</Rectangle>
+						</Grid>
 					</Rectangle>
 				</Each>
 				</StackPanel>

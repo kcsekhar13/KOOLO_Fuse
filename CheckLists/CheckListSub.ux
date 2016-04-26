@@ -17,7 +17,7 @@
              <Panel Alignment="Right" Margin="0,8,5,0">
                <Text TextAlignment="Right" Value="{newCheckListText}" Font="Regular" FontSize="20"  />
                  <Clicked>
-                    <Callback Handler="{saveCheckListItems}" />
+                      <Callback Handler="{saveCheckListItems}" />
                     <GoBack />
                </Clicked>
              </Panel>
