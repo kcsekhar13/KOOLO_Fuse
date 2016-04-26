@@ -1,6 +1,7 @@
 <Page ux:Name="MoodMap">
 	<WhileActive>
 		<DebugAction Message="Mood Map screen is Active" />
+		<Callback Handler="{getMoodLineImages}" />
 	</WhileActive>
 	<PageControl ux:Name="moodMapNav" Interaction="None" Active="{moodMapPage}">
 		<Page ux:Name="moodLinePage">
@@ -8,14 +9,14 @@
 			<Panel Dock="Top" Height="35" Alignment="Top">
 				<Rectangle Fill="#808080" Layer="Background">
 					<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
-						<Text TextAlignment="Left" Value="Done" Font="Light" />
+						<DoneText />
 						<Clicked>
 							<GoBack TargetNode="pageControl" />
 						</Clicked>
 					</Panel>
 					<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Mood Line"/>
 					<Panel Alignment="Right" Margin="0,8,5,0">
-						<Text TextAlignment="Right" Value="Map" Font="Light"  />
+						<MapText />
 						<Clicked>
 							<DebugAction Message="Clicked on MoodMap Button" />
 							<NavigateTo Target="moodMapPage" />
@@ -62,22 +63,19 @@
 				</ScrollView>
 			</Grid>
 		</Page>
- 		<Page ux:Name="selectHumourPage" ux:AutoBind="false">
-			<WhileActive>
-				<DebugAction Message="In humour color page!!!!!!" />
-			</WhileActive>
+ 		<Page ux:Name="selectHumourPage" >
 			<!-- Header    -->
 			<Panel Dock="Top" Height="35" Alignment="Top">
 				<Rectangle Fill="#808080" Layer="Background">
 					<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
-						<Text TextAlignment="Left" Value="Done" Font="Light" />
+						<DoneText />
 						<Clicked>
 							<Set moodMapNav.Active="moodLinePage" />
 						</Clicked>
 					</Panel>
 					<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Select Humour Color"/>
 					<Panel Alignment="Right" Margin="0,8,5,0">
-						<Text TextAlignment="Right" Value="Save" Font="Light"  />
+						<SaveText />
 						<Clicked>
 							<Callback Handler="{saveMoodMapImage}" />
 							<Set moodMapNav.Active="moodLinePage" />
@@ -85,42 +83,45 @@
 					</Panel>
 				</Rectangle>
 			</Panel>
-			<!-- End of Header --> 
-			<DockPanel Margin="0,50,0,0" Dock="Bottom">
-				<Panel Height="500" Width="100%">
-						<Text Value="Mood Image" />
+			<!-- End of Header -->
+			<DockPanel Margin="0,35,0,0" Dock="Bottom">
+				<Panel Height="350" Width="100%">
 						<Image File="{currentMoodMapImage}" StretchMode="UniformToFill" />
 				</Panel>
 				<Panel Height="100" Dock="Bottom" Background="White">
-					<ScrollView AllowedScrollDirections="Horizontal" Dock="Bottom">
-						<StackPanel Orientation="Horizontal" >
-						<Each Items="{homourColors}">
-							<Panel>
-								<Circle Width="50" Height="50" Fill="{code}" Margin="20" />
-								<Text Value="{title}" Font="Light" Alignment="BottomCenter" TextColor="#000000" />
-							</Panel>
-						</Each>
-						</StackPanel>
+				<ScrollView AllowedScrollDirections="Horizontal" Dock="Bottom">
+					<StackPanel Orientation="Horizontal" >
+					<Each Items="{homourColors}">
+						<Panel>
+							<Circle Width="50" Height="50" Fill="{code}" Margin="20" ux:Name="humorColorCode" />
+							<Text Value="{title}" Font="Light" Alignment="BottomCenter" TextColor="#000000" ux:Name="humourColorCodeTxt" />
+							<Clicked>
+								<Callback Handler="{onHumorColorSelected}" />
+								<Set humorColorCode.Width="70" />
+								<Set humourColorCodeTxt.Font="Bold" />
+							</Clicked>
+						</Panel>
+					</Each>
+					</StackPanel>
 					</ScrollView>
 				</Panel>
 			</DockPanel>
 		</Page>
-		<Page ux:Name="moodMapPage" ux:AutoBind="false">
+		<Page ux:Name="moodMapPage" >
 				<DockPanel>
 				<!-- Header    -->
 				<Panel Dock="Top" Height="35" Alignment="Top">
 					<Rectangle Fill="#808080" Layer="Background">
 						<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
-							<Text TextAlignment="Left" Value="Cancel" Font="Light" />
+							<CancelText />
 							<Clicked>
 								<Set moodMapNav.Active="moodLinePage" />
 							</Clicked>
 						</Panel>
 						<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Mood Map"/>
 						<Panel Alignment="Right" Margin="0,8,5,0">
-							<Text TextAlignment="Right" Value="Done" Font="Light"  />
+							<DoneText />
 							<Clicked>
-								<Callback Handler="{saveMoodMapImage}" />
 								<Set moodMapNav.Active="moodLinePage" />
 							</Clicked>
 						</Panel>
@@ -133,14 +134,18 @@
 							<Circle Width="100" Height="150" >
 							<Stroke Width="2" Brush="#FFF" />
 							<Text Value="All" Font="Light" Alignment="Center" TextColor="#FFFFFF" />
+								<Clicked>
+									<Callback Handler="{clearMoodColorFilter}" />
+									<Set moodMapNav.Active="moodLinePage" />
+								</Clicked>
 							</Circle>
 						</Panel>
-						
 						<Each Items="{homourColors}">
 							<Panel>
 								<Circle Width="100" Height="100" Fill="{code}" Margin="20">
 									<Clicked>
-										<DebugAction Message="Clicked on Circle" />
+										<Callback Handler="{onMoodColorCircleClicked}" />
+										<Set moodMapNav.Active="moodLinePage" />
 									</Clicked>
 								</Circle>
 							</Panel>
@@ -149,19 +154,19 @@
 				</ScrollView>
 			</DockPanel>
 		</Page>
-		<Page ux:Name="moodImagePage" ux:AutoBind="false">
+		<Page ux:Name="moodImagePage" >
 			<DockPanel>
 				<!-- Header    -->
 				<Panel Dock="Top" Height="35" Alignment="Top">
 					<Rectangle Fill="#808080" Layer="Background">
 						<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
-							<Text TextAlignment="Left" Value="Cancel" Font="Light" />
+							<CancelText />
 							<Clicked>
 								<Set moodMapNav.Active="moodLinePage" />
 							</Clicked>
-						</Panel>						
+						</Panel>
 						<Panel Alignment="Right" Margin="0,8,5,0">
-							<Text TextAlignment="Right" Value="Done" Font="Light"  />
+							<DoneText />
 							<Clicked>
 								<Set moodMapNav.Active="moodLinePage" />
 							</Clicked>

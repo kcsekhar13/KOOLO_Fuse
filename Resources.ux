@@ -233,6 +233,7 @@
   <Text TextAlignment="Right" Value="Done" Font="Regular" ux:Class="DoneText" FontSize="20" />
   <Text TextAlignment="Right" Value="Add" Font="Regular" ux:Class="AddText" FontSize="20" />
 	<Text TextAlignment="Right" Value="Map" Font="Regular" ux:Class="MapText" FontSize="20"  />
+	<Text TextAlignment="Right" Value="Save" Font="Regular" ux:Class="SaveText" FontSize="20"  />
 
 	<Panel ux:Class="CheckListInfoTxt">
 		<StackPanel >
