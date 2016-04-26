@@ -177,13 +177,13 @@ function updateEvents() {
 }
 
 function readKooloEvents() {
-  Storage.read(eventsFile).then(function(content) {      
+  Storage.read(eventsFile).then(function(content) {
         myEvents = JSON.parse(content);
         observableEvents.value = myEvents;
         todayEvents.value = myEvents.filter(function(e){
           return e.dateString === new Date().toDateString();;
         });
-        console.log("Printing today Events " + JSON.stringify(todayEvents.value));
+        // console.log("Printing today Events " + JSON.stringify(todayEvents.value));
   }, function(error) {
       console.log("failed to read koolo events file");
   });

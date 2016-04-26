@@ -10,8 +10,8 @@ var selected = Observable();
 var newCheckListText = Observable();
 var selectedList = Observable();
 
-var finishedGoalsCount = Observable();
-var finishedTransitionCount = Observable();
+var finishedGoalsCount = Observable('0');
+var finishedTransitionCount = Observable('0');
 
 var totalGoalsCount = Observable();
 var totalTransitionsCount = Observable();
@@ -159,9 +159,29 @@ function checkIfCheckListFileExists() {
             };
             finishedGoalsCount.value = transTemp;
             console.log("Finished goals Count " + finishedGoalsCount.value);
+            updateCheckListCount();
           },function (error) {
             readDefaultCheckLists();
   });
+}
+
+function updateCheckListCount() {
+  totalTransitionsCount.value = CheckList.Transitions.length;
+  totalGoalsCount.value = CheckList.Goals.length;
+  var goalTemp = 0;
+  for (var t in CheckList.Transitions) {
+      if(CheckList.Transitions[t].item.status ==3)
+      goalTemp++;
+  };
+  finishedTransitionCount.value = goalTemp;
+  var transTemp = 0;
+  for (var t in CheckList.Goals) {
+      console.log(" goals " + CheckList.Goals[t]);
+      if(CheckList.Goals[t].item.status ==3)
+      transTemp++;
+  };
+  finishedGoalsCount.value = transTemp;
+
 }
 
 function readDefaultCheckLists() {
@@ -237,5 +257,6 @@ module.exports = {
   finishedTransitionCount:finishedTransitionCount,
   totalGoalsCount,totalGoalsCount,
   totalTransitionsCount:totalTransitionsCount,
-  saveCheckListItems:saveCheckListItems
+  saveCheckListItems:saveCheckListItems,
+  updateCheckListCount:updateCheckListCount
 }

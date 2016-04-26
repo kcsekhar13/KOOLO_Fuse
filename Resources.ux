@@ -117,7 +117,7 @@
 		<FileSource ux:Property="StatusIcon" />
 		<Panel ux:Name="statusPanel" >
 				<Panel Width="20" Margin="10,0,0,0" Alignment="Left" ux:Name="statusCircle">
-					<Circle Height="20" Width="20">
+					<Circle Height="30" Width="30">
 						<Image File="{Property CheckListCntrl.StatusIcon}" />
 						<Clicked>
 							<DebugAction Message="Update CheckList status" />

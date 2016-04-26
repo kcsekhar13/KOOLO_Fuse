@@ -75,7 +75,7 @@
 					</Clicked>
 				</Circle>
 			</Panel>
-			<DockPanel Alignment="TopLeft" Margin="10" ux:Name="mainContent" Height="60%" Width="100%" >			
+			<DockPanel Alignment="TopLeft" Margin="10" ux:Name="mainContent" Height="60%" Width="100%" >
 				<DateCircle ux:Name="DateCntrl" Colour="{dateColor.colour}" Dock="Left" Margin="5">
 					<Clicked>
 						<DebugAction Message="Date Circle got clicked" />

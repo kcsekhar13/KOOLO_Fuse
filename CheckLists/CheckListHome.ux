@@ -5,6 +5,7 @@
 	<Change homePageNav.Interaction = "None" />
 	<SetSwipeActive Target="swipeCheckListLeft" Value="false" />
 	<SetSwipeActive Target="swipeCheckListRight" Value="false" />
+	<Callback Handler="{updateCheckListCount}" />
 </WhileActive>
 	<DockPanel>
 		<Image File="../Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background" />

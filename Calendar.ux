@@ -74,16 +74,18 @@
 					</Panel>
 				</Panel>
 			</Panel>
-			<Panel ux:Name="EventsPanle">
-				<Each Items="{todayEvents}">
-					<ScrollView>
-						<StackPanel>
-							<Each Items="{}">
-								<EventPanlCntrl Title="{Title}" Description="{Description}" Time="{time}" MoodColor="{eventColor}" Margin="5"/>
-							</Each>
-						</StackPanel>
-					</ScrollView>
-				</Each>
+			<Panel>
+				<ScrollView>
+					<StackPanel>
+					<Each Items="{todayEvents}">
+							<StackPanel>
+								<Each Items="{}">
+									<EventPanlCntrl Title="{Title}" Description="{Description}" Time="{time}" MoodColor="{eventColor}" Margin="5"/>
+								</Each>
+							</StackPanel>
+					</Each>
+					</StackPanel>
+				</ScrollView>
 			</Panel>
 			</StackPanel>
 			<Panel ux:Name="addEventPanel" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomRight" Margin="0,0,20,20" Layer="Overlay">
@@ -95,7 +97,7 @@
 			</Panel>
 		</DockPanel>
 		<DockPanel ux:Name="newEventPage" ux:AutoBind="false">
-			<WhileActive>				
+			<WhileActive>
 				<Callback Handler="{InitNewEventDate}" />
 			</WhileActive>
 			<!-- Header    -->
