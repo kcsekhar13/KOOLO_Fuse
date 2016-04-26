@@ -97,19 +97,22 @@
 
 <!-- Custom CheckList Control -->
 	<Panel ux:Class="CheckListCntrl" ux:Name="CheckListCntrl">
-		<SwipeGesture ux:Name="swipeLeft" Direction="Left" Type="Active" Length="100"/>
-		<SwipeGesture ux:Name="swipeRight" Direction="Right" Type="Active" Length="100"/>
+		<SwipeGesture ux:Name="swipeLeft" Direction="Left" Type="Active" Length="150" />
+		<SwipeGesture ux:Name="swipeRight" Direction="Right" Type="Simple" Length="100"/>
 		<SwipingAnimation Source="swipeLeft">
-			<Move Target="statusPanel" X="-0.4" RelativeTo="Size" Duration="0.5" />
+			<Move Target="statusPanel" X="-150" Duration="1" />
 			<Move Target="operationPanel" X="0" RelativeTo="Size" Duration="0.5" />
 			<Change operationPanel.Opacity="1" Duration="0.5" EasingBack="QuadraticInOut" />
-			<Change	operationPanel.Width="35%" Duration="0.5" />
 		</SwipingAnimation>
 		<SwipingAnimation Source="swipeRight">
-			<Move Target="statusPanel" X="0.5" RelativeTo="Size" Duration="1" />
-			<Set	statusCircle.Opacity="0"  />
-			<Move Target="statusPanel" X="-0.5" RelativeTo="Size" Duration="1" />
+			<Move Target="statusPanel" X="0.5" RelativeTo="ParentSize" Duration="1" />
+			<Change	statusCircle.Opacity="0" Duration="1" />
 		</SwipingAnimation>
+		<Swiped Source="swipeRight">
+			<DebugAction Message="Swiped right!" />
+			<Set statusCircle.Opacity="0" />
+			<!-- Update active state here -->
+		</Swiped>
 		<WhileInactive Threshold="0.2">
 			<SetSwipeActive Target="swipeLeft" Value="false" />
 		</WhileInactive>
@@ -129,8 +132,8 @@
 					<Text Value="{Property CheckListCntrl.Text}" Font="Italic" TextColor="Black" TextWrapping="Wrap" Margin="10,15,0,10" />
 				</Panel>
 		</Panel>
-		<Panel ux:Name="operationPanel" Opacity="0" Alignment="Right" Width="35%">
-			<StackPanel Orientation="Horizontal">
+		<Panel ux:Name="operationPanel" Opacity="0" Alignment="Right" Width="160">
+			<Grid Columns="1*,1*">
 				<Rectangle Color="#eb9c27">
 					<Text Value="Update" Font="Regular" TextColor="Black" Alignment="Center"  />
 					<Clicked>
@@ -143,7 +146,7 @@
 						<DebugAction Message="Clicked Delete CheckList" />
 					</Clicked>
 				</Rectangle>
-			</StackPanel>
+			</Grid>
 		</Panel>
 	</Panel>
 

@@ -68,7 +68,8 @@
 				</DockPanel>
 			</MyPage>
 			<ThreeSentenses ux:Name="ThreeSentenses" ux:AutoBind="false" />
-			<CheckListSub ux:Name="CheckListSub" ux:AutoBind="false" />
 		</Panel>
 	</DockPanel>
+	
+	<ux:Include File="CheckListSub.ux" />
 </MyPage>

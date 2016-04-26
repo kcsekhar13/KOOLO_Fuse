@@ -20,8 +20,7 @@
 					</Panel>
 				</Rectangle>
 			</Panel>
-			<StackPanel>
-			<Panel ux:Name="calenderPaNel">
+			<Panel ux:Name="calenderPaNel" Dock="Top">
 				<Panel Height="50" Alignment="Top">
 					<Image File="Assets/sunrise.jpg" Alignment="Top" StretchMode="UniformToFill" Layer="Background"  />
 					<Text Value="{currentDate}" Font="Bold" Alignment="BottomLeft" FontSize="20" Margin="20,0,0,0" />
@@ -87,7 +86,6 @@
 					</StackPanel>
 				</ScrollView>
 			</Panel>
-			</StackPanel>
 			<Panel ux:Name="addEventPanel" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomRight" Margin="0,0,20,20" Layer="Overlay">
 				<Cross ux:Name="addEvent" Alignment="Center" />
 				<Circle ux:Name="overlayEventCircle" Fill="#FFFFFF" Width="100%" Height="100%" Alignment="Center" />
