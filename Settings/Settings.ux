@@ -7,6 +7,7 @@
 <StatusBarBackground Dock="Top"/>
   <iOS.StatusBarConfig />
   <JavaScript File="Settings.js"/>
+  <JavaScript ux:Global="State" File="../State.js" />
 <Panel>
   <HierarchicalNavigation ux:Name="nav" Active="mainPage" />
   <MyPage ux:Name="mainPage" Background="White">

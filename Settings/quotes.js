@@ -11,7 +11,8 @@ function Quote(quote,isSelected) {
   var self = this;
   this.quote = quote;
   this.IsSelected = isSelected;
-}
+};
+
 var defaultQuotes = Observable(
   {quote:"In the midst of winter, i found there was within me , an invincible summer", IsSelected:Observable(false)},
   {quote:"If you're going through hell, keep going", IsSelected:Observable(false)},
@@ -30,7 +31,6 @@ function addNewQuote(arg) {
   console.log(newQuote.value);
   // console.log("Length before adding " + defaultQuotes.length);
   defaultQuotes.add({ quote:newQuote.value , IsSelected:Observable(false)});
-  console.log("Length after adding " + JSON.stringify(defaultQuotes));
   save();
   InitializePage();
   newQuote.value = "";
@@ -48,7 +48,6 @@ function getValues(observables) {
 }
 
 function save(){
-    console.log("Before saving" + JSON.stringify(defaultQuotes));
     Storage.write(quotesFile, JSON.stringify(getValues(defaultQuotes))).then(function(success) {
         console.log("Save " + (success ? "success" : "failure"));
     });
@@ -66,7 +65,6 @@ function changeDefaultQuote(arg){
 }
 
 function setDefaultQuote() {
-    console.log("Quotes : " + JSON.stringify(defaultQuotes));
     for (var i = 0; i < defaultQuotes['_values'].length; i++){
         if(defaultQuotes['_values'][i].quote == selectedQuote.value){
           defaultQuotes['_values'][i].IsSelected.value = true;

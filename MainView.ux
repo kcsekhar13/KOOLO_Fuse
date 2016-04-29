@@ -4,21 +4,21 @@
   	<Panel>
 	<JavaScript>
 		var Observable = require("FuseJS/Observable");
-		
+
 		exports.showSplashScreen = Observable(true);
-		
+
 		setTimeout(() => {
 			exports.showSplashScreen.value = false;
-		}, 3000);
+		}, 5000);
 	</JavaScript>
-	
+
 	<Image ux:Name="splashScreen" File="Assets/launchscreen.png" StretchMode="UniformToFill">
 		<WhileFalse Value="{showSplashScreen}">
 			<Change splashScreen.Opacity="0" />
 			<Set splashScreen.Visibility="Collapsed" />
 		</WhileFalse>
 	</Image>
-	
+
 	<DockPanel>
 		<JavaScript ux:Global="State" File="State.js" />
 		<JavaScript File="MainView.js"/>

@@ -2,6 +2,7 @@ var Observable = require("FuseJS/Observable");
 var UserEvents = require("FuseJS/UserEvents");
 var Storage = require("FuseJS/Storage");
 var UserSettings = require('UserSettings');
+var State = require("State");
 
 var gallery = require('Gallery');
 		// var settings = ["Background Image","Passcode","Quotes","Humour Color","License","Tutorial","Contributors","About"];
@@ -51,8 +52,8 @@ var currentPageTitle = Observable();
 var secretAnswer = Observable("AaHooo!");
 var selected = Observable();
 var selectedOption = Observable("1");
-var passCodeSwitch = Observable();
-var quotesEnabledSwitch  = Observable();
+var passCodeSwitch = Observable(false);
+var quotesEnabledSwitch  = Observable(false);
 var passCodeTxt = Observable("");
 var txt1Visibility = Observable("Hidden");
 var txt2Visibility = Observable("Hidden");
@@ -80,11 +81,24 @@ var dropdownOptions = Observable({
 });
 
 passCodeSwitch.addSubscriber(function(x) {
-    UserSettings.setString('isPassCodeSet', (x.value == true ? "true" :"false"));
+    //UserSettings.setString('isPassCodeSet', (x.value == true ? "true" :"false"));
+    if(x.value == true){
+      State.enablePassCodeSwitch();
+    }
+    else {
+      State.disablePassCodeSwitch();
+    }
 });
 
 quotesEnabledSwitch.addSubscriber(function(x){
-    UserSettings.setString('isQuoteSet', (x.value == true ? "true" :"false"));
+    //UserSettings.setString('isQuoteSet', (x.value == true ? "true" :"false"));
+   console.log(" Quotes Status value : " + x.value);
+    if(x.value == true){
+      State.enableQuotesSwitch();
+    }
+    else {
+      State.disableQuotesSwitch();
+    }
 });
 
 passCodeTxt.addSubscriber(function(x) {
@@ -141,8 +155,10 @@ function saveHumorColors(arg) {
 }
 
 function InitializePage() {
-    passCodeSwitch.value = UserSettings.getString('isPassCodeSet', '');
-    quotesEnabledSwitch.value = UserSettings.getString('isQuoteSet', '');
+    //passCodeSwitch.value = UserSettings.getString('isPassCodeSet', '');
+    //quotesEnabledSwitch.value = UserSettings.getString('isQuoteSet', '');
+    passcodeSwitch.value = State.myQuoteEnabled;
+    quotesEnabledSwitch.value = State.myPassCodeEnabled;
     console.log("Initializing Settings");
 };
 

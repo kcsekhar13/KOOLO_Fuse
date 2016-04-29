@@ -89,7 +89,7 @@ function setMyQuote() {
     // }, function(error) {
     //     console.log("failed to read quotes enabled file");
     // });
-    myQuote.value  = isQuoteSet.value == "true" ? UserSettings.getString('defaultQuote','H.O.P.E - Hold On Pains Ends') : '';
+    myQuote.value  = isQuoteSet.value == true ? UserSettings.getString('defaultQuote','H.O.P.E - Hold On Pains Ends') : '';
 }
 
 function updateDateColor(context) {
@@ -150,10 +150,9 @@ function updateMyMoods() {
 
 function getMoodLineImages() {
     Storage.read(moodMapFile).then(function(content) {
-        console.log("Success in reading moodMapFile" + content);
         myMoods = JSON.parse(content);
         observableMoods.value = myMoods;
-        console.log(JSON.stringify(observableMoods));
+        // console.log(JSON.stringify(observableMoods));
     }, function(error) {
         console.log("failed to read moodMapFile");
     });
@@ -198,12 +197,19 @@ function onHumorColorSelected(arg) {
 	selectedHumourColor.value=arg.data.code;
 }
 
+function readSwitchValues() {
+	//isPassCodeSet.value = UserSettings.getString('isPassCodeSet','');
+	//isQuoteSet.value = UserSettings.getString('isQuoteSet','');
+	isPassCodeSet.value = State.myPassCodeEnabled.value;
+	isQuoteSet.value = State.myQuoteEnabled.value;
+
+	console.log("isPassCodeSet : " + isPassCodeSet.value);
+	console.log("isQuoteSet : " + isQuoteSet.value );
+}
+
 function initializeHomePage() {
-    console.log("Initializing home page.");
-    isPassCodeSet.value = UserSettings.getString('isPassCodeSet','');
-    isQuoteSet.value = UserSettings.getString('isQuoteSet','');
-    console.log("isPassCodeSet : " + isPassCodeSet.value);
-    console.log("isQuoteSet : " + isQuoteSet.value );
+    console.log("********** Initializing home page ***************");
+    readSwitchValues();
     setMyQuote();
     readBackGroundImage();
 		readkooloEvents();
@@ -212,7 +218,7 @@ function initializeHomePage() {
 		//myMoods.push(new mood("3","Assets/bg.jpg","#233fc7",new Date().toDateString()));
     //myMoods.push(new mood("4","Assets/bg.jpg","#9fb6cd",new Date().toDateString()));
     //State.createFile(moodMapFile,JSON.stringify(myMoods, undefined, '    '));
-    //getMoodLineImages();
+    getMoodLineImages();
     // bundle.read("appSettings.json").then(function(content) {
     //     console.log(content);
     // }, function(error) {
