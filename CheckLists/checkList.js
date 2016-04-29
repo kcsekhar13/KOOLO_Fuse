@@ -21,6 +21,8 @@ var CheckList = {
     Transitions : Observable()
 };
 
+var newCheckListItem = Observable();
+
 function CheckListItem(checkListId,item,itemStatus) {
   var self = this;
   this.id = checkListId;
@@ -138,7 +140,7 @@ function checkIfCheckListFileExists() {
             totalTransitionsCount.value = CheckList.Transitions.length;
             var goalTemp = 0;
             for (var t in CheckList.Transitions) {
-                if(CheckList.Transitions[t].item.status ==3)
+                if(CheckList.Transitions[t].item.status == 3)
                 goalTemp++;
             };
             finishedTransitionCount.value = goalTemp;
@@ -153,8 +155,7 @@ function checkIfCheckListFileExists() {
             totalGoalsCount.value = CheckList.Goals.length;
             var transTemp = 0;
             for (var t in CheckList.Goals) {
-                console.log(" goals " + CheckList.Goals[t]);
-                if(CheckList.Goals[t].item.status ==3)
+                if(CheckList.Goals[t].item.status == 3)
                 transTemp++;
             };
             finishedGoalsCount.value = transTemp;
@@ -176,7 +177,6 @@ function updateCheckListCount() {
   finishedTransitionCount.value = goalTemp;
   var transTemp = 0;
   for (var t in CheckList.Goals) {
-      console.log(" goals " + CheckList.Goals[t]);
       if(CheckList.Goals[t].item.status ==3)
       transTemp++;
   };
@@ -228,8 +228,15 @@ function updateCheckListItemStatus(arg) {
   console.log("updating CheckList item status" + JSON.stringify(arg, undefined, '    '));
 }
 
-function updateCheckListCount() {
-  console.log("UpdateCheckListCount");
+function addNewCheckListItem() {
+  console.log(selected.value);
+  if(selected.value="My Health"){
+    console.log("Add new Checklist goals");
+  }
+  else {
+    console.log("Add new Checklist Transitions");
+  }
+  newCheckListItem.value= '';
 }
 
 function Load() {
@@ -249,7 +256,6 @@ module.exports = {
   InitMyHealthPage:InitMyHealthPage,
   InitTransitionPage:InitTransitionPage,
   updateCheckListItemStatus:updateCheckListItemStatus,
-  updateCheckListCount:updateCheckListCount,
   first:threeSentenses.first,
   second:threeSentenses.second,
   third:threeSentenses.third,
@@ -258,5 +264,6 @@ module.exports = {
   totalGoalsCount,totalGoalsCount,
   totalTransitionsCount:totalTransitionsCount,
   saveCheckListItems:saveCheckListItems,
-  updateCheckListCount:updateCheckListCount
+  updateCheckListCount:updateCheckListCount,
+  addNewCheckListItem:addNewCheckListItem
 }

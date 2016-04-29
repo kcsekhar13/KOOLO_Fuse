@@ -207,6 +207,7 @@
 			</Panel>
 		</Rectangle>
 	</Panel>
+
 	<Font File="Assets/fonts/Klavika/Klavika-Bold.otf" ux:Global="Bold" />
 	<Font File="Assets/fonts/Klavika/Klavika-Medium.otf" ux:Global="Medium" />
 	<Font File="Assets/fonts/Klavika/Klavika-Light.otf" ux:Global="Light" />

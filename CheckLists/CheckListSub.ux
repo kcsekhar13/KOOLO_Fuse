@@ -18,7 +18,7 @@
 	             <Panel Alignment="Right" Margin="0,8,5,0">
 	               <Text TextAlignment="Right" Value="{newCheckListText}" Font="Regular" FontSize="20"  />
 	                 <Clicked>
-	                      <Callback Handler="{saveCheckListItems}" />
+	                      <!-- <Callback Handler="{saveCheckListItems}" /> -->
 	                    <NavigateTo Target="addNewGoalPage" />
 	               </Clicked>
 	             </Panel>
@@ -59,7 +59,7 @@
 			  </Panel>
 			  <Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="CheckList Info" Layer="Background"/>
 			  <Panel Alignment="Right" Margin="0,8,5,0">
-				<AddText />
+				<DoneText />
 				<Clicked>
 				  <!-- <Set checkListSubNav.Active="checkListMainPage" /> -->
 				  <GoBack />
@@ -95,7 +95,20 @@
 	</MyPage>
 	<MyPage ux:Name="addNewGoalPage" ux:AutoBind="false">
 		<DockPanel>
-			<MyHeader Text="Add new goal" Dock="Top" />
+			<MyHeader Text="Add new checklist" Dock="Top" />
+			<Panel Padding="10" Height="40%" Margin="20"  Dock="Top">
+					<Rectangle CornerRadius="1" Layer="Background">
+							<Stroke Width="1" Color="#000000"/>
+					</Rectangle>
+					<TextEdit Value="{newCheckListItem}" Height="100" Width="100%" IsMultiline="true" Font="Regular" />
+			</Panel>
+			<Button Height="50" Alignment="Center" Width="100" Dock="Top" Margin="20">
+				<Text Value="Add" TextColor="#FFFFFF" Font="Regular" Alignment="Center" />
+				<Clicked>
+					<Callback Handler="{addNewCheckListItem}" />
+					<GoBack />
+				</Clicked>
+			</Button>
 		</DockPanel>
 	</MyPage>
 </Panel>
