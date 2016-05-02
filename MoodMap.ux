@@ -68,7 +68,7 @@
 			<Panel Dock="Top" Height="35" Alignment="Top">
 				<Rectangle Fill="#808080" Layer="Background">
 					<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
-						<DoneText />
+						<CancelText />
 						<Clicked>
 							<Set moodMapNav.Active="moodLinePage" />
 						</Clicked>
@@ -174,7 +174,7 @@
 					</Rectangle>
 				</Panel>
 				<!-- End of Header -->
-				<Text Value="{selectedMood.moodDate}" Font="Bold" TextColor="{selectedMood.moodColor}" Alignment="Center" />
+				<!-- <Text Value="{selectedMood.moodDate}" Font="Bold" TextColor="{selectedMood.moodColor}" Alignment="Center" /> -->
 				<Image File="{selectedMood.moodImage}" StretchMode="UniformToFill" />
 				<Clicked>
 					<Set moodMapNav.Active="moodLinePage" />
