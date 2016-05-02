@@ -134,6 +134,10 @@ function loadTransitions() {
 }
 
 function checkIfCheckListFileExists() {
+    loadCheckListGoals();
+};
+
+function loadCheckListTransitions() {
   Storage.read(transitionsFile).then(function (content) {
             console.log("Success in reading KOOLO transition");
             CheckList.Transitions = JSON.parse(content);
@@ -149,6 +153,9 @@ function checkIfCheckListFileExists() {
               console.log(error);
               readDefaultCheckLists();
   });
+}
+
+function loadCheckListGoals() {
   Storage.read(checkListFile).then(function (content) {
             console.log("Success in reading KOOLO checklist");
             CheckList.Goals = JSON.parse(content);
@@ -161,6 +168,7 @@ function checkIfCheckListFileExists() {
             finishedGoalsCount.value = transTemp;
             console.log("Finished goals Count " + finishedGoalsCount.value);
             updateCheckListCount();
+            loadCheckListTransitions();
           },function (error) {
             readDefaultCheckLists();
   });

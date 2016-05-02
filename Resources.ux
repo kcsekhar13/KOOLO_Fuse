@@ -158,24 +158,28 @@
 				<Panel Width="50" Margin="15,0,0,0" Alignment="Left">
 					<Circle Height="20" Width="20" Color="{Property moodMapCntrl.MoodColor}" />
 				</Panel>
-				<Rectangle ux:Name="titlePanel" Color="{Property moodMapCntrl.MoodColor}" Margin="10,0,30,0" Width="80%" Alignment="Right" Height="150">
-					<Text Value="{Property moodMapCntrl.Text}" Font="Light" TextColor="Black" TextWrapping="Wrap" Margin="10,0,0,10" Alignment="TopLeft" />
-					<Panel Width="98%" Height="95%" Margin="15">
+				<Rectangle ux:Name="titlePanel" Color="{Property moodMapCntrl.MoodColor}" Margin="10,0,50,0" Width="70%" Alignment="CenterRight" Height="150">
+					<Text Value="{Property moodMapCntrl.Text}" Font="Light" TextColor="White" TextWrapping="Wrap" Margin="10,0,0,10" Alignment="TopLeft" />
+					<Panel Width="95%" Height="95%" Margin="15">
 						<Image File="{Property moodMapCntrl.MoodImage}" StretchMode="UniformToFill" />
 					</Panel>
 				</Rectangle>
 		</Panel>
 	</Panel>
 
-	<Text ux:Class="DefaultText" TextColor="#fffd" />
+	<Text ux:Class="DefaultText" TextColor="#fffd" Font="Bold" />
 	<Text ux:Class="MutedText" TextColor="#fff8" Font="Italic" TextWrapping="Wrap" />
+	<Text ux:Class="ClockText" TextColor="#fffd" Font="Regular" Value="Kl" FontSize="14" />
 
 	<Grid ux:Class="HomeCalendarItem" Columns="1*,4*" Margin="10" >
-		<StackPanel>
-			<Circle Alignment="TopLeft" Width="20" Height="20" Color="{eventColor}" Margin="5">
+		<Grid RowCount="2">
+			<Circle Alignment="Left" Width="20" Height="20" Color="{eventColor}" Margin="15,0,0,0" >
 			</Circle>
-			<DefaultText FontSize="15" Value="{time}" TextAlignment="Left" Alignment="Bottom" Margin="0,10,0,0" />
-		</StackPanel>
+			<Panel>
+				<ClockText Alignment="Left" Margin="0,3,0,0" />
+				<DefaultText FontSize="15" Value="{time}" Alignment="Center"/>
+			</Panel>
+		</Grid>
 		<Panel Alignment="Left">
 			<Panel>
 				<StackPanel Alignment="VerticalCenter">
@@ -201,8 +205,9 @@
 						<Text Value="{Property eventPanlCntrl.Title}" Font="Bold" Alignment="Left" />
 						<Text Value="{Property eventPanlCntrl.Description}" Font="Italic" Alignment="Left" TextWrapping="Wrap" />
 				</StackPanel>
-				<Panel Width="50" Alignment="CenterRight">
-					<Text Value="{Property eventPanlCntrl.Time}" Font="Bold" Alignment="Center" />
+				<Panel Width="70" Alignment="CenterRight">
+					<ClockText Alignment="Left" TextColor="#000000" />
+					<Text Value="{Property eventPanlCntrl.Time}" Alignment="Left" Margin="15,0,0,0" />
 				</Panel>
 			</Panel>
 		</Rectangle>
@@ -234,7 +239,6 @@
   <Text TextAlignment="Right" Value="Done" Font="Regular" ux:Class="DoneText" FontSize="20" />
   <Text TextAlignment="Right" Value="Add" Font="Regular" ux:Class="AddText" FontSize="20" />
 	<Text TextAlignment="Right" Value="Map" Font="Regular" ux:Class="MapText" FontSize="20"  />
-	<Text TextAlignment="Right" Value="Save" Font="Regular" ux:Class="SaveText" FontSize="20"  />
 
 	<Panel ux:Class="CheckListInfoTxt">
 		<StackPanel >
