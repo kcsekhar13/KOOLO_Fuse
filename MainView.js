@@ -83,13 +83,7 @@ var dateColor = {
 };
 
 function setMyQuote() {
-    // Storage.read(defaultQuoteFile).then(function(content) {
-    //     myQuote.value = (isQuoteSet.value == "true" ? content : '');
-    //     console.log("Success in reading my quote value");
-    // }, function(error) {
-    //     console.log("failed to read quotes enabled file");
-    // });
-    myQuote.value  = isQuoteSet.value == true ? UserSettings.getString('defaultQuote','H.O.P.E - Hold On Pains Ends') : '';
+    myQuote.value  = isQuoteSet.value == "true" ? UserSettings.getString('defaultQuote','H.O.P.E - Hold On Pains Ends') : '';
 }
 
 function updateDateColor(context) {
@@ -198,19 +192,25 @@ function onHumorColorSelected(arg) {
 }
 
 function readSwitchValues() {
-	//isPassCodeSet.value = UserSettings.getString('isPassCodeSet','');
-	//isQuoteSet.value = UserSettings.getString('isQuoteSet','');
-	isPassCodeSet.value = State.myPassCodeEnabled.value;
-	isQuoteSet.value = State.myQuoteEnabled.value;
+	Storage.read(State.QuotesEnabledSwitchFile).then(function(content) {
+      console.log("Reading quotes enabled flag success " + content);
+      isQuoteSet.value = content;
+			setMyQuote();
+    }, function(error) {
+      console.log("failed to read quotes enabled file");
+    });
 
-	console.log("isPassCodeSet : " + isPassCodeSet.value);
-	console.log("isQuoteSet : " + isQuoteSet.value );
+    Storage.read(State.PassCodeEnabledSwichFile).then(function(content) {
+        console.log("Reading passcode enabled flag success " + content);
+        isPassCodeSet.value = content;
+    }, function(error) {
+        console.log("failed to read passcode enabled file");
+    });
 }
 
 function initializeHomePage() {
     console.log("********** Initializing home page ***************");
     readSwitchValues();
-    setMyQuote();
     readBackGroundImage();
 		readkooloEvents();
     //myMoods.push(new mood("1","Assets/bg.jpg","#a52a2a",new Date().toDateString()));

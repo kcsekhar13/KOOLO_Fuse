@@ -32,13 +32,12 @@ function disablePassCodeSwitch() {
 }
 
 function createFile(fileName, contents) {
-  Storage.write(fileName, contents).then(function(success) {
+  Storage.write(fileName, JSON.stringify(contents)).then(function(success) {
       console.log("Saving " + fileName +  (success ? " success" : "failure"));
   });
 };
 
 function deleteFile(fileName) {
-    console.log("Delete file : " + fileName);
     Storage.read(fileName).then(function(content) {
       Storage.deleteSync(fileName);
     }, function(error) {
@@ -46,36 +45,13 @@ function deleteFile(fileName) {
     });
 };
 
-function getQuotesAndPassCodeStatus() {
-  Storage.read(QuotesEnabledSwitchFile).then(function(content) {
-      console.log("Reading quotes enabled flag success " + content);
-      myQuoteEnabled.value = content;
-    }, function(error) {
-      console.log("failed to read quotes enabled file");
-    });
-
-    Storage.read(PassCodeEnabledSwichFile).then(function(content) {
-        console.log("Reading passcode enabled flag success " + content);
-        myPassCodeEnabled.value = content;
-    }, function(error) {
-        console.log("failed to read passcode enabled file");
-    });
-};
-
-function InitPage() {
-  getQuotesAndPassCodeStatus();
-};
-
-InitPage();
-
 module.exports = {
-  //createFile:createFile,
-  //deleteFile:deleteFile,
+  QuotesEnabledSwitchFile:QuotesEnabledSwitchFile,
+  PassCodeEnabledSwichFile:PassCodeEnabledSwichFile,
   enableQuotesSwitch:enableQuotesSwitch,
   disableQuotesSwitch :disableQuotesSwitch,
   enablePassCodeSwitch:enablePassCodeSwitch,
-  disablePassCodeSwitch:disablePassCodeSwitch,
-  getQuotesAndPassCodeStatus:getQuotesAndPassCodeStatus,
+  disablePassCodeSwitch:disablePassCodeSwitch,  
   myQuoteEnabled:myQuoteEnabled,
   myPassCodeEnabled:myPassCodeEnabled
 };

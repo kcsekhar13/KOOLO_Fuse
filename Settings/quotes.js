@@ -81,8 +81,7 @@ function InitializePage(){
         console.log("Loading quotes from storage");
         var temp = JSON.parse(content);
         defaultQuotes.clear();
-        for (var quote in temp) {
-          console.log("Adding to default quotes" + temp[quote].quote);
+        for (var quote in temp) {          
           defaultQuotes.add({quote:temp[quote].quote,IsSelected:Observable(temp[quote].IsSelected)});
         }
         setDefaultQuote();

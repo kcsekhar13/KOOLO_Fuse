@@ -9,7 +9,7 @@
 		<float4 ux:Property="Colour" />
 		<Circle Fill="#e9edf0" Width="50" Height="50">
 		    <Stroke Width="3" Color="{Property dateCircle.Colour}" />
-		    <Text Value="{dateColor.date}" Font="Light" Alignment="Center" />
+		    <Text Value="{dateColor.date}" Font="Light" Alignment="Center" FontSize="20" />
 		</Circle>
 	</Panel>
 

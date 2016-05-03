@@ -92,11 +92,12 @@ passCodeSwitch.addSubscriber(function(x) {
 
 quotesEnabledSwitch.addSubscriber(function(x){
     //UserSettings.setString('isQuoteSet', (x.value == true ? "true" :"false"));
-   console.log(" Quotes Status value : " + x.value);
     if(x.value == true){
+      console.log("Enabling Quotes Switch");
       State.enableQuotesSwitch();
     }
     else {
+      console.log("Disabling Quotes Switch : " + x.value);
       State.disableQuotesSwitch();
     }
 });
@@ -154,12 +155,27 @@ function saveHumorColors(arg) {
   console.log("save Humour colors " + JSON.stingify(arg));
 }
 
+function readSwitchValues() {
+	Storage.read(State.QuotesEnabledSwitchFile).then(function(content) {
+      console.log("Reading quotes enabled flag success " + content);
+      quotesEnabledSwitch.value = content;
+    }, function(error) {
+      console.log("failed to read quotes enabled file");
+      quotesEnabledSwitch.value = false;
+    });
+
+    Storage.read(State.PassCodeEnabledSwichFile).then(function(content) {
+        console.log("Reading passcode enabled flag success " + content);
+        passcodeSwitch.value = content;
+    }, function(error) {
+        console.log("failed to read passcode enabled file");
+        passcodeSwitch.value = false;
+    });
+}
+
 function InitializePage() {
-    //passCodeSwitch.value = UserSettings.getString('isPassCodeSet', '');
-    //quotesEnabledSwitch.value = UserSettings.getString('isQuoteSet', '');
-    passcodeSwitch.value = State.myQuoteEnabled;
-    quotesEnabledSwitch.value = State.myPassCodeEnabled;
     console.log("Initializing Settings");
+    readSwitchValues();
 };
 
 module.exports = {
