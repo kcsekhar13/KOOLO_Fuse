@@ -23,12 +23,12 @@ var CheckList = {
 
 var newCheckListItem = Observable();
 
-function CheckListItem(checkListId,item,itemStatus) {
+function CheckListItem(checkListId,item,itemStatus,statusIcon) {
   var self = this;
   this.id = checkListId;
   this.notes = item;
   this.status = Observable(itemStatus);
-  this.statusIcon = Observable(statusIcon.NotDone);
+  this.statusIcon = Observable(statusIcon);
   this.IsActive = Observable();
 }
 
@@ -66,7 +66,7 @@ function selectMyHealth() {
     for (var j = 0; j < currentGoal.item.length; j++){
       item.item.add(currentGoal.item[j]);
     }
-    var temp  = new CheckListItem(item.item.value.id,item.item.value.notes,item.item.value.status);
+    var temp  = new CheckListItem(item.item.value.id,item.item.value.notes,item.item.value.status,statusIcon.NotDone);
     selectedList.add(temp);
   }
 }
@@ -80,7 +80,7 @@ function selectTransition() {
     for (var j = 0; j < current.item.length; j++){
       item.item.add(current.item[j]);
     }
-    var temp  = new CheckListItem(item.item.value.id,item.item.value.notes,item.item.value.status);
+    var temp  = new CheckListItem(item.item.value.id,item.item.value.notes,item.item.value.status,statusIcon.NotDone);
     selectedList.add(temp);
   }
 };
@@ -150,8 +150,8 @@ function loadCheckListTransitions() {
             finishedTransitionCount.value = goalTemp;
             console.log("Finished Transition Count " + finishedTransitionCount.value);
             },function (error) {
-              console.log(error);
-              readDefaultCheckLists();
+            console.log(error);
+            readDefaultCheckLists();
   });
 }
 
@@ -167,10 +167,9 @@ function loadCheckListGoals() {
             };
             finishedGoalsCount.value = transTemp;
             console.log("Finished goals Count " + finishedGoalsCount.value);
-            updateCheckListCount();
             loadCheckListTransitions();
           },function (error) {
-            readDefaultCheckLists();
+          readDefaultCheckLists();
   });
 }
 
@@ -189,7 +188,6 @@ function updateCheckListCount() {
       transTemp++;
   };
   finishedGoalsCount.value = transTemp;
-
 }
 
 function readDefaultCheckLists() {
@@ -228,12 +226,17 @@ function updateCheckListItemStatus(arg) {
   else if(arg.data.status.value == "2"){
     arg.data.status.value ="3";
     arg.data.statusIcon.value = statusIcon.Finished;
+    var itemNotes = arg.data.notes;
+    selectedList.removeWhere(function(checklist) {
+      return checklist.notes == arg.data.notes;
+    });
+    var id = selectedList.length+1;
+    selectedList.add(new CheckListItem(id,itemNotes,"3",statusIcon.Finished));
   }
   else if(arg.data.status.value == "3"){
     arg.data.status.value ="1";
     arg.data.statusIcon.value = statusIcon.NotDone;
   }
-  console.log("updating CheckList item status" + JSON.stringify(arg, undefined, '    '));
 }
 
 function addNewCheckListItem() {
@@ -246,6 +249,18 @@ function addNewCheckListItem() {
   }
   newCheckListItem.value= '';
 }
+
+function updateCheckListItem(item) {
+  console.log("Update Checklist Item : " + item.data.notes);
+  newCheckListItem.value = item.data.notes;
+};
+
+function deleteCheckListItem(item) {
+  console.log("Delete Checklist Item : " + JSON.stringify(item));
+  selectedList.removeWhere(function(checklist) {
+    return checklist.notes == item.data.notes;
+  });
+};
 
 function Load() {
   console.log("Reading CheckLists file");
@@ -273,5 +288,8 @@ module.exports = {
   totalTransitionsCount:totalTransitionsCount,
   saveCheckListItems:saveCheckListItems,
   updateCheckListCount:updateCheckListCount,
-  addNewCheckListItem:addNewCheckListItem
+  addNewCheckListItem:addNewCheckListItem,
+  updateCheckListItem:updateCheckListItem,
+  deleteCheckListItem:deleteCheckListItem,
+  newCheckListItem:newCheckListItem
 }

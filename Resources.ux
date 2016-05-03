@@ -96,7 +96,13 @@
 	 </Panel>
 
 <!-- Custom CheckList Control -->
-	<Panel ux:Class="CheckListCntrl" ux:Name="CheckListCntrl">
+	<Panel ux:InnerClass="CheckListCntrl" ux:Name="CheckListCntrl">
+		<RemovingAnimation>
+			<Move RelativeTo="Size" Y="20" Duration="0.8" Easing="CircularInOut" />
+		</RemovingAnimation>
+		<LayoutAnimation>
+			<Move RelativeTo="LayoutChange" Y="1" Duration="0.8" Easing="CircularInOut" />
+		</LayoutAnimation>
 		<SwipeGesture ux:Name="swipeLeft" Direction="Left" Type="Active" Length="150" />
 		<SwipeGesture ux:Name="swipeRight" Direction="Right" Type="Simple" Length="100"/>
 		<SwipingAnimation Source="swipeLeft">
@@ -137,13 +143,14 @@
 				<Rectangle Color="#eb9c27">
 					<Text Value="Update" Font="Regular" TextColor="Black" Alignment="Center"  />
 					<Clicked>
-						<DebugAction Message="Clicked Update CheckList" />
+						<Callback Handler="{updateCheckListItem}" />
+					  <NavigateTo Target="addNewGoalPage" />
 					</Clicked>
 				</Rectangle>
 				<Rectangle Color="#ff0000" >
 					<Text Value="Delete" Font="Regular" TextColor="Black" Alignment="Center" />
 					<Clicked>
-						<DebugAction Message="Clicked Delete CheckList" />
+						<Callback Handler="{deleteCheckListItem}" />
 					</Clicked>
 				</Rectangle>
 			</Grid>
@@ -236,6 +243,7 @@
 	<Icon ux:Class="NewGoalIcon" Files="Assets/red.png" />
 
 	<Text TextAlignment="Left" Value="Cancel" Font="Regular" ux:Class="CancelText" FontSize="20" />
+	<Text TextAlignment="Right" Value="Save" Font="Regular" ux:Class="SaveText" FontSize="20" />
   <Text TextAlignment="Right" Value="Done" Font="Regular" ux:Class="DoneText" FontSize="20" />
   <Text TextAlignment="Right" Value="Add" Font="Regular" ux:Class="AddText" FontSize="20" />
 	<Text TextAlignment="Right" Value="Map" Font="Regular" ux:Class="MapText" FontSize="20"  />

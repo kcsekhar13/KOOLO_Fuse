@@ -43,7 +43,6 @@
 	      </ScrollView>
 	     </Grid>
 	    </DockPanel>
-
 	</MyPage>
 	<MyPage ux:Name="checkListInfoPage" ux:AutoBind="false">
 		<DockPanel>
@@ -100,7 +99,7 @@
 					<Rectangle CornerRadius="1" Layer="Background">
 							<Stroke Width="1" Color="#000000"/>
 					</Rectangle>
-					<TextEdit Value="{newCheckListItem}" Height="100" Width="100%" IsMultiline="true" Font="Regular" />
+					<TextEdit Value="{newCheckListItem}" Height="99%" Width="100%" IsMultiline="true" Font="Regular" TextAlignment="Left" />
 			</Panel>
 			<Button Height="50" Alignment="Center" Width="100" Dock="Top" Margin="20">
 				<Text Value="Add" TextColor="#FFFFFF" Font="Regular" Alignment="Center" />
