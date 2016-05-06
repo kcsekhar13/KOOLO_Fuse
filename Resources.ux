@@ -143,8 +143,8 @@
 				<Rectangle Color="#eb9c27">
 					<Text Value="Update" Font="Regular" TextColor="Black" Alignment="Center"  />
 					<Clicked>
-						<Callback Handler="{updateCheckListItem}" />
-					  <NavigateTo Target="addNewGoalPage" />
+						<Callback Handler="{updateCheckListItemClicked}" />
+					  <NavigateTo Target="updateCheckListPage" />
 					</Clicked>
 				</Rectangle>
 				<Rectangle Color="#ff0000" >

@@ -21,7 +21,12 @@ var CheckList = {
     Transitions : Observable()
 };
 
-var newCheckListItem = Observable();
+var newCheckListItem = Observable({
+  id : Observable(),
+  notes:Observable()
+});
+
+var updatedNotes = Observable();
 
 function CheckListItem(checkListId,item,itemStatus,statusIcon) {
   var self = this;
@@ -240,26 +245,57 @@ function updateCheckListItemStatus(arg) {
 }
 
 function addNewCheckListItem() {
-  console.log(selected.value);
+  console.log("Adding checkListItem" + JSON.stringify(newCheckListItem.value.notes));
+  var newNotes = newCheckListItem.value.notes.value;
+  addToSelectedList(newNotes);
   if(selected.value="My Health"){
     console.log("Add new Checklist goals");
   }
   else {
     console.log("Add new Checklist Transitions");
   }
-  newCheckListItem.value= '';
+  clearCheckListItem();
 }
 
-function updateCheckListItem(item) {
-  console.log("Update Checklist Item : " + item.data.notes);
-  newCheckListItem.value = item.data.notes;
+function updateCheckListItemClicked(item) {
+  newCheckListItem.value.id = item.data.id;
+  newCheckListItem.value.notes = item.data.notes;
+  updatedNotes.value = item.data.notes;
 };
+
+function updateCheckListItem() {
+    console.log("Update checkListItem" + JSON.stringify(newCheckListItem.value.id));
+    selectedList.removeWhere(function(checklist) {
+      return checklist.id == newCheckListItem.value.id;
+    });
+    addToSelectedList(updatedNotes);
+}
+
+function clearCheckListItem() {
+  console.log("Clear newCheckListItem value");
+  newCheckListItem.value.id.clear();
+  newCheckListItem.value.notes.clear();
+}
+
+function clearUpdateCheckListItem() {
+  updatedNotes.clear();
+}
 
 function deleteCheckListItem(item) {
   console.log("Delete Checklist Item : " + JSON.stringify(item));
   selectedList.removeWhere(function(checklist) {
     return checklist.notes == item.data.notes;
   });
+};
+
+function addToSelectedList() {
+  addToSelectedList(newCheckListItem.value.notes);
+};
+
+function addToSelectedList(value) {
+  console.log("Adding Checklist Item : " + JSON.stringify(value));
+  var id = selectedList.length+1;
+  selectedList.add( new CheckListItem(id,value,"3",statusIcon.NotDone));
 };
 
 function Load() {
@@ -289,7 +325,11 @@ module.exports = {
   saveCheckListItems:saveCheckListItems,
   updateCheckListCount:updateCheckListCount,
   addNewCheckListItem:addNewCheckListItem,
-  updateCheckListItem:updateCheckListItem,
+  updateCheckListItemClicked:updateCheckListItemClicked,
   deleteCheckListItem:deleteCheckListItem,
-  newCheckListItem:newCheckListItem
+  newCheckListItem:newCheckListItem,
+  updateCheckListItem:updateCheckListItem,
+  clearCheckListItem:clearCheckListItem,
+  updatedNotes:updatedNotes,
+  clearUpdateCheckListItem:clearUpdateCheckListItem
 }
