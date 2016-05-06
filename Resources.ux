@@ -162,7 +162,7 @@
 		<float4 ux:Property="MoodColor"/>
 		<FileSource ux:Property="MoodImage" />
 		<Panel ux:Name="statusPanel" Width="80%" Margin="10" >
-				<Panel Width="50" Margin="15,0,0,0" Alignment="Left">
+				<Panel Width="30" Margin="15,0,0,0" Alignment="Left">
 					<Circle Height="20" Width="20" Color="{Property moodMapCntrl.MoodColor}" />
 				</Panel>
 				<Rectangle ux:Name="titlePanel" Color="{Property moodMapCntrl.MoodColor}" Margin="10,0,50,0" Width="70%" Alignment="CenterRight" Height="150">

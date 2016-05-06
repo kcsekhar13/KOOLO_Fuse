@@ -105,7 +105,7 @@ function readBackGroundImage() {
 //"/data/data/com.KOOLO_Fuse/files/KOOLO_Background.jpg"
     }, function(error) {
       console.log("failed to read BackGroundImage");
-      myBackGroundImage.value = "Assets/bg.jpg";
+      myBackGroundImage.value = "Assets/Background.png";
     });
 }
 

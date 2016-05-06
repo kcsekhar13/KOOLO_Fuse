@@ -165,6 +165,7 @@
 								<Set moodMapNav.Active="moodLinePage" />
 							</Clicked>
 						</Panel>
+						<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Mood Image"/>
 						<Panel Alignment="Right" Margin="0,8,5,0">
 							<DoneText />
 							<Clicked>
