@@ -18,7 +18,6 @@
 	             <Panel Alignment="Right" Margin="0,8,5,0">
 	               <Text TextAlignment="Right" Value="{newCheckListText}" Font="Regular" FontSize="20"  />
 	                 <Clicked>
-	                    <!-- <Callback Handler="{saveCheckListItems}" /> -->
 	                    <NavigateTo Target="addNewGoalPage" />
 	               </Clicked>
 	             </Panel>
@@ -93,6 +92,10 @@
 		</DockPanel>
 	</MyPage>
 	<MyPage ux:Name="addNewGoalPage" ux:AutoBind="false">
+	 <WhileActive>
+			<DebugAction Message="Active AddNewGoalPage" />
+			<Callback Handler="{initNewGoalPage}" />
+		</WhileActive>
 		<DockPanel>
 			<MyHeader Text="Add new checklist" Dock="Top" />
 			<Panel Padding="10" Height="40%" Margin="20"  Dock="Top">

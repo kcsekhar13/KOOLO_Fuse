@@ -134,7 +134,7 @@
 						</Clicked>
 					</Circle>
 				</Panel>
-				<Panel ux:Name="titlePanel" Color="#ece8d5" Margin="20,0,10,0" Width="90%" Alignment="Right">
+				<Panel ux:Name="titlePanel" Color="#656161" Margin="20,0,10,0" Width="90%" Alignment="Right">
 					<Text Value="{Property CheckListCntrl.Text}" Font="Italic" TextColor="Black" TextWrapping="Wrap" Margin="10,15,0,10" />
 				</Panel>
 		</Panel>

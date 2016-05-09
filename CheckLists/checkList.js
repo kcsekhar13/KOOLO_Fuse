@@ -21,10 +21,10 @@ var CheckList = {
     Transitions : Observable()
 };
 
-var newCheckListItem = Observable({
+var newCheckListItem = {
   id : Observable(),
   notes:Observable()
-});
+};
 
 var updatedNotes = Observable();
 
@@ -245,8 +245,8 @@ function updateCheckListItemStatus(arg) {
 }
 
 function addNewCheckListItem() {
-  console.log("Adding checkListItem" + JSON.stringify(newCheckListItem.value.notes));
-  var newNotes = newCheckListItem.value.notes.value;
+  console.log("Adding checkListItem" + JSON.stringify(newCheckListItem.notes));
+  var newNotes = newCheckListItem.notes.value;
   addToSelectedList(newNotes);
   if(selected.value="My Health"){
     console.log("Add new Checklist goals");
@@ -258,23 +258,30 @@ function addNewCheckListItem() {
 }
 
 function updateCheckListItemClicked(item) {
-  newCheckListItem.value.id = item.data.id;
-  newCheckListItem.value.notes = item.data.notes;
+  newCheckListItem.id.value = item.data.id;
+  newCheckListItem.notes.value = item.data.notes;
   updatedNotes.value = item.data.notes;
 };
 
 function updateCheckListItem() {
-    console.log("Update checkListItem" + JSON.stringify(newCheckListItem.value.id));
+    console.log("Update checkListItem" + JSON.stringify(newCheckListItem.id));
     selectedList.removeWhere(function(checklist) {
-      return checklist.id == newCheckListItem.value.id;
+      return checklist.id == newCheckListItem.id.value;
     });
-    addToSelectedList(updatedNotes);
+    var updatedValue = updatedNotes.value;
+    addToSelectedList(updatedValue);
+    clearUpdateCheckListItem();
 }
 
 function clearCheckListItem() {
   console.log("Clear newCheckListItem value");
-  newCheckListItem.value.id.clear();
-  newCheckListItem.value.notes.clear();
+   newCheckListItem.id.value = "";
+   newCheckListItem.notes.value = "";
+}
+
+function initNewGoalPage() {
+  console.log("Clear newCheckListItem value" + JSON.stringify(newCheckListItem));
+  clearCheckListItem();
 }
 
 function clearUpdateCheckListItem() {
@@ -328,6 +335,7 @@ module.exports = {
   updateCheckListItemClicked:updateCheckListItemClicked,
   deleteCheckListItem:deleteCheckListItem,
   newCheckListItem:newCheckListItem,
+  initNewGoalPage:initNewGoalPage,
   updateCheckListItem:updateCheckListItem,
   clearCheckListItem:clearCheckListItem,
   updatedNotes:updatedNotes,
