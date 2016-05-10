@@ -46,12 +46,14 @@ function deleteFile(fileName) {
 };
 
 module.exports = {
+  createFile:createFile,
+  deleteFile:deleteFile,
   QuotesEnabledSwitchFile:QuotesEnabledSwitchFile,
   PassCodeEnabledSwichFile:PassCodeEnabledSwichFile,
   enableQuotesSwitch:enableQuotesSwitch,
   disableQuotesSwitch :disableQuotesSwitch,
   enablePassCodeSwitch:enablePassCodeSwitch,
-  disablePassCodeSwitch:disablePassCodeSwitch,  
+  disablePassCodeSwitch:disablePassCodeSwitch,
   myQuoteEnabled:myQuoteEnabled,
   myPassCodeEnabled:myPassCodeEnabled
 };

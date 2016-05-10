@@ -10,7 +10,6 @@
 	           <Panel Alignment="Left" Margin="5,8,0,0">
 	               <CancelText />
 	               <Clicked>
-	                  <Callback Handler="{saveCheckListItems}" />
 	                  <GoBack />
 	               </Clicked>
 	             </Panel>
