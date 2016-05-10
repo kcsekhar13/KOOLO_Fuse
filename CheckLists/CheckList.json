@@ -1,573 +1,361 @@
 {
 	"Goals": [
-	{
-		"item": [{
+		{
 			"id": "1",
 			"notes": "I am able to describe my condition or disability.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
- 	{
-		"item": [{
+		}, {
 			"id": "2",
 			"notes": "I know how to make contact with appropriate educational or vocational support programs/people.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "3",
 			"notes": "I am able to describe my diagnosis and treatment.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "4",
 			"notes": "I am aware of any allergies I have and how to manage them.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "5",
 			"notes": "I am able to prepare questions for doctors, nurses or other health professionals.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "6",
 			"notes": "I can respond to questions from doctors, nurses or other health professionals.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "7",
 			"notes": "I know my height and weight.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "8",
 			"notes": "I keep a diary of all my appointments and know how to make or reschedule them when necessary.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "9",
 			"notes": "I know my medications, what they’re for and if there are any side effects.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "10",
 			"notes": "I am responsible for my own medical supplies, including ordering and payment.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "11",
 			"notes": "I can get a prescription refilled and am responsible for taking my own medication/s.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "12",
 			"notes": "I am responsible for my own treatment needs including arranging payment.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "13",
 			"notes": "I know where to seek medical help including in an emergency.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "14",
 			"notes": "I know who to contact for medical treatment advice including medical emergencies or out of hours.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "15",
 			"notes": "I know that I can talk alone with doctors, nurses or other health professionals.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "16",
 			"notes": "I know about my right to information.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "17",
 			"notes": "I know about my right to participation.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "18",
 			"notes": "I know about my right to informed consent (from 16 years old).",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "19",
 			"notes": "I know who my personal supports are and where I can get more support if needed.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "20",
 			"notes": "I have details of peer support programs; general or condition specific.I know how to make contact with appropriate educational or vocational support programs/people.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "21",
 			"notes": "I know what restrictions I have on physical/recreational activities.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "22",
 			"notes": "I know the benefits of looking after myself properly and how factors such as diet, sleep and stress affect my wellbeing and have discussed it with my healthcare team.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "23",
 			"notes": "I know how drugs and alcohol will affect my condition/disability.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "24",
 			"notes": "I know where to get information about sexual health.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
+		}, {
 			"id": "25",
 			"notes": "I know who I can contact for help with my mental health.",
 			"status": "1",
 			"statusIcon": "Assets/red.png"
-		}]
-	}
-],
-	"Transitions": [
-	{
-		"item": [{
-			"id": "1",
-			"notes": "I understand the medical terms specific for my health condition/disability.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
- 	{
-		"item": [{
-			"id": "2",
-			"notes": "I can answer questions from my healthcare team about my health condition/disability.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "3",
-			"notes": "I know the symptoms or complications specific to my health conditions/disability.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "4",
-			"notes": "I am aware of any allergies I have and how to manage them.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "5",
-			"notes": "I have discussed with my healthcare team the effects of smoking, alcohol and drugs on my health condition/disability.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "6",
-			"notes": "I have discussed with my healthcare team how my health condition/disability may impact on my sexual and reproductive health.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "7",
-			"notes": "I know my medication/s, and treatment routine.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "8",
-			"notes": "I know which tests/investigations I have regularly and why I need them.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "9",
-			"notes": "I know the side effects and restrictions of my medications/s.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "10",
-			"notes": "I am responsible for remembering and administrating my medication or treatment.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "11",
-			"notes": "I am responsible for getting a repeat of my prescription and having it filled.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "12",
-			"notes": "I know what equipment I need and what it is used for.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "13",
-			"notes": "I know how to organise/reorder any equipment I may require.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "14",
-			"notes": "I know who to contact for medical advice, including medical emergencies or outside hours.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "15",
-			"notes": "I can make my own appointments within the health services I currently use.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "16",
-			"notes": "I know how to reschedule or change my appointments if necessary.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "17",
-			"notes": "I know I can have/I have had time with my doctor or healthcare staff in my appointment by myself.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "18",
-			"notes": "I feel comfortable asking my doctor to further explain information that is not clear to me.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "19",
-			"notes": "I know how to organise payment of my contribution.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "20",
-			"notes": "I have received oral and written information about my rights as a healthcare user.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "21",
-			"notes": "I know what my right to informed consent means.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "22",
-			"notes": "I know what confidentiality means.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "23",
-			"notes": "I have a regular GP I trust and feel comfortable talking to.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "24",
-			"notes": "I know where to get advice about m health issues.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "25",
-			"notes": "I know what to do if I become unwell or need urgent medical assistance.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "26",
-			"notes": "I know who to contact if I need urgent medical support after hours. ",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "27",
-			"notes": "I recognise the importance of a balanced lifestyle (nutrition, fitness, recreation, leisure and education).",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "28",
-			"notes": "I know whether my condition sets limitations for my vocational choices.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "29",
-			"notes": "I know how/where to get educational/vocational support.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "30",
-			"notes": "I know how/where to get support with my work commitments.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "31",
-			"notes": "I know what restrictions I have on physical/recreational activities.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "32",
-			"notes": "I feel confident advocating for myself.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "33",
-			"notes": "I have strategies/supports in place if I am feeling stressed or upset-",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "34",
-			"notes": "I know patient organisations for my health issue and if there is a youth group I can join.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "35",
-			"notes": "I know how to get information/support about sexual health and relationship issues",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "36",
-			"notes": "I know how to get support about my mental health.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "37",
-			"notes": "I have information about the differences between adult services and paediatric services.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "38",
-			"notes": "I have developed a transition plan with a member of my healthcare team.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "39",
-			"notes": "I have a copy of my medical summary from the hospital.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "40",
-			"notes": "I feel prepared to transfer to an adult service.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "41",
-			"notes": "I have the contact details of the new health service.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "42",
-			"notes": "I have toured the new heath service and know how to get there.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "43",
-			"notes": "I have met few members of the healthcare staff I will be seeing at the adult service.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "44",
-			"notes": "I have an appointment booked for my new health service.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "45",
-			"notes": "I know how to book and change appointments at my new health service.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
-	},
-	{
-		"item": [{
-			"id": "46",
-			"notes": "I have written my own referral letter to my new doctor.",
-			"status": "1",
-			"statusIcon": "Assets/red.png"
-		}]
+		}
+	],
+	"Transitions": [{
+		"id": "1",
+		"notes": "I understand the medical terms specific for my health condition/disability.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "2",
+		"notes": "I can answer questions from my healthcare team about my health condition/disability.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "3",
+		"notes": "I know the symptoms or complications specific to my health conditions/disability.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "4",
+		"notes": "I am aware of any allergies I have and how to manage them.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "5",
+		"notes": "I have discussed with my healthcare team the effects of smoking, alcohol and drugs on my health condition/disability.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "6",
+		"notes": "I have discussed with my healthcare team how my health condition/disability may impact on my sexual and reproductive health.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "7",
+		"notes": "I know my medication/s, and treatment routine.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "8",
+		"notes": "I know which tests/investigations I have regularly and why I need them.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "9",
+		"notes": "I know the side effects and restrictions of my medications/s.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "10",
+		"notes": "I am responsible for remembering and administrating my medication or treatment.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "11",
+		"notes": "I am responsible for getting a repeat of my prescription and having it filled.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "12",
+		"notes": "I know what equipment I need and what it is used for.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "13",
+		"notes": "I know how to organise/reorder any equipment I may require.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "14",
+		"notes": "I know who to contact for medical advice, including medical emergencies or outside hours.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "15",
+		"notes": "I can make my own appointments within the health services I currently use.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "16",
+		"notes": "I know how to reschedule or change my appointments if necessary.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "17",
+		"notes": "I know I can have/I have had time with my doctor or healthcare staff in my appointment by myself.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "18",
+		"notes": "I feel comfortable asking my doctor to further explain information that is not clear to me.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "19",
+		"notes": "I know how to organise payment of my contribution.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "20",
+		"notes": "I have received oral and written information about my rights as a healthcare user.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "21",
+		"notes": "I know what my right to informed consent means.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "22",
+		"notes": "I know what confidentiality means.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "23",
+		"notes": "I have a regular GP I trust and feel comfortable talking to.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "24",
+		"notes": "I know where to get advice about m health issues.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "25",
+		"notes": "I know what to do if I become unwell or need urgent medical assistance.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "26",
+		"notes": "I know who to contact if I need urgent medical support after hours. ",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "27",
+		"notes": "I recognise the importance of a balanced lifestyle (nutrition, fitness, recreation, leisure and education).",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "28",
+		"notes": "I know whether my condition sets limitations for my vocational choices.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "29",
+		"notes": "I know how/where to get educational/vocational support.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "30",
+		"notes": "I know how/where to get support with my work commitments.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "31",
+		"notes": "I know what restrictions I have on physical/recreational activities.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "32",
+		"notes": "I feel confident advocating for myself.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "33",
+		"notes": "I have strategies/supports in place if I am feeling stressed or upset-",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "34",
+		"notes": "I know patient organisations for my health issue and if there is a youth group I can join.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "35",
+		"notes": "I know how to get information/support about sexual health and relationship issues",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "36",
+		"notes": "I know how to get support about my mental health.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "37",
+		"notes": "I have information about the differences between adult services and paediatric services.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "38",
+		"notes": "I have developed a transition plan with a member of my healthcare team.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "39",
+		"notes": "I have a copy of my medical summary from the hospital.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "40",
+		"notes": "I feel prepared to transfer to an adult service.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "41",
+		"notes": "I have the contact details of the new health service.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "42",
+		"notes": "I have toured the new heath service and know how to get there.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "43",
+		"notes": "I have met few members of the healthcare staff I will be seeing at the adult service.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "44",
+		"notes": "I have an appointment booked for my new health service.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "45",
+		"notes": "I know how to book and change appointments at my new health service.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
+	}, {
+		"id": "46",
+		"notes": "I have written my own referral letter to my new doctor.",
+		"status": "1",
+		"statusIcon": "Assets/red.png"
 	}]
 }

@@ -10,6 +10,7 @@
 	           <Panel Alignment="Left" Margin="5,8,0,0">
 	               <CancelText />
 	               <Clicked>
+										<Callback Handler="{Load}" />
 	                  <GoBack />
 	               </Clicked>
 	             </Panel>
@@ -91,10 +92,6 @@
 		</DockPanel>
 	</MyPage>
 	<MyPage ux:Name="addNewGoalPage" ux:AutoBind="false">
-	 <WhileActive>
-			<DebugAction Message="Active AddNewGoalPage" />
-			<Callback Handler="{initNewGoalPage}" />
-		</WhileActive>
 		<DockPanel>
 			<MyHeader Text="Add new checklist" Dock="Top" />
 			<Panel Padding="10" Height="40%" Margin="20"  Dock="Top">
