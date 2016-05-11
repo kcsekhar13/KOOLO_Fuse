@@ -241,6 +241,7 @@
 	<Icon ux:Class="CheckmarkIcon" File="Assets/Checkmark.png" />
 	<Icon ux:Class="GalleryIcon" File="Assets/gallery.png" />
 	<Icon ux:Class="NewGoalIcon" Files="Assets/red.png" />
+	<Icon ux:Class="NewEventIcon" Files="Assets/addevent.png" />
 
 	<Text TextAlignment="Left" Value="Cancel" Font="Regular" ux:Class="CancelText" FontSize="20" />
 	<Text TextAlignment="Right" Value="Save" Font="Regular" ux:Class="SaveText" FontSize="20" />

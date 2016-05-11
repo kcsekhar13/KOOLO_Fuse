@@ -46,7 +46,7 @@
 							<Rectangle Margin="5" Height="50" Width="50">
 								<CalendarText Value="{}" Font="Medium" TextColor="#000000" />
 							</Rectangle>
-						</Each>						
+						</Each>
 					</Grid>
 					<Panel ClipToBounds="true">
 						<Grid ColumnCount="7" Margin="0,10,0,0" ux:Name="calenderGrid" >
@@ -87,7 +87,8 @@
 				</ScrollView>
 			</Panel>
 			<Panel ux:Name="addEventPanel" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomRight" Margin="0,0,20,20" Layer="Overlay">
-				<Cross ux:Name="addEvent" Alignment="Center" />
+				<!-- <Cross ux:Name="addEvent" Alignment="Center"  /> -->
+				<NewEventIcon Alignment="Center" Height="40" Width="40"/>
 				<Circle ux:Name="overlayEventCircle" Fill="#FFFFFF" Width="100%" Height="100%" Alignment="Center" />
 				<Clicked>
 					<NavigateTo Target="newEventPage" />
