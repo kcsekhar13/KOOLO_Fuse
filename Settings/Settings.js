@@ -173,6 +173,10 @@ function readSwitchValues() {
     });
 }
 
+function gotoHome() {
+	router.goto("home");
+}
+
 function InitializePage() {
     console.log("Initializing Settings");
     readSwitchValues();
@@ -196,5 +200,6 @@ module.exports = {
     txt1Visibility: txt1Visibility,
     txt2Visibility: txt2Visibility,
     txt3Visibility: txt3Visibility,
-    txt4Visibility: txt4Visibility
+    txt4Visibility: txt4Visibility,
+    gotoHome:gotoHome,
 };

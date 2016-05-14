@@ -96,7 +96,7 @@
 	 </Panel>
 
 <!-- Custom CheckList Control -->
-	<Panel ux:InnerClass="CheckListCntrl" ux:Name="CheckListCntrl">
+	<Panel ux:Class="CheckListCntrl" ux:Name="CheckListCntrl">
 		<RemovingAnimation>
 			<Move RelativeTo="Size" Y="20" Duration="0.8" Easing="CircularInOut" />
 		</RemovingAnimation>
@@ -144,7 +144,7 @@
 					<Text Value="Update" Font="Regular" TextColor="Black" Alignment="Center"  />
 					<Clicked>
 						<Callback Handler="{updateCheckListItemClicked}" />
-					  <NavigateTo Target="updateCheckListPage" />
+					  <!-- <NavigateTo Target="updateCheckListPage" /> -->
 					</Clicked>
 				</Rectangle>
 				<Rectangle Color="#ff0000" >

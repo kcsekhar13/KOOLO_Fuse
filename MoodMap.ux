@@ -1,4 +1,10 @@
-<Page ux:Name="MoodMap">
+<MyPage ux:Name="MoodMap" ux:Class="MoodMap">
+<Router ux:Dependency="router" />
+<SwipeGesture ux:Name="swipeForHome" Direction="Left" Type="Active" />
+<Swiped Source="swipeForHome">
+	 <Callback Handler="{gotoHome}" />
+</Swiped>
+<Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
 	<WhileActive>
 		<DebugAction Message="Mood Map screen is Active" />
 		<!-- <Callback Handler="{getMoodLineImages}" /> -->
@@ -11,7 +17,7 @@
 					<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
 						<DoneText />
 						<Clicked>
-							<GoBack TargetNode="pageControl" />
+							<Callback Handler="{gotoHome}" />
 						</Clicked>
 					</Panel>
 					<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Mood Line"/>
@@ -183,4 +189,4 @@
 			</DockPanel>
 		</Page>
 	</PageControl>
-</Page>
+</MyPage>

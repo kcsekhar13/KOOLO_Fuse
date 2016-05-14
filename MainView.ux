@@ -1,15 +1,17 @@
-	<App>
-		<Gallery ux:Global="Gallery"/>
-	  <UserSettings ux:Global="UserSettings" />
-	  <Panel>
+<App>
+	<Gallery ux:Global="Gallery"/>
+	<UserSettings ux:Global="UserSettings" />
+	<Router ux:Name="router" />
+	<Panel>
 		<JavaScript>
 			var Observable = require("FuseJS/Observable");
 
 			exports.showSplashScreen = Observable(true);
 
 			setTimeout(() => {
-				exports.showSplashScreen.value = false;
+			exports.showSplashScreen.value = false;
 			}, 5000);
+			router.goto("home");
 		</JavaScript>
 
 		<Image ux:Name="splashScreen" File="Assets/launchscreen.png" StretchMode="UniformToFill">
@@ -25,39 +27,47 @@
 			<JavaScript ux:Global="State" File="State.js" />
 			<JavaScript File="MainView.js"/>
 			<ux:Include File="Resources.ux" />
-			<UserEvent Name="showSettings" />
+			<Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
+			<!-- <UserEvent Name="showSettings"  />
 			<UserEvent Name="hideSettings" />
 			<OnUserEvent Name="showSettings" Filter="Global">
-				<Set settingsVisible.Value="true" />
-			</OnUserEvent>
-			<OnUserEvent Name="hideSettings" Filter="Global">
-				<Set settingsVisible.Value="false" />
-			</OnUserEvent>
-			<WhileFalse ux:Name="settingsVisible">
-				<Move Target="Settings" Y="1" RelativeTo="ParentSize" Duration="0.1" Easing="QuadraticInOut" />
-				<Callback Handler="{initializeHomePage}" />
-			</WhileFalse>
-			<Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
-			<Panel>
-			<Settings ux:Name="Settings" />
-			<DockPanel>
-				<PageControl Active="{currentPage}" ux:Name="pageControl">
-					<ux:Include File="MoodMap.ux" />
-					<ux:Include File="Home.ux" />
-					<ux:Include File="Calendar.ux" />
-				</PageControl>
-				<StackPanel Alignment="BottomCenter">
-					<Text Value="KOOLO" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold"/>
-				</StackPanel>
-				 <PageIndicator Navigation="pageControl" Dock="Bottom" Alignment="Center">
-			        <Circle ux:Generate="Template" ux:Binding="DotFactory" Fill="White" Margin="5" Width="10" Height="10">
-			            <ActivatingAnimation>
-			                <Scale Factor="1.3"/>
-			            </ActivatingAnimation>
-			        </Circle>
-			    </PageIndicator>
-			</DockPanel>
-			</Panel>
-		</DockPanel>
-		</Panel>
-	</App>
+			<Set settingsVisible.Value="true" />
+		</OnUserEvent>
+		<OnUserEvent Name="hideSettings" Filter="Global">
+		<Set settingsVisible.Value="false" />
+	</OnUserEvent>
+	<WhileFalse ux:Name="settingsVisible">
+	<Move Target="Settings" Y="1" RelativeTo="ParentSize" Duration="0.1" Easing="QuadraticInOut" />
+	<Callback Handler="{initializeHomePage}" />
+</WhileFalse> -->
+
+<Panel>
+	<!-- <Settings ux:Name="Settings" /> -->
+	<DockPanel>
+		<Navigator>
+			<Settings ux:Template="settings" router="router" />
+			<MoodMap ux:Template="moodMap" router="router" />
+			<Home ux:Template="home" router="router" />
+			<KooloCalender ux:Template="calender" router="router" />
+			<CheckList ux:Template="checkList" router="router" />
+		</Navigator>
+		<!-- <PageControl Active="{currentPage}" ux:Name="pageControl">
+		<ux:Include File="MoodMap.ux" />
+		<ux:Include File="Home.ux" />
+		<ux:Include File="Calendar.ux" />
+	</PageControl>
+	<StackPanel Alignment="BottomCenter">
+	<Text Value="KOOLO" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold"/>
+</StackPanel>
+<PageIndicator Navigation="pageControl" Dock="Bottom" Alignment="Center">
+<Circle ux:Generate="Template" ux:Binding="DotFactory" Fill="White" Margin="5" Width="10" Height="10">
+<ActivatingAnimation>
+<Scale Factor="1.3"/>
+</ActivatingAnimation>
+</Circle>
+</PageIndicator> -->
+</DockPanel>
+</Panel>
+</DockPanel>
+</Panel>
+</App>

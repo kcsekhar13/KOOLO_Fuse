@@ -1,4 +1,22 @@
-<MyPage Title="Home" ux:Name="Home">
+<MyPage Title="Home" ux:Name="Home" ux:Class="Home">
+<SwipeGesture ux:Name="swipeForCalender" Direction="Left" Type="Active" />
+<SwipeGesture ux:Name="swipeForMoodMap" Direction="Right" Type="Simple" />
+<Swiped Source="swipeForCalender">
+	<DebugAction Message="Swiped for calender" />
+	 <Callback Handler="{gotoCalendar}" />
+</Swiped>
+<Swiped Source="swipeForMoodMap">
+<DebugAction Message="Swiped for Moodmap" />
+	<Callback Handler="{gotoMoodMap}" />
+</Swiped>
+<SwipingAnimation Source="swipeForMoodMap">
+	<Move Target="mainHomePage" X="100" Duration="0.5" DurationBack="0" />
+</SwipingAnimation>
+<SwipingAnimation Source="swipeForCalender">
+	<Move Target="mainHomePage" X="-100" Duration="0.5" DurationBack="0" />
+</SwipingAnimation>
+<Router ux:Dependency="router" />
+<Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
 <WhileActive>
 	<DebugAction Message="Home view is active" />
 	<Callback Handler="{readkooloEvents}" />
@@ -6,9 +24,9 @@
 </WhileActive>
 <Panel>
 	<DeactivatingAnimation>
-		<Move Target="settingsBtn" Y="150" Duration="1" />
-		<Move Target="optionsBtn" Y="150" Duration="1" />
-		<Move Target="mainContent" Y="-350" Duration="1" />
+		<Move Target="settingsBtn" Y="150" Duration="0.5" />
+		<Move Target="optionsBtn" Y="150" Duration="0.5" />
+		<Move Target="mainContent" Y="-350" Duration="0.5" />
 		<Change expanded.Value="false" />
 	</DeactivatingAnimation>
 	<PageControl ux:Name="homePageNav" Interaction="None" Active="mainHomePage">
@@ -24,20 +42,23 @@
 						<Translation ux:Name="trans1" Y="-1" RelativeTo="Size" />
 						<Clicked>
 							<DebugAction Message="Clicked Calander Icon" />
-								<NavigateTo NavigationContext="pageControl" Target="calendar" />
+								<!-- <NavigateTo NavigationContext="pageControl" Target="calendar" /> -->
+								<DebugAction Message="Navigate to Calendar" />
+								<Callback Handler="{gotoCalendar}" />
 						</Clicked>
 					</CalanderIcon>
 					<KooloCamaraIcon ux:Name="icon2" Margin="0,0,0,0" Width="40" Height="40" Alignment="Top" Opacity="0" IsEnabled="false">
 						<Translation ux:Name="trans2" Y="0" RelativeTo="Size" />
 						<Clicked>
 							<DebugAction Message="Clicked ClockIcon" />
-							<NavigateTo NavigationContext="pageControl" Target="MoodMap" />
+							<!-- <NavigateTo NavigationContext="pageControl" Target="MoodMap" /> -->
+							<Callback Handler="{gotoMoodMap}" />
 						</Clicked>
 					</KooloCamaraIcon>
 					<ChecklistIcon ux:Name="icon3" Margin="0,5,0,20" Width="40" Height="40" Alignment="Center" Opacity="0" IsEnabled="false">
 						<Translation ux:Name="trans3" Y="0" RelativeTo="Size" />
 						<Clicked>
-								<NavigateTo Target="CheckList" NavigationContext="homePageNav" />
+							<Callback Handler="{gotoCheckList}" />
 						</Clicked>
 					</ChecklistIcon>
 					<Circle ux:Name="overlayCircle" Fill="#FFFFFF" Width="20%" Height="20%" Alignment="Center" />
@@ -71,7 +92,7 @@
 				<Circle ux:Name="settingsBtn" Fill="#FFFFFF" Width="14%" Height="14%" Alignment="BottomLeft" Offset="15,7">
 					<Image File="Assets/settings.png" />
 					<Clicked>
-						<RaiseUserEvent Name="showSettings" />
+						<Callback Handler="{gotoSettings}" />
 					</Clicked>
 				</Circle>
 			</Panel>
@@ -103,7 +124,7 @@
 			</DockPanel>
 			</Panel>
 		</MyPage>
-		<ux:Include File="CheckLists/CheckListHome.ux" />
+		<!-- <ux:Include File="CheckLists/CheckListHome.ux" /> -->
 		<ux:Include File="MoodColour.ux" ux:AutoBind="false" />
 	</PageControl>
 </Panel>

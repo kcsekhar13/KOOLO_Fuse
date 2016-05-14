@@ -1,101 +1,98 @@
 <MyPage ux:Class="Settings" Title="Settings" ux:Name="Settings" >
-  <UserSettings ux:Global="UserSettings" />
-  <UserEvent Name="DoneSettingPassCode" />
+  <Router ux:Dependency="router" />
   <WhileActive>
     <Callback Handler="{InitializePage}" />
   </WhileActive>
-<StatusBarBackground Dock="Top"/>
-  <iOS.StatusBarConfig />
   <JavaScript File="Settings.js"/>
   <JavaScript ux:Global="State" File="../State.js" />
-<Panel>
-  <HierarchicalNavigation ux:Name="nav" Active="mainPage" />
-  <MyPage ux:Name="mainPage" Background="White">
-    <DockPanel>
-                <!-- Header    -->
-                <Panel Dock="Top" Height="35" Alignment="Top">
-                  <Rectangle Fill="#808080" Layer="Background">
-                  <Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
-                      <CancelText />
-                      <Clicked>
-                         <RaiseUserEvent Name="hideSettings" />
-                      </Clicked>
-                    </Panel>
-                    <Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="{currentPageTitle}"/>
-                    <Panel Alignment="Right" Margin="0,8,5,0">
-                      <DoneText />
-                        <Clicked>
-                           <RaiseUserEvent Name="hideSettings" />
-                      </Clicked>
-                    </Panel>
-                </Rectangle>
-                </Panel>
-                  <!-- End of Header -->
-                <ScrollView AllowedScrollDirections="Vertical">
-                <StackPanel Margin="10,5,0,0">
-                  <!-- Background Image -->
-                <MyButton Text="BackGround Image">
-                   <Clicked>
-                     <Callback Handler="{setBackGroundImage}" />
-                  </Clicked>
-                 </MyButton>
-                  <!-- Passcode -->
-                <MyButton Text="Passcode">
-                   <Clicked>
-                     <NavigateTo Target="Passcode"  NavigationContext="nav" />
-                  </Clicked>
-                 </MyButton>
-                  <!-- Quotes -->
-                <MyButton Text="Quotes">
-                   <Clicked>
-                     <NavigateTo Target="Quotes" />
-                  </Clicked>
-                 </MyButton>
-                  <!-- Humor color -->
-                <MyButton Text="Humor Color">
-                   <Clicked>
-                     <NavigateTo Target="HumorColor" />
-                  </Clicked>
-                 </MyButton>
-                  <!-- Tutorial -->
-                <MyButton Text="Tutorial">
-                   <Clicked>
-                     <NavigateTo Target="Tutorial" />
-                  </Clicked>
-                 </MyButton>
-                  <!-- License -->
-                <MyButton Text="License">
-                   <Clicked>
-                     <NavigateTo Target="License" />
-                  </Clicked>
-                 </MyButton>
-                  <!-- Contributors -->
-                 <MyButton Text="Contributors">
-                   <Clicked>
-                     <NavigateTo Target="Contributors" />
-                  </Clicked>
-                 </MyButton>
-                  <!-- About -->
-                 <MyButton Text="About">
-                  <Clicked>
-                     <NavigateTo Target="About" />
-                  </Clicked>
-                 </MyButton>
-                 <Image File="{backGroundImage}">
-          				<Android>
-          					<Rotate Degrees="90" />
-          				</Android>
-          			</Image>
-                </StackPanel>
-              </ScrollView>
-    </DockPanel>
-  </MyPage>
-  <Passcode ux:Name="Passcode" ux:AutoBind="false" />
-  <Quotes ux:Name="Quotes" ux:AutoBind="false"/>
-  <HumorColor ux:Name="HumorColor" ux:AutoBind="false"/>
-  <Tutorial ux:Name="Tutorial" ux:AutoBind="false"/>
-  <License  ux:Name="License" ux:AutoBind="false"/>
-  <Contributors ux:Name="Contributors" ux:AutoBind="false"/>
-  <About ux:Name="About" ux:AutoBind="false"/>
+  <Panel>
+    <HierarchicalNavigation ux:Name="nav" Active="mainPage" />
+    <MyPage ux:Name="mainPage" Background="White">
+      <DockPanel>
+        <!-- Header    -->
+        <Panel Dock="Top" Height="35" Alignment="Top">
+          <Rectangle Fill="#808080" Layer="Background">
+            <Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
+              <CancelText />
+              <Clicked>
+                <Callback Handler="{gotoHome}" />
+              </Clicked>
+            </Panel>
+            <Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Settings"/>
+            <Panel Alignment="Right" Margin="0,8,5,0">
+              <DoneText />
+              <Clicked>
+                <Callback Handler="{gotoHome}" />
+              </Clicked>
+            </Panel>
+          </Rectangle>
+        </Panel>
+        <!-- End of Header -->
+        <ScrollView AllowedScrollDirections="Vertical">
+          <StackPanel Margin="10,5,0,0">
+            <!-- Background Image -->
+            <MyButton Text="BackGround Image">
+              <Clicked>
+                <Callback Handler="{setBackGroundImage}" />
+              </Clicked>
+            </MyButton>
+            <!-- Passcode -->
+            <MyButton Text="Passcode">
+              <Clicked>
+                <NavigateTo Target="Passcode"  NavigationContext="nav" />
+              </Clicked>
+            </MyButton>
+            <!-- Quotes -->
+            <MyButton Text="Quotes">
+              <Clicked>
+                <NavigateTo Target="Quotes" />
+              </Clicked>
+            </MyButton>
+            <!-- Humor color -->
+            <MyButton Text="Humor Color">
+              <Clicked>
+                <NavigateTo Target="HumorColor" />
+              </Clicked>
+            </MyButton>
+            <!-- Tutorial -->
+            <MyButton Text="Tutorial">
+              <Clicked>
+                <NavigateTo Target="Tutorial" />
+              </Clicked>
+            </MyButton>
+            <!-- License -->
+            <MyButton Text="License">
+              <Clicked>
+                <NavigateTo Target="License" />
+              </Clicked>
+            </MyButton>
+            <!-- Contributors -->
+            <MyButton Text="Contributors">
+              <Clicked>
+                <NavigateTo Target="Contributors" />
+              </Clicked>
+            </MyButton>
+            <!-- About -->
+            <MyButton Text="About">
+              <Clicked>
+                <NavigateTo Target="About" />
+              </Clicked>
+            </MyButton>
+            <Image File="{backGroundImage}">
+              <Android>
+                <Rotate Degrees="90" />
+              </Android>
+            </Image>
+          </StackPanel>
+        </ScrollView>
+      </DockPanel>
+    </MyPage>
+    <Passcode ux:Name="Passcode" ux:AutoBind="false" />
+    <Quotes ux:Name="Quotes" ux:AutoBind="false"/>
+    <HumorColor ux:Name="HumorColor" ux:AutoBind="false"/>
+    <Tutorial ux:Name="Tutorial" ux:AutoBind="false"/>
+    <License  ux:Name="License" ux:AutoBind="false"/>
+    <Contributors ux:Name="Contributors" ux:AutoBind="false"/>
+    <About ux:Name="About" ux:AutoBind="false"/>
   </Panel>
 </MyPage>

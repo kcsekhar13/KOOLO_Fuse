@@ -1,8 +1,10 @@
-<MyPage Title="CheckList" ux:Name="CheckList" ux:AutoBind="false">
+<MyPage Title="CheckList" ux:Name="CheckList" ux:AutoBind="false" ux:Class="CheckList">
+<Router ux:Dependency="router" />
+<Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
 <SwipeGesture ux:Name="swipeCheckListLeft" Direction="Right" Length="100" Type="Active" />
 <SwipeGesture ux:Name="swipeCheckListRight" Direction="Right" Length="100" Type="Active" />
 <WhileActive>
-	<Change homePageNav.Interaction = "None" />
+	<!-- <Change homePageNav.Interaction = "None" /> -->
 	<SetSwipeActive Target="swipeCheckListLeft" Value="false" />
 	<SetSwipeActive Target="swipeCheckListRight" Value="false" />
 	<Callback Handler="{updateCheckListCount}" />
@@ -20,14 +22,14 @@
 							<Panel Alignment="Left" Margin="5,8,0,0">
 								<CancelText />
 								<Clicked>
-									<GoBack TargetNode="homePageNav" />
+										<Callback Handler="{gotoHome}" />
 								</Clicked>
 							</Panel>
 							<Text Alignment="Center" FontSize="20" TextColor="Black" Font="Bold" Value="Checklist"/>
 							<Panel Alignment="Right" Margin="0,8,5,0">
 								<DoneText />
 								<Clicked>
-									<GoBack TargetNode="homePageNav" />
+									<Callback Handler="{gotoHome}" />
 								</Clicked>
 							</Panel>
 						</Rectangle>

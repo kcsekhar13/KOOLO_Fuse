@@ -1,6 +1,5 @@
 var Observable = require("FuseJS/Observable");
 var Storage = require('FuseJS/Storage');
-var bundle = require('FuseJS/Bundle');
 var gallery = require('Gallery');
 var camera = require('FuseJS/Camera');
 var State = require("State");
@@ -13,7 +12,7 @@ var currentPage = Observable("Home");
 var navigateToPage = Observable();
 var isSettingsVisible = Observable("Hidden");
 var myQuote = Observable();
-var myBackGroundImage = Observable();
+var myBackGroundImage = Observable("Assets/Background.png");
 var isPassCodeSet = Observable();
 var isQuoteSet = Observable();
 
@@ -225,6 +224,25 @@ function initializeHomePage() {
     //     console.log(error);
     // });
 }
+function gotoSettings() {
+		router.goto("settings");
+};
+
+function gotoCalendar() {
+	router.goto("calender");
+}
+
+function gotoHome() {
+	router.goto("home");
+}
+
+function gotoMoodMap() {
+	router.goto("moodMap");
+}
+
+function gotoCheckList() {
+	router.goto("checkList");
+}
 
 initializeHomePage();
 
@@ -254,5 +272,10 @@ module.exports = {
 		clearMoodColorFilter:clearMoodColorFilter,
   	getMoodLineImages:  getMoodLineImages,
 		kooloTodayEvents:kooloTodayEvents,
-		readkooloEvents:readkooloEvents
+		readkooloEvents:readkooloEvents,
+		gotoSettings:gotoSettings,
+		gotoHome:gotoHome,
+		gotoCalendar:gotoCalendar,
+		gotoMoodMap:gotoMoodMap,
+		gotoCheckList:gotoCheckList
   };
