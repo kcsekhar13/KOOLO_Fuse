@@ -68,11 +68,7 @@ function selectMyHealth() {
   totalGoalsCount.value =  CheckList.Goals.length;
   for (var i = 0; i < CheckList.Goals.length; i++){
     var currentGoal = CheckList.Goals[i];
-    var item = {item:Observable()};
-    for (var j = 0; j < currentGoal.item.length; j++){
-      item.item.add(currentGoal.item[j]);
-    }
-    var temp  = new CheckListItem(item.item.value.id,item.item.value.notes,item.item.value.status,statusIcon.NotDone);
+    var temp  = new CheckListItem(currentGoal.id,currentGoal.notes,currentGoal.status,currentGoal.statusIcon);
     selectedList.add(temp);
   }
 }
@@ -82,11 +78,7 @@ function selectTransition() {
   totalTransitionsCount.value =  CheckList.Transitions;
   for (var i = 0; i < CheckList.Transitions.length; i++){
     var current = CheckList.Transitions[i];
-    var item = {item:Observable()};
-    for (var j = 0; j < current.item.length; j++){
-      item.item.add(current.item[j]);
-    }
-    var temp  = new CheckListItem(item.item.value.id,item.item.value.notes,item.item.value.status,statusIcon.NotDone);
+    var temp  = new CheckListItem(current.id,current.notes,current.status,current.statusIcon);
     selectedList.add(temp);
   }
 };
@@ -107,8 +99,8 @@ function InitTransitionPage() {
   selectTransition();
 }
 
-function print(arg) {
-  console.log( " Print" +JSON.stingify(arg));
+function Print(arg) {
+  console.log( " Print" +JSON.stringify(arg));
 }
 
 function loadGoals() {
@@ -165,7 +157,7 @@ function loadCheckListGoals() {
   Storage.read(checkListFile).then(function (content) {
             CheckList.Goals = JSON.parse(content);
             totalGoalsCount.value = CheckList.Goals.length;
-            console.log("Success in reading KOOLO checklist" + JSON.stringify(CheckList.Goals));
+            console.log("Success in reading KOOLO checklist");
             var transTemp = 0;
             for (var t in CheckList.Goals) {
                 if(CheckList.Goals[t].status == "3")
@@ -215,7 +207,6 @@ function readDefaultCheckLists() {
 };
 
 function updateCheckListItemStatus(arg) {
-  JSON.stringify(arg, undefined, '    ')
   if(arg.data.status.value == "1"){
     arg.data.status.value ="2";
     arg.data.statusIcon.value = statusIcon.WorkignOnIt;
@@ -234,13 +225,18 @@ function updateCheckListItemStatus(arg) {
     arg.data.status.value ="1";
     arg.data.statusIcon.value = statusIcon.NotDone;
   }
+  console.log("Saving CheckListItem status");
+  saveCheckList();
 }
 
 function addNewCheckListItem() {
+  console.log("Adding new checklist to " + selected.value);
   var newNotes = newCheckListItem.notes.value;
-  addToSelectedList(newNotes);
-  saveCheckList();
-  clearCheckListItem();
+  if(newNotes.length > 0){
+    addToSelectedList(newNotes);
+    saveCheckList();
+    clearCheckListItem();
+  }
 }
 
 function updateCheckListItemClicked(item) {
@@ -266,7 +262,6 @@ function clearCheckListItem() {
 }
 
 function initNewGoalPage() {
-  console.log("Clear newCheckListItem value" + JSON.stringify(newCheckListItem));
   clearCheckListItem();
 }
 
@@ -282,7 +277,10 @@ function deleteCheckListItem(item) {
 };
 
 function addToSelectedList() {
-  addToSelectedList(newCheckListItem.value.notes);
+  console.log("new checklist string length" + newCheckListItem.notes.length);
+  if(newCheckListItem.notes.length > 0){
+    addToSelectedList(newCheckListItem.notes);
+  }
 };
 
 function addToSelectedList(value) {
@@ -296,7 +294,7 @@ function saveCheckList() {
     list.push({id:param.id, notes:param.notes, status:param.status.value, statusIcon:param.statusIcon.value});
   });
   console.log(selected.value);
-  if(selected.value="My Health"){
+  if(selected.value == "My Health"){
     console.log("Saving new Checklist goals");
     State.createFile(checkListFile,list);
   }
@@ -315,6 +313,7 @@ function Load() {
 Load();
 
 module.exports = {
+  Load:Load,
   save:saveThreeSentenses,
   readThreeSentenses:readThreeSentenses,
   selected:selected,

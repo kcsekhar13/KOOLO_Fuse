@@ -40,7 +40,7 @@
 					</Panel>
 					<Rectangle Fill="#000000" Width="225" Height="50" CornerRadius="5" Alignment="Left" Margin="20,10,0,0">
 						<Rectangle Fill="#FFFFFF" Width="223" Height="48" CornerRadius="5" >
-							<TextEdit Value="{title}" Alignment="CenterLeft" CaretColor="#ff0000"
+							<TextInput Value="{title}" Alignment="CenterLeft" CaretColor="#ff0000"
 												TextColor="#000000" Font="Light" Width="200" Margin="10"/>
 						</Rectangle>
 					</Rectangle>

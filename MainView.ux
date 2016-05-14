@@ -1,63 +1,63 @@
-<App Theme="Basic">
-	<Gallery ux:Global="Gallery"/>
-  <UserSettings ux:Global="UserSettings" />
-  	<Panel>
-	<JavaScript>
-		var Observable = require("FuseJS/Observable");
+	<App>
+		<Gallery ux:Global="Gallery"/>
+	  <UserSettings ux:Global="UserSettings" />
+	  <Panel>
+		<JavaScript>
+			var Observable = require("FuseJS/Observable");
 
-		exports.showSplashScreen = Observable(true);
+			exports.showSplashScreen = Observable(true);
 
-		setTimeout(() => {
-			exports.showSplashScreen.value = false;
-		}, 5000);
-	</JavaScript>
+			setTimeout(() => {
+				exports.showSplashScreen.value = false;
+			}, 5000);
+		</JavaScript>
 
-	<Image ux:Name="splashScreen" File="Assets/launchscreen.png" StretchMode="UniformToFill">
-		<WhileFalse Value="{showSplashScreen}">
-			<Change splashScreen.Opacity="0" />
-			<Set splashScreen.Visibility="Collapsed" />
-		</WhileFalse>
-	</Image>
+		<Image ux:Name="splashScreen" File="Assets/launchscreen.png" StretchMode="UniformToFill">
+			<WhileFalse Value="{showSplashScreen}">
+				<Change splashScreen.Opacity="0" />
+				<Set splashScreen.Visibility="Collapsed" />
+			</WhileFalse>
+		</Image>
 
-	<DockPanel>
-		<JavaScript ux:Global="State" File="State.js" />
-		<JavaScript File="MainView.js"/>
-		<ux:Include File="Resources.ux" />
-		<UserEvent Name="showSettings" />
-		<UserEvent Name="hideSettings" />
-		<OnUserEvent Name="showSettings" Filter="Global">
-			<Set settingsVisible.Value="true" />
-		</OnUserEvent>
-		<OnUserEvent Name="hideSettings" Filter="Global">
-			<Set settingsVisible.Value="false" />
-		</OnUserEvent>
-		<WhileFalse ux:Name="settingsVisible">
-			<Move Target="Settings" Y="1" RelativeTo="ParentSize" Duration="0.1" Easing="QuadraticInOut" />
-			<Callback Handler="{initializeHomePage}" />
-		</WhileFalse>
-		<Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
-		<StatusBarBackground Dock="Top" />
-		<BottomBarBackground Dock="Bottom" />
-		<Panel>
-		<Settings ux:Name="Settings" />
 		<DockPanel>
-			<PageControl Active="{currentPage}" ux:Name="pageControl">
-				<ux:Include File="MoodMap.ux" />
-				<ux:Include File="Home.ux" />
-				<ux:Include File="Calendar.ux" />
-			</PageControl>
-			<StackPanel Alignment="BottomCenter">
-				<Text Value="KOOLO" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold"/>
-			</StackPanel>
-			 <PageIndicator Navigation="pageControl" Dock="Bottom" Alignment="Center">
-		        <Circle ux:Generate="Factory" ux:Binding="DotFactory" Fill="White" Margin="5" Width="10" Height="10">
-		            <ActivatingAnimation>
-		                <Scale Factor="1.3"/>
-		            </ActivatingAnimation>
-		        </Circle>
-		    </PageIndicator>
+			<StatusBarBackground Dock="Top" />
+			<BottomBarBackground Dock="Bottom" />
+			<JavaScript ux:Global="State" File="State.js" />
+			<JavaScript File="MainView.js"/>
+			<ux:Include File="Resources.ux" />
+			<UserEvent Name="showSettings" />
+			<UserEvent Name="hideSettings" />
+			<OnUserEvent Name="showSettings" Filter="Global">
+				<Set settingsVisible.Value="true" />
+			</OnUserEvent>
+			<OnUserEvent Name="hideSettings" Filter="Global">
+				<Set settingsVisible.Value="false" />
+			</OnUserEvent>
+			<WhileFalse ux:Name="settingsVisible">
+				<Move Target="Settings" Y="1" RelativeTo="ParentSize" Duration="0.1" Easing="QuadraticInOut" />
+				<Callback Handler="{initializeHomePage}" />
+			</WhileFalse>
+			<Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
+			<Panel>
+			<Settings ux:Name="Settings" />
+			<DockPanel>
+				<PageControl Active="{currentPage}" ux:Name="pageControl">
+					<ux:Include File="MoodMap.ux" />
+					<ux:Include File="Home.ux" />
+					<ux:Include File="Calendar.ux" />
+				</PageControl>
+				<StackPanel Alignment="BottomCenter">
+					<Text Value="KOOLO" FontSize="12" Alignment="Center" TextColor="#FFFFFF" Font="Bold"/>
+				</StackPanel>
+				 <PageIndicator Navigation="pageControl" Dock="Bottom" Alignment="Center">
+			        <Circle ux:Generate="Template" ux:Binding="DotFactory" Fill="White" Margin="5" Width="10" Height="10">
+			            <ActivatingAnimation>
+			                <Scale Factor="1.3"/>
+			            </ActivatingAnimation>
+			        </Circle>
+			    </PageIndicator>
+			</DockPanel>
+			</Panel>
 		</DockPanel>
 		</Panel>
-	</DockPanel>
-	</Panel>
-</App>
+	</App>

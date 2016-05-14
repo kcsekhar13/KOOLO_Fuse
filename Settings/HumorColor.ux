@@ -64,7 +64,7 @@ initPage();
                 <Circle Width="50" Height="50" Fill="{code}" Margin="20" />
                 <Rectangle Fill="#000000" Width="225" Height="50" CornerRadius="5">
                   <Rectangle Fill="#FFFFFF" Width="223" Height="48" CornerRadius="5" >
-                    <TextEdit Value="{title}" Alignment="CenterLeft" CaretColor="#ff0000"
+                    <Basic.TextInput Value="{title}" Alignment="CenterLeft" CaretColor="#ff0000"
                               TextColor="#000000" Font="Light" Width="200" Margin="10"/>
                   </Rectangle>
                 </Rectangle>

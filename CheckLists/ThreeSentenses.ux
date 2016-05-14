@@ -34,7 +34,7 @@
                     <Rectangle CornerRadius="1" Layer="Background">
                         <Stroke Width="1" Color="#000000"/>
                     </Rectangle>
-                    <TextEdit Value="{first}" Height="100" Width="100%" IsMultiline="true" Font="Regular" />
+                    <TextView Value="{first}" Height="100" Width="100%" Font="Regular" />
                 </Panel>
             </StackPanel>
             <StackPanel>
@@ -43,7 +43,7 @@
                     <Rectangle CornerRadius="1" Layer="Background">
                         <Stroke Width="1" Color="#000000"/>
                     </Rectangle>
-                    <TextEdit Value="{second}" Height="100" Width="100%" IsMultiline="true" Font="Regular" />
+                    <TextView Value="{second}" Height="100" Width="100%" Font="Regular" />
                 </Panel>
             </StackPanel>
             <StackPanel>
@@ -52,7 +52,7 @@
                     <Rectangle CornerRadius="1" Layer="Background">
                         <Stroke Width="1" Color="#000000"/>
                     </Rectangle>
-                    <TextEdit Value="{third}" Height="100" Width="100%" IsMultiline="true" Font="Regular" />
+                    <TextView Value="{third}" Height="100" Width="100%" Font="Regular" />
                 </Panel>
             </StackPanel>
         </Grid>

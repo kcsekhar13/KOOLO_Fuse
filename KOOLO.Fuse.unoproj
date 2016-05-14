@@ -11,9 +11,10 @@
         "Orientations": "Portrait"
         },
         "Packages": [
+        "Fuse",
+        "FuseJS",
         "Fuse.Animations",
         "Fuse.BasicTheme",
-        "Fuse.Themes",
         "Fuse.Controls",
         "Fuse.Designer",
         "Fuse.Drawing",
@@ -38,6 +39,8 @@
         "Experimental.iOS",
         "Uno.Threading",
         "Fuse.Camera",
+        "Fuse.BasicTheme",
+        "Fuse.Launcher",
         "Android"
         ],
       "Icon": "Icon.png",

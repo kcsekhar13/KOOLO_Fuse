@@ -5,7 +5,7 @@
     <WhileActive>
         <GiveFocus Target="passCodeTxt" />
     </WhileActive>
-    <TextEdit ux:Name="passCodeTxt" InputHint="Phone" Value="{passCodeTxt}" Visibility="Visible" HitTestMode="None" Opacity="0" />
+    <Basic.TextInput ux:Name="passCodeTxt" InputHint="Phone" Value="{passCodeTxt}" Visibility="Visible" HitTestMode="None" Opacity="0" />
     <DockPanel Background="White">
         <Image File="../Assets/bg.jpg" StretchMode="UniformToFill" Layer="Background" />
         <MyHeader Text="Set PassCode" />

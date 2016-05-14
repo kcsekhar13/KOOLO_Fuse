@@ -10,6 +10,7 @@
 	           <Panel Alignment="Left" Margin="5,8,0,0">
 	               <CancelText />
 	               <Clicked>
+										<Callback Handler="{Load}" />
 	                  <GoBack />
 	               </Clicked>
 	             </Panel>
@@ -91,17 +92,13 @@
 		</DockPanel>
 	</MyPage>
 	<MyPage ux:Name="addNewGoalPage" ux:AutoBind="false">
-	 <WhileActive>
-			<DebugAction Message="Active AddNewGoalPage" />
-			<Callback Handler="{initNewGoalPage}" />
-		</WhileActive>
 		<DockPanel>
 			<MyHeader Text="Add new checklist" Dock="Top" />
 			<Panel Padding="10" Height="40%" Margin="20"  Dock="Top">
 					<Rectangle CornerRadius="1" Layer="Background">
 							<Stroke Width="1" Color="#000000"/>
 					</Rectangle>
-					<TextEdit Value="{newCheckListItem.notes}" Height="99%" Width="100%" IsMultiline="true" Font="Regular" TextAlignment="Left" />
+					<TextView Value="{newCheckListItem.notes}" Height="99%" Width="100%" Font="Regular" TextAlignment="Left" />
 			</Panel>
 			<Button Height="50" Alignment="Center" Width="100" Dock="Top" Margin="20">
 				<Text Value="Add" TextColor="#FFFFFF" Font="Regular" Alignment="Center" />
@@ -138,7 +135,7 @@
 					<Rectangle CornerRadius="1" Layer="Background">
 							<Stroke Width="1" Color="#000000"/>
 					</Rectangle>
-					<TextEdit Value="{updatedNotes}" Height="99%" Width="90%" IsMultiline="true" Font="Regular" TextWrapping="Wrap" TextAlignment="Left" />
+					<TextView Value="{updatedNotes}" Height="99%" Width="90%" Font="Regular" TextWrapping="Wrap" TextAlignment="Left" />
 			</Panel>
 			<Button Height="50" Alignment="Center" Width="100" Dock="Top" Margin="20">
 				<Text Value="Update" TextColor="#FFFFFF" Font="Regular" Alignment="Center" />

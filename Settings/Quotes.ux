@@ -31,8 +31,8 @@
 			<Panel>
 			 <Rectangle Fill="#000000" Width="70%" Height="50" CornerRadius="5" Alignment="Left" >
 				 <Rectangle Fill="#FFFFFF" Width="98%" Height="48" CornerRadius="5" Margin="0,0,0,0">
-					 <TextEdit Value="{newQuote}" Alignment="CenterLeft" CaretColor="#ff0000"
-										 TextColor="#000000" Font="Light" Width="200" Margin="10" IsMultiline="true"/>
+					 <TextView Value="{newQuote}" Alignment="CenterLeft" CaretColor="#ff0000"
+										 TextColor="#000000" Font="Light" Width="200" Margin="10" />
 				 </Rectangle>
 			 </Rectangle>
 				 <Button Text="Add" ux:Name="button1" Clicked="{addNewQuote}" Alignment="Right" Width="50" Height="50" >

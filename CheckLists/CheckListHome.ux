@@ -8,7 +8,7 @@
 	<Callback Handler="{updateCheckListCount}" />
 </WhileActive>
 	<DockPanel>
-		<Image File="../Assets/Background.png" StretchMode="UniformToFill" Layer="Background" />
+		<!-- <Image File="../Assets/Background.png" StretchMode="UniformToFill" Layer="Background" /> -->
 		<JavaScript File="checkList.js" />
 		<Panel>
 			<HierarchicalNavigation ux:Name="checkListNav" Active="CheckListHome" />
