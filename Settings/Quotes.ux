@@ -7,7 +7,7 @@
 		</WhileActive>
 		<Grid Rows="auto,1*,auto" Margin="10,0,0,10">
 			<Panel DataContext="{UpdateQuotes}" >
-				<Switch Value="{quotesEnabledSwitch}" Alignment="CenterRight" Dock="Right" />
+				<Basic.Switch Value="{quotesEnabledSwitch}" Alignment="CenterRight" Dock="Right" />
 				<Text Value="Enable quotes in home screen" Font="Bold" Alignment="CenterLeft" TextColor="#bdc7ca" />
 			</Panel>
 			<ScrollView>
@@ -35,8 +35,8 @@
 										 TextColor="#000000" Font="Light" Width="200" Margin="10" />
 				 </Rectangle>
 			 </Rectangle>
-				 <Button Text="Add" ux:Name="button1" Clicked="{addNewQuote}" Alignment="Right" Width="50" Height="50" >
-			 </Button>
+				 <Basic.Button Text="Add" ux:Name="button1" Clicked="{addNewQuote}" Alignment="Right" Width="50" Height="50" >
+			 </Basic.Button>
 		 </Panel>
 		 </Grid>
 	</DockPanel>

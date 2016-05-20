@@ -4,6 +4,7 @@ var gallery = require('Gallery');
 var camera = require('FuseJS/Camera');
 var State = require("State");
 var UserSettings = require('UserSettings');
+//var bundle = require('FuseJS/Bundle');
 
 var defaultQuoteFile = "myquote.txt";
 var moodMapFile = "moods.json";
@@ -101,7 +102,6 @@ function readBackGroundImage() {
   Storage.read("KOOLO_Background.txt").then(function(content) {
 			console.log(content);
       myBackGroundImage.value = content;
-//"/data/data/com.KOOLO_Fuse/files/KOOLO_Background.jpg"
     }, function(error) {
       console.log("failed to read BackGroundImage");
       myBackGroundImage.value = "Assets/Background.png";
@@ -218,11 +218,11 @@ function initializeHomePage() {
     //myMoods.push(new mood("4","Assets/bg.jpg","#9fb6cd",new Date().toDateString()));
     //State.createFile(moodMapFile,JSON.stringify(myMoods, undefined, '    '));
     getMoodLineImages();
-    // bundle.read("appSettings.json").then(function(content) {
-    //     console.log(content);
-    // }, function(error) {
-    //     console.log(error);
-    // });
+    //  bundle.read("appSettings.json").then(function(content) {
+    //      console.log(content);
+    //  }, function(error) {
+    //      console.log(error);
+    //  });
 }
 function gotoSettings() {
 		router.goto("settings");
