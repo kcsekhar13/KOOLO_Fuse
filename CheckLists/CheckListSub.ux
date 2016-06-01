@@ -100,13 +100,13 @@
 					</Rectangle>
 					<TextView Value="{newCheckListItem.notes}" Height="99%" Width="100%" Font="Regular" TextAlignment="Left" />
 			</Panel>
-			<Button Height="50" Alignment="Center" Width="100" Dock="Top" Margin="20">
+			<Basic.Button Height="50" Alignment="Center" Width="100" Dock="Top" Margin="20">
 				<Text Value="Add" TextColor="#FFFFFF" Font="Regular" Alignment="Center" />
 				<Clicked>
 					<Callback Handler="{addNewCheckListItem}" />
 					<GoBack />
 				</Clicked>
-			</Button>
+			</Basic.Button>
 		</DockPanel>
 	</MyPage>
 	<MyPage ux:Name="updateCheckListPage" ux:AutoBind="false">

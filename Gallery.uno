@@ -36,7 +36,7 @@ public class Gallery : NativeModule {
   }
 }
 
-[ForeignInclude(Language.Java,
+[extern(Android) ForeignInclude(Language.Java,
                 "android.app.Activity",
                 "android.content.Intent",
                 "android.net.Uri",
@@ -45,7 +45,7 @@ public class Gallery : NativeModule {
                 "java.io.InputStream",
                 "java.io.FileOutputStream",
                 "java.io.File")]
-[ForeignInclude(Language.ObjC, "TakePictureTask.h")]
+[extern(iOS) ForeignInclude(Language.ObjC, "TakePictureTask.h")]
 public class GalleryImpl
 {
 	static int BAD_ID = 1234;

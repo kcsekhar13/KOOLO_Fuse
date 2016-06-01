@@ -93,6 +93,7 @@
             </StackPanel>
           </ScrollView>
         </Panel>
+        <CalendarIndicator />
         <Panel ux:Name="addEventPanel" TransformOrigin="Center" Width="50" Height="50" Alignment="BottomRight" Margin="0,0,20,20" Layer="Overlay">
           <!-- <Cross ux:Name="addEvent" Alignment="Center"  /> -->
           <NewEventIcon Alignment="Center" Height="40" Width="40"/>

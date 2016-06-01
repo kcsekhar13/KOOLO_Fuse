@@ -135,7 +135,7 @@
 				</Panel>
 				<Panel ux:Name="titlePanel" Color="#656161" Margin="40,0,10,0" Width="90%" Alignment="Right">
 					<Image File="Assets/Mask.png" Color="#656161" Alignment="Left" Width="24" Height="24" Margin="-25,0,0,0" />
-					<Text Value="{Property CheckListCntrl.Text}" Font="Italic" TextColor="Black" TextWrapping="Wrap" Margin="10,15,0,10" />
+					<Text Value="{Property CheckListCntrl.Text}" Font="Regular" TextColor="Black" TextWrapping="Wrap" Margin="10,15,0,10" />
 				</Panel>
 		</Panel>
 		<Panel ux:Name="operationPanel" Opacity="0" Alignment="Right" Width="160">
@@ -219,6 +219,33 @@
 				</Panel>
 			</Panel>
 		</Rectangle>
+	</Panel>
+
+	<Panel ux:Class="HomeIndicator" ux:Name="HomeIndicatorCntrl"  Alignment="BottomCenter" Margin="0,0,0,30">
+		<StackPanel>
+			<Text Alignment="Center" Value="KOOLO" Font="Regular" Color="White" />
+			<Panel>
+				<Circle Width="5" Height="5" Alignment="Left" Color="White" />
+				<Rectangle Fill="#FFF" Width="20" Height="5" CornerRadius="5" />
+				<Circle Width="5" Height="5" Alignment="Right" Color="White" />
+			</Panel>
+		</StackPanel>
+	</Panel>
+
+	<Panel ux:Class="MoodMapIndicator" ux:Name="MoodMapIndicatorCntrl"  Alignment="BottomCenter"  Margin="0,0,0,30">
+		<StackPanel Orientation="Horizontal" >
+				<Rectangle Fill="#FFF" Width="20" Height="5" CornerRadius="5" />
+				<Circle Width="5" Height="5" Alignment="Center" Color="White" Margin="10,0,10,0" />
+				<Circle Width="5" Height="5" Alignment="Right" Color="White" />
+		</StackPanel>
+	</Panel>
+
+	<Panel ux:Class="CalendarIndicator" ux:Name="CalendarIndicatorCntrl"  Alignment="BottomCenter"  Margin="0,0,0,30">
+		<StackPanel Orientation="Horizontal">
+				<Circle Width="5" Height="5" Alignment="Center" Color="White" />
+				<Circle Width="5" Height="5" Alignment="Right" Color="White"  Margin="10,0,10,0" />
+				<Rectangle Fill="#FFF" Width="20" Height="5" CornerRadius="5" />
+		</StackPanel>
 	</Panel>
 
 	<Font File="Assets/fonts/Klavika/Klavika-Bold.otf" ux:Global="Bold" />

@@ -34,7 +34,7 @@ public class Calendar : NativeModule {
 	}
 }
 
-[ForeignInclude(Language.Java,
+[extern(Android) ForeignInclude(Language.Java,
                 "android.app.Activity",
                 "android.content.Intent",
                 "android.app.DatePickerDialog",

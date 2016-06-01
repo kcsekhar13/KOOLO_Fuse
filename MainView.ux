@@ -26,6 +26,7 @@
 			<BottomBarBackground Dock="Bottom" />
 			<JavaScript ux:Global="State" File="State.js" />
 			<JavaScript File="MainView.js"/>
+			<JavaScript File="loaddash.js" ux:Global="loaddash"/>
 			<ux:Include File="Resources.ux" />
 			<Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
 			<!-- <UserEvent Name="showSettings"  />

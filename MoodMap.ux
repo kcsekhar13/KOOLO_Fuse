@@ -46,6 +46,7 @@
 					</Clicked>
 				</Circle>
 			</Panel>
+			<MoodMapIndicator />
 			<Grid Rows="auto,1*" Margin="20,15,0,0">
 				<Grid Columns="1">
 					<Panel Alignment="TopLeft" Margin="15" />
