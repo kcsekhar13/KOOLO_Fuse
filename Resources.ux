@@ -207,11 +207,11 @@
 		<Rectangle CornerRadius="10">
 			<Stroke Brush="#000000" Width="1" />
 			<Panel>
-				<Circle Width="20" Color="{Property eventPanlCntrl.MoodColor}" Alignment="TopLeft" Margin="5,0,5,0" Height="95%" >
+				<Circle Width="20" Color="{Property eventPanlCntrl.MoodColor}" Margin="5,0,5,0" Alignment="TopLeft" Height="100%" >
 				</Circle>
-				<StackPanel Width="75%" Alignment="Left" Margin="30,5,5,5">
-						<Text Value="{Property eventPanlCntrl.Title}" Font="Bold" Alignment="Left" />
-						<Text Value="{Property eventPanlCntrl.Description}" Font="Italic" Alignment="Left" TextWrapping="Wrap" />
+				<StackPanel  Alignment="Left" Margin="30,5,5,5">
+						<Text Value="{Property eventPanlCntrl.Title}" Font="Bold" Alignment="Left" Width="75%" />
+						<Text Value="{Property eventPanlCntrl.Description}" Font="Italic" Alignment="Left" TextWrapping="Wrap" Width="100%"/>
 				</StackPanel>
 				<StackPanel Orientation="Horizontal" Alignment="TopRight" Margin="5" >
 						<ClockText Alignment="Left" TextColor="#000000" Font="Bold" />

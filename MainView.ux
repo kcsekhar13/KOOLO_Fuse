@@ -10,6 +10,7 @@
 			setTimeout(() => {
 			exports.showSplashScreen.value = false;
 			}, 5000);
+
 			router.goto("home");
 		</JavaScript>
 
@@ -25,7 +26,7 @@
 			<BottomBarBackground Dock="Bottom" />
 			<JavaScript ux:Global="State" File="State.js" />
 			<JavaScript File="MainView.js"/>
-			<JavaScript File="loaddash.js" ux:Global="loaddash"/>
+			<JavaScript File="loaddash.js" ux:Global="Loaddash"/>
 			<ux:Include File="Resources.ux" />
 			<Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
 			<Panel>

@@ -6,7 +6,7 @@
     <MyPage ux:Name="calendarPage">
       <SwipeGesture ux:Name="swipeForHome" Direction="Right" Type="Active">
       </SwipeGesture>
-      <Swiped Source="swipeForHome">
+      <Swiped Source="swipeForHome">        
         <Callback Handler="{gotoHome}" />
       </Swiped>
       <!-- Header    -->

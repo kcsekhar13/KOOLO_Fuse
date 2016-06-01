@@ -4,7 +4,7 @@ var gallery = require('Gallery');
 var camera = require('FuseJS/Camera');
 var State = require("State");
 var UserSettings = require('UserSettings');
-//var bundle = require('FuseJS/Bundle');
+var _ = require('Loaddash');
 
 var defaultQuoteFile = "myquote.txt";
 var moodMapFile = "moods.json";
@@ -19,6 +19,11 @@ var isQuoteSet = Observable();
 
 var kooloTodayEvents = Observable();
 var eventsFile = "events.json";
+
+// With Lodash
+function parseLodash(str){
+    return _.attempt(JSON.parse.bind(null, str));
+}
 
 var MoodMapPage = {
 	moodLine: "moodLinePage",
@@ -213,17 +218,7 @@ function initializeHomePage() {
     readSwitchValues();
     readBackGroundImage();
 		readkooloEvents();
-    //myMoods.push(new mood("1","Assets/bg.jpg","#a52a2a",new Date().toDateString()));
-    //myMoods.push(new mood("2","Assets/bg.jpg","#ffde47",new Date().toDateString()));
-		//myMoods.push(new mood("3","Assets/bg.jpg","#233fc7",new Date().toDateString()));
-    //myMoods.push(new mood("4","Assets/bg.jpg","#9fb6cd",new Date().toDateString()));
-    //State.createFile(moodMapFile,JSON.stringify(myMoods, undefined, '    '));
-    getMoodLineImages();
-    //  bundle.read("appSettings.json").then(function(content) {
-    //      console.log(content);
-    //  }, function(error) {
-    //      console.log(error);
-    //  });
+    getMoodLineImages();    
 }
 function gotoSettings() {
 		router.goto("settings");

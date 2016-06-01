@@ -9,12 +9,13 @@
 <DebugAction Message="Swiped for Moodmap" />
 	<Callback Handler="{gotoMoodMap}" />
 </Swiped>
-<SwipingAnimation Source="swipeForMoodMap">
+<!-- <SwipingAnimation Source="swipeForMoodMap">
 	<Move Target="mainHomePage" X="100" Duration="0.5" DurationBack="0" />
+	<Move Target="moodMap" X="100" Duration="0.5" DurationBack="0" />
 </SwipingAnimation>
 <SwipingAnimation Source="swipeForCalender">
 	<Move Target="mainHomePage" X="-100" Duration="0.5" DurationBack="0" />
-</SwipingAnimation>
+</SwipingAnimation> -->
 <Router ux:Dependency="router" />
 <Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
 <WhileActive>
