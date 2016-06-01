@@ -1,14 +1,8 @@
 <MyPage ux:Name="KooloCalender" ux:Class="KooloCalender" Background="#e6e1df">
-  <Router ux:Dependency="router" />
   <JavaScript File="calendar.js" />
   <Panel>
     <HierarchicalNavigation ux:Name="nav" Active="calendarPage" />
-    <MyPage ux:Name="calendarPage">
-      <SwipeGesture ux:Name="swipeForHome" Direction="Right" Type="Active">
-      </SwipeGesture>
-      <Swiped Source="swipeForHome">        
-        <Callback Handler="{gotoHome}" />
-      </Swiped>
+    <MyPage ux:Name="calendarPage">      
       <!-- Header    -->
       <DockPanel>
         <Panel Dock="Top" Height="35" Alignment="Top">

@@ -10,7 +10,6 @@
 			setTimeout(() => {
 			exports.showSplashScreen.value = false;
 			}, 5000);
-
 			router.goto("home");
 		</JavaScript>
 
@@ -31,14 +30,11 @@
 			<Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
 			<Panel>
 				<DockPanel>
-					<Navigator>
-						<Settings ux:Template="settings" router="router" />
-						<MoodMap ux:Template="moodMap" router="router" />
-						<Home ux:Template="home" router="router" />
-						<KooloCalender ux:Template="calender" router="router" />
-						<CheckList ux:Template="checkList" router="router" />
-						<SetPassCodePage ux:Template="setPassCodePage" router="router" />
-					</Navigator>
+					<PageControl>
+						<MoodMap ux:Name="moodMap" />
+						<Home ux:Name="home" router="router" />
+						<KooloCalender ux:Name="calender" />
+					</PageControl>
 				</DockPanel>
 			</Panel>
 		</DockPanel>

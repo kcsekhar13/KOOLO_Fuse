@@ -174,7 +174,7 @@ function readSwitchValues() {
 }
 
 function gotoHome() {
-	router.goto("home");
+  router.goBack();
 }
 
 function gotoSetPassCodePage(){

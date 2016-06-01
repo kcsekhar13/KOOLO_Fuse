@@ -1,5 +1,4 @@
 <Page ux:Class="Passcode" ux:Name="Passcode" Title="PassCode">
-<Router ux:Dependency="router" />
 	<Panel>
 		<!-- <HierarchicalNavigation ux:Name="passCodeNav" Active="passCodeMain" /> -->
 		<MyPage ux:Name="passCodeMain">
@@ -50,6 +49,6 @@
 			</StackPanel>
 			</DockPanel>
 		</MyPage>
-		<SetPassCodePage ux:Template="setPassCodePage" router="router" />
+		<SetPassCodePage ux:Template="setPassCodePage" />
 	</Panel>
  </Page>

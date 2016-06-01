@@ -310,6 +310,10 @@ function Load() {
   //readDefaultCheckLists();
 };
 
+function gotoHome() {
+  router.goBack();
+}
+
 Load();
 
 module.exports = {
@@ -338,5 +342,6 @@ module.exports = {
   updateCheckListItem:updateCheckListItem,
   clearCheckListItem:clearCheckListItem,
   updatedNotes:updatedNotes,
-  clearUpdateCheckListItem:clearUpdateCheckListItem
+  clearUpdateCheckListItem:clearUpdateCheckListItem,
+  gotoHome:gotoHome,
 }

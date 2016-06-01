@@ -100,6 +100,7 @@ function updateDateColor(context) {
     //console.log(JSON.stringify(argument, undefined, '    '));
     dateColor.colour.value = context.data.code;
     console.log(dateColor.date);
+    router.goBack();
 }
 
 function GotoPageSettings(argument) {
@@ -222,10 +223,11 @@ function initializeHomePage() {
     readSwitchValues();
     readBackGroundImage();
 		readkooloEvents();
-    getMoodLineImages();    
+    getMoodLineImages();
 }
 function gotoSettings() {
-		router.goto("settings");
+    console.log("goto settings");
+		router.push("home", {},"settings");
 };
 
 function gotoCalendar() {
@@ -241,7 +243,11 @@ function gotoMoodMap() {
 }
 
 function gotoCheckList() {
-	router.goto("checkList");
+	router.push("home", {},"checkList");
+}
+
+function gotoSelectDateColour() {
+	router.push("home", {},"moodColour");
 }
 
 initializeHomePage();
@@ -277,5 +283,6 @@ module.exports = {
 		gotoHome:gotoHome,
 		gotoCalendar:gotoCalendar,
 		gotoMoodMap:gotoMoodMap,
-		gotoCheckList:gotoCheckList
+		gotoCheckList:gotoCheckList,
+    gotoSelectDateColour:gotoSelectDateColour
   };

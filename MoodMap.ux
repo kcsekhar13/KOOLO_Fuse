@@ -1,9 +1,4 @@
 <MyPage ux:Name="MoodMap" ux:Class="MoodMap">
-<Router ux:Dependency="router" />
-<SwipeGesture ux:Name="swipeForHome" Direction="Left" Type="Active" />
-<Swiped Source="swipeForHome">
-	 <Callback Handler="{gotoHome}" />
-</Swiped>
 <Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
 	<WhileActive>
 		<DebugAction Message="Mood Map screen is Active" />

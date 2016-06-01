@@ -1,21 +1,4 @@
 <MyPage Title="Home" ux:Name="Home" ux:Class="Home">
-<SwipeGesture ux:Name="swipeForCalender" Direction="Left" Type="Active" />
-<SwipeGesture ux:Name="swipeForMoodMap" Direction="Right" Type="Simple" />
-<Swiped Source="swipeForCalender">
-	<DebugAction Message="Swiped for calender" />
-	 <Callback Handler="{gotoCalendar}" />
-</Swiped>
-<Swiped Source="swipeForMoodMap">
-<DebugAction Message="Swiped for Moodmap" />
-	<Callback Handler="{gotoMoodMap}" />
-</Swiped>
-<!-- <SwipingAnimation Source="swipeForMoodMap">
-	<Move Target="mainHomePage" X="100" Duration="0.5" DurationBack="0" />
-	<Move Target="moodMap" X="100" Duration="0.5" DurationBack="0" />
-</SwipingAnimation>
-<SwipingAnimation Source="swipeForCalender">
-	<Move Target="mainHomePage" X="-100" Duration="0.5" DurationBack="0" />
-</SwipingAnimation> -->
 <Router ux:Dependency="router" />
 <Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
 <WhileActive>
@@ -99,8 +82,7 @@
 			<DockPanel Alignment="TopLeft" Margin="10" ux:Name="mainContent" Height="60%" Width="100%" >
 				<DateCircle ux:Name="DateCntrl" Colour="{dateColor.colour}" Dock="Left" Margin="5">
 					<Clicked>
-						<DebugAction Message="Date Circle got clicked" />
-						<NavigateTo Target="MoodColour" />
+						<Callback Handler="{gotoSelectDateColour}" />
 					</Clicked>
 				</DateCircle>
 				<Text ux:Name="quote" Value="{myQuote}" Font="Italic" Dock="Fill" TextColor="#FFFFFF" FontSize="14" TextWrapping="Wrap" Alignment="TopCenter" Margin="10,10,0,0"/>
@@ -122,8 +104,9 @@
 			</DockPanel>
 			</Panel>
 		</MyPage>
-		<!-- <ux:Include File="CheckLists/CheckListHome.ux" /> -->
-		<ux:Include File="MoodColour.ux" ux:AutoBind="false" />
+		<Settings ux:Name="settings" router="router" />
+		<CheckList ux:Name="checkList"  router="router" />
+		<MoodColour ux:Name="moodColour" router="router" />
 	</PageControl>
 </Panel>
 </MyPage>
