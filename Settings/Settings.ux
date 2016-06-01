@@ -87,8 +87,8 @@
         </ScrollView>
       </DockPanel>
     </MyPage>
-    <Passcode ux:Name="Passcode" ux:AutoBind="false" />
-    <Quotes ux:Name="Quotes" ux:AutoBind="false"/>
+    <Passcode ux:Name="Passcode" ux:AutoBind="false" router="router" />
+    <Quotes ux:Name="Quotes" ux:AutoBind="false" />
     <HumorColor ux:Name="HumorColor" ux:AutoBind="false"/>
     <Tutorial ux:Name="Tutorial" ux:AutoBind="false"/>
     <License  ux:Name="License" ux:AutoBind="false"/>

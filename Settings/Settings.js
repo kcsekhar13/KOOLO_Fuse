@@ -52,8 +52,8 @@ var currentPageTitle = Observable();
 var secretAnswer = Observable("AaHooo!");
 var selected = Observable();
 var selectedOption = Observable("1");
-var passCodeSwitch = Observable(false);
-var quotesEnabledSwitch  = Observable(false);
+var passCodeSwitch = Observable(true);
+var quotesEnabledSwitch  = Observable(true);
 var passCodeTxt = Observable("");
 var txt1Visibility = Observable("Hidden");
 var txt2Visibility = Observable("Hidden");
@@ -177,6 +177,10 @@ function gotoHome() {
 	router.goto("home");
 }
 
+function gotoSetPassCodePage(){
+  router.goto("SetPassCodePage");
+}
+
 function InitializePage() {
     console.log("Initializing Settings");
     readSwitchValues();
@@ -202,4 +206,5 @@ module.exports = {
     txt3Visibility: txt3Visibility,
     txt4Visibility: txt4Visibility,
     gotoHome:gotoHome,
+    gotoSetPassCodePage:gotoSetPassCodePage
 };

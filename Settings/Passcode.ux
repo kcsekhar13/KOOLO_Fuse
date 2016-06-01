@@ -1,4 +1,5 @@
-<MyPage ux:Class="Passcode" ux:Name="Passcode" Title="PassCode">
+<Page ux:Class="Passcode" ux:Name="Passcode" Title="PassCode">
+<Router ux:Dependency="router" />
 	<Panel>
 		<!-- <HierarchicalNavigation ux:Name="passCodeNav" Active="passCodeMain" /> -->
 		<MyPage ux:Name="passCodeMain">
@@ -9,14 +10,15 @@
 			</WhileActive>
 			<StackPanel Margin="10">
 			<DockPanel Margin="0,10,0,10">
-				<Switch Value="{passCodeSwitch}" Dock="Right" Alignment="VerticalCenter" />
+				<Basic.Switch Value="{passCodeSwitch}" Dock="Right" Alignment="VerticalCenter" />
 				<Text Value="Activate/Deactivate Passcode" Font="Bold" TextAlignment="Left" Margin="10" TextColor="#bdc7ca" />
 			</DockPanel>
 			<Rectangle Fill="#000000" Height="1" Margin="10,5,0,5" >
 			</Rectangle>
 			<MyButton Text="Set Passcode" Height="50">
 				 <Clicked>
-						<NavigateTo Target="SetPassCodePage"/>
+						<!-- <NavigateTo Target="SetPassCodePage"/> -->
+						<Callback Handler="{gotoSetPassCodePage}" />
 				 </Clicked>
 			 </MyButton>
 			 <StackPanel Margin="5,10,10,0">
@@ -48,6 +50,6 @@
 			</StackPanel>
 			</DockPanel>
 		</MyPage>
-		<ux:Include File="SetPassCodePage.ux" />
+		<SetPassCodePage ux:Template="setPassCodePage" router="router" />
 	</Panel>
- </MyPage>
+ </Page>

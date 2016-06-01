@@ -58,6 +58,7 @@ function readkooloEvents() {
         	kooloTodayEvents.value = events.filter(function(e){
           return e.dateString === new Date().toDateString();;
         });
+				console.log("Success in reading koolo events file " + kooloTodayEvents.value.length);
   }, function(error) {
       console.log("failed to read koolo events file");
   });

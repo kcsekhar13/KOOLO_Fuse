@@ -20,7 +20,6 @@
 <WhileActive>
 	<DebugAction Message="Home view is active" />
 	<Callback Handler="{readkooloEvents}" />
-	<Set showItems.Value="true" />
 </WhileActive>
 <Panel>
 	<DeactivatingAnimation>
@@ -87,7 +86,6 @@
 					</Clicked>
 			</Panel>
 			<Panel>
-			<!-- <WobbleButton Width="300" Height="300" Alignment="BottomRight" Offset="100,100" /> -->
 			<Panel Alignment="BottomLeft" Offset="5,-25" Width="400" Height="380">
 				<Circle ux:Name="settingsBtn" Fill="#FFFFFF" Width="14%" Height="14%" Alignment="BottomLeft" Offset="15,7">
 					<Image File="Assets/settings.png" />
@@ -105,21 +103,19 @@
 					</Clicked>
 				</DateCircle>
 				<Text ux:Name="quote" Value="{myQuote}" Font="Italic" Dock="Fill" TextColor="#FFFFFF" FontSize="14" TextWrapping="Wrap" Alignment="TopCenter" Margin="10,10,0,0"/>
-				<Grid Margin="50,80,0,0" Width="100%">
+				<Grid Margin="30,80,0,0" Width="100%">
 					<Panel>
-						<WhileTrue ux:Name="showItems">
-								<ScrollView>
-									<StackPanel>
-									<Each Items="{kooloTodayEvents}">
-											<StackPanel>
-												<Each Items="{}">
-													<HomeCalendarItem />
-												</Each>
-											</StackPanel>
-									</Each>
-									</StackPanel>
-									</ScrollView>
-							</WhileTrue>
+							<ScrollView>
+								<StackPanel>
+								<Each Items="{kooloTodayEvents}">
+										<StackPanel>
+											<Each Items="{}">
+												<HomeCalendarItem />
+											</Each>
+										</StackPanel>
+								</Each>
+								</StackPanel>
+								</ScrollView>
 						</Panel>
 					</Grid>
 			</DockPanel>

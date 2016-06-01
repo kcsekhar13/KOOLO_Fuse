@@ -177,22 +177,22 @@
 
 	<Text ux:Class="DefaultText" TextColor="#fffd" Font="Bold" />
 	<Text ux:Class="MutedText" TextColor="#fff8" Font="Italic" TextWrapping="Wrap" />
-	<Text ux:Class="ClockText" TextColor="#fffd" Font="Regular" Value="Kl" FontSize="14" />
+	<Text ux:Class="ClockText" TextColor="#fffd" Font="Regular" Value="Kl: " FontSize="14" />
 
 	<Grid ux:Class="HomeCalendarItem" Columns="1*,4*" Margin="10" >
 		<Grid RowCount="2">
 			<Circle Alignment="Left" Width="20" Height="20" Color="{eventColor}" Margin="15,0,0,0" >
 			</Circle>
-			<Panel>
-				<ClockText Alignment="Left" Margin="0,3,0,0" />
-				<DefaultText FontSize="15" Value="{time}" Alignment="Center"/>
-			</Panel>
+			<StackPanel Orientation="Horizontal" Width="75">
+				<ClockText Alignment="Left" />
+				<DefaultText FontSize="15" Value="{time}" Alignment="Right"/>
+			</StackPanel>
 		</Grid>
 		<Panel Alignment="Left">
 			<Panel>
 				<StackPanel Alignment="VerticalCenter">
 						<DefaultText Value="{Title}" />
-						<MutedText Value="{Description}" FontSize="14" Margin="0,10,0,0" />
+						<MutedText Value="{Description}" FontSize="14" Margin="0,10,15,0" />
 				</StackPanel>
 			</Panel>
 		</Panel>
@@ -207,16 +207,16 @@
 		<Rectangle CornerRadius="10">
 			<Stroke Brush="#000000" Width="1" />
 			<Panel>
-				<Rectangle Width="10" Color="{Property eventPanlCntrl.MoodColor}" Alignment="Left" Margin="2,0,0,0" Height="95%" CornerRadius="10">
-				</Rectangle>
-				<StackPanel Width="200" Alignment="Left" Margin="20">
+				<Circle Width="20" Color="{Property eventPanlCntrl.MoodColor}" Alignment="TopLeft" Margin="5,0,5,0" Height="95%" >
+				</Circle>
+				<StackPanel Width="75%" Alignment="Left" Margin="30,5,5,5">
 						<Text Value="{Property eventPanlCntrl.Title}" Font="Bold" Alignment="Left" />
 						<Text Value="{Property eventPanlCntrl.Description}" Font="Italic" Alignment="Left" TextWrapping="Wrap" />
 				</StackPanel>
-				<Panel Width="70" Alignment="CenterRight">
-					<ClockText Alignment="Left" TextColor="#000000" />
-					<Text Value="{Property eventPanlCntrl.Time}" Alignment="Left" Margin="15,0,0,0" />
-				</Panel>
+				<StackPanel Orientation="Horizontal" Alignment="TopRight" Margin="5" >
+						<ClockText Alignment="Left" TextColor="#000000" Font="Bold" />
+						<Text Value="{Property eventPanlCntrl.Time}" Alignment="Left" Margin="5,0,10,0" Font="Bold" TextColor="#000000" />
+				</StackPanel>
 			</Panel>
 		</Rectangle>
 	</Panel>

@@ -147,7 +147,7 @@
                     <Rectangle CornerRadius="1" Layer="Background">
                       <Stroke Width="1" Color="#000000"/>
                     </Rectangle>
-                    <TextView Value="{eventTitle}" Height="50" Font="Regular" Width="100%"/>
+                    <TextView Value="{eventTitle}" Height="50" Font="Regular" Width="100%" MaxLength="25" TextWrapping="Wrap" />
                   </Panel>
                 </StackPanel>
               </Panel>
@@ -159,7 +159,7 @@
               <Rectangle CornerRadius="1" Layer="Background">
                 <Stroke Width="1" Color="#000000"/>
               </Rectangle>
-              <TextView Value="{eventDescription}" Height="50" Font="Regular" Width="100%" />
+              <TextView Value="{eventDescription}" Height="50" Font="Regular" Width="100%" MaxLength="140" />
             </Panel>
             <Text Value="Time" Font="Regular" Alignment="TopLeft" TextWrapping="Wrap" Margin="0,10,0,0"/>
             <StackPanel>

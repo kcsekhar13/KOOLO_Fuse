@@ -25,7 +25,7 @@
         ],
       "Icon": "Icon.png",
       "Includes": [
-        "*",
+        "*.js",
         "*.json",
         "Assets/*.png:Bundle",
         "Assets/*.jpg:Bundle",
