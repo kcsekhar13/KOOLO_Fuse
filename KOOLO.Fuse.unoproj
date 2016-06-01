@@ -31,6 +31,7 @@
         "Assets/*.jpg:Bundle",
         "appSettings.json:Bundle",
         "CheckLists/CheckList.json:Bundle",
+        "lodash.js:Bundle",
         "*.uno",
         "*.ux",
         "TakePictureTask.h:ObjCHeader:iOS",

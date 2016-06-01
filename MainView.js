@@ -4,7 +4,11 @@ var gallery = require('Gallery');
 var camera = require('FuseJS/Camera');
 var State = require("State");
 var UserSettings = require('UserSettings');
-var _ = require('Loaddash');
+var _ = require('./lodash');
+
+var lodashtest = _.map([1, 2, 3], (n) => n * n);
+
+console.log("Lodash test " + lodashtest.join(", "));
 
 var defaultQuoteFile = "myquote.txt";
 var moodMapFile = "moods.json";
