@@ -8,9 +8,9 @@
 
 			exports.showSplashScreen = Observable(true);
 			setTimeout(() => {
-			exports.showSplashScreen.value = false;
+				exports.showSplashScreen.value = false;
+				router.goto("home");
 			}, 5000);
-			router.goto("home");
 		</JavaScript>
 
 		<Image ux:Name="splashScreen" File="Assets/launchscreen.png" StretchMode="UniformToFill">
@@ -30,7 +30,7 @@
 			<Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
 			<Panel>
 				<DockPanel>
-					<PageControl>
+					<PageControl Transition="None" Active="home">
 						<MoodMap ux:Name="moodMap" />
 						<Home ux:Name="home" router="router" />
 						<KooloCalender ux:Name="calender" />
