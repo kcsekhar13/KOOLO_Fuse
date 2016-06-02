@@ -10,6 +10,7 @@ public class Calender : NativeModule {
 	public Calender () {
 		// Add Load function to load image as a texture
 		AddMember(new NativeFunction("AddEvent", (NativeCallback)AddEvent));
+
 	}
   static object AddEvent(Context c,object[] args)
   {
@@ -30,9 +31,17 @@ public class Calender : NativeModule {
                 "android.content.Intent",
                 "android.net.Uri",
                 "android.os.Bundle",
+								"android.database.Cursor",
                 "android.provider.CalendarContract",
 								"android.provider.CalendarContract.Events",
-								"java.util.Calendar"
+								"android.content.ContentResolver",
+								"android.widget.Toast",
+								"android.content.ContentValues",
+								"java.util.Calendar",
+								"java.lang.Object",
+								"java.util.Date",
+								"java.util.TimeZone",
+								"java.text.SimpleDateFormat"
                 )]
 public class CalenderImpl
  {
@@ -59,21 +68,81 @@ public class CalenderImpl
 	}
 
   [Foreign(Language.Java)]
-  static extern(Android) void AddEvent(){
+  static extern(Android) void AddEventWithIntent(){
     @{
-			Activity a = com.fuse.Activity.getRootActivity();
-      Calendar beginTime = Calendar.getInstance();
-      beginTime.set(2016, 5, 02, 13, 30);
-      Calendar endTime = Calendar.getInstance();
-    	endTime.set(2016, 5, 02, 15, 30);
-      Intent intent = new Intent(Intent.ACTION_INSERT)
-              .setData(Events.CONTENT_URI)
-              .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
-              .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
-              .putExtra(Events.TITLE, "KOOLO Event")
-              .putExtra(Events.DESCRIPTION, "KOOLO Event")
-              .putExtra(Events.AVAILABILITY, Events.AVAILABILITY_BUSY);
-      a.startActivity(intent);
+			 Activity a = com.fuse.Activity.getRootActivity();
+       Calendar beginTime = Calendar.getInstance();
+       beginTime.set(2016, 5, 02, 13, 30);
+       Calendar endTime = Calendar.getInstance();
+    	 endTime.set(2016, 5, 02, 15, 30);
+       Intent intent = new Intent(Intent.ACTION_INSERT)
+               .setData(Events.CONTENT_URI)
+               .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+               .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
+               .putExtra(Events.TITLE, "KOOLO Event")
+               .putExtra(Events.DESCRIPTION, "KOOLO Event")
+               .putExtra(Events.AVAILABILITY, Events.AVAILABILITY_BUSY);
+       a.startActivity(intent);
     @}
   }
+	[Foreign(Language.Java)]
+	static extern(Android) void AddEvent(){
+		@{
+			 String calendarUriBase = null;
+			 Activity a = com.fuse.Activity.getRootActivity();
+		 	Uri eventsUri = null;
+		  Uri remainderUri = null;
+		  Cursor cursor = null;
+			eventsUri = Uri.parse("content://com.android.calendar/events");
+			remainderUri = Uri.parse("content://com.android.calendar/reminders");			
+			 //Date  eventDate  = null;
+			long startCalTime;
+			long endCalTime;
+			 TimeZone timeZone = TimeZone.getDefault();
+				Calendar cal = Calendar.getInstance();
+				//eventDate = new SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy").parse("Thr Jun 02 18:30:00 CEST 2016");
+				//cal.setTime(eventDate);
+				cal.set(Calendar.HOUR_OF_DAY,17);
+				cal.set(Calendar.MINUTE, 30);
+				startCalTime = cal.getTimeInMillis();
+
+				cal.set(Calendar.HOUR_OF_DAY,18);
+				cal.set(Calendar.MINUTE, 30);
+				endCalTime = cal.getTimeInMillis();
+			 int[] calIds  = null;
+         String[] projection = new String[] {
+                   CalendarContract.Calendars._ID,
+                   CalendarContract.Calendars.ACCOUNT_NAME};
+
+         ContentResolver cr = a.getContentResolver();
+         cursor = cr.query(Uri.parse("content://com.android.calendar/calendars"), projection, null, null, null);
+
+         if (cursor.moveToFirst()) {
+                final String[] calNames = new String[cursor.getCount()];
+                calIds = new int[cursor.getCount()];
+                for (int i = 0; i < calNames.length; i++) {
+                    calIds[i] = cursor.getInt(0);
+                    calNames[i] = cursor.getString(1);
+                    cursor.moveToNext();
+                }
+            }
+
+        try {
+
+            ContentValues event = new ContentValues();
+						event.put(CalendarContract.Events.CALENDAR_ID,1);
+						event.put(CalendarContract.Events.TITLE,"KOOLO Event");
+					  event.put(CalendarContract.Events.DESCRIPTION,"Scheduled Koolo Event");
+					  event.put(CalendarContract.Events.DTSTART, startCalTime);
+					  event.put(CalendarContract.Events.DTEND, endCalTime);
+					  event.put(CalendarContract.Events.STATUS, 1);
+					  event.put(CalendarContract.Events.HAS_ALARM, 1);
+					  event.put(CalendarContract.Events.EVENT_TIMEZONE, timeZone.getID());
+						// To Insert
+		   			a.getContentResolver().insert(eventsUri, event);
+
+        } catch (Exception e) {
+        }
+		@}
+	}
 }

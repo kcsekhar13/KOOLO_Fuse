@@ -13,6 +13,7 @@
 		<Change expanded.Value="false" />
 	</DeactivatingAnimation>
 	<PageControl ux:Name="homePageNav" Interaction="None" Active="mainHomePage">
+		<MoodColour ux:Name="moodColour" router="router" />
 		<MyPage ux:Name="mainHomePage">
 			<Panel ux:Name="optionsBtn" TransformOrigin="Center" Width="250" Height="250" Alignment="BottomRight" Offset="80,80">
 					<Cross ux:Name="cross" />
@@ -106,7 +107,6 @@
 		</MyPage>
 		<Settings ux:Name="settings" router="router" />
 		<CheckList ux:Name="checkList"  router="router" />
-		<MoodColour ux:Name="moodColour" router="router" />
 	</PageControl>
 </Panel>
 </MyPage>

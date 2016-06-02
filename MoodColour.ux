@@ -1,4 +1,4 @@
-<Panel ux:Name="MoodColour" Background="White" ux:Class="MoodColour">
+<MyPage ux:Name="MoodColour" Background="White" ux:Class="MoodColour">
 <Router ux:Dependency="router" />
 <JavaScript>
 				module.exports = {
@@ -53,4 +53,4 @@
 			</Each>
 	</StackPanel>
 	</DockPanel>
-</Panel>
+</MyPage>
