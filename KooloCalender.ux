@@ -1,8 +1,9 @@
 <MyPage ux:Name="KooloCalender" ux:Class="KooloCalender" Background="#e6e1df">
+  <Calender ux:Global="Calender" />
   <JavaScript File="calendar.js" />
   <Panel>
     <HierarchicalNavigation ux:Name="nav" Active="calendarPage" />
-    <MyPage ux:Name="calendarPage">      
+    <MyPage ux:Name="calendarPage">
       <!-- Header    -->
       <DockPanel>
         <Panel Dock="Top" Height="35" Alignment="Top">

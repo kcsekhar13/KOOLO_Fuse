@@ -1,5 +1,6 @@
 var Observable = require("FuseJS/Observable");
 var Storage = require('FuseJS/Storage');
+var osCalander = require('Calender');
 
 var selectedDate = Observable();
 var selectedMonth = Observable();
@@ -133,6 +134,7 @@ function addNewEvent() {
       var date = getRepeatEventDate();
       myEvents.unshift(new myEvent(date.toDateString(),todayDate.value,currentMonth.value,eventTimeSliderValue.value,
           dateColor.color.value,eventTitle.value,eventDescription.value,true));
+        osCalander.AddEvent(date);  
   }
   else{
         for (var i = 0; i < repeatOnDays.length; i++) {
