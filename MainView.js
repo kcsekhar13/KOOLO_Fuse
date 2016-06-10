@@ -18,8 +18,8 @@ var navigateToPage = Observable();
 var isSettingsVisible = Observable("Hidden");
 var myQuote = Observable();
 var myBackGroundImage = Observable("Assets/Background.png");
-var isPassCodeSet = Observable();
-var isQuoteSet = Observable();
+var isPassCodeSet = Observable(true);
+var isQuoteSet = Observable(true);
 
 var kooloTodayEvents = Observable();
 var eventsFile = "events.json";
@@ -202,20 +202,27 @@ function onHumorColorSelected(arg) {
 }
 
 function readSwitchValues() {
-	Storage.read(State.QuotesEnabledSwitchFile).then(function(content) {
+  readFavouriteQuote();
+  readPassCodeSwitchValue();
+}
+
+function readFavouriteQuote() {
+  Storage.read(State.QuotesEnabledSwitchFile).then(function(content) {
       console.log("Reading quotes enabled flag success " + content);
       isQuoteSet.value = content;
 			setMyQuote();
     }, function(error) {
       console.log("failed to read quotes enabled file");
     });
+}
 
-    Storage.read(State.PassCodeEnabledSwichFile).then(function(content) {
-        console.log("Reading passcode enabled flag success " + content);
-        isPassCodeSet.value = content;
-    }, function(error) {
-        console.log("failed to read passcode enabled file");
-    });
+function readPassCodeSwitchValue() {
+  Storage.read(State.PassCodeEnabledSwichFile).then(function(content) {
+      console.log("Reading passcode enabled flag success " + content);
+      isPassCodeSet.value = content;
+  }, function(error) {
+      console.log("failed to read passcode enabled file");
+  });
 }
 
 function initializeHomePage() {
@@ -279,6 +286,7 @@ module.exports = {
   	getMoodLineImages:  getMoodLineImages,
 		kooloTodayEvents:kooloTodayEvents,
 		readkooloEvents:readkooloEvents,
+    readSwitchValues:readSwitchValues,
 		gotoSettings:gotoSettings,
 		gotoHome:gotoHome,
 		gotoCalendar:gotoCalendar,

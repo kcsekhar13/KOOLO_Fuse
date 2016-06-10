@@ -77,18 +77,19 @@ function setDefaultQuote() {
 };
 
 function InitializePage(){
-  Storage.read("quotes.json").then(function(content) {
-        console.log("Loading quotes from storage");
-        var temp = JSON.parse(content);
-        defaultQuotes.clear();
-        for (var quote in temp) {          
-          defaultQuotes.add({quote:temp[quote].quote,IsSelected:Observable(temp[quote].IsSelected)});
-        }
-        setDefaultQuote();
-    }, function(error) {
-        console.log("Loading failed - reading default quotes");
-        setDefaultQuote();
-    });
+  // Storage.read("quotes.json").then(function(content) {
+  //       console.log("Loading quotes from storage");
+  //       var temp = JSON.parse(content);
+  //       defaultQuotes.clear();
+  //       for (var quote in temp) {
+  //         defaultQuotes.add({quote:temp[quote].quote,IsSelected:Observable(temp[quote].IsSelected)});
+  //       }
+  //       setDefaultQuote();
+  //   }, function(error) {
+  //       console.log("Loading failed - reading default quotes" + error);
+  //       setDefaultQuote();
+  //   });
+  setDefaultQuote();
 };
 
 module.exports =  {

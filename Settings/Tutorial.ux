@@ -1,5 +1,140 @@
 <MyPage ux:Class="Tutorial" ux:Name="Turorial">
 	<DockPanel Background="White">
 	    <MyHeader Text="Tutorial" />
+      <Image File="../Assets/TutorialImages/HomeScreen.jpg" ux:Class="HomeScreen" />
+      <Image File="../Assets/TutorialImages/HomeScreenWithFunctionOptions.jpg" ux:Class="HomeWithOptionsScreen" />
+      <Image File="../Assets/TutorialImages/SettingsScreen.jpg" ux:Class="SettingsScreen" />
+      <Image File="../Assets/TutorialImages/ThreeSentenceScreen.jpg" ux:Class="ThreeSentenceScreen" />
+      <Image File="../Assets/TutorialImages/CheckListScreen.jpg" ux:Class="CheckListScreen"/>
+      <Image File="../Assets/TutorialImages/MyhealthScreen.jpg" ux:Class="MyHealthScreen" />
+      <Image File="../Assets/TutorialImages/NewEventScreen.jpg" ux:Class="NewEventScreen" />
+      <Image File="../Assets/TutorialImages/MoodLine.jpg" ux:Class="MoodLineScreen"/>
+      <Image File="../Assets/TutorialImages/MoodMap.jpg" ux:Class="MoodMapScreen" />
+			<Image File="../Assets/TutorialImages/SelectMood.jpg" ux:Class="SelectMoodScreen" />
+			<Image File="../Assets/TutorialImages/CalendarScreen.jpg" ux:Class="CalendarScreen" />
+
+			<Image File="../Assets/TutorialImages/NewGoalScreen.jpg" ux:Class="NewGoalScreen" />
+      <Grid ux:Class="PageContent" Padding="45,0" MinHeight="100">
+				<string ux:Property="Title" />
+				<string ux:Property="Content" />
+				<Grid Rows="2*,3*">
+					<Text Alignment="Top" Value="{Property this.Title}" FontSize="20" TextColor="#000" TextAlignment="Center" TextWrapping="Wrap" Margin="20,0" />
+					<Text Alignment="Top" Value="{Property this.Content}" FontSize="16" TextColor="#777" TextAlignment="Center" TextWrapping="Wrap"/>
+				</Grid>
+			</Grid>
+		<Grid Rows="1*,60">
+			<PageControl ux:Name="pageControl">
+			<Panel >
+				<Grid Rows="1*,4*" >
+					<HomeScreen Row="1" Alignment="Top" Dock="Top" />
+					<PageContent Row="2"
+									 Title="Home Screen"
+									 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+					</PageContent>
+				</Grid>
+			</Panel>
+			<Panel >
+				<Grid Rows="1*,4*" >
+				<HomeWithOptionsScreen Row="1" Width="70%" Alignment="Top" />
+					<PageContent Row="2"
+								 Title="The three featues"
+								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+					</PageContent>
+				</Grid>
+			</Panel>
+			<Panel >
+				<Grid Rows="1*,4*" >
+				<SettingsScreen Row="1" Width="70%" Alignment="Top" />
+					<PageContent Row="2"
+								 Title="Settings"
+								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+					</PageContent>
+				</Grid>
+			</Panel>
+			<Panel >
+				<Grid Rows="1*,4*" >
+				<CheckListScreen Row="1" Width="70%" Alignment="Top" />
+					<PageContent Row="2"
+								 Title="Checklists"
+								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+					</PageContent>
+				</Grid>
+			</Panel>
+			<Panel >
+				<Grid Rows="1*,4*" >
+				<MyHealthScreen Row="1" Width="70%" Alignment="Top" />
+					<PageContent Row="2"
+								 Title=" &quot;My Health&quot; and &quot;Ready for transition&quot;"
+								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+					</PageContent>
+				</Grid>
+			</Panel>
+			<Panel >
+				<Grid Rows="1*,4*" >
+				<ThreeSentenceScreen Row="1" Width="70%" Alignment="Top" />
+					<PageContent Row="2"
+								 Title="Three Sentences"
+								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+					</PageContent>
+				</Grid>
+			</Panel>
+			<Panel >
+				<Grid Rows="1*,4*" >
+				<CalendarScreen Row="1" Width="70%" Alignment="Top" />
+					<PageContent Row="2"
+								 Title="Calendar"
+								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+					</PageContent>
+				</Grid>
+			</Panel>
+			<Panel >
+				<Grid Rows="1*,4*" >
+				<NewEventScreen Row="1" Width="70%" Alignment="Top" />
+					<PageContent Row="2"
+								 Title="New Event"
+								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+					</PageContent>
+				</Grid>
+			</Panel>
+			<Panel >
+				<Grid Rows="1*,4*" >
+				<MoodLineScreen Row="1" Width="70%" Alignment="Top" />
+					<PageContent Row="2"
+								 Title="MoodLine"
+								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+					</PageContent>
+				</Grid>
+			</Panel>
+			<Panel >
+				<Grid Rows="1*,4*" >
+				<SelectMoodScreen Row="1" Width="70%" Alignment="Top" />
+					<PageContent Row="2"
+								 Title="MoodSnap"
+								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+					</PageContent>
+				</Grid>
+			</Panel>
+			<Panel >
+				<Grid Rows="1*,4*" >
+				<MoodMapScreen Row="1" Width="70%" Alignment="Top" />
+					<PageContent Row="2"
+								 Title="MoodMap"
+								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+					</PageContent>
+				</Grid>
+			</Panel>
+			</PageControl>
+      <Panel>
+  					<Text ux:Name="getStartedText" Value="Get started" TextColor="#56C7C8" FontSize="34" Offset="0%,100%" Alignment="TopCenter"/>
+  					<PageIndicator ux:Name="pageIndicator" Navigation="pageControl" Dock="Bottom" Alignment="TopCenter">
+  						<Circle ux:Generate="Template" ux:Binding="DotTemplate" ux:Name="dotFac" Color="#C6C6C9" Margin="5" Width="10" Height="20">
+  							<ActivatingAnimation>
+  								<Scale Factor="1.1"/>
+  								<Change dotFac.Color="#56C7C8" />
+  							</ActivatingAnimation>
+  						</Circle>
+  					</PageIndicator>
+  				</Panel>
+	  </Grid>
 	</DockPanel>
 </MyPage>

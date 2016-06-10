@@ -1,0 +1,102 @@
+<MyPage Title="KooloHome" ux:Name="KooloHome" ux:Class="KooloHome">
+<Router ux:Dependency="router" />
+<WhileActive>
+	<DebugAction Message="Koolo Home view is active" />
+	<Callback Handler="{readkooloEvents}" />
+</WhileActive>
+<DeactivatingAnimation>
+  <Move Target="settingsBtn" Y="150" Duration="0.5" />
+  <Move Target="optionsBtn" Y="150" Duration="0.5" />
+  <Move Target="mainContent" Y="-350" Duration="0.5" />
+  <Change expanded.Value="false" />
+</DeactivatingAnimation>
+  <Panel ux:Name="optionsBtn" TransformOrigin="Center" Width="250" Height="250" Alignment="BottomRight" Offset="80,80">
+      <Cross ux:Name="cross" />
+        <Icon>
+          <Clicked>
+            <Toggle Target="expanded" />
+          </Clicked>
+        </Icon>
+      <CalanderIcon ux:Name="icon1" Margin="0,10,0,80" Width="40" Height="40" Alignment="Center" Opacity="0" IsEnabled="false">
+        <Translation ux:Name="trans1" Y="-1" RelativeTo="Size" />
+        <Clicked>
+          <DebugAction Message="Clicked Calander Icon" />
+            <!-- <NavigateTo NavigationContext="pageControl" Target="calendar" /> -->
+            <DebugAction Message="Navigate to Calendar" />
+            <Callback Handler="{gotoCalendar}" />
+        </Clicked>
+      </CalanderIcon>
+      <KooloCamaraIcon ux:Name="icon2" Margin="0,0,0,0" Width="40" Height="40" Alignment="Top" Opacity="0" IsEnabled="false">
+        <Translation ux:Name="trans2" Y="0" RelativeTo="Size" />
+        <Clicked>
+          <DebugAction Message="Clicked ClockIcon" />
+          <!-- <NavigateTo NavigationContext="pageControl" Target="MoodMap" /> -->
+          <Callback Handler="{gotoMoodMap}" />
+        </Clicked>
+      </KooloCamaraIcon>
+      <ChecklistIcon ux:Name="icon3" Margin="0,5,0,20" Width="40" Height="40" Alignment="Center" Opacity="0" IsEnabled="false">
+        <Translation ux:Name="trans3" Y="0" RelativeTo="Size" />
+        <Clicked>
+          <Callback Handler="{gotoCheckList}" />
+        </Clicked>
+      </ChecklistIcon>
+      <Circle ux:Name="overlayCircle" Fill="#FFFFFF" Width="20%" Height="20%" Alignment="Center" />
+      <Rectangle ux:Name="rectAngle" Width="58" Height="10" Alignment="Bottom" Margin="150" CornerRadius="30"  />
+      <WhileTrue ux:Name="enableOptions">
+        <Change icon1.IsEnabled="true" />
+        <Change icon2.IsEnabled="true" />
+        <Change icon3.IsEnabled="true" />
+      </WhileTrue>
+      <WhileTrue ux:Name="expanded">
+        <Change rectAngle.Height="210" Easing="ExponentialOut" Duration="0.2"  DelayBack="0"/>
+        <Change rectAngle.Margin="130" Easing="ExponentialOut" Duration="0.2"  DelayBack="0"/>
+        <!-- <Move Target="edgeCircle" RelativeTo="Size" Y="-3.4" Duration="0" Delay="0.1" /> -->
+        <Change enableOptions.Value="true" Delay="0.1" />
+        <Change overlayCircle.Opacity="1" Delay="0.1" Duration="0.1" />
+        <Rotate Target="cross" Degrees="-45" Duration="0.2" Easing="CubicInOut" />
+        <Change trans1.Y="-3" Delay="0.1" Duration="0.4" Easing="ExponentialOut" EasingBack="QuadraticInOut" DurationBack="0.2"    DelayBack="0"/>
+        <Change trans2.Y="0" Delay="0.1" Duration="0.4" Easing="ExponentialOut" EasingBack="QuadraticInOut" DurationBack="0.2" DelayBack="0"/>
+        <Change trans3.Y="-1.2" Delay="0.1" Duration="0.4" Easing="ExponentialOut" EasingBack="QuadraticInOut" DurationBack="0.2"  DelayBack="0"/>
+        <Change icon1.Opacity="1" Delay="0.1" Duration="0.1" Easing="ExponentialInOut" DelayBack="0"/>
+        <Change icon2.Opacity="1" Delay="0.1" Duration="0.1" Easing="ExponentialInOut" DelayBack="0"/>
+        <Change icon3.Opacity="1" Delay="0.1" Duration="0.1" Easing="ExponentialInOut" DelayBack="0"/>
+      </WhileTrue>
+      <Clicked>
+        <Toggle Target="expanded" />
+      </Clicked>
+  </Panel>
+  <Panel>
+  <Panel Alignment="BottomLeft" Offset="5,-25" Width="400" Height="380">
+    <Circle ux:Name="settingsBtn" Fill="#FFFFFF" Width="14%" Height="14%" Alignment="BottomLeft" Offset="15,7">
+      <Image File="Assets/settings.png" />
+      <Clicked>
+        <Callback Handler="{gotoSettings}" />
+      </Clicked>
+    </Circle>
+  </Panel>
+  <HomeIndicator />
+  <DockPanel Alignment="TopLeft" Margin="10" ux:Name="mainContent" Height="60%" Width="100%" >
+    <DateCircle ux:Name="DateCntrl" Colour="{dateColor.colour}" Dock="Left" Margin="5">
+      <Clicked>
+        <Callback Handler="{gotoSelectDateColour}" />
+      </Clicked>
+    </DateCircle>
+    <Text ux:Name="quote" Value="{myQuote}" Font="Italic" Dock="Fill" TextColor="#FFFFFF" FontSize="14" TextWrapping="Wrap" Alignment="TopCenter" Margin="10,10,0,0"/>
+    <Grid Margin="30,80,0,0" Width="100%">
+      <Panel>
+          <ScrollView>
+            <StackPanel>
+            <Each Items="{kooloTodayEvents}">
+                <StackPanel>
+                  <Each Items="{}">
+                    <HomeCalendarItem />
+                  </Each>
+                </StackPanel>
+            </Each>
+            </StackPanel>
+            </ScrollView>
+        </Panel>
+      </Grid>
+  </DockPanel>
+  </Panel>
+</MyPage>
