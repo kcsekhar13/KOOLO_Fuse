@@ -1,4 +1,5 @@
-<MyPage ux:Name="SetPassCodePage" ux:AutoBind="false" ux:Class="SetPassCodePage">  
+<MyPage ux:Name="SetPassCodePage" ux:AutoBind="false" ux:Class="SetPassCodePage">
+<Router ux:Dependency="router" />
     <OnUserEvent Name="DoneSettingPassCode" Filter="Global">
         <GoBack />
     </OnUserEvent>

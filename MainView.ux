@@ -11,6 +11,7 @@
 				exports.showSplashScreen.value = false;
 				router.goto("home");
 			}, 5000);
+
 		</JavaScript>
 
 		<Image ux:Name="splashScreen" File="Assets/launchscreen.png" StretchMode="UniformToFill">
@@ -35,6 +36,7 @@
 						<Home ux:Name="home" router="router" />
 						<KooloCalender ux:Name="calender" />
 					</PageControl>
+					<SetPassCodePage ux:Template="setPassCodePage" ux:Name="settings" router="router" />
 				</DockPanel>
 			</Panel>
 		</DockPanel>

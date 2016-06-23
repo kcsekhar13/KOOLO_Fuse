@@ -1,7 +1,7 @@
 <MyPage ux:Class="Tutorial" ux:Name="Turorial">
 	<DockPanel Background="White">
 	    <MyHeader Text="Tutorial" />
-      <Image File="../Assets/TutorialImages/HomeScreen.jpg" ux:Class="HomeScreen" />
+      <Image File="../Assets/TutorialImages/HomeScreen.jpg" ux:Class="HomeScreen" MinHeight="60%" />
       <Image File="../Assets/TutorialImages/HomeScreenWithFunctionOptions.jpg" ux:Class="HomeWithOptionsScreen" />
       <Image File="../Assets/TutorialImages/SettingsScreen.jpg" ux:Class="SettingsScreen" />
       <Image File="../Assets/TutorialImages/ThreeSentenceScreen.jpg" ux:Class="ThreeSentenceScreen" />
@@ -14,112 +14,112 @@
 			<Image File="../Assets/TutorialImages/CalendarScreen.jpg" ux:Class="CalendarScreen" />
 
 			<Image File="../Assets/TutorialImages/NewGoalScreen.jpg" ux:Class="NewGoalScreen" />
-      <Grid ux:Class="PageContent" Padding="45,0" MinHeight="100">
+      <Grid ux:Class="PageContent" Padding="15,15" MinHeight="100">
 				<string ux:Property="Title" />
 				<string ux:Property="Content" />
 				<Grid Rows="2*,3*">
-					<Text Alignment="Top" Value="{Property this.Title}" FontSize="20" TextColor="#000" TextAlignment="Center" TextWrapping="Wrap" Margin="20,0" />
-					<Text Alignment="Top" Value="{Property this.Content}" FontSize="16" TextColor="#777" TextAlignment="Center" TextWrapping="Wrap"/>
+					<Text Alignment="Top" Value="{Property this.Title}" FontSize="16" TextColor="#000" TextAlignment="Left" TextWrapping="Wrap" />
+					<Text Alignment="Top" Value="{Property this.Content}" FontSize="12" TextColor="#777" TextAlignment="Left" TextWrapping="Wrap"/>
 				</Grid>
 			</Grid>
 		<Grid Rows="1*,60">
 			<PageControl ux:Name="pageControl">
 			<Panel >
-				<Grid Rows="1*,4*" >
-					<HomeScreen Row="1" Alignment="Top" Dock="Top" />
-					<PageContent Row="2"
+				<Grid Rows="1*,3*" >
+					<HomeScreen Row="1" Alignment="Top" Y="-50" />
+					<PageContent Row="2" Y="-50"
 									 Title="Home Screen"
-									 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+									 Content="This is your home screen. Here you’ll find the date that you can click on and change the color of. You can choose a quote that is presented on the top of the screen, or turn it off in settings. The + icon allows you to enter the three features of the app, and clicking the cogwheel will open settings." >
 					</PageContent>
 				</Grid>
 			</Panel>
 			<Panel >
 				<Grid Rows="1*,4*" >
-				<HomeWithOptionsScreen Row="1" Width="70%" Alignment="Top" />
-					<PageContent Row="2"
+				<HomeWithOptionsScreen Row="1" Alignment="Top" Y="-50" />
+					<PageContent Row="2" Y="-50"
 								 Title="The three featues"
-								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+								 Content="Upon clicking the + icon, the links to the KOOLO app features pop up. Click the icons to enter one of the functions." >
 					</PageContent>
 				</Grid>
 			</Panel>
 			<Panel >
 				<Grid Rows="1*,4*" >
-				<SettingsScreen Row="1" Width="70%" Alignment="Top" />
-					<PageContent Row="2"
+				<SettingsScreen Row="1" Alignment="Top" Y="-50"/>
+					<PageContent Row="2" Y="-50"
 								 Title="Settings"
-								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+								 Content="Click background image to change the background in your app, passcode to activate or change the passcode for the KOOLO app, quotes to activate or change the quotes on the home screen, “color tags” to change the tags assigned to the colors. You can also read about the app or enter this tutorial." >
 					</PageContent>
 				</Grid>
 			</Panel>
 			<Panel >
 				<Grid Rows="1*,4*" >
-				<CheckListScreen Row="1" Width="70%" Alignment="Top" />
-					<PageContent Row="2"
+				<CheckListScreen Row="1" Alignment="Top" Y="-50" />
+					<PageContent Row="2" Y="-50"
 								 Title="Checklists"
-								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+								 Content="The checklists help you to get an overview of the different goals and skills needed for transition. Three sentences is a tool you can use to prepare for a doctor’s appointment. The numbers behind “My health” and “Ready for transition” show how many goals you have completed." >
 					</PageContent>
 				</Grid>
 			</Panel>
 			<Panel >
 				<Grid Rows="1*,4*" >
-				<MyHealthScreen Row="1" Width="70%" Alignment="Top" />
-					<PageContent Row="2"
+				<MyHealthScreen Row="1" Alignment="Top" Y="-50" />
+					<PageContent Row="2" Y="-50"
 								 Title=" &quot;My Health&quot; and &quot;Ready for transition&quot;"
-								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+								 Content="&quot;My health&quot; and &quot;Ready for transition&quot; are an adaptation of the transition checklists and consist of goals and skills connected to being a patient and transition. Check them off as done, in progress, or not done. You can also delete goals (by swiping) and add your own (by clicking “New goal”)." >
 					</PageContent>
 				</Grid>
 			</Panel>
 			<Panel >
 				<Grid Rows="1*,4*" >
-				<ThreeSentenceScreen Row="1" Width="70%" Alignment="Top" />
-					<PageContent Row="2"
+				<ThreeSentenceScreen Row="1" Alignment="Top" Y="-50"/>
+					<PageContent Row="2" Y="-50"
 								 Title="Three Sentences"
-								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+								 Content="You can enter text into the text boxes that may help you during your doctor’s appointments. Click &quot;done&quot; to save the changes. Clicking &quot;cancel&quot; will delete the changes." >
 					</PageContent>
 				</Grid>
 			</Panel>
 			<Panel >
 				<Grid Rows="1*,4*" >
-				<CalendarScreen Row="1" Width="70%" Alignment="Top" />
-					<PageContent Row="2"
+				<CalendarScreen Row="1" Alignment="Top" Y="-50" />
+					<PageContent Row="2" Y="-50"
 								 Title="Calendar"
-								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+								 Content="If you have created an event or an appointment, you will be able to see it under the dates in calendar upon clicking the relevant date. The calendar will also show the days you have tagged with a color. Click the &quot;+&quot; icon to create a new event." >
 					</PageContent>
 				</Grid>
 			</Panel>
 			<Panel >
 				<Grid Rows="1*,4*" >
-				<NewEventScreen Row="1" Width="70%" Alignment="Top" />
-					<PageContent Row="2"
+				<NewEventScreen Row="1" Alignment="Top" Y="-50"/>
+					<PageContent Row="2" Y="-50"
 								 Title="New Event"
-								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+								 Content="Tag the date with a color by clicking on the date. Fill in the name of the event and a description. You can add the time by clicking the “clock” icon. If you wish to receive a notification, tick off the &quot;Remind me&quot; box." >
 					</PageContent>
 				</Grid>
 			</Panel>
 			<Panel >
 				<Grid Rows="1*,4*" >
-				<MoodLineScreen Row="1" Width="70%" Alignment="Top" />
-					<PageContent Row="2"
+				<MoodLineScreen Row="1" Alignment="Top" Y="-50" />
+					<PageContent Row="2" Y="-50"
 								 Title="MoodLine"
-								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+								 Content="The MoodLine is a feature that allows you to see pictures you have added and tagged with a colour in the KOOLO app. You can zoom in on the squares to view the whole image. To add a new image, simply click on the camera or gallery icon to open the MoodSnap function." >
 					</PageContent>
 				</Grid>
 			</Panel>
 			<Panel >
 				<Grid Rows="1*,4*" >
-				<SelectMoodScreen Row="1" Width="70%" Alignment="Top" />
-					<PageContent Row="2"
+				<SelectMoodScreen Row="1" Alignment="Top" Y="-50" />
+					<PageContent Row="2" Y="-50"
 								 Title="MoodSnap"
-								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+								 Content="Once you have chosen a photo from the gallery or taken a new one, you can tag it with a colour representing the mood (the colour descriptions can be changed in the settings menu). Click on the colour best representing your mood and click ‘Done’ to upload the image to the MoodLine." >
 					</PageContent>
 				</Grid>
 			</Panel>
 			<Panel >
 				<Grid Rows="1*,4*" >
-				<MoodMapScreen Row="1" Width="70%" Alignment="Top" />
-					<PageContent Row="2"
+				<MoodMapScreen Row="1" Alignment="Top" Y="-50" />
+					<PageContent Row="2" Y="-50"
 								 Title="MoodMap"
-								 Content="Find out about new cool places that value your feedback by using our Nearby venues feature." >
+								 Content="MoodMap gives you an overview of how many MoodShots you have tagged with a specific colour and a quick access to images tagged with only one color. Clicking ‘All’ will present you with a MoodLine showing all the days in the calendar which means that you will see empty dates – line in the first picture in this tutorial. MoodLine shows only images by default. " >
 					</PageContent>
 				</Grid>
 			</Panel>

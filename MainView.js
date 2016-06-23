@@ -6,9 +6,9 @@ var State = require("State");
 var UserSettings = require('UserSettings');
 var _ = require('./lodash');
 
-var lodashtest = _.map([1, 2, 3], (n) => n * n);
+//var lodashtest = _.map([1, 2, 3], (n) => n * n);
 
-console.log("Lodash test " + lodashtest.join(", "));
+//console.log("Lodash test " + lodashtest.join(", "));
 
 var defaultQuoteFile = "myquote.txt";
 var moodMapFile = "moods.json";
@@ -38,15 +38,15 @@ var MoodMapPage = {
 var currentMoodMapImage = Observable();
 var moodMapPage = Observable(MoodMapPage.moodLine);
 var homourColors =[
-	                      { code: "#23f38e", title: Observable("Lykkelig") },
-	                      { code: "#ffde47", title: Observable("Glad") },
-	                      { code: "#233fc7", title: Observable("Rolig") },
-	                      { code: "#e62de7", title: Observable("Fremgang") },
-	                      { code: "#f42121", title: Observable("Sing") },
-	                      { code: "#000000", title: Observable("Legg til humer") },
-	                      { code: "#9fb6cd", title: Observable("Legg til humer") },
-	                      { code: "#ff4500", title: Observable("Rolig") },
-	                      { code: "#a52a2a", title: Observable("Sing") }
+	                      { code: "#23f38e", title: Observable("") },
+	                      { code: "#ffde47", title: Observable("") },
+	                      { code: "#233fc7", title: Observable("") },
+	                      { code: "#e62de7", title: Observable("") },
+	                      { code: "#f42121", title: Observable("") },
+	                      { code: "#000000", title: Observable("") },
+	                      { code: "#9fb6cd", title: Observable("") },
+	                      { code: "#ff4500", title: Observable("") },
+	                      { code: "#a52a2a", title: Observable("") }
 	                  ];
 var myMoods = [];
 var observableMoods = Observable();
