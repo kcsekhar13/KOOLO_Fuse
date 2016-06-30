@@ -4,12 +4,24 @@
         "Title": "KOOLO",
         "Copyright": "Copyright (C) 2016",
         "Publisher": "Chandrasekhar",
+        "Version": "1.0",
+        "VersionCode": 13,
         "Mobile": {
         "KeepAlive": false,
         "ShowStatusbar": true,
         "RunsInBackground": false,
         "Orientations": "Portrait"
         },
+        "Android": {
+      		"ApplicationLabel": "KOOLO",
+          "VersionName": "0.0.1",
+          "Key": {
+      			"Alias": "application",
+      			"AliasPassword": "Android",
+      			"Store": "release.keystore",
+      			"StorePassword": "Android"
+      		}
+      	},
         "Packages": [
         "Fuse",
         "FuseJS",

@@ -203,7 +203,7 @@ function onHumorColorSelected(arg) {
 
 function readSwitchValues() {
   readFavouriteQuote();
-  readPassCodeSwitchValue();
+  //readPassCodeSwitchValue();
 }
 
 function readFavouriteQuote() {
