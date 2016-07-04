@@ -38,15 +38,15 @@ var MoodMapPage = {
 var currentMoodMapImage = Observable();
 var moodMapPage = Observable(MoodMapPage.moodLine);
 var homourColors =[
-	                      { code: "#23f38e", title: Observable("") },
-	                      { code: "#ffde47", title: Observable("") },
-	                      { code: "#233fc7", title: Observable("") },
-	                      { code: "#e62de7", title: Observable("") },
-	                      { code: "#f42121", title: Observable("") },
-	                      { code: "#000000", title: Observable("") },
-	                      { code: "#9fb6cd", title: Observable("") },
-	                      { code: "#ff4500", title: Observable("") },
-	                      { code: "#a52a2a", title: Observable("") }
+	                      { code: "#23f38e", title: Observable(" ") },
+	                      { code: "#ffde47", title: Observable(" ") },
+	                      { code: "#233fc7", title: Observable(" ") },
+	                      { code: "#e62de7", title: Observable(" ") },
+	                      { code: "#f42121", title: Observable(" ") },
+	                      { code: "#000000", title: Observable(" ") },
+	                      { code: "#9fb6cd", title: Observable(" ") },
+	                      { code: "#ff4500", title: Observable(" ") },
+	                      { code: "#a52a2a", title: Observable(" ") }
 	                  ];
 var myMoods = [];
 var observableMoods = Observable();
@@ -91,10 +91,6 @@ var dateColor = {
     date: Observable(new Date().getDate()),
     colour: Observable()
 };
-
-function setMyQuote() {
-    myQuote.value  = isQuoteSet.value == "true" ? UserSettings.getString('defaultQuote','H.O.P.E - Hold On Pains Ends') : '';
-}
 
 function updateDateColor(context) {
     //console.log(JSON.stringify(argument, undefined, '    '));
@@ -198,7 +194,16 @@ function clearMoodColorFilter() {
 }
 
 function onHumorColorSelected(arg) {
-	selectedHumourColor.value=arg.data.code;
+	selectedHumourColor.value = arg.data.code;
+}
+
+function readHumorColors() {
+  Storage.read("humorColor.txt").then(function(content) {
+      console.log("Success in reading humorColor file" + JSON.parse(content).homourColors);
+      homourColors = JSON.parse(content).homourColors;
+  }, function(error) {
+      console.log("failed to read humorColor file");
+  });
 }
 
 function readSwitchValues() {
@@ -208,12 +213,16 @@ function readSwitchValues() {
 
 function readFavouriteQuote() {
   Storage.read(State.QuotesEnabledSwitchFile).then(function(content) {
-      console.log("Reading quotes enabled flag success " + content);
+      console.log("Reading quotes enabled flag success : " + content);
       isQuoteSet.value = content;
-			setMyQuote();
     }, function(error) {
       console.log("failed to read quotes enabled file");
     });
+    setMyQuote();
+}
+
+function setMyQuote() {
+    myQuote.value  = isQuoteSet.value == "true" ? UserSettings.getString('defaultQuote','H.O.P.E - Hold On Pains Ends') : '';
 }
 
 function readPassCodeSwitchValue() {
@@ -231,6 +240,7 @@ function initializeHomePage() {
     readBackGroundImage();
 		readkooloEvents();
     getMoodLineImages();
+    readHumorColors();
 }
 function gotoSettings() {
     console.log("goto settings");

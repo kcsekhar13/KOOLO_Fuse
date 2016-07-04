@@ -1,11 +1,6 @@
 <MyPage Title="Home" ux:Name="Home" ux:Class="Home">
 <Router ux:Dependency="router" />
 <Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
-<WhileActive>
-	<DebugAction Message="Home view is active" />
-	<Callback Handler="{readkooloEvents}" />
-	<Callback Handler="{readSwitchValues}" />
-</WhileActive>
 <Panel>
 	<DeactivatingAnimation>
 		<Move Target="settingsBtn" Y="150" Duration="0.5" />
@@ -16,11 +11,12 @@
 	<PageControl ux:Name="homePageNav" Interaction="None" Active="mainHomePage">
 		<MoodColour ux:Name="moodColour" router="router" />
 		<MyPage ux:Name="mainHomePage">
-		<!-- <WhileActive>
+		<WhileActive>
 			<DebugAction Message="Home view is active" />
 			<Callback Handler="{readkooloEvents}" />
 			<Callback Handler="{readSwitchValues}" />
-		</WhileActive> -->
+			<Callback Handler="{readBackGroundImage}" />
+		</WhileActive>
 			<Panel ux:Name="optionsBtn" TransformOrigin="Center" Width="250" Height="250" Alignment="BottomRight" Offset="80,80">
 					<Cross ux:Name="cross" />
 						<Icon>

@@ -95,11 +95,18 @@
 					<StackPanel Orientation="Horizontal" >
 					<Each Items="{homourColors}">
 						<Panel>
-							<Circle Width="50" Height="50" Fill="{code}" Margin="20" ux:Name="humorColorCode" />
+							<Circle Width="50" Height="50" Fill="{code}" Margin="20" >
+								<Circle Width="40" Height="40" Fill="{code}" Margin="20" >
+									<Stroke Width="0" ux:Name="humorColorStroke" Alignment="Inside" >
+										<SolidColor Color="{code}" ux:Name="humorColorCode"  />
+									</Stroke>
+								</Circle>
+							</Circle>
 							<Text Value="{title}" Font="Light" Alignment="BottomCenter" TextColor="#000000" ux:Name="humourColorCodeTxt" />
 							<Clicked>
 								<Callback Handler="{onHumorColorSelected}" />
-								<Set humorColorCode.Width="70" />
+								<Set humorColorStroke.Width="2" />
+								<Set humorColorCode.Color="White" />
 								<Set humourColorCodeTxt.Font="Bold" />
 							</Clicked>
 						</Panel>

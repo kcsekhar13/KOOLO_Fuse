@@ -3,15 +3,15 @@
 var Observable = require("FuseJS/Observable");
 var Storage = require("FuseJS/Storage");
 var homourColors =[
-                      { code: "#23f38e", title: Observable("Lykkelig") },
-                      { code: "#ffde47", title: Observable("Glad") },
-                      { code: "#233fc7", title: Observable("Rolig") },
-                      { code: "#e62de7", title: Observable("Fremgang") },
-                      { code: "#f42121", title: Observable("Sing") },
-                      { code: "#000000", title: Observable("Legg til humer") },
-                      { code: "#9fb6cd", title: Observable("Legg til humer") },
-                      { code: "#ff4500", title: Observable("Rolig") },
-                      { code: "#a52a2a", title: Observable("Sing") }
+                      { code: "#23f38e", title: Observable(" ") },
+                      { code: "#ffde47", title: Observable(" ") },
+                      { code: "#233fc7", title: Observable(" ") },
+                      { code: "#e62de7", title: Observable(" ") },
+                      { code: "#f42121", title: Observable(" ") },
+                      { code: "#000000", title: Observable(" ") },
+                      { code: "#9fb6cd", title: Observable(" ") },
+                      { code: "#ff4500", title: Observable(" ") },
+                      { code: "#a52a2a", title: Observable(" ") }
                   ];
 
 function initPage(){
@@ -19,7 +19,7 @@ function initPage(){
         console.log("Success in reading humorColor file" + JSON.parse(content).homourColors);
         homourColors = JSON.parse(content).homourColors;
     }, function(error) {
-        console.log("failed to humorColor");
+        console.log("failed to read humorColor file");
     });
 };
 
@@ -64,8 +64,9 @@ initPage();
                 <Circle Width="50" Height="50" Fill="{code}" Margin="20" />
                 <Rectangle Fill="#000000" Width="225" Height="50" CornerRadius="5">
                   <Rectangle Fill="#FFFFFF" Width="223" Height="48" CornerRadius="5" >
-                    <Basic.TextInput Value="{title}" Alignment="CenterLeft" CaretColor="#ff0000"
-                              TextColor="#000000" Font="Light" Width="200" Margin="10"/>
+                    <Basic.TextInput Value="{title}" Alignment="Bottom" CaretColor="#ff0000"
+                              TextColor="#000000" Font="Light" Width="200" Margin="10" Height="35" Y="10">
+                    </Basic.TextInput>
                   </Rectangle>
                 </Rectangle>
             </StackPanel>

@@ -37,11 +37,11 @@
               </Clicked>
             </MyButton>
             <!-- Passcode -->
-            <MyButton Text="Passcode">
+            <!-- <MyButton Text="Passcode">
               <Clicked>
                 <NavigateTo Target="Passcode"  NavigationContext="nav" />
               </Clicked>
-            </MyButton>
+            </MyButton> -->
             <!-- Quotes -->
             <MyButton Text="Quotes">
               <Clicked>

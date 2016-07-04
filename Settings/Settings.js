@@ -157,20 +157,20 @@ function saveHumorColors(arg) {
 
 function readSwitchValues() {
 	Storage.read(State.QuotesEnabledSwitchFile).then(function(content) {
-      console.log("Reading quotes enabled flag success " + content);
+      console.log("Reading quotes enabled flag success : " + content);
       quotesEnabledSwitch.value = content;
     }, function(error) {
       console.log("failed to read quotes enabled file");
       quotesEnabledSwitch.value = false;
     });
 
-    Storage.read(State.PassCodeEnabledSwichFile).then(function(content) {
-        console.log("Reading passcode enabled flag success " + content);
-        passcodeSwitch.value = content;
-    }, function(error) {
-        console.log("failed to read passcode enabled file");
-        passcodeSwitch.value = false;
-    });
+    // Storage.read(State.PassCodeEnabledSwichFile).then(function(content) {
+    //     console.log("Reading passcode enabled flag success : " + content);
+    //     passcodeSwitch.value = content;
+    // }, function(error) {
+    //     console.log("failed to read passcode enabled file");
+    //     passcodeSwitch.value = false;
+    // });
 }
 
 function gotoHome() {
