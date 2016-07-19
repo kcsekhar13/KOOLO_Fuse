@@ -66,6 +66,10 @@
 			</Grid>
 		</Page>
  		<Page ux:Name="selectHumourPage" >
+		<WhileActive>
+			<DebugAction Message="In Humour color selection page" />
+			<Callback Handler="{clearPreviousSelection}" />
+		</WhileActive>
 			<!-- Header    -->
 			<Panel Dock="Top" Height="35" Alignment="Top">
 				<Rectangle Fill="#808080" Layer="Background">
@@ -105,10 +109,12 @@
 							<Text Value="{title}" Font="Light" Alignment="BottomCenter" TextColor="#000000" ux:Name="humourColorCodeTxt" />
 							<Clicked>
 								<Callback Handler="{onHumorColorSelected}" />
-								<Set humorColorStroke.Width="2" />
-								<Set humorColorCode.Color="White" />
-								<Set humourColorCodeTxt.Font="Bold" />
 							</Clicked>
+							<WhileTrue Value="{isFoused}">
+								<Change humorColorStroke.Width="2" Duration="0.5"/>
+								<Change humorColorCode.Color="White" Duration="0.5" />
+								<Change humourColorCodeTxt.Font="Bold" Duration="0.5" />
+							</WhileTrue>
 						</Panel>
 					</Each>
 					</StackPanel>

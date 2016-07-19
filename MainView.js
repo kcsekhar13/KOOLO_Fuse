@@ -197,6 +197,10 @@ function clearMoodColorFilter() {
 
 function onHumorColorSelected(arg) {
 	selectedHumourColor.value = arg.data.code;
+  homourColors.forEach(function(color) {
+    color.isFoused.value = false;
+    });
+  arg.data.isFoused.value = true;
 }
 
 function readHumorColors() {
@@ -206,11 +210,29 @@ function readHumorColors() {
      _.forEach(temp, function(value) {
        console.log("Add humour color" + JSON.stringify(value.title._values[0]));
        var data = JSON.stringify(value.title._values[0]);
-       homourColors.add({code: JSON.parse(JSON.stringify(value)).code, title: Observable(data.substring(1, data.length - 1))});
+       homourColors.add({code: JSON.parse(JSON.stringify(value)).code, title: Observable(data.substring(1, data.length - 1)), isFoused : Observable(false) });
     });
   }, function(error) {
       console.log("failed to read humorColor file");
+      var defaultData = [
+                            { code: "#23f38e", title: Observable(' '), isFoused : Observable(false) },
+                            { code: "#ffde47", title: Observable(' '), isFoused : Observable(false) },
+                            { code: "#233fc7", title: Observable(' '), isFoused : Observable(false) },
+                            { code: "#e62de7", title: Observable(' '), isFoused : Observable(false) },
+                            { code: "#f42121", title: Observable(' '), isFoused : Observable(false) },
+                            { code: "#000000", title: Observable(' '), isFoused : Observable(false) },
+                            { code: "#9fb6cd", title: Observable(' '), isFoused : Observable(false) },
+                            { code: "#ff4500", title: Observable(' '), isFoused : Observable(false) },
+                            { code: "#a52a2a", title: Observable(' '), isFoused : Observable(false) }
+                        ];
+      _.forEach(defaultData, function(value) {
+          homourColors.add(value);
+      });
   });
+}
+
+function clearPreviousSelection() {
+  readHumorColors();
 }
 
 function readSwitchValues() {
@@ -305,10 +327,12 @@ module.exports = {
 		readkooloEvents:readkooloEvents,
     readSwitchValues:readSwitchValues,
     readHumorColors:readHumorColors,
+    readBackGroundImage:readBackGroundImage,
 		gotoSettings:gotoSettings,
 		gotoHome:gotoHome,
 		gotoCalendar:gotoCalendar,
 		gotoMoodMap:gotoMoodMap,
 		gotoCheckList:gotoCheckList,
-    gotoSelectDateColour:gotoSelectDateColour
+    gotoSelectDateColour:gotoSelectDateColour,
+    clearPreviousSelection:clearPreviousSelection
   };

@@ -16,6 +16,7 @@ var observableEvents = Observable();
 var eventsFile = "events.json";
 var todayEvents = Observable();
 var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var addToOSCalanderFlag = Observable(false);
 
 function myDay(date, isContainsEvents){
    var self = this;
@@ -134,7 +135,6 @@ function addNewEvent() {
       var date = getRepeatEventDate();
       myEvents.unshift(new myEvent(date.toDateString(),todayDate.value,currentMonth.value,eventTimeSliderValue.value,
           dateColor.color.value,eventTitle.value,eventDescription.value,true));
-        osCalander.AddEvent(date);  
   }
   else{
         for (var i = 0; i < repeatOnDays.length; i++) {
@@ -149,9 +149,29 @@ function addNewEvent() {
           }
         }
   }
+  console.log("AddToCalanderFlag value " + addToOSCalanderFlag.value);
+  if(addToOSCalanderFlag.value == true)
+  {
+      osCalander.AddEvent(date);
+  }
+
   repeatOnDays = [];
   updateEvents();
   reloadEvents();
+  clearValues();
+}
+
+function setAddToOsCalender() {
+  console.log("Set addToOSCalanderFlag to true");
+  addToOSCalanderFlag.value = true;
+}
+
+function clearValues() {
+  eventTitle.value = "";
+  eventDescription.value = "";
+  timeHourSliderValue.value = 0;
+  timeMinuteSliderValue.value = 0;
+  console.log("clear control values");
 }
 
 function getRepeatEventDate() {
@@ -271,5 +291,7 @@ module.exports = {
   eventTimeSliderValue:eventTimeSliderValue,
   onRepeatEventDaySelected:onRepeatEventDaySelected,
   InitNewEventDate:InitNewEventDate,
-  todayEvents:todayEvents
+  todayEvents:todayEvents,
+  clearValues:clearValues,
+  setAddToOsCalender:setAddToOsCalender
 };

@@ -5,7 +5,7 @@
         "Copyright": "Copyright (C) 2016",
         "Publisher": "Chandrasekhar",
         "Version": "1.0",
-        "VersionCode": 14,
+        "VersionCode": 15,
         "Mobile": {
         "KeepAlive": false,
         "ShowStatusbar": true,

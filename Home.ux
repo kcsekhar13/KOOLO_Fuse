@@ -1,4 +1,11 @@
 <MyPage Title="Home" ux:Name="Home" ux:Class="Home">
+<WhileActive>
+	<DebugAction Message="Home view is active" />
+	<Callback Handler="{readkooloEvents}" />
+	<Callback Handler="{readSwitchValues}" />
+	<Callback Handler="{readBackGroundImage}" />
+	<Callback Handler="{readHumorColors}" />
+</WhileActive>
 <Router ux:Dependency="router" />
 <Image File="{myBackGroundImage}" StretchMode="UniformToFill" Layer="Background"  />
 <Panel>

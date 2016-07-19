@@ -110,6 +110,7 @@
             <Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
               <CancelText />
               <Clicked>
+                <Callback Handler="{clearValues}" />
                 <NavigateTo Target="calendarPage" />
               </Clicked>
             </Panel>
@@ -197,8 +198,9 @@
                   <Clicked>
                     <Toggle Target="setRemainder" />
                   </Clicked>
-                  <WhileTrue ux:Name="setRemainder">
+                  <WhileTrue ux:Name="setRemainder" Value = "true">
                     <Change remainderCheck.Opacity="1" />
+                    <Callback Handler="{setAddToOsCalender}" />
                   </WhileTrue>
                 </Rectangle>
               </Panel>
