@@ -49,7 +49,7 @@ var moodMapPage = Observable(MoodMapPage.moodLine);
 // 	                      { code: "#ff4500", title: Observable(" ") },
 // 	                      { code: "#a52a2a", title: Observable(" ") }
 // 	                  ];
- var homourColors = [];
+ var homourColors = Observable();
 var myMoods = [];
 var observableMoods = Observable();
 var selectedMood = Observable();
@@ -201,13 +201,13 @@ function onHumorColorSelected(arg) {
 
 function readHumorColors() {
   Storage.read("humorColor.txt").then(function(content) {
-      console.log("Success in reading humorColor file" + JSON.parse(content).homourColors);
-      var temp = JSON.parse(content).homourColors;
-       _.forEach(temp, function(value) {
-             //console.log(JSON.parse(JSON.stringify(value)).code + JSON.parse(JSON.stringify(value)).title);
-             homourColors.push({ code: JSON.parse(JSON.stringify(value)).code, title:  JSON.parse(JSON.stringify(value)).title})
-       });
-       console.log(JSON.stringify(homourColors));
+    //console.log("Success in reading humorColor file" + JSON.stringify(JSON.parse(content).homourColors._values));
+     var temp = JSON.parse(JSON.stringify(JSON.parse(content).homourColors._values));
+     _.forEach(temp, function(value) {
+       console.log("Add humour color" + JSON.stringify(value.title._values[0]));
+       var data = JSON.stringify(value.title._values[0]);
+       homourColors.add({code: JSON.parse(JSON.stringify(value)).code, title: Observable(data.substring(1, data.length - 1))});
+    });
   }, function(error) {
       console.log("failed to read humorColor file");
   });
