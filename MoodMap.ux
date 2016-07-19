@@ -42,12 +42,12 @@
 				</Circle>
 			</Panel>
 			<MoodMapIndicator />
-			<Grid Rows="auto,1*" Margin="20,15,0,0">
+			<Grid Rows="auto,1*">
 				<Grid Columns="1">
 					<Panel Alignment="TopLeft" Margin="15" />
 				</Grid>
 				<ScrollView>
-					<StackPanel Width="500">
+					<StackPanel>
 						<Each Items="{observableMoods}">
 							<StackPanel>
 								<Each Items="{}">

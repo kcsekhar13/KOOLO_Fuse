@@ -16,8 +16,13 @@ var homourColors =[
 
 function initPage(){
     Storage.read("humorColor.txt").then(function(content) {
-        console.log("Success in reading humorColor file" + JSON.parse(content).homourColors);
-        homourColors = JSON.parse(content).homourColors;
+        console.log("Success in reading humorColor file" + JSON.stringify(JSON.parse(content).homourColors));
+        var temp = JSON.parse(content).homourColors;
+        homourColors = [];
+         _.forEach(temp, function(value) {
+               //console.log(JSON.parse(JSON.stringify(value)).code + JSON.parse(JSON.stringify(value)).title);
+               homourColors.push({ code: JSON.parse(JSON.stringify(value)).code, title:  JSON.parse(JSON.stringify(value)).title})
+         });
     }, function(error) {
         console.log("failed to read humorColor file");
     });

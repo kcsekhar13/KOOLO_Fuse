@@ -35,19 +35,21 @@ var MoodMapPage = {
 	selectHumour: "selectHumourPage",
 	moodMapImage: "moodImagePage"
 }
+
 var currentMoodMapImage = Observable();
 var moodMapPage = Observable(MoodMapPage.moodLine);
-var homourColors =[
-	                      { code: "#23f38e", title: Observable(" ") },
-	                      { code: "#ffde47", title: Observable(" ") },
-	                      { code: "#233fc7", title: Observable(" ") },
-	                      { code: "#e62de7", title: Observable(" ") },
-	                      { code: "#f42121", title: Observable(" ") },
-	                      { code: "#000000", title: Observable(" ") },
-	                      { code: "#9fb6cd", title: Observable(" ") },
-	                      { code: "#ff4500", title: Observable(" ") },
-	                      { code: "#a52a2a", title: Observable(" ") }
-	                  ];
+// var homourColors =[
+// 	                      { code: "#23f38e", title: Observable(" ") },
+// 	                      { code: "#ffde47", title: Observable(" ") },
+// 	                      { code: "#233fc7", title: Observable(" ") },
+// 	                      { code: "#e62de7", title: Observable(" ") },
+// 	                      { code: "#f42121", title: Observable(" ") },
+// 	                      { code: "#000000", title: Observable(" ") },
+// 	                      { code: "#9fb6cd", title: Observable(" ") },
+// 	                      { code: "#ff4500", title: Observable(" ") },
+// 	                      { code: "#a52a2a", title: Observable(" ") }
+// 	                  ];
+ var homourColors = [];
 var myMoods = [];
 var observableMoods = Observable();
 var selectedMood = Observable();
@@ -200,7 +202,12 @@ function onHumorColorSelected(arg) {
 function readHumorColors() {
   Storage.read("humorColor.txt").then(function(content) {
       console.log("Success in reading humorColor file" + JSON.parse(content).homourColors);
-      homourColors = JSON.parse(content).homourColors;
+      var temp = JSON.parse(content).homourColors;
+       _.forEach(temp, function(value) {
+             //console.log(JSON.parse(JSON.stringify(value)).code + JSON.parse(JSON.stringify(value)).title);
+             homourColors.push({ code: JSON.parse(JSON.stringify(value)).code, title:  JSON.parse(JSON.stringify(value)).title})
+       });
+       console.log(JSON.stringify(homourColors));
   }, function(error) {
       console.log("failed to read humorColor file");
   });
@@ -297,6 +304,7 @@ module.exports = {
 		kooloTodayEvents:kooloTodayEvents,
 		readkooloEvents:readkooloEvents,
     readSwitchValues:readSwitchValues,
+    readHumorColors:readHumorColors,
 		gotoSettings:gotoSettings,
 		gotoHome:gotoHome,
 		gotoCalendar:gotoCalendar,
