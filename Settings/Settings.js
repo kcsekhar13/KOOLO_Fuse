@@ -5,7 +5,7 @@ var UserSettings = require('UserSettings');
 var State = require("State");
 
 var gallery = require('Gallery');
-		// var settings = ["Background Image","Passcode","Quotes","Humour Color","License","Tutorial","Contributors","About"];
+// var settings = ["Background Image","Passcode","Quotes","Humour Color","License","Tutorial","Contributors","About"];
 var settings = [
                 { setting: "Background Image" },
                 { setting : "Passcode" },
@@ -53,7 +53,6 @@ var secretAnswer = Observable("AaHooo!");
 var selected = Observable();
 var selectedOption = Observable("1");
 var passCodeSwitch = Observable(true);
-var quotesEnabledSwitch  = Observable(true);
 var passCodeTxt = Observable("");
 var txt1Visibility = Observable("Hidden");
 var txt2Visibility = Observable("Hidden");
@@ -90,17 +89,7 @@ passCodeSwitch.addSubscriber(function(x) {
     }
 });
 
-quotesEnabledSwitch.addSubscriber(function(x){
-    //UserSettings.setString('isQuoteSet', (x.value == true ? "true" :"false"));
-    if(x.value == true){
-      console.log("Enabling Quotes Switch");
-      State.enableQuotesSwitch();
-    }
-    else {
-      console.log("Disabling Quotes Switch : " + x.value);
-      State.disableQuotesSwitch();
-    }
-});
+
 
 passCodeTxt.addSubscriber(function(x) {
     if (x.value != undefined) {
@@ -182,8 +171,8 @@ function gotoSetPassCodePage(){
 }
 
 function InitializePage() {
-    console.log("Initializing Settings");
-    readSwitchValues();
+    console.log("Initializing Settings Page");
+    //readSwitchValues();
 };
 
 module.exports = {
@@ -197,7 +186,6 @@ module.exports = {
     selectedOption: selectedOption,
     secretAnswer: secretAnswer,
     passCodeSwitch: passCodeSwitch,
-    quotesEnabledSwitch:quotesEnabledSwitch,
     passCodeTxt: passCodeTxt,
     clearPassCodeText,
     clearPassCodeText,

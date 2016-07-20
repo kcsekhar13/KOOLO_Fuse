@@ -6,6 +6,7 @@ var UserSettings = require('UserSettings');
 var quotesFile = "quotes.json";
 var selectedQuote = Observable();
 var newQuote = Observable();
+var quotesEnabledSwitch  = Observable(true);
 
 function Quote(quote,isSelected) {
   var self = this;
@@ -76,6 +77,15 @@ function setDefaultQuote() {
     newQuote.value = "";
 };
 
+function readQuotesSwitchValue() {
+  Storage.read(State.QuotesEnabledSwitchFile).then(function(content) {
+      console.log("Reading quotes enabled flag success : " + content);
+      quotesEnabledSwitch.value = content;
+    }, function(error) {
+      console.log("failed to read quotes enabled file");
+      quotesEnabledSwitch.value = false;
+    });
+}
 function InitializePage(){
   // Storage.read("quotes.json").then(function(content) {
   //       console.log("Loading quotes from storage");
@@ -90,12 +100,26 @@ function InitializePage(){
   //       setDefaultQuote();
   //   });
   setDefaultQuote();
+  readQuotesSwitchValue();
 };
+
+quotesEnabledSwitch.addSubscriber(function(x){
+    //UserSettings.setString('isQuoteSet', (x.value == true ? "true" :"false"));
+    if(x.value == true){
+      console.log("Enabling Quotes Switch");
+      State.enableQuotesSwitch();
+    }
+    else {
+      console.log("Disabling Quotes Switch : " + x.value);
+      State.disableQuotesSwitch();
+    }
+});
 
 module.exports =  {
     InitializePage :InitializePage,
     defaultQuotes:defaultQuotes,
     newQuote:newQuote,
     addNewQuote : addNewQuote,
-    changeDefaultQuote:changeDefaultQuote
+    changeDefaultQuote:changeDefaultQuote,
+    quotesEnabledSwitch:quotesEnabledSwitch,
 };
