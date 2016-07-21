@@ -7,7 +7,16 @@
 		</WhileActive>
 		<Grid Rows="auto,1*,auto" Margin="10,0,0,10">
 			<Panel DataContext="{UpdateQuotes}" >
-				<Basic.Switch Value="{quotesEnabledSwitch}" Alignment="CenterRight" Dock="Right" />
+			<NativeViewHost>
+				<Switch ux:Name="_sw" Alignment="CenterRight" Dock="Right" Value="{quotesEnabledSwitch}" Margin="5" >
+				<WhileTrue Value="{Property _sw.Value}">
+					<Callback Handler="{quotesSwitchChanged}" />
+				</WhileTrue>
+				<WhileFalse Value="{Property _sw.Value}">
+					<Callback Handler="{quotesSwitchChanged}" />
+				</WhileFalse>
+    		</Switch>
+			 </NativeViewHost>
 				<Text Value="Enable quotes in home screen" Font="Bold" Alignment="CenterLeft" TextColor="#bdc7ca" />
 			</Panel>
 			<ScrollView>

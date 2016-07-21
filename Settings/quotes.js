@@ -6,7 +6,7 @@ var UserSettings = require('UserSettings');
 var quotesFile = "quotes.json";
 var selectedQuote = Observable();
 var newQuote = Observable();
-var quotesEnabledSwitch  = Observable(true);
+var quotesEnabledSwitch  = Observable(false);
 
 function Quote(quote,isSelected) {
   var self = this;
@@ -62,7 +62,7 @@ function changeDefaultQuote(arg){
   console.log("Selected Quote :" + JSON.stringify(arg.data.quote));
   selectedQuote.value = arg.data.quote;
   writeDefaultQuote(arg.data.quote);
-  InitializePage();
+  setDefaultQuote();
 }
 
 function setDefaultQuote() {
@@ -83,37 +83,23 @@ function readQuotesSwitchValue() {
       quotesEnabledSwitch.value = content;
     }, function(error) {
       console.log("failed to read quotes enabled file");
-      quotesEnabledSwitch.value = false;
     });
 }
-function InitializePage(){
-  // Storage.read("quotes.json").then(function(content) {
-  //       console.log("Loading quotes from storage");
-  //       var temp = JSON.parse(content);
-  //       defaultQuotes.clear();
-  //       for (var quote in temp) {
-  //         defaultQuotes.add({quote:temp[quote].quote,IsSelected:Observable(temp[quote].IsSelected)});
-  //       }
-  //       setDefaultQuote();
-  //   }, function(error) {
-  //       console.log("Loading failed - reading default quotes" + error);
-  //       setDefaultQuote();
-  //   });
-  setDefaultQuote();
-  readQuotesSwitchValue();
-};
 
-quotesEnabledSwitch.addSubscriber(function(x){
-    //UserSettings.setString('isQuoteSet', (x.value == true ? "true" :"false"));
-    if(x.value == true){
-      console.log("Enabling Quotes Switch");
-      State.enableQuotesSwitch();
-    }
-    else {
-      console.log("Disabling Quotes Switch : " + x.value);
-      State.disableQuotesSwitch();
-    }
-});
+function quotesSwitchChanged() {
+  console.log("QuoteEnableSwitch has chagned to : " + quotesEnabledSwitch.value);
+  if(quotesEnabledSwitch.value == true){
+    State.enableQuotesSwitch();
+    return;
+  }
+  State.disableQuotesSwitch();
+}
+
+function InitializePage(){
+  console.log("********** Initializing Quotes page ***************");
+  readQuotesSwitchValue();
+  setDefaultQuote();
+};
 
 module.exports =  {
     InitializePage :InitializePage,
@@ -122,4 +108,5 @@ module.exports =  {
     addNewQuote : addNewQuote,
     changeDefaultQuote:changeDefaultQuote,
     quotesEnabledSwitch:quotesEnabledSwitch,
+    quotesSwitchChanged:quotesSwitchChanged
 };

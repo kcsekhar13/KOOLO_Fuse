@@ -10,7 +10,10 @@
 			</WhileActive>
 			<StackPanel Margin="10">
 			<DockPanel Margin="0,10,0,10">
-				<Basic.Switch Value="{passCodeSwitch}" Dock="Right" Alignment="VerticalCenter" />
+				<NativeViewHost>
+					<Switch ux:Name="_sw" Alignment="CenterRight" Dock="Right" Value="{passCodeSwitch}" Margin="5" >
+						</Switch>
+				 </NativeViewHost>
 				<Text Value="Activate/Deactivate Passcode" Font="Bold" TextAlignment="Left" Margin="10" TextColor="#bdc7ca" />
 			</DockPanel>
 			<Rectangle Fill="#000000" Height="1" Margin="10,5,0,5" >

@@ -19,7 +19,7 @@ var isSettingsVisible = Observable("Hidden");
 var myQuote = Observable();
 var myBackGroundImage = Observable("Assets/Background.png");
 var isPassCodeSet = Observable(true);
-var isQuoteSet = Observable(true);
+var isQuoteSet = Observable(false);
 
 var kooloTodayEvents = Observable();
 var eventsFile = "events.json";
@@ -208,7 +208,7 @@ function readHumorColors() {
     //console.log("Success in reading humorColor file" + JSON.stringify(JSON.parse(content).homourColors._values));
      var temp = JSON.parse(JSON.stringify(JSON.parse(content).homourColors._values));
      _.forEach(temp, function(value) {
-       console.log("Add humour color" + JSON.stringify(value.title._values[0]));
+       //console.log("Add humour color" + JSON.stringify(value.title._values[0]));
        var data = JSON.stringify(value.title._values[0]);
        homourColors.add({code: JSON.parse(JSON.stringify(value)).code, title: Observable(data.substring(1, data.length - 1)), isFoused : Observable(false) });
     });
@@ -244,14 +244,14 @@ function readFavouriteQuote() {
   Storage.read(State.QuotesEnabledSwitchFile).then(function(content) {
       console.log("Reading quotes enabled flag success : " + content);
       isQuoteSet.value = content;
+      setMyQuote();
     }, function(error) {
       console.log("failed to read quotes enabled file");
     });
-    setMyQuote();
 }
 
-function setMyQuote() {
-    myQuote.value  = isQuoteSet.value == "true" ? UserSettings.getString('defaultQuote','H.O.P.E - Hold On Pains Ends') : '';
+function setMyQuote() {    
+    myQuote.value  = isQuoteSet.value =="true" ? UserSettings.getString('defaultQuote','H.O.P.E - Hold On Pains Ends') : '';
 }
 
 function readPassCodeSwitchValue() {

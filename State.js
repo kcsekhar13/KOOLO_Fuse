@@ -8,25 +8,21 @@ var myQuoteEnabled = Observable(false);
 var myPassCodeEnabled = Observable(false);
 
 function enableQuotesSwitch() {
-  console.log("Enable Quotes Switch");
   createFile(QuotesEnabledSwitchFile,true);
   myQuoteEnabled.value= true;
 };
 
 function enablePassCodeSwitch() {
-  console.log("Enable PassCode Switch");
   createFile(PassCodeEnabledSwichFile,true);
   myPassCodeEnabled.value = true;
 }
 
 function disableQuotesSwitch() {
-  console.log("Disable Quotes Switch");
   createFile(QuotesEnabledSwitchFile,false);
   myQuoteEnabled.value = false;
 };
 
-function disablePassCodeSwitch() {
-    console.log("Disable PassCode Switch");
+function disablePassCodeSwitch() {    
     createFile(PassCodeEnabledSwichFile,false);
     myPassCodeEnabled.value = false;
 }

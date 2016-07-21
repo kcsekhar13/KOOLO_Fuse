@@ -19,9 +19,9 @@
 		<MoodColour ux:Name="moodColour" router="router" />
 		<MyPage ux:Name="mainHomePage">
 		<WhileActive>
-			<DebugAction Message="Home view is active" />
+			<DebugAction Message="Home Page is active" />
 			<Callback Handler="{readkooloEvents}" />
-			<Callback Handler="{readSwitchValues}" />
+			<Callback Handler="{readSwitchValues}" /> 
 			<Callback Handler="{readBackGroundImage}" />
 			<Callback Handler="{readHumorColors}" />
 		</WhileActive>
