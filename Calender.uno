@@ -10,18 +10,18 @@ public class Calender : NativeModule {
 	public Calender () {
 		// Add Load function to load image as a texture
 		AddMember(new NativeFunction("AddEvent", (NativeCallback)AddEvent));
-
 	}
-  static object AddEvent(Context c,object[] args)
+  object AddEvent(Context c, object[] args)
   {
-		debug_log("Adding event : " + args);
-		var year = 2016;
-		var month = 06;
-		var day = 02;
-		var hours = 13;
-		var minutes= 20;
+		debug_log("Event argument Length: " + args.Length);
+
+		var day = (int)args[0];
+		var month = (int)args[1];
+		var year = (int)args[2];
+		var hours = (int)args[3];
+		var minutes = (int)args[4];
 		var isRecurring = true;
-		CalenderImpl.AddCalenderEvent(year,month,day,hours,minutes,isRecurring);
+		CalenderImpl.AddCalenderEvent(year,month,day,(int)hours,(int)minutes,isRecurring);
     return null;
   }
 }
@@ -71,8 +71,8 @@ public class CalenderImpl
 	[Foreign(Language.Java)]
 	static extern(Android) void AddEvent(){
 		@{
-			 String calendarUriBase = null;
-			 Activity a = com.fuse.Activity.getRootActivity();
+			String calendarUriBase = null;
+			Activity a = com.fuse.Activity.getRootActivity();
 			Uri eventsUri = null;
 			Uri remainderUri = null;
 			Cursor cursor = null;
@@ -85,12 +85,12 @@ public class CalenderImpl
 				Calendar cal = Calendar.getInstance();
 				//eventDate = new SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy").parse("Thr Jun 02 18:30:00 CEST 2016");
 				//cal.setTime(eventDate);
-				cal.set(Calendar.HOUR_OF_DAY,17);
-				cal.set(Calendar.MINUTE, 30);
+				cal.set(Calendar.HOUR_OF_DAY,Hour);
+				cal.set(Calendar.MINUTE, Minute);
 				startCalTime = cal.getTimeInMillis();
 
-				cal.set(Calendar.HOUR_OF_DAY,18);
-				cal.set(Calendar.MINUTE, 30);
+				cal.set(Calendar.HOUR_OF_DAY,Hour+1);
+				cal.set(Calendar.MINUTE, Minute);
 				endCalTime = cal.getTimeInMillis();
 			 int[] calIds  = null;
 				 String[] projection = new String[] {
@@ -134,9 +134,9 @@ public class CalenderImpl
     @{
 			 Activity a = com.fuse.Activity.getRootActivity();
        Calendar beginTime = Calendar.getInstance();
-       //beginTime.set( Year ,Month , Day, Hour, Minute);
+       beginTime.set( Year ,Month , Day, Hour, Minute);
        Calendar endTime = Calendar.getInstance();
-    	 //endTime.set( Year, Month , Day, Hour, Minute + 30);
+    	 endTime.set( Year, Month , Day, Hour, Minute + 30);
        Intent intent = new Intent(Intent.ACTION_INSERT)
                .setData(Events.CONTENT_URI)
                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())

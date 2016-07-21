@@ -149,10 +149,10 @@ function addNewEvent() {
           }
         }
   }
-  console.log("AddToCalanderFlag value " + addToOSCalanderFlag.value);
+  console.log("AddToCalanderFlag value " + addToOSCalanderFlag.value + " Date" + date.toDateString() );
   if(addToOSCalanderFlag.value == true)
   {
-      osCalander.AddEvent(date);
+      osCalander.AddEvent(date.getDate(), date.getMonth(), date.getFullYear(), parseInt(getHourvalue(timeHourSliderValue.value.toString())), parseInt(getMinutevalue(timeMinuteSliderValue.value.toString())));
   }
 
   repeatOnDays = [];
