@@ -1,7 +1,10 @@
 var Observable = require("FuseJS/Observable");
 var Storage = require('FuseJS/Storage');
-var gallery = require('Gallery');
-var camera = require('FuseJS/Camera');
+//var gallery = require('Gallery');
+var Camera = require("FuseJS/Camera");
+var CameraRoll = require("FuseJS/CameraRoll");
+var ImageTools = require("FuseJS/ImageTools");
+
 var State = require("State");
 var UserSettings = require('UserSettings');
 var _ = require('./lodash');
@@ -120,17 +123,31 @@ function readBackGroundImage() {
 function gotoLibrary() {
     console.log("Load mood image from Gallery ");
     var ticks = new Date().getTime() + ".jpg";
-    gallery.getMoodMapPicture(ticks).then(function(pic) {
-        //var moodImagePath = "/data/data/com.KOOLO_Fuse/files/"+ ticks;
-				console.log("Received mood map image from gallery" + pic.path);
-				currentMoodMapImage.value = pic;
-        //var length = myMoods.length+1;
-        //myMoods.push(new mood(length,moodImagePath,"Red",new Date().toDateString()));
-        //updateMyMoods();
-				moodMapPage.value = MoodMapPage.selectHumour;
-    },function (eror) {
-      console.log("failed to read Mood Map Image form Library");
-    });
+    // gallery.getMoodMapPicture(ticks).then(function(pic) {
+    //     //var moodImagePath = "/data/data/com.KOOLO_Fuse/files/"+ ticks;
+		// 		console.log("Received mood map image from gallery" + pic.path);
+		// 		currentMoodMapImage.value = pic;
+    //     //var length = myMoods.length+1;
+    //     //myMoods.push(new mood(length,moodImagePath,"Red",new Date().toDateString()));
+    //     //updateMyMoods();
+		// 		moodMapPage.value = MoodMapPage.selectHumour;
+    // },function (eror) {
+    //   console.log("failed to read Mood Map Image form Library");
+    // });
+
+    CameraRoll.getImage().then(
+    function(image)
+    {
+      console.log("received image: "+image.path+", "+image.width+"/"+image.height);
+      displayImage(image);
+      currentMoodMapImage.value = image;
+      moodMapPage.value = MoodMapPage.selectHumour;
+    }
+  ).catch(
+    function(reason){
+      console.log("Couldn't get image: "+reason);
+    }
+  );
 }
 
 function saveMoodMapImage() {
@@ -162,20 +179,42 @@ function getMoodLineImages() {
 
 function takePicture(){
   console.log("Taking mood Picture");
-  camera.takePicture({ targetWidth: 640, targetHeight: 360,correctOrientation: true}).then(function(file)
-  {
-    console.log("Received image from Camera :" + JSON.stringify(file, undefined, '    '));
-    var length = myMoods.length+1;
-		currentMoodMapImage.value = file;
-		//var length = myMoods.length+1;
-		//myMoods.push(new mood(length,moodImagePath,"Red",new Date().toDateString()));
-		//updateMyMoods();
-		moodMapPage.value = MoodMapPage.selectHumour;
-    //myMoods.push(new mood(length,file,"Red", new Date().toDateString()))
-    //updateMyMoods();
-  }).catch(function(e) {
-      console.log(e);
-  });
+  // camera.takePicture({ targetWidth: 640, targetHeight: 360,correctOrientation: true}).then(function(file)
+  // {
+  //   console.log("Received image from Camera :" + JSON.stringify(file, undefined, '    '));
+  //   var length = myMoods.length+1;
+	// 	currentMoodMapImage.value = file;
+	// 	//var length = myMoods.length+1;
+	// 	//myMoods.push(new mood(length,moodImagePath,"Red",new Date().toDateString()));
+	// 	//updateMyMoods();
+	// 	moodMapPage.value = MoodMapPage.selectHumour;
+  //   //myMoods.push(new mood(length,file,"Red", new Date().toDateString()))
+  //   //updateMyMoods();
+  // }).catch(function(e) {
+  //     console.log(e);
+  // });
+
+  Camera.takePicture().then(
+    function(image) {
+      var args = { desiredWidth:320, desiredHeight:320, mode:ImageTools.SCALE_AND_CROP, performInPlace:true };
+      ImageTools.resize(image, args).then(
+        function(image) {
+          CameraRoll.publishImage(image);
+          var length = myMoods.length+1;
+      		currentMoodMapImage.value = file;
+          moodMapPage.value = MoodMapPage.selectHumour;
+        }
+      ).catch(
+        function(reason) {
+          console.log("Couldn't resize image: " + reason);
+        }
+      );
+    }
+  ).catch(
+    function(reason){
+      console.log("Couldn't take picture: " + reason);
+    }
+  );
 }
 
 function onMoodImageClickHandler(arg) {
@@ -250,7 +289,7 @@ function readFavouriteQuote() {
     });
 }
 
-function setMyQuote() {    
+function setMyQuote() {
     myQuote.value  = isQuoteSet.value =="true" ? UserSettings.getString('defaultQuote','H.O.P.E - Hold On Pains Ends') : '';
 }
 
