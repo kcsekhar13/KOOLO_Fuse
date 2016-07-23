@@ -194,7 +194,7 @@
               <Panel Margin="15" Width="30" Height="30">
                 <Rectangle CornerRadius="1" Layer="Background">
                   <Stroke Width="1" Color="#000000"/>
-                  <Image File="Assets/Checkmark.png" StretchMode="UniformToFill" Opacity="0" ux:Name="remainderCheck" />
+                  <Image File="Assets/Checkmark.png" StretchMode="UniformToFill" Opacity="{remainderCheckOpacity}" ux:Name="remainderCheck" />
                   <Clicked>
                     <Toggle Target="setRemainder" />
                   </Clicked>

@@ -5,7 +5,7 @@
         "Copyright": "Copyright (C) 2016",
         "Publisher": "Chandrasekhar",
         "Version": "1.0",
-        "VersionCode": 15,
+        "VersionCode": 16,
         "Mobile": {
         "KeepAlive": false,
         "ShowStatusbar": true,
@@ -26,6 +26,8 @@
         "Fuse",
         "FuseJS",
         "Fuse.Camera",
+        "Fuse.CameraRoll",
+        "Fuse.ImageTools",
         "Fuse.BasicTheme",
         "Fuse.Launcher",
         "Fuse.Navigation",

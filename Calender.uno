@@ -45,9 +45,7 @@ public class Calender : NativeModule {
                 )]
 public class CalenderImpl
  {
-  static int Year {
-		get; set;
-	}
+  static int Year {get; set;}
   static int Month {get;set;}
   static int Day {get;set;}
   static int Hour {get;set;}
@@ -62,81 +60,83 @@ public class CalenderImpl
 		Hour = hour;
 		Minute = minute;
 		IsRecurring = isRecurring;
-		AddEventWithIntent(Year,Month,Day,Hour,Minute);
+		debug_log("Year value " + Year);
+		AddEventWithIntent(Year, Month, Day, Hour, Minute);
   }
 
 	static extern(!Mobile) void AddEvent () {
 		throw new Fuse.Scripting.Error("Unsupported platform");
 	}
-	[Foreign(Language.Java)]
-	static extern(Android) void AddEvent(){
-		@{
-			String calendarUriBase = null;
-			Activity a = com.fuse.Activity.getRootActivity();
-			Uri eventsUri = null;
-			Uri remainderUri = null;
-			Cursor cursor = null;
-			eventsUri = Uri.parse("content://com.android.calendar/events");
-			remainderUri = Uri.parse("content://com.android.calendar/reminders");
-			 //Date  eventDate  = null;
-			long startCalTime;
-			long endCalTime;
-			 TimeZone timeZone = TimeZone.getDefault();
-				Calendar cal = Calendar.getInstance();
-				//eventDate = new SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy").parse("Thr Jun 02 18:30:00 CEST 2016");
-				//cal.setTime(eventDate);
-				cal.set(Calendar.HOUR_OF_DAY,Hour);
-				cal.set(Calendar.MINUTE, Minute);
-				startCalTime = cal.getTimeInMillis();
 
-				cal.set(Calendar.HOUR_OF_DAY,Hour+1);
-				cal.set(Calendar.MINUTE, Minute);
-				endCalTime = cal.getTimeInMillis();
-			 int[] calIds  = null;
-				 String[] projection = new String[] {
-									 CalendarContract.Calendars._ID,
-									 CalendarContract.Calendars.ACCOUNT_NAME};
-
-				 ContentResolver cr = a.getContentResolver();
-				 cursor = cr.query(Uri.parse("content://com.android.calendar/calendars"), projection, null, null, null);
-
-				 if (cursor.moveToFirst()) {
-								final String[] calNames = new String[cursor.getCount()];
-								calIds = new int[cursor.getCount()];
-								for (int i = 0; i < calNames.length; i++) {
-										calIds[i] = cursor.getInt(0);
-										calNames[i] = cursor.getString(1);
-										cursor.moveToNext();
-								}
-						}
-
-				try {
-
-						ContentValues event = new ContentValues();
-						event.put(CalendarContract.Events.CALENDAR_ID,1);
-						event.put(CalendarContract.Events.TITLE,"KOOLO Event");
-						event.put(CalendarContract.Events.DESCRIPTION,"Scheduled Koolo Event");
-						event.put(CalendarContract.Events.DTSTART, startCalTime);
-						event.put(CalendarContract.Events.DTEND, endCalTime);
-						event.put(CalendarContract.Events.STATUS, 1);
-						event.put(CalendarContract.Events.HAS_ALARM, 1);
-						event.put(CalendarContract.Events.EVENT_TIMEZONE, timeZone.getID());
-						// To Insert
-						a.getContentResolver().insert(eventsUri, event);
-
-				} catch (Exception e) {
-				}
-		@}
-	}
+	// [Foreign(Language.Java)]
+	// static extern(Android) void AddEvent(){
+	// 	@{
+	// 		String calendarUriBase = null;
+	// 		Activity a = com.fuse.Activity.getRootActivity();
+	// 		Uri eventsUri = null;
+	// 		Uri remainderUri = null;
+	// 		Cursor cursor = null;
+	// 		eventsUri = Uri.parse("content://com.android.calendar/events");
+	// 		remainderUri = Uri.parse("content://com.android.calendar/reminders");
+	// 		 //Date  eventDate  = null;
+	// 		long startCalTime;
+	// 		long endCalTime;
+	// 		 TimeZone timeZone = TimeZone.getDefault();
+	// 			Calendar cal = Calendar.getInstance();
+	// 			//eventDate = new SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy").parse("Thr Jun 02 18:30:00 CEST 2016");
+	// 			//cal.setTime(eventDate);
+	// 			cal.set(Calendar.HOUR_OF_DAY,Hour);
+	// 			cal.set(Calendar.MINUTE, Minute);
+	// 			startCalTime = cal.getTimeInMillis();
+	//
+	// 			cal.set(Calendar.HOUR_OF_DAY,Hour+1);
+	// 			cal.set(Calendar.MINUTE, Minute);
+	// 			endCalTime = cal.getTimeInMillis();
+	// 		 int[] calIds  = null;
+	// 			 String[] projection = new String[] {
+	// 								 CalendarContract.Calendars._ID,
+	// 								 CalendarContract.Calendars.ACCOUNT_NAME};
+	//
+	// 			 ContentResolver cr = a.getContentResolver();
+	// 			 cursor = cr.query(Uri.parse("content://com.android.calendar/calendars"), projection, null, null, null);
+	//
+	// 			 if (cursor.moveToFirst()) {
+	// 							final String[] calNames = new String[cursor.getCount()];
+	// 							calIds = new int[cursor.getCount()];
+	// 							for (int i = 0; i < calNames.length; i++) {
+	// 									calIds[i] = cursor.getInt(0);
+	// 									calNames[i] = cursor.getString(1);
+	// 									cursor.moveToNext();
+	// 							}
+	// 					}
+	//
+	// 			try {
+	//
+	// 					ContentValues event = new ContentValues();
+	// 					event.put(CalendarContract.Events.CALENDAR_ID,1);
+	// 					event.put(CalendarContract.Events.TITLE,"KOOLO Event");
+	// 					event.put(CalendarContract.Events.DESCRIPTION,"Scheduled Koolo Event");
+	// 					event.put(CalendarContract.Events.DTSTART, startCalTime);
+	// 					event.put(CalendarContract.Events.DTEND, endCalTime);
+	// 					event.put(CalendarContract.Events.STATUS, 1);
+	// 					event.put(CalendarContract.Events.HAS_ALARM, 1);
+	// 					event.put(CalendarContract.Events.EVENT_TIMEZONE, timeZone.getID());
+	// 					// To Insert
+	// 					a.getContentResolver().insert(eventsUri, event);
+	//
+	// 			} catch (Exception e) {
+	// 			}
+	// 	@}
+	// }
 
   [Foreign(Language.Java)]
-  static extern(Android) void AddEventWithIntent(int Year, int Month,int Day, int Hour, int Minute){
+  static extern(Android) void AddEventWithIntent(int y, int m,int d, int h, int mn){
     @{
 			 Activity a = com.fuse.Activity.getRootActivity();
        Calendar beginTime = Calendar.getInstance();
-       beginTime.set( Year ,Month , Day, Hour, Minute);
+       beginTime.set( y, m , d, h, mn);
        Calendar endTime = Calendar.getInstance();
-    	 endTime.set( Year, Month , Day, Hour, Minute + 30);
+    	 endTime.set( y, m , d, h, mn + 30);
        Intent intent = new Intent(Intent.ACTION_INSERT)
                .setData(Events.CONTENT_URI)
                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())

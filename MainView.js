@@ -1,6 +1,6 @@
 var Observable = require("FuseJS/Observable");
 var Storage = require('FuseJS/Storage');
-//var gallery = require('Gallery');
+var gallery = require('Gallery');
 var Camera = require("FuseJS/Camera");
 var CameraRoll = require("FuseJS/CameraRoll");
 var ImageTools = require("FuseJS/ImageTools");
@@ -139,8 +139,7 @@ function gotoLibrary() {
     function(image)
     {
       console.log("received image: "+image.path+", "+image.width+"/"+image.height);
-      displayImage(image);
-      currentMoodMapImage.value = image;
+      currentMoodMapImage.value = image.path;
       moodMapPage.value = MoodMapPage.selectHumour;
     }
   ).catch(
@@ -199,9 +198,8 @@ function takePicture(){
       var args = { desiredWidth:320, desiredHeight:320, mode:ImageTools.SCALE_AND_CROP, performInPlace:true };
       ImageTools.resize(image, args).then(
         function(image) {
-          CameraRoll.publishImage(image);
           var length = myMoods.length+1;
-      		currentMoodMapImage.value = file;
+      		currentMoodMapImage.value = image.path;
           moodMapPage.value = MoodMapPage.selectHumour;
         }
       ).catch(
@@ -218,15 +216,14 @@ function takePicture(){
 }
 
 function onMoodImageClickHandler(arg) {
-	selectedMood.value = arg.data;
-	console.log(JSON.stringify(selectedMood));
+  console.log("Selected Mood Image Path" + JSON.stringify(arg.data.moodImage));
+	selectedMood.value = arg.data.moodImage;
 }
 
 function onMoodColorCircleClicked(arg) {
   var filteredMoods = myMoods.filter(function(e){
 			    return e.moodColor === arg.data.code;
 			});
-	//myMoods.clear();
 	observableMoods.value = filteredMoods;
 }
 
@@ -243,6 +240,7 @@ function onHumorColorSelected(arg) {
 }
 
 function readHumorColors() {
+  homourColors.clear();
   Storage.read("humorColor.txt").then(function(content) {
     //console.log("Success in reading humorColor file" + JSON.stringify(JSON.parse(content).homourColors._values));
      var temp = JSON.parse(JSON.stringify(JSON.parse(content).homourColors._values));

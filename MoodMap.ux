@@ -66,10 +66,10 @@
 			</Grid>
 		</Page>
  		<Page ux:Name="selectHumourPage" >
-		<WhileActive>
-			<DebugAction Message="In Humour color selection page" />
-			<Callback Handler="{clearPreviousSelection}" />
-		</WhileActive>
+			<WhileActive>
+				<DebugAction Message="In Humour color selection page" />
+				<Callback Handler="{clearPreviousSelection}" />
+			</WhileActive>
 			<!-- Header    -->
 			<Panel Dock="Top" Height="35" Alignment="Top">
 				<Rectangle Fill="#808080" Layer="Background">
@@ -190,8 +190,8 @@
 					</Rectangle>
 				</Panel>
 				<!-- End of Header -->
-				<!-- <Text Value="{selectedMood.moodDate}" Font="Bold" TextColor="{selectedMood.moodColor}" Alignment="Center" /> -->
-				<Image File="{selectedMood.moodImage}" StretchMode="UniformToFill" />
+				<!-- <Text Value="{selectedMood}" Font="Bold" TextColor="{selectedMood.moodColor}" Alignment="Center" /> -->
+				<Image File="{selectedMood}" StretchMode="UniformToFill" />
 				<Clicked>
 					<Set moodMapNav.Active="moodLinePage" />
 				</Clicked>

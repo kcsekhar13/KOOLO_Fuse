@@ -5,6 +5,8 @@ var UserSettings = require('UserSettings');
 var State = require("State");
 
 var gallery = require('Gallery');
+var CameraRoll = require("FuseJS/CameraRoll");
+var ImageTools = require("FuseJS/ImageTools");
 // var settings = ["Background Image","Passcode","Quotes","Humour Color","License","Tutorial","Contributors","About"];
 var settings = [
                 { setting: "Background Image" },
@@ -131,13 +133,27 @@ function selectMe(arg) {
 
 function setBackGroundImage() {
     var backGroungImagePath ;
-    gallery.getPicture().then(function(pic) {
-        backGroungImagePath = pic.path;
-				console.log("Received image for Background : "+ JSON.stringify(pic));
-        Storage.write("KOOLO_Background.txt",backGroungImagePath ).then(function(success) {
-            console.log(" Background image Save  " + (success ? "success" : "failure"));
-        });
-    });
+    // gallery.getPicture().then(function(pic) {
+    //     backGroungImagePath = pic.path;
+		// 		console.log("Received image for Background : "+ JSON.stringify(pic));
+    //     Storage.write("KOOLO_Background.txt",backGroungImagePath ).then(function(success) {
+    //         console.log(" Background image Save  " + (success ? "success" : "failure"));
+    //     });
+    // });
+
+    CameraRoll.getImage().then(
+    function(image)
+    {
+      console.log("received image: "+image.path+", "+image.width+"/"+image.height);
+      Storage.write("KOOLO_Background.txt",image.path).then(function(success) {
+          console.log(" Background image Save  " + (success ? "success" : "failure"));
+      });
+    }
+  ).catch(
+    function(reason){
+      console.log("Couldn't get image: "+reason);
+    }
+  );
 }
 
 function saveHumorColors(arg) {

@@ -17,6 +17,7 @@ var eventsFile = "events.json";
 var todayEvents = Observable();
 var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 var addToOSCalanderFlag = Observable(false);
+var remainderCheckOpacity = Observable('0');
 
 function myDay(date, isContainsEvents){
    var self = this;
@@ -164,6 +165,7 @@ function addNewEvent() {
 function setAddToOsCalender() {
   console.log("Set addToOSCalanderFlag to true");
   addToOSCalanderFlag.value = true;
+  remainderCheckOpacity.value = 1;
 }
 
 function clearValues() {
@@ -293,5 +295,6 @@ module.exports = {
   InitNewEventDate:InitNewEventDate,
   todayEvents:todayEvents,
   clearValues:clearValues,
-  setAddToOsCalender:setAddToOsCalender
+  setAddToOsCalender:setAddToOsCalender,
+  remainderCheckOpacity:remainderCheckOpacity
 };
