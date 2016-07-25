@@ -344,4 +344,5 @@ module.exports = {
   updatedNotes:updatedNotes,
   clearUpdateCheckListItem:clearUpdateCheckListItem,
   gotoHome:gotoHome,
+  clearCheckListItem:clearCheckListItem
 }

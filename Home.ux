@@ -21,7 +21,7 @@
 		<WhileActive>
 			<DebugAction Message="Home Page is active" />
 			<Callback Handler="{readkooloEvents}" />
-			<Callback Handler="{readSwitchValues}" /> 
+			<Callback Handler="{readSwitchValues}" />
 			<Callback Handler="{readBackGroundImage}" />
 			<Callback Handler="{readHumorColors}" />
 		</WhileActive>

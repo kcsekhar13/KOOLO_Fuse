@@ -36,7 +36,67 @@
 	      <ScrollView>
 	        <StackPanel>
 	         <Each Items="{selectedList}">
-	              <CheckListCntrl Text="{notes}" Margin="0,5,5,5" StatusIcon="{statusIcon}" />
+	              <!-- <CheckListCntrl Text="{notes}" Margin="0,5,5,5" StatusIcon="{statusIcon}" /> -->
+								<Panel Margin="0,5,5,5">
+									<RemovingAnimation>
+										<Move RelativeTo="Size" Y="20" Duration="0.8" Easing="CircularInOut" />
+									</RemovingAnimation>
+									<LayoutAnimation>
+										<Move RelativeTo="LayoutChange" Y="1" Duration="0.8" Easing="CircularInOut" />
+									</LayoutAnimation>
+									<SwipeGesture ux:Name="swipeLeft" Direction="Left" Type="Active" Length="150" />
+									<SwipeGesture ux:Name="swipeRight" Direction="Right" Type="Simple" Length="100"/>
+									<SwipingAnimation Source="swipeLeft">
+										<Move Target="statusPanel" X="-150" Duration="1" />
+										<Move Target="operationPanel" X="0" RelativeTo="Size" Duration="0.5" />
+										<Change operationPanel.Opacity="1" Duration="0.5" EasingBack="QuadraticInOut" />
+									</SwipingAnimation>
+									<SwipingAnimation Source="swipeRight">
+										<Move Target="statusPanel" X="0.5" RelativeTo="ParentSize" Duration="1" />
+										<Change	statusCircle.Opacity="0" Duration="1" />
+									</SwipingAnimation>
+									<Swiped Source="swipeRight">
+										<DebugAction Message="Swiped right!" />
+										<Set statusCircle.Opacity="0" />
+										<!-- Update active state here -->
+									</Swiped>
+									<WhileInactive Threshold="0.2">
+										<SetSwipeActive Target="swipeLeft" Value="false" />
+									</WhileInactive>
+									<string ux:Property="Text" />
+									<FileSource ux:Property="StatusIcon" />
+									<Panel ux:Name="statusPanel" >
+											<Panel Width="20" Margin="10,0,10,0" Alignment="Left" ux:Name="statusCircle">
+												<Circle Height="30" Width="30">
+													<Image File="{statusIcon}" />
+													<Clicked>
+														<Callback Handler="{updateCheckListItemStatus}" />
+													</Clicked>
+												</Circle>
+											</Panel>
+											<Panel ux:Name="titlePanel" Color="#656161" Margin="40,0,10,0" Width="90%" Alignment="Right">
+												<Image File="../Assets/Mask.png" Color="#656161" Alignment="Left" Width="24" Height="24" Margin="-25,0,0,0" />
+												<Text Value="{notes}" Font="Regular" TextColor="Black" TextWrapping="Wrap" Margin="10,15,0,10" />
+											</Panel>
+									</Panel>
+									<Panel ux:Name="operationPanel" Opacity="0" Alignment="Right" Width="160">
+										<Grid Columns="1*,1*">
+											<Rectangle Color="#eb9c27">
+												<Text Value="Update" Font="Regular" TextColor="Black" Alignment="Center"  />
+												<Clicked>
+													<Callback Handler="{updateCheckListItemClicked}" />
+												  <NavigateTo Target="updateCheckListPage" />
+												</Clicked>
+											</Rectangle>
+											<Rectangle Color="#ff0000" >
+												<Text Value="Delete" Font="Regular" TextColor="Black" Alignment="Center" />
+												<Clicked>
+													<Callback Handler="{deleteCheckListItem}" />
+												</Clicked>
+											</Rectangle>
+										</Grid>
+									</Panel>
+								</Panel>
 	         </Each>
 	        </StackPanel>
 	      </ScrollView>
@@ -93,14 +153,36 @@
 	</MyPage>
 	<MyPage ux:Name="addNewGoalPage" ux:AutoBind="false">
 		<DockPanel>
-			<MyHeader Text="Add new checklist" Dock="Top" />
-			<Panel Padding="10" Height="40%" Margin="20"  Dock="Top">
-					<Rectangle CornerRadius="1" Layer="Background">
+			<!-- Header    -->
+			<Panel Dock="Top" Height="35" Alignment="Top">
+			<Rectangle Fill="#808080" Layer="Background">
+				<Panel Alignment="Left" Margin="5,8,0,0" HitTestMode="LocalBounds">
+				<CancelText />
+				<Clicked>
+					<Callback Handler="{clearCheckListItem}" />
+					<GoBack />
+				</Clicked>
+				</Panel>
+				<Text Alignment="Center" FontSize="20" TextColor="#000000" Font="Bold" Value="Add new checklist" Layer="Background"/>
+				<Panel Alignment="Right" Margin="0,8,5,0">
+				<DoneText />
+				<Clicked>
+					<Callback Handler="{addNewCheckListItem}" />
+					<GoBack />
+				</Clicked>
+				</Panel>
+			</Rectangle>
+			</Panel>
+			<!-- End of Header -->
+			<!-- <MyHeader Text="Add new checklist" Dock="Top" /> -->
+			<Panel Padding="10" Height="40%" Margin="20,50,20,20"  Dock="Top">
+					<Rectangle CornerRadius="5" Layer="Background">
 							<Stroke Width="1" Color="#000000"/>
 					</Rectangle>
-					<TextView Value="{newCheckListItem.notes}" Height="99%" Width="100%" Font="Regular" TextAlignment="Left" />
+					<TextView Value="{newCheckListItem.notes}" Height="99%" Width="90%" Font="Regular" TextAlignment="Left"  TextWrapping="Wrap"
+					 Padding="4" Margin="5" CaretColor="#000"/>
 			</Panel>
-			<Basic.Button Height="50" Alignment="Center" Width="100" Dock="Top" Margin="20">
+			<Basic.Button Height="50" Alignment="Center" Width="100" >
 				<Text Value="Add" TextColor="#FFFFFF" Font="Regular" Alignment="Center" />
 				<Clicked>
 					<Callback Handler="{addNewCheckListItem}" />
@@ -132,18 +214,18 @@
 						</Rectangle>
 			</Panel>
 			<Panel Padding="10" Height="40%" Margin="20"  Dock="Top">
-					<Rectangle CornerRadius="1" Layer="Background">
+					<Rectangle CornerRadius="5" Layer="Background">
 							<Stroke Width="1" Color="#000000"/>
 					</Rectangle>
 					<TextView Value="{updatedNotes}" Height="99%" Width="90%" Font="Regular" TextWrapping="Wrap" TextAlignment="Left" />
 			</Panel>
-			<Button Height="50" Alignment="Center" Width="100" Dock="Top" Margin="20">
+			<Basic.Button Height="50" Alignment="Center" Width="100" Dock="Top" Margin="20">
 				<Text Value="Update" TextColor="#FFFFFF" Font="Regular" Alignment="Center" />
 				<Clicked>
 					<Callback Handler="{updateCheckListItem}" />
 					<GoBack />
 				</Clicked>
-			</Button>
+			</Basic.Button>
 		</DockPanel>
 	</MyPage>
 </Panel>
